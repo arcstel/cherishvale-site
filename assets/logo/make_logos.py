@@ -1,27 +1,25 @@
 #!/usr/bin/env python3
-"""Concept logos for Cherishvale (original artwork). Renders 1024x1024 PNGs."""
+"""Refined Cherishvale logo concepts (original artwork). Outputs 1024px PNGs
+and a 2x2 concept sheet."""
 import math, os
-from PIL import Image, ImageDraw, ImageFilter
+from PIL import Image, ImageDraw, ImageFilter, ImageFont
 
 S = 1024
-SS = 2  # supersample
+SS = 2
 D = S * SS
 OUT = os.path.dirname(os.path.abspath(__file__))
 
 TEAL = (53, 208, 224)
 BLUE = (79, 140, 255)
 GOLD = (232, 194, 122)
-CREAM = (247, 240, 226)
-DEEP = (10, 17, 32)
+GOLD_DK = (208, 166, 96)
+CREAM = (248, 242, 228)
+DEEP = (8, 13, 26)
 INK = (223, 230, 255)
 
 
-def canvas():
-    return Image.new("RGBA", (D, D), (0, 0, 0, 0))
-
-
-def disc(d, cx, cy, r, fill):
-    d.ellipse([cx - r, cy - r, cx + r, cy + r], fill=fill)
+def canvas(bg=None):
+    return Image.new("RGBA", (D, D), (0, 0, 0, 0) if bg is None else bg + (255,))
 
 
 def star_pts(cx, cy, r, inner=0.42, rot=-90, n=5):
@@ -33,7 +31,7 @@ def star_pts(cx, cy, r, inner=0.42, rot=-90, n=5):
     return pts
 
 
-def heart_pts(cx, cy, scale, n=240):
+def heart_pts(cx, cy, scale, n=360):
     pts = []
     for i in range(n):
         t = 2 * math.pi * i / n
@@ -43,111 +41,154 @@ def heart_pts(cx, cy, scale, n=240):
     return pts
 
 
+def ring_layer(color, rx, ry, width, rot):
+    L = Image.new("RGBA", (D, D), (0, 0, 0, 0))
+    d = ImageDraw.Draw(L)
+    d.ellipse([D*.5-rx, D*.5-ry, D*.5+rx, D*.5+ry], outline=color, width=width)
+    return L.rotate(rot, resample=Image.BICUBIC, center=(D*.5, D*.5))
+
+
+def front_arc(color, rx, ry, width, rot, start, end):
+    L = Image.new("RGBA", (D, D), (0, 0, 0, 0))
+    d = ImageDraw.Draw(L)
+    d.arc([D*.5-rx, D*.5-ry, D*.5+rx, D*.5+ry], start, end, fill=color, width=width)
+    return L.rotate(rot, resample=Image.BICUBIC, center=(D*.5, D*.5))
+
+
+def glow(img, cx, cy, r, color, alpha=60):
+    L = Image.new("RGBA", (D, D), (0, 0, 0, 0))
+    d = ImageDraw.Draw(L)
+    for i in range(18, 0, -1):
+        rr = r * (1 + i * 0.05)
+        d.ellipse([cx-rr, cy-rr, cx+rr, cy+rr], fill=color + (int(alpha * (1 - i / 18) ** 2),))
+    L = L.filter(ImageFilter.GaussianBlur(D * 0.012))
+    img.alpha_composite(L)
+
+
 def save(img, name):
-    img = img.resize((S, S), Image.LANCZOS)
-    p = os.path.join(OUT, name)
-    img.save(p)
-    print("wrote", p)
+    img.resize((S, S), Image.LANCZOS).save(os.path.join(OUT, name))
+    print("wrote", name)
 
 
-def glow(img, fn, color, layers=20):
-    g = Image.new("RGBA", (D, D), (0, 0, 0, 0))
-    gd = ImageDraw.Draw(g)
-    fn(gd, layers, color)
-    g = g.filter(ImageFilter.GaussianBlur(D * 0.02))
-    img.alpha_composite(g)
-
-
-# ---- A: orbiting heart -------------------------------------------------
 def logo_a():
     img = canvas()
-    glow(img, lambda d, L, c: [d.ellipse([D*.5-r*D*.0016, D*.5-r*D*.0016, D*.5+r*D*.0016, D*.5+r*D*.0016],
-                                          outline=(c[0], c[1], c[2], int(30*(1-i/L))) )
-                               for i, r in enumerate(range(300, 300+L*22, 22))], TEAL)
+    glow(img, D*.5, D*.5, D*.34, TEAL, 45)
+    img.alpha_composite(ring_layer(TEAL + (235,), D*.40, D*.125, int(D*.026), -22))
     d = ImageDraw.Draw(img)
-    # orbit ring (behind heart) - draw on layer then rotate
-    ring = Image.new("RGBA", (D, D), (0, 0, 0, 0))
-    rd = ImageDraw.Draw(ring)
-    rd.ellipse([D*.5-D*.40, D*.5-D*.13, D*.5+D*.40, D*.5+D*.13], outline=TEAL + (235,), width=int(D*.028))
-    ring = ring.rotate(-22, resample=Image.BICUBIC, center=(D*.5, D*.5))
-    img.alpha_composite(ring)
-    # heart
-    hp = heart_pts(D*.5, D*.50, D*.0125)
+    hp = heart_pts(D*.5, D*.49, D*.0122)
     d.polygon(hp, fill=GOLD + (255,))
-    d.line(hp + [hp[0]], fill=(255, 245, 220, 255), width=int(D*.006), joint="curve")
-    # star on ring
-    cx, cy = D*.5 + D*.30*math.cos(math.radians(-22+18)), D*.5 + D*.13*math.sin(math.radians(18)) - D*.30*math.sin(math.radians(22))
-    d.polygon(star_pts(D*.5 + D*.33, D*.5 - D*.10, D*.035), fill=CREAM + (255,))
+    d.line(hp + [hp[0]], fill=(255, 248, 232, 255), width=int(D*.005), joint="curve")
+    # soft sheen (composited layer, not a raw fill, so it blends)
+    hl = Image.new("RGBA", (D, D), (0, 0, 0, 0))
+    ImageDraw.Draw(hl).ellipse([D*.37, D*.29, D*.52, D*.43], fill=(255, 250, 235, 90))
+    hl = hl.filter(ImageFilter.GaussianBlur(D * 0.022))
+    img.alpha_composite(hl)
+    # front pass of the ring over the heart's lower area
+    img.alpha_composite(front_arc(TEAL + (235,), D*.40, D*.125, int(D*.026), -22, 20, 160))
+    d = ImageDraw.Draw(img)
+    d.polygon(star_pts(D*.80, D*.36, D*.040), fill=CREAM + (255,))
     save(img, "logo-a-orbit-heart.png")
 
 
-# ---- B: bear + star ----------------------------------------------------
 def logo_b():
     img = canvas()
+    glow(img, D*.5, D*.52, D*.34, GOLD, 40)
     d = ImageDraw.Draw(img)
     c = D*.5
+    disc = lambda cx, cy, r, f: d.ellipse([cx-r, cy-r, cx+r, cy+r], fill=f)
     # ears
-    disc(d, c-D*.17, c-D*.20, D*.10, GOLD+(255,))
-    disc(d, c+D*.17, c-D*.20, D*.10, GOLD+(255,))
-    disc(d, c-D*.17, c-D*.20, D*.05, (222,178,112,255))
-    disc(d, c+D*.17, c-D*.20, D*.05, (222,178,112,255))
-    # head
-    disc(d, c, c, D*.24, GOLD+(255,))
+    disc(c-D*.165, c-D*.185, D*.095, GOLD + (255,))
+    disc(c+D*.165, c-D*.185, D*.095, GOLD + (255,))
+    disc(c-D*.165, c-D*.185, D*.048, GOLD_DK + (255,))
+    disc(c+D*.165, c-D*.185, D*.048, GOLD_DK + (255,))
+    # head + cheeks
+    disc(c, c, D*.235, GOLD + (255,))
     # muzzle
-    d.ellipse([c-D*.11, c+D*.02, c+D*.11, c+D*.16], fill=CREAM+(255,))
-    d.polygon([(c-D*.035, c+D*.045), (c+D*.035, c+D*.045), (c, c+D*.085)], fill=(60,45,35,255))
-    disc(d, c-D*.085, c-D*.05, D*.022, (60,45,35,255))
-    disc(d, c+D*.085, c-D*.05, D*.022, (60,45,35,255))
-    # star held below
-    d.polygon(star_pts(c, c+D*.30, D*.075), fill=TEAL+(255,))
+    d.ellipse([c-D*.115, c+D*.015, c+D*.115, c+D*.155], fill=CREAM + (255,))
+    d.polygon([(c-D*.034, c+D*.05), (c+D*.034, c+D*.05), (c, c+D*.088)], fill=(64,48,38,255))
+    d.arc([c-D*.05, c+D*.075, c+D*.05, c+D*.125], 20, 160, fill=(64,48,38,255), width=int(D*.007))
+    disc(c-D*.088, c-D*.055, D*.020, (64,48,38,255))
+    disc(c+D*.088, c-D*.055, D*.020, (64,48,38,255))
+    # paws holding a star
+    disc(c-D*.10, c+D*.275, D*.052, GOLD_DK + (255,))
+    disc(c+D*.10, c+D*.275, D*.052, GOLD_DK + (255,))
+    d.polygon(star_pts(c, c+D*.275, D*.085), fill=TEAL + (255,))
+    d.polygon(star_pts(c, c+D*.275, D*.085), outline=(255, 255, 255, 120))
     save(img, "logo-b-bear-star.png")
 
 
-# ---- C: vale + star ----------------------------------------------------
 def logo_c():
     img = canvas()
     d = ImageDraw.Draw(img)
-    # rounded badge
-    d.rounded_rectangle([D*.08, D*.08, D*.92, D*.92], radius=int(D*.20), fill=DEEP+(255,),
-                        outline=TEAL+(160,), width=int(D*.012))
-    # star
-    d.polygon(star_pts(D*.5, D*.42, D*.13), fill=CREAM+(255,))
-    d.polygon(star_pts(D*.5, D*.42, D*.055), fill=(DEEP[0],DEEP[1],DEEP[2],255))
-    # hills (vale)
-    d.polygon([(D*.16,D*.74),(D*.36,D*.55),(D*.5,D*.68),(D*.66,D*.52),(D*.84,D*.74),(D*.84,D*.84),(D*.16,D*.84)],
-              fill=TEAL+(255,))
-    d.ellipse([D*.30, D*.73, D*.44, D*.83], fill=BLUE+(255,))
+    d.rounded_rectangle([D*.09, D*.09, D*.91, D*.91], radius=int(D*.20), fill=DEEP + (255,),
+                        outline=TEAL + (150,), width=int(D*.012))
+    glow(img, D*.5, D*.42, D*.16, CREAM, 45)
+    d = ImageDraw.Draw(img)
+    d.polygon(star_pts(D*.5, D*.40, D*.115), fill=CREAM + (255,))
+    # back hills
+    d.polygon([(D*.15, D*.82), (D*.34, D*.60), (D*.50, D*.76), (D*.68, D*.55), (D*.85, D*.82)], fill=(38, 96, 140, 255))
+    # front hills
+    d.polygon([(D*.15, D*.82), (D*.40, D*.66), (D*.58, D*.80), (D*.74, D*.64), (D*.85, D*.82),
+               (D*.85, D*.86), (D*.15, D*.86)], fill=TEAL + (255,))
     save(img, "logo-c-vale-star.png")
 
 
-# ---- D: monogram C + orbit --------------------------------------------
 def logo_d():
     img = canvas()
-    d = ImageDraw.Draw(img)
     c = D*.5
-    ring = Image.new("RGBA", (D, D), (0, 0, 0, 0))
-    rd = ImageDraw.Draw(ring)
-    rd.ellipse([c-D*.40, c-D*.13, c+D*.40, c+D*.13], outline=GOLD+(230,), width=int(D*.022))
-    ring = ring.rotate(-22, resample=Image.BICUBIC, center=(c, c))
-    # C
-    d.ellipse([c-D*.28, c-D*.28, c+D*.28, c+D*.28], outline=TEAL+(255,), width=int(D*.075))
-    img.alpha_composite(ring)
-    d.ellipse([c-D*.30, c-D*.30, c+D*.30, c+D*.30], outline=TEAL+(0,), width=0)
-    # mask the right side of C with background to open it
-    d.rectangle([c-D*.02, c-D*.30, c+D*.30, c+D*.30], fill=(0,0,0,0))
-    # redraw C properly with an arc
-    img = canvas()
     d = ImageDraw.Draw(img)
-    d.arc([c-D*.28, c-D*.28, c+D*.28, c+D*.28], start=38, end=322, fill=TEAL+(255,), width=int(D*.075))
-    ring2 = Image.new("RGBA", (D, D), (0, 0, 0, 0))
-    r2 = ImageDraw.Draw(ring2)
-    r2.ellipse([c-D*.40, c-D*.13, c+D*.40, c+D*.13], outline=GOLD+(230,), width=int(D*.022))
-    ring2 = ring2.rotate(-22, resample=Image.BICUBIC, center=(c, c))
-    img.alpha_composite(ring2)
+    # orbit behind
+    img.alpha_composite(ring_layer(GOLD + (235,), D*.40, D*.125, int(D*.022), -22))
     d = ImageDraw.Draw(img)
-    d.polygon(star_pts(c+D*.33, c-D*.09, D*.045), fill=CREAM+(255,))
+    # C with round caps
+    r = D*.275
+    d.arc([c-r, c-r, c+r, c+r], 40, 320, fill=TEAL + (255,), width=int(D*.078))
+    for ang in (40, 320):
+        a = math.radians(ang)
+        ex, ey = c + r*math.cos(a), c + r*math.sin(a)
+        d.ellipse([ex-int(D*.039), ey-int(D*.039), ex+int(D*.039), ey+int(D*.039)], fill=TEAL + (255,))
+    # orbit front pass
+    img.alpha_composite(front_arc(GOLD + (235,), D*.40, D*.125, int(D*.022), -22, 20, 160))
+    d = ImageDraw.Draw(img)
+    d.polygon(star_pts(D*.78, D*.37, D*.042), fill=CREAM + (255,))
     save(img, "logo-d-monogram.png")
+
+
+def wordmark(mark, text="CHERISHVALE", name="lockup.png"):
+    W, H = 1600, 520
+    img = Image.new("RGB", (W, H), DEEP)
+    d = ImageDraw.Draw(img)
+    m = Image.open(os.path.join(OUT, mark)).convert("RGBA").resize((380, 380), Image.LANCZOS)
+    img.paste(m, (90, 70), m)
+    try:
+        f = ImageFont.truetype("/usr/share/fonts/TTF/DejaVuSansMono-Bold.ttf", 92)
+    except Exception:
+        f = ImageFont.load_default()
+    d.text((520, 220), text, font=f, fill=INK)
+    d.line([(524, 330), (520 + d.textlength(text, font=f), 330)], fill=TEAL, width=6)
+    img.save(os.path.join(OUT, name))
+    print("wrote", name)
 
 
 if __name__ == "__main__":
     logo_a(); logo_b(); logo_c(); logo_d()
+    wordmark("logo-a-orbit-heart.png", name="lockup-a.png")
+    wordmark("logo-d-monogram.png", name="lockup-d.png")
+    # concept sheet
+    names = ["logo-a-orbit-heart.png", "logo-b-bear-star.png", "logo-c-vale-star.png", "logo-d-monogram.png"]
+    labels = ["A  Orbiting Heart", "B  Bear & Star", "C  Vale & Star", "D  Monogram C + Orbit"]
+    cell, pad = 520, 24
+    sheet = Image.new("RGB", (cell*2 + pad*3, cell*2 + pad*3 + 30), (5, 7, 14))
+    ds = ImageDraw.Draw(sheet)
+    try:
+        fl = ImageFont.truetype("/usr/share/fonts/TTF/DejaVuSansMono-Bold.ttf", 22)
+    except Exception:
+        fl = ImageFont.load_default()
+    for i, (n, l) in enumerate(zip(names, labels)):
+        im = Image.open(os.path.join(OUT, n)).convert("RGBA").resize((cell, cell), Image.LANCZOS)
+        bg = Image.new("RGBA", (cell, cell), (10, 17, 32, 255)); bg.alpha_composite(im)
+        x = pad + (i % 2) * (cell + pad); y = pad + (i // 2) * (cell + pad)
+        sheet.paste(bg.convert("RGB"), (x, y))
+        ds.text((x, y + cell + 2), l, font=fl, fill=(223, 230, 255))
+    sheet.save(os.path.join(OUT, "concepts.png"))
+    print("wrote concepts.png")

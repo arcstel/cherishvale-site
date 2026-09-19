@@ -3,6 +3,10 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
+<link rel="icon" href="/favicon.ico" sizes="any">
+<link rel="icon" type="image/png" href="/assets/logo/favicon-64.png">
+<link rel="apple-touch-icon" href="/assets/logo/apple-touch-icon.png">
+
 <title>Planetary Explorer — by Cherishvale</title>
 <meta name="description" content="Planetary Explorer is an offline 3D map of the Solar System — 20 worlds, real spacecraft imagery, and thousands of IAU-named features.">
 <meta property="og:title" content="Planetary Explorer — by Cherishvale">
@@ -18,7 +22,9 @@
   a:hover{text-decoration:underline}
   .wrap{max-width:1000px;margin:0 auto;padding:0 20px}
   nav{display:flex;align-items:center;gap:16px;height:64px;border-bottom:1px solid var(--line)}
-  nav .brand{font-weight:700;letter-spacing:3px;color:var(--teal)}
+  nav .brand{display:flex;align-items:center;gap:10px}
+  nav .brand-mark{height:32px;width:auto;display:block}
+  nav .brand-word{height:17px;width:auto;display:block}
   nav .spacer{margin-left:auto}
   nav a{color:var(--dim);font-size:13px}
   nav a:hover{color:var(--ink)}
@@ -43,7 +49,7 @@
 <body>
 <nav>
   <div class="wrap" style="display:flex;align-items:center;gap:16px;width:100%">
-    <a class="brand" href="/">CHERISHVALE</a>
+    <a class="brand" href="/"><img class="brand-mark" src="/assets/logo/mark-transparent.png" alt=""><img class="brand-word" src="/assets/logo/wordmark-transparent.png" alt="Cherishvale"></a>
     <span class="spacer"></span>
     <a href="/#apps">Apps</a>
     <a href="/privacy">Privacy</a>
