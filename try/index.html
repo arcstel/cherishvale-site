@@ -78,7 +78,7 @@
   #sysbar{position:fixed;top:46px;left:0;right:0;display:none;align-items:center;gap:8px;
     padding:8px 14px;background:rgba(4,4,12,.72);backdrop-filter:blur(12px);
     border-bottom:1px solid #1a2233;z-index:20;flex-wrap:wrap}
-  body.system #sysbar,body.sky #sysbar,body.moonmode #sysbar,body.almanac #sysbar{display:flex}
+  body.system #sysbar,body.sky #sysbar,body.moonmode #sysbar,body.almanac #sysbar,body.tracker #sysbar{display:flex}
   #skycanvas{position:fixed;inset:0;z-index:9;display:none}
   body.sky #skycanvas{display:block}
   body.sky #c,body.moonmode #c{display:none}
@@ -209,6 +209,17 @@
     border-bottom:1px solid rgba(160,130,70,.35);padding-bottom:3px}
   #codexlist .g{color:#ffd980;font-size:10px}
   body.codex #zoomwrap,body.codex #hud,body.codex #cityhud,body.codex #syshud,body.codex #sysbar{display:none}
+  body.tracker #c,body.tracker #zoomwrap,body.tracker #hud,body.tracker #cityhud,body.tracker #syshud,body.tracker #searchwrap{display:none}
+  body.tracker #skycanvas{display:block}
+  #trkui{position:fixed;inset:0;z-index:11;display:none;pointer-events:none}
+  body.tracker #trkui{display:block}
+  #trkright{position:absolute;right:10px;top:104px;bottom:16px;width:308px;overflow:auto;pointer-events:auto;
+    background:rgba(6,8,18,.9);border:1px solid #1a2233;border-radius:12px;padding:14px 15px;font-size:12px;color:#93a7c6}
+  #trkright h3{color:#35d0e0;font-size:11px;letter-spacing:.6px;margin:0 0 9px}
+  #trkright h3+div{margin-bottom:14px}
+  #trkright .r{display:flex;justify-content:space-between;gap:8px;padding:2px 0;border-bottom:1px solid #101827}
+  #trkright .r b{color:#dfe6ff;font-weight:400}
+  #trkright .pl{color:#ffd980}
   body.almanac #c,body.almanac #skycanvas{display:none}
   body.almanac #zoomwrap,body.almanac #hud,body.almanac #cityhud,body.almanac #syshud,body.almanac #searchwrap{display:none}
   #almanac{position:fixed;inset:0;z-index:11;display:none;overflow:auto;
@@ -393,6 +404,13 @@
   <button id="codexclose">✕ CLOSE CODEX</button>
   <button id="codexglobe" style="display:none">◉ VISIT THIS WORLD</button>
 </div>
+<div id="trkui">
+  <div id="trkright">
+    <h3>COMPASS</h3><div id="trk-loc"></div>
+    <h3>ABOVE THE HORIZON</h3><div id="trk-up"></div>
+    <h3>NEAREST STARS</h3><div id="trk-stars"></div>
+  </div>
+</div>
 <div id="almanac">
   <div id="almhead">
     <h2 id="alm-title">—</h2>
@@ -450,6 +468,12 @@
        Planet discs are enlarged to stay tappable and are illustrative —
        directions are exact. Moon distances are exaggerated the same way.
        The Sun is a stylized disc, not to scale.</p>
+    <p><b>Sky tracker (🧭 in the system bar):</b> a compass panorama of the sky
+        above your chosen place and time — the horizon with cardinal points and
+        an altitude grid, 115 bright stars (RA/Dec from Wikidata, CC0;
+        magnitudes from Wikipedia) labelled by name, and the Sun, Moon and
+        planets plotted where they actually are, with a list of everything
+        above the horizon and its compass bearing.</p>
     <p><b>Zodiac systems:</b> the chart can be drawn in the <em>tropical</em>
         zodiac (equinox of date), in the <em>sidereal</em> zodiac with a choice
         of ayanamsa — Lahiri, Fagan–Bradley, Krishnamurti, B. V. Raman or
@@ -585,6 +609,7 @@
   </select>
   <button id="syscomets" class="on" title="Show comets and interstellar visitors">☄ Comets</button>
   <button id="sysorbit" title="Orbit focus — watch one planet orbit the Sun">☉ Orbit</button>
+  <button id="trkbtn" title="Star tracker — the sky above you, with compass and planets">🧭 Sky tracker</button>
   <button id="almbtn" title="Almanac — rise, set, twilight, phases and seasons">🗓 Almanac</button>
   <button id="moonbtn" title="Moon — phase, distance, rise and set">☾ Moon</button>
   <button id="syssky" title="Astrology — birth chart, houses, aspects and moon phase">✦ Astrology</button>
@@ -623,6 +648,7 @@
 <script src="sysdata.js"></script>
 <script src="city_packs.js"></script>
 <script src="codex.js"></script>
+<script src="stars.js"></script>
 <script>
 (function () {
   "use strict";
@@ -2018,6 +2044,7 @@
     if (SYS.view === "sky") drawSky();
     else if (SYS.view === "moon") drawMoon();
     else if (SYS.view === "codex") renderCodex();
+    else if (SYS.view === "tracker") drawTracker();
     else if (SYS.view === "almanac") { /* DOM-only view */ }
     else renderer.render(scene, camera);
   }
@@ -3786,6 +3813,150 @@
     SYS.view = "globe";
     enterGlobe(state.body);
   }
+  // ---------------- star tracker ----------------
+  function precessRD(ra, dec, jd) {
+    var e = obliquity(jd) * D2R, raR = ra * D2R, deR = dec * D2R;
+    // J2000 equatorial -> J2000 ecliptic
+    var lon = Math.atan2(Math.sin(raR) * Math.cos(e) + Math.tan(deR) * Math.sin(e), Math.cos(raR));
+    var lat = Math.asin(Math.sin(deR) * Math.cos(e) - Math.cos(deR) * Math.sin(e) * Math.sin(raR));
+    lon += precessionDeg(jd) * D2R;                 // precess in longitude
+    // ecliptic of date -> equatorial of date
+    var ra2 = Math.atan2(Math.sin(lon) * Math.cos(e) - Math.tan(lat) * Math.sin(e), Math.cos(lon));
+    var de2 = Math.asin(Math.sin(lat) * Math.cos(e) + Math.cos(lat) * Math.sin(e) * Math.sin(lon));
+    return { ra: norm360(ra2 / D2R), dec: de2 / D2R };
+  }
+  function bodyRD(id, jd) {
+    if (!skyTemps.a) { skyTemps.a = new THREE.Vector3(); skyTemps.b = new THREE.Vector3(); }
+    var A = skyTemps.a, B = skyTemps.b;
+    if (id === "sun") { planetHelio("earth", jd, A); B.set(-A.x, -A.y, -A.z); }
+    else if (id === "moon") { moonGeo(jd, B); }
+    else { planetHelio("earth", jd, A); planetHelio(id, jd, B); B.set(B.x - A.x, B.y - A.y, B.z - A.z); }
+    var lon = norm360(Math.atan2(B.y, B.x) / D2R + precessionDeg(jd));
+    var lat = Math.asin(B.z / B.length()) / D2R;
+    var e = obliquity(jd) * D2R, lo = lon * D2R, la = lat * D2R;
+    return {
+      ra: norm360(Math.atan2(Math.sin(lo) * Math.cos(e) - Math.tan(la) * Math.sin(e), Math.cos(lo)) / D2R),
+      dec: Math.asin(Math.sin(la) * Math.cos(e) + Math.cos(la) * Math.sin(e) * Math.sin(lo)) / D2R
+    };
+  }
+  // equatorial -> horizontal (alt/az, azimuth from North through East)
+  function altAz(ra, dec, lstDeg, lat) {
+    var H = (lstDeg - ra) * D2R, de = dec * D2R, la = lat * D2R;
+    var alt = Math.asin(Math.sin(de) * Math.sin(la) + Math.cos(de) * Math.cos(la) * Math.cos(H));
+    var az = Math.atan2(-Math.cos(de) * Math.sin(H),
+      Math.sin(de) * Math.cos(la) - Math.cos(de) * Math.sin(la) * Math.cos(H));
+    return { alt: alt / D2R, az: norm360(az / D2R) };
+  }
+  function drawTracker() {
+    var dpr = Math.min(window.devicePixelRatio || 1, 2);
+    var W = window.innerWidth, H = window.innerHeight;
+    if (skyCanvas.width !== Math.round(W * dpr) || skyCanvas.height !== Math.round(H * dpr)) {
+      skyCanvas.width = Math.round(W * dpr); skyCanvas.height = Math.round(H * dpr);
+      skyCanvas.style.width = W + "px"; skyCanvas.style.height = H + "px";
+    }
+    var g = skyCtx;
+    g.setTransform(dpr, 0, 0, dpr, 0, 0);
+    g.fillStyle = "#04040c"; g.fillRect(0, 0, W, H);
+    var jd = sysJD(), tz = CHART.tz, lat = CHART.lat, lon = CHART.lon;
+    var lst = lstDeg(jd, lon);
+    var rightW = W > 820 ? 328 : 0;
+    var pw = W - rightW - 24, left = 12, baseY = H - 60, topY = 116;
+    var x = function (az) { return left + (az / 360) * pw; };
+    var y = function (alt) { return baseY - (Math.max(0, alt) / 90) * (baseY - topY); };
+    // sky gradient
+    var grad = g.createLinearGradient(0, topY, 0, baseY);
+    grad.addColorStop(0, "#050914"); grad.addColorStop(1, "#0d1730");
+    g.fillStyle = grad; g.fillRect(left, topY, pw, baseY - topY);
+    // altitude grid + azimuth ticks
+    g.strokeStyle = "rgba(90,120,170,.22)"; g.lineWidth = 1;
+    for (var a = 0; a <= 90; a += 15) {
+      g.beginPath(); g.moveTo(left, y(a)); g.lineTo(left + pw, y(a)); g.stroke();
+      g.fillStyle = "#3f5670"; g.font = "9px ui-monospace,monospace"; g.textAlign = "left";
+      g.fillText(a + "°", left + 4, y(a) - 3);
+    }
+    var CARD = [[0, "N"], [45, "NE"], [90, "E"], [135, "SE"], [180, "S"], [225, "SW"], [270, "W"], [315, "NW"]];
+    CARD.forEach(function (c) {
+      var cx = x(c[0]);
+      g.strokeStyle = (c[0] % 90 === 0) ? "rgba(120,160,220,.5)" : "rgba(90,120,170,.2)";
+      g.beginPath(); g.moveTo(cx, topY); g.lineTo(cx, baseY); g.stroke();
+      g.fillStyle = (c[0] % 90 === 0) ? "#8fc3ff" : "#4f6f9e";
+      g.font = (c[0] % 90 === 0 ? "13px" : "10px") + " ui-monospace,monospace";
+      g.textAlign = "center"; g.fillText(c[1], cx, baseY + 16);
+    });
+    g.strokeStyle = "#4f8cff"; g.lineWidth = 2;
+    g.beginPath(); g.moveTo(left, baseY); g.lineTo(left + pw, baseY); g.stroke();
+    // stars
+    var visible = [];
+    if (window.STARS) STARS.forEach(function (st) {
+      var rd = precessRD(st.ra, st.dec, jd), hz = altAz(rd.ra, rd.dec, lst, lat);
+      if (hz.alt < -2) return;
+      visible.push({ n: st.n, m: st.m, alt: hz.alt, az: hz.az, kind: "star" });
+      var r = Math.max(0.7, 2.6 - st.m * 0.42);
+      g.beginPath(); g.arc(x(hz.az), y(hz.alt), r, 0, Math.PI * 2);
+      g.fillStyle = st.m < 1.5 ? "#ffffff" : (st.m < 2.6 ? "#dfe8ff" : "#b9c6e0");
+      g.fill();
+      if (st.m < 2.2) {
+        g.fillStyle = "rgba(200,215,240,.75)"; g.font = "9.5px ui-monospace,monospace";
+        g.textAlign = "left"; g.fillText(st.n, x(hz.az) + 5, y(hz.alt) - 4);
+      }
+    });
+    // solar-system bodies
+    var BOD = [["sun", "☉", "#ffd257"], ["moon", "☽", "#dfe6ff"], ["mercury", "☿", "#c9b79a"],
+      ["venus", "♀", "#f0d59a"], ["mars", "♂", "#e07a52"], ["jupiter", "♃", "#e0b070"],
+      ["saturn", "♄", "#d9c79a"], ["uranus", "♅", "#9fd8e8"], ["neptune", "♆", "#7b9bea"]];
+    var up = [];
+    BOD.forEach(function (b) {
+      var rd = bodyRD(b[0], jd), hz = altAz(rd.ra, rd.dec, lst, lat);
+      if (hz.alt > -2) up.push({ n: b[0], sym: b[1], alt: hz.alt, az: hz.az, kind: "body" });
+      if (hz.alt < 0) return;
+      var bx = x(hz.az), by = y(hz.alt);
+      g.beginPath(); g.arc(bx, by, 8, 0, Math.PI * 2); g.fillStyle = "rgba(4,4,12,.85)"; g.fill();
+      g.strokeStyle = b[2]; g.lineWidth = 1.2; g.stroke();
+      g.fillStyle = b[2]; g.font = "12px ui-monospace,monospace";
+      g.textAlign = "center"; g.textBaseline = "middle"; g.fillText(b[1], bx, by);
+      g.font = "9.5px ui-monospace,monospace"; g.textBaseline = "alphabetic";
+      g.fillText(b[0], bx, by + 20);
+    });
+    // panel
+    document.getElementById("trk-loc").innerHTML =
+      "<div class='r'><span>Place</span><b>" + lat.toFixed(2) + "°, " + lon.toFixed(2) + "°</b></div>" +
+      "<div class='r'><span>Local time</span><b>" + hm(((jd + 0.5) % 1 * 24 + tz) % 24) + "</b></div>" +
+      "<div class='r'><span>LST</span><b>" + (lst / 15).toFixed(2) + "h</b></div>" +
+      "<div class='r'><span>Date</span><b>" + isoDate((jd - 2440587.5) * 86400000) + "</b></div>";
+    var compass = function (az) {
+      var c = ["N","NNE","NE","ENE","E","ESE","SE","SSE","S","SSW","SW","WSW","W","WNW","NW","NNW"];
+      return c[Math.round(norm360(az) / 22.5) % 16];
+    };
+    up.sort(function (a, b) { return b.alt - a.alt; });
+    document.getElementById("trk-up").innerHTML = up.length ? up.map(function (o) {
+      return "<div class='r'><span class='pl'>" + o.sym + " " + o.n + "</span><b>" +
+        o.alt.toFixed(0) + "° " + compass(o.az) + "</b></div>";
+    }).join("") : "<div class='r'><span>Nothing above the horizon.</span></div>";
+    visible.sort(function (a, b) { return a.m - b.m; });
+    document.getElementById("trk-stars").innerHTML = visible.slice(0, 26).map(function (o) {
+      return "<div class='r'><span>" + o.n + "</span><b>" + o.alt.toFixed(0) + "° " + compass(o.az) + "</b></div>";
+    }).join("");
+  }
+  function enterTracker() {
+    if (SYS.view === "tracker") return;
+    SYS.view = "tracker";
+    document.body.classList.remove("system");
+    document.body.classList.add("tracker");
+    planetGroup.visible = false;
+    sysGroup && (sysGroup.visible = false);
+    clearLabels(); setPlaying(false);
+    var sbEl = document.getElementById("sysbar");
+    document.getElementById("trkright").style.top = ((sbEl ? sbEl.getBoundingClientRect().bottom : 46) + 12) + "px";
+    if (location.hash !== "#tracker") history.replaceState(null, "", "#tracker");
+    setSysInfo("Star tracker — the sky above your location");
+    drawTracker();
+  }
+  function exitTracker() {
+    if (SYS.view !== "tracker") return;
+    document.body.classList.remove("tracker");
+    SYS.view = "globe";
+    enterGlobe(state.body);
+  }
   function enterSky() {
     if (SYS.view === "sky") return;
     SYS.view = "sky";
@@ -3966,6 +4137,9 @@
   });
   document.getElementById("moonbtn").addEventListener("click", function () {
     if (SYS.view === "moon") exitMoon(); else enterMoon();
+  });
+  document.getElementById("trkbtn").addEventListener("click", function () {
+    if (SYS.view === "tracker") exitTracker(); else enterTracker();
   });
   document.getElementById("almbtn").addEventListener("click", function () {
     if (SYS.view === "almanac") exitAlmanac(); else enterAlmanac();
