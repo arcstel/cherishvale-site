@@ -329,6 +329,16 @@
     <label>UTC offset (h)<input id="btz" type="number" step="0.5" min="-12" max="14"></label>
     <label>Latitude<input id="blat" type="number" step="0.01" min="-90" max="90"></label>
     <label>Longitude (E+)<input id="blon" type="number" step="0.01" min="-180" max="180"></label>
+    <label>Zodiac<select id="bzodiac">
+      <option value="tropical">Tropical (of date)</option>
+      <option value="sidereal-lahiri">Sidereal — Lahiri</option>
+      <option value="sidereal-fagan">Sidereal — Fagan–Bradley</option>
+      <option value="sidereal-krishnamurti">Sidereal — Krishnamurti</option>
+      <option value="sidereal-raman">Sidereal — B. V. Raman</option>
+      <option value="sidereal-deluce">Sidereal — De Luce</option>
+      <option value="nakshatra">Vedic nakshatras (27)</option>
+      <option value="chinese">Chinese (animals &amp; solar terms)</option>
+    </select></label>
     <label>Houses<select id="bhouse">
       <option value="placidus">Placidus</option>
       <option value="whole">Whole sign</option>
@@ -440,6 +450,12 @@
        Planet discs are enlarged to stay tappable and are illustrative —
        directions are exact. Moon distances are exaggerated the same way.
        The Sun is a stylized disc, not to scale.</p>
+    <p><b>Zodiac systems:</b> the chart can be drawn in the <em>tropical</em>
+        zodiac (equinox of date), in the <em>sidereal</em> zodiac with a choice
+        of ayanamsa — Lahiri, Fagan–Bradley, Krishnamurti, B. V. Raman or
+        De Luce — or as the 27 <em>Vedic nakshatras</em>, and it reports the
+        <em>Chinese</em> year animal and current solar term. The wheel and all
+        positions follow the chosen system.</p>
     <p><b>Almanac (🗓 in the system bar):</b> a month calendar for your
         location with sunrise, sunset, civil twilight, moonrise, moonset, day
         length and the moon's phase for every day, the season dates (equinoxes
@@ -2855,8 +2871,17 @@
     } else return null;
     return norm360(Math.atan2(B.y - A.y, B.x - A.x) / D2R + prec);
   }
-  function skyParts(lon) { var sg = Math.floor(norm360(lon) / 30) % 12; return { sign: sg, deg: norm360(lon) - sg * 30 }; }
-  function signName(lon) { var p = skyParts(lon); return Math.floor(p.deg) + "° " + SIGNS[p.sign][1] + " " + SIGNS[p.sign][0]; }
+  function skyParts(lon) {
+    var l = norm360(lon - ZOD_OFF);
+    var sg = Math.floor(l / 30) % 12;
+    return { sign: sg, deg: l - sg * 30 };
+  }
+  function signName(lon) {
+    var p = skyParts(lon);
+    var base = Math.floor(p.deg) + "° " + SIGNS[p.sign][1] + " " + SIGNS[p.sign][0];
+    if (ZODIAC === "nakshatra") base += " · " + nakshatra(lon);
+    return base;
+  }
 
   // ---- chart astronomy (validated against geometric reference cases) ----
   function obliquity(jd) { return 23.4392911 - 0.0130042 * ((jd - 2451545.0) / 36525); }
@@ -2953,6 +2978,47 @@
   }
 
   // ---- chart state + panels ----
+  var AYANAMSAS = {
+    lahiri: { name: "Lahiri (Chitrapaksha)", j2000: 23.8526 },
+    fagan: { name: "Fagan–Bradley", j2000: 24.7367 },
+    krishnamurti: { name: "Krishnamurti", j2000: 23.7264 },
+    raman: { name: "B. V. Raman", j2000: 22.3550 },
+    deluce: { name: "De Luce", j2000: 26.4667 }
+  };
+  var ZODIAC = "tropical", ZOD_OFF = 0;
+  function ayanamsa(jd, key) {
+    return AYANAMSAS[key].j2000 + ((jd - 2451545.0) / 365.25) * 0.013969;
+  }
+  function zodiacOffset(jd) {
+    if (ZODIAC === "tropical" || ZODIAC === "chinese") return 0;
+    if (ZODIAC === "nakshatra") return ayanamsa(jd, "lahiri");
+    var k = ZODIAC.indexOf("sidereal-") === 0 ? ZODIAC.slice(9) : null;
+    return k && AYANAMSAS[k] ? ayanamsa(jd, k) : 0;
+  }
+  var CHINESE_ANIMALS = ["Rat","Ox","Tiger","Rabbit","Dragon","Snake","Horse",
+    "Goat","Monkey","Rooster","Dog","Pig"];
+  var SOLAR_TERMS = ["Lichun","Yushui","Jingzhe","Chunfen","Qingming","Guyu","Lixia",
+    "Xiaoman","Mangzhong","Xiazhi","Xiaoshu","Dashu","Liqiu","Chushu","Bailu",
+    "Qiufen","Hanlu","Shuangjiang","Lidong","Xiaoxue","Daxue","Dongzhi","Xiaohan","Dahan"];
+  var NAKSHATRAS = ["Ashwini","Bharani","Krittika","Rohini","Mrigashira","Ardra",
+    "Punarvasu","Pushya","Ashlesha","Magha","Purva Phalguni","Uttara Phalguni",
+    "Hasta","Chitra","Swati","Vishakha","Anuradha","Jyeshtha","Mula","Purva Ashadha",
+    "Uttara Ashadha","Shravana","Dhanishta","Shatabhisha","Purva Bhadrapada",
+    "Uttara Bhadrapada","Revati"];
+  function nakshatra(lon) { return NAKSHATRAS[Math.floor(norm360(lon) / (360 / 27)) % 27]; }
+  function solarTerm(jd) {
+    // 24 terms, 15 deg of solar longitude each, starting at 315 deg (Lichun)
+    var l = norm360(geoLon("sun", jd) - 315);
+    return SOLAR_TERMS[Math.floor(l / 15) % 24];
+  }
+  function chineseAnimal(jd) {
+    // Chinese solar year begins at Lichun; approximate with the tropical year of the date
+    var d = new Date((jd - 2440587.5) * 86400000);
+    var y = d.getUTCFullYear();
+    var lichun = Date.UTC(y, 1, 4) / 86400000 + 2440587.5;
+    if (jd < lichun) y -= 1;
+    return CHINESE_ANIMALS[((y - 2020) % 12 + 12) % 12];
+  }
   var CHART = { name: "Chart A", date: null, time: "12:00", tz: 0, lat: 51.5, lon: 0, house: "placidus" };
   var CHART2 = { name: "Person B", date: null, time: "12:00", tz: 0, lat: 51.5, lon: 0 };
   var SYNASTRY = false;
@@ -2963,7 +3029,9 @@
     return ms / 86400000 + 2440587.5;
   }
   function computeChart(c, houseSys) {
-    var jd = jdFrom(c), eps = obliquity(jd), ramc = lstDeg(jd, c.lon);
+    var jd = jdFrom(c);
+    ZOD_OFF = zodiacOffset(jd);
+    var eps = obliquity(jd), ramc = lstDeg(jd, c.lon);
     var hs = chartHouses(houseSys || c.house || "placidus", ramc, eps, c.lat);
     var pos = [];
     SKY_BODIES.forEach(function (b) {
@@ -3083,15 +3151,18 @@
     var px = function (r, lon) { return cx + r * Math.cos(theta(lon)); };
     var py = function (r, lon) { return cy - r * Math.sin(theta(lon)); };
 
-    for (var i = 0; i < 12; i++) {
-      var l0 = i * 30;
-      g.beginPath(); g.moveTo(px(R, l0), py(R, l0)); g.lineTo(px(R, l0 + 30), py(R, l0 + 30));
+    var nseg = (ZODIAC === "nakshatra") ? 27 : 12, span = 360 / nseg;
+    for (var i = 0; i < nseg; i++) {
+      var l0 = ZOD_OFF + i * span;
+      g.beginPath(); g.moveTo(px(R, l0), py(R, l0)); g.lineTo(px(R, l0 + span), py(R, l0 + span));
       g.strokeStyle = "#1a2233"; g.lineWidth = 1; g.stroke();
-      g.beginPath(); g.arc(cx, cy, R, -theta(l0), -theta(l0 + 30), true);
+      g.beginPath(); g.arc(cx, cy, R, -theta(l0), -theta(l0 + span), true);
       g.strokeStyle = "rgba(53,208,224,.10)"; g.stroke();
-      g.font = "12px ui-monospace,monospace"; g.textAlign = "center"; g.textBaseline = "middle";
+      g.font = (nseg > 12 ? "9px" : "12px") + " ui-monospace,monospace";
+      g.textAlign = "center"; g.textBaseline = "middle";
       g.fillStyle = "#35d0e0";
-      g.fillText(SIGNS[i][1] + " " + SIGNS[i][0], px(R - 20, l0 + 15), py(R - 20, l0 + 15));
+      var lab = (nseg > 12) ? NAKSHATRAS[i] : (SIGNS[i][1] + " " + SIGNS[i][0]);
+      g.fillText(lab, px(R - 20, l0 + span / 2), py(R - 20, l0 + span / 2));
     }
     g.beginPath(); g.arc(cx, cy, R, 0, Math.PI * 2); g.strokeStyle = "#2a3a52"; g.stroke();
 
@@ -3150,6 +3221,13 @@
     g.fillStyle = "#61748e"; g.font = "10.5px ui-monospace,monospace";
     g.fillText(D.pos2 ? ((CHART.name || "A") + " (inner)  ·  " + (CHART2.name || "B") + " (outer)")
       : (CHART.house + " houses · " + CHART.lat.toFixed(2) + "°, " + CHART.lon.toFixed(2) + "°"), cx, cy + 10);
+    g.fillStyle = "#8fc3ff"; g.font = "11px ui-monospace,monospace";
+    var zt;
+    if (ZODIAC === "tropical") zt = "tropical zodiac (equinox of date)";
+    else if (ZODIAC === "chinese") zt = "Chinese: year of the " + chineseAnimal(jd) + " · solar term " + solarTerm(jd);
+    else if (ZODIAC === "nakshatra") zt = "Vedic nakshatras · ayanamsa " + ayanamsa(jd, "lahiri").toFixed(2) + "°";
+    else zt = ZODIAC.slice(9) + " ayanamsa " + zodiacOffset(jd).toFixed(2) + "°";
+    g.fillText(zt, cx, cy + 28);
   }
 
   // ---------------- moon mode ----------------
@@ -3739,6 +3817,7 @@
   function syncSkyInputs() {
     var e = document.getElementById("bdate");
     if (!e) return;
+    document.getElementById("bzodiac").value = ZODIAC;
     document.getElementById("aname").value = CHART.name || "";
     document.getElementById("bname").value = CHART2.name || "";
     document.getElementById("synon").checked = SYNASTRY;
@@ -3772,6 +3851,10 @@
     bind("blat", "lat", parseFloat);
     bind("blon", "lon", parseFloat);
     bind("bhouse", "house");
+    document.getElementById("bzodiac").addEventListener("change", function () {
+      ZODIAC = this.value;
+      if (SYS.view === "sky") drawSky();
+    });
     document.getElementById("aname").addEventListener("change", function () { CHART.name = this.value; if (SYS.view === "sky") drawSky(); });
     document.getElementById("bname").addEventListener("change", function () { CHART2.name = this.value; if (SYS.view === "sky") drawSky(); });
     (function () {
