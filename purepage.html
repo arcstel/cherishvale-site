@@ -39,6 +39,8 @@
     padding:8px 16px;color:var(--teal);font-size:13px;background:var(--panel)}
   .badges{display:flex;gap:10px;flex-wrap:wrap;justify-content:center}
   h2{font-size:20px;margin:48px 0 14px;letter-spacing:.5px}
+  .shots{display:grid;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));gap:14px;padding:10px 0 6px}
+  .shots img{width:100%;display:block;border:1px solid var(--line);border-radius:12px;background:var(--panel)}
   .grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:14px}
   .card{background:var(--panel);border:1px solid var(--line);border-radius:12px;padding:16px 18px}
   .card b{color:var(--teal)}
@@ -80,6 +82,14 @@
     <span class="badge" style="border-color:var(--blue);color:#8fc3ff">In development · Google Play</span>
   </p>
 </header>
+
+<div class="wrap" style="padding-top:6px">
+  <div class="shots">
+    <img src="assets/purepage/shot-1.png" alt="Purepage scan library — no ads">
+    <img src="assets/purepage/shot-2.png" alt="Purepage about screen — works offline">
+    <img src="assets/purepage/shot-3.png" alt="Purepage premium — one-time purchase">
+  </div>
+</div>
 
 <div class="wrap">
   <h2>Why another scanner</h2>
