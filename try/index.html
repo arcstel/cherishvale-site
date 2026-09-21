@@ -649,6 +649,7 @@
 <script src="city_packs.js"></script>
 <script src="codex.js"></script>
 <script src="stars.js"></script>
+<script src="constellations.js"></script>
 <script>
 (function () {
   "use strict";
@@ -3885,6 +3886,31 @@
     });
     g.strokeStyle = "#4f8cff"; g.lineWidth = 2;
     g.beginPath(); g.moveTo(left, baseY); g.lineTo(left + pw, baseY); g.stroke();
+    // constellation stick figures (our own lines), drawn under the stars
+    var starPos = {};
+    if (window.STARS) STARS.forEach(function (st) {
+      var rd = precessRD(st.ra, st.dec, jd), hz = altAz(rd.ra, rd.dec, lst, lat);
+      starPos[st.n] = hz;
+    });
+    if (window.CONSTELLATIONS) {
+      g.strokeStyle = "rgba(90,140,210,.42)"; g.lineWidth = 1.1;
+      CONSTELLATIONS.forEach(function (c) {
+        var sumX = 0, sumY = 0, cnt = 0;
+        c.lines.forEach(function (ln) {
+          var a = starPos[ln[0]], b = starPos[ln[1]];
+          if (!a || !b || a.alt < -3 || b.alt < -3) return;
+          g.beginPath(); g.moveTo(x(a.az), y(a.alt)); g.lineTo(x(b.az), y(b.alt)); g.stroke();
+        });
+        [c.lines[0][0], c.lines[c.lines.length - 1][1]].forEach(function (nm) {
+          var p = starPos[nm];
+          if (p && p.alt > 0) { sumX += x(p.az); sumY += y(p.alt); cnt++; }
+        });
+        if (cnt) {
+          g.fillStyle = "rgba(120,170,230,.75)"; g.font = "10px ui-monospace,monospace";
+          g.textAlign = "center"; g.fillText(c.n.toUpperCase(), sumX / cnt, sumY / cnt - 10);
+        }
+      });
+    }
     // stars
     var visible = [];
     if (window.STARS) STARS.forEach(function (st) {
@@ -3944,6 +3970,10 @@
     document.body.classList.add("tracker");
     planetGroup.visible = false;
     sysGroup && (sysGroup.visible = false);
+    for (var si = 0; si < SYSB.length; si++) {
+      if (SYSB[si].labelEl) SYSB[si].labelEl.style.display = "none";
+      if (SYSB[si].tail) SYSB[si].tail.visible = false;
+    }
     clearLabels(); setPlaying(false);
     var sbEl = document.getElementById("sysbar");
     document.getElementById("trkright").style.top = ((sbEl ? sbEl.getBoundingClientRect().bottom : 46) + 12) + "px";
