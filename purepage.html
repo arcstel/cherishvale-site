@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<link rel="icon" href="/favicon.ico" sizes="any">
+<link rel="icon" type="image/png" href="/assets/logo/favicon-64.png">
+<link rel="apple-touch-icon" href="/assets/logo/apple-touch-icon.png">
+
+<title>Purepage — offline PDF scanner — by Cherishvale</title>
+<meta name="description" content="Purepage is an offline document scanner for Android. No ads, no account, no subscription nag. Scan paper to multi-page PDF and keep every file on your device.">
+<meta property="og:title" content="Purepage — offline PDF scanner — by Cherishvale">
+<meta property="og:description" content="Scan documents to PDF with no ads, no account and no subscription. Your files never leave your device.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://cherishvale.com/purepage">
+<style>
+  :root{--bg:#04040c;--panel:#0a1120;--line:#1a2233;--ink:#dfe6ff;--dim:#93a7c6;--teal:#35d0e0;--blue:#4f8cff}
+  *{box-sizing:border-box}
+  html,body{margin:0;background:var(--bg);color:var(--ink);
+    font-family:ui-monospace,"SFMono-Regular","JetBrains Mono",Menlo,Consolas,monospace;line-height:1.6}
+  body{background-color:#04040c;background-image:url("assets/backdrop.jpg");
+    background-size:cover;background-position:center top;background-repeat:no-repeat;
+    background-attachment:fixed}
+  a{color:var(--teal);text-decoration:none}
+  a:hover{text-decoration:underline}
+  .wrap{max-width:1000px;margin:0 auto;padding:0 20px}
+  nav{display:flex;align-items:center;gap:16px;height:64px;border-bottom:1px solid var(--line)}
+  nav .brand{display:flex;align-items:center;gap:10px}
+  nav .brand-mark{height:32px;width:auto;display:block}
+  nav .brand-word{height:17px;width:auto;display:block}
+  nav .spacer{margin-left:auto}
+  nav a{color:var(--dim);font-size:13px}
+  nav a:hover{color:var(--ink)}
+  header{padding:70px 0 40px;text-align:center}
+  header h1{font-size:clamp(28px,6vw,52px);margin:0 0 8px;letter-spacing:1px}
+  header .sub{color:var(--dim);font-size:clamp(13px,2.4vw,17px);margin-bottom:24px;max-width:720px;
+    margin-left:auto;margin-right:auto}
+  .badge{display:inline-block;border:1px solid var(--line);border-radius:999px;
+    padding:8px 16px;color:var(--teal);font-size:13px;background:var(--panel)}
+  .badges{display:flex;gap:10px;flex-wrap:wrap;justify-content:center}
+  h2{font-size:20px;margin:48px 0 14px;letter-spacing:.5px}
+  .grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:14px}
+  .card{background:var(--panel);border:1px solid var(--line);border-radius:12px;padding:16px 18px}
+  .card b{color:var(--teal)}
+  .card p{margin:6px 0 0;color:var(--dim);font-size:13.5px}
+  .studio{margin:46px 0;padding:22px;border:1px solid var(--line);border-radius:12px;background:var(--panel)}
+  .studio p{margin:8px 0 0;color:var(--dim);font-size:13.5px}
+  .price{display:flex;gap:18px;flex-wrap:wrap;align-items:baseline;
+    border-left:2px solid var(--teal);padding-left:18px;margin:14px 0}
+  .price .amount{font-size:30px;color:var(--ink)}
+  .price .note{color:var(--dim);font-size:13px}
+  ul.plain{list-style:none;padding:0;margin:10px 0 0}
+  ul.plain li{color:var(--dim);font-size:13.5px;padding-left:20px;position:relative;margin-bottom:7px}
+  ul.plain li:before{content:"›";position:absolute;left:2px;color:var(--teal)}
+  footer{border-top:1px solid var(--line);margin-top:50px;padding:24px 0;color:var(--dim);font-size:12.5px;
+    display:flex;flex-wrap:wrap;gap:12px;align-items:center}
+  footer .spacer{margin-left:auto}
+</style>
+</head>
+<body>
+<nav>
+  <div class="wrap" style="display:flex;align-items:center;gap:16px;width:100%">
+    <a class="brand" href="/"><img class="brand-mark" src="/assets/logo/mark-transparent.png" alt=""><img class="brand-word" src="/assets/logo/wordmark-transparent.png" alt="Cherishvale"></a>
+    <span class="spacer"></span>
+    <a href="/#apps">Apps</a>
+    <a href="/privacy">Privacy</a>
+  </div>
+</nav>
+
+<header class="wrap">
+  <h1>PUREPAGE</h1>
+  <div class="sub">Scan paper documents to clean multi-page PDFs. No ads, no account, no
+    subscription nag — and your files never leave your device.</div>
+  <div class="badges">
+    <span class="badge">NO ADS</span>
+    <span class="badge">NO ACCOUNT</span>
+    <span class="badge">WORKS OFFLINE</span>
+  </div>
+  <p style="margin-top:22px">
+    <span class="badge" style="border-color:var(--blue);color:#8fc3ff">In development · Google Play</span>
+  </p>
+</header>
+
+<div class="wrap">
+  <h2>Why another scanner</h2>
+  <div class="grid">
+    <div class="card">
+      <b>No ads, ever</b>
+      <p>No banners, no interstitials, no 30-second video before a save. Open, scan, done.</p>
+    </div>
+    <div class="card">
+      <b>Fully offline</b>
+      <p>Scanning, PDF creation and text recognition run on your device. Nothing is uploaded.</p>
+    </div>
+    <div class="card">
+      <b>No account</b>
+      <p>No sign-up, no email, no login wall. There is nothing to create and nothing to forget.</p>
+    </div>
+    <div class="card">
+      <b>One clean PDF</b>
+      <p>Capture page after page and export a tidy A4 PDF straight to your device storage.</p>
+    </div>
+    <div class="card">
+      <b>Pay once, not monthly</b>
+      <p>Core scanning is free forever. The advanced tools are a single purchase — never a subscription.</p>
+    </div>
+    <div class="card">
+      <b>Honest about the network</b>
+      <p>The only network use is Google Play validating the optional purchase. No trackers, no ad SDKs.</p>
+    </div>
+  </div>
+
+  <h2>Premium — one time</h2>
+  <div class="price">
+    <span class="amount">$4.99 once</span>
+    <span class="note">Not a subscription. Not recurring.</span>
+  </div>
+  <ul class="plain">
+    <li>Merge multiple PDFs into a single document</li>
+    <li>Split a PDF into page ranges</li>
+    <li>On-device OCR — turn scans into selectable, copyable text</li>
+    <li>Same offline promise as the free app</li>
+  </ul>
+
+  <div class="studio">
+    <b style="color:var(--teal)">On privacy</b>
+    <p>Purepage keeps your documents on your device. Scans are written only to local
+      storage, there are no analytics or advertising libraries, and deleting a scan removes
+      it for good — there is no server copy anywhere. Network access exists solely so Google
+      Play can validate the optional one-time purchase.</p>
+  </div>
+</div>
+
+<footer class="wrap">
+  <span>© <span id="y"></span> Cherishvale. All rights reserved.</span>
+  <span class="spacer"></span>
+  <a href="mailto:hello@cherishvale.com">Contact</a>
+  <a href="/privacy">Privacy Policy</a>
+</footer>
+<script>document.getElementById("y").textContent=new Date().getFullYear();</script>
+</body>
+</html>
