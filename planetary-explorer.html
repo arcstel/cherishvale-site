@@ -63,54 +63,7 @@
   ]
 }
 </script>
-<style>
-  :root{--bg:#04040c;--panel:#0a1120;--line:#1a2233;--ink:#dfe6ff;--dim:#93a7c6;--teal:#35d0e0;--blue:#4f8cff}
-  *{box-sizing:border-box}
-  html,body{margin:0;background:var(--bg);color:var(--ink);
-    font-family:ui-monospace,"SFMono-Regular","JetBrains Mono",Menlo,Consolas,monospace;line-height:1.6}
-  body{background-color:#04040c;background-image:url("assets/backdrop.jpg");
-    background-size:cover;background-position:center top;background-repeat:no-repeat;
-    background-attachment:fixed}
-  a{color:var(--teal);text-decoration:none}
-  a:hover{text-decoration:underline}
-  .wrap{max-width:1000px;margin:0 auto;padding:0 20px}
-  nav{display:flex;align-items:center;gap:16px;height:64px;border-bottom:1px solid var(--line)}
-  nav .brand{display:flex;align-items:center;gap:10px}
-  nav .brand-mark{height:32px;width:auto;display:block}
-  nav .brand-word{height:17px;width:auto;display:block}
-  nav .spacer{margin-left:auto}
-  nav a{color:var(--dim);font-size:13px}
-  nav a:hover{color:var(--ink)}
-  header{padding:70px 0 40px;text-align:center}
-  header h1{font-size:clamp(28px,6vw,52px);margin:0 0 8px;letter-spacing:1px}
-  header .sub{color:var(--dim);font-size:clamp(13px,2.4vw,17px);margin-bottom:24px}
-  .badge{display:inline-block;border:1px solid var(--line);border-radius:999px;
-    padding:8px 16px;color:var(--teal);font-size:13px;background:var(--panel)}
-  .shots{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:14px;padding:6px 0 26px}
-  h3.sys{font-size:15px;margin:34px 0 4px;letter-spacing:1px;color:var(--ink)}
-  h3.sys span{color:var(--dim);font-weight:400;font-size:12.5px}
-  a.shot{display:block;background:rgba(10,17,32,.85);border:1px solid var(--line);border-radius:12px;
-    overflow:hidden;transition:transform .28s ease,box-shadow .28s ease,border-color .28s ease}
-  a.shot:hover{transform:translateY(-8px) scale(1.02);box-shadow:0 22px 55px rgba(0,0,0,.65);
-    border-color:var(--blue);text-decoration:none}
-  a.shot img{width:100%;display:block}
-  a.shot span{display:block;padding:9px 12px;font-size:12px;color:var(--dim)}
-  a.shot:hover span{color:var(--teal)}
-  #lightbox{position:fixed;inset:0;z-index:200;display:none;place-items:center;
-    background:rgba(2,2,8,.92);padding:24px;cursor:zoom-out;text-align:center}
-  #lightbox.open{display:grid}
-  #lightbox img{max-width:92vw;max-height:84vh;border:1px solid var(--line);border-radius:12px}
-  #lightbox small{color:var(--dim);font-size:12px}
-  h2{font-size:20px;margin:48px 0 14px;letter-spacing:.5px}
-  .grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:14px}
-  .card{background:var(--panel);border:1px solid var(--line);border-radius:12px;padding:16px 18px}
-  .card b{color:var(--teal)}
-  .card p{margin:6px 0 0;color:var(--dim);font-size:13.5px}
-  .studio{margin:46px 0;padding:22px;border:1px solid var(--line);border-radius:12px;background:var(--panel)}
-  footer{border-top:1px solid var(--line);margin-top:50px;padding:24px 0;color:var(--dim);font-size:12.5px;
-    display:flex;flex-wrap:wrap;gap:12px;align-items:center}
-  footer .spacer{margin-left:auto}
-</style>
+<link rel="stylesheet" href="/assets/site.css">
 </head>
 <body>
 <nav>
@@ -127,7 +80,7 @@
   <div class="sub">An offline 3D atlas of the Solar System — 20 worlds, a live orbit map for any date between 1800 and 2050, a quarter of a million place names, and street-level maps of Earth.</div>
   <div class="badge">Coming soon to Google Play</div>
   <p style="margin-top:18px">
-    <a class="badge" style="text-decoration:none;border-color:var(--blue);color:#8fc3ff"
+    <a class="badge" style="text-decoration:none;border-color:var(--line-strong);color:var(--teal)"
        href="https://arcstel.github.io/planetary-explorer-live/">▶ Try it in your browser</a>
   </p>
   <p style="color:var(--dim);font-size:11.5px;margin-top:8px">

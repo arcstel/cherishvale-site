@@ -1,0 +1,464 @@
+/* Cherishvale — shared site styles.
+   Neutral, native-feeling surfaces with a system font and a single accent.
+   Variable names are kept from the old inline styles so existing markup
+   (inline var(--teal) etc.) keeps working. */
+
+:root {
+  --font: system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue",
+    Arial, "Noto Sans", sans-serif;
+  --mono: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+
+  --bg: #151619;
+  --panel: #1c1e22;
+  --panel-2: #22252a;
+  --line: #2b2e34;
+  --line-strong: #3a3e45;
+  --ink: #e8eaed;
+  --dim: #9ba2ad;
+
+  --teal: #3ec8d8;
+  --blue: #6fa8ff;
+  --gold: #d9b269;
+
+  --radius: 10px;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html,
+body {
+  margin: 0;
+}
+
+body {
+  background: var(--bg) url("/assets/backdrop.jpg") center top / cover no-repeat
+    fixed;
+  color: var(--ink);
+  font-family: var(--font);
+  font-size: 15px;
+  line-height: 1.65;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+a {
+  color: var(--teal);
+  text-decoration: none;
+}
+
+a:hover {
+  text-decoration: underline;
+}
+
+.wrap {
+  max-width: 1000px;
+  margin: 0 auto;
+  padding: 0 22px;
+}
+
+/* Nav */
+nav {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  height: 58px;
+  border-bottom: 1px solid var(--line);
+}
+
+nav .brand {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+nav .brand-mark {
+  height: 28px;
+  width: auto;
+  display: block;
+}
+
+nav .brand-word {
+  height: 16px;
+  width: auto;
+  display: block;
+}
+
+nav .spacer {
+  margin-left: auto;
+}
+
+nav a {
+  color: var(--dim);
+  font-size: 13.5px;
+}
+
+nav a:hover {
+  color: var(--ink);
+  text-decoration: none;
+}
+
+/* Header */
+header {
+  padding: 64px 0 36px;
+  text-align: center;
+}
+
+header h1 {
+  font-size: clamp(30px, 6vw, 48px);
+  font-weight: 700;
+  letter-spacing: -0.015em;
+  margin: 0 0 10px;
+}
+
+header .sub {
+  color: var(--dim);
+  font-size: clamp(14px, 2.4vw, 17px);
+  max-width: 720px;
+  margin: 0 auto 22px;
+}
+
+.badges {
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.badge {
+  display: inline-block;
+  border: 1px solid var(--line);
+  border-radius: 999px;
+  padding: 7px 15px;
+  color: var(--dim);
+  font-size: 13px;
+  background: var(--panel);
+}
+
+.badge.accent {
+  border-color: var(--line-strong);
+  color: var(--ink);
+}
+
+/* Type */
+h2 {
+  font-size: 20px;
+  font-weight: 600;
+  letter-spacing: -0.005em;
+  margin: 46px 0 14px;
+}
+
+h3 {
+  font-size: 15px;
+  font-weight: 600;
+  margin: 30px 0 6px;
+}
+
+h3.sys {
+  color: var(--ink);
+}
+
+h3.sys span {
+  color: var(--dim);
+  font-weight: 400;
+  font-size: 12.5px;
+}
+
+p {
+  color: var(--ink);
+}
+
+/* Grids */
+.grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  gap: 14px;
+}
+
+.card {
+  background: var(--panel);
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  padding: 16px 18px;
+}
+
+.card b {
+  color: var(--ink);
+  font-weight: 600;
+}
+
+.card p {
+  margin: 6px 0 0;
+  color: var(--dim);
+  font-size: 13.5px;
+}
+
+/* Screenshot grids */
+.shots {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 14px;
+  padding: 6px 0 10px;
+}
+
+.shots img {
+  width: 100%;
+  display: block;
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  background: var(--panel);
+}
+
+a.shot {
+  display: block;
+  background: var(--panel);
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  overflow: hidden;
+  transition: border-color 0.15s, transform 0.15s;
+}
+
+a.shot:hover {
+  border-color: var(--line-strong);
+  transform: translateY(-2px);
+  text-decoration: none;
+}
+
+a.shot img {
+  width: 100%;
+  display: block;
+}
+
+a.shot span {
+  display: block;
+  padding: 10px 13px;
+  font-size: 12.5px;
+  color: var(--dim);
+  line-height: 1.55;
+}
+
+a.shot span b {
+  color: var(--ink);
+}
+
+a.shot:hover span {
+  color: var(--dim);
+}
+
+a.shot:hover span b {
+  color: var(--ink);
+}
+
+/* Lightbox (planetary-explorer) */
+#lightbox {
+  position: fixed;
+  inset: 0;
+  z-index: 200;
+  display: none;
+  place-items: center;
+  background: rgba(8, 8, 10, 0.92);
+  padding: 24px;
+  cursor: zoom-out;
+  text-align: center;
+}
+
+#lightbox.open {
+  display: grid;
+}
+
+#lightbox img {
+  max-width: 92vw;
+  max-height: 84vh;
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+}
+
+#lightbox small {
+  color: var(--dim);
+  font-size: 12px;
+}
+
+/* Studio callout */
+.studio {
+  margin: 44px 0;
+  padding: 20px 22px;
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  background: var(--panel);
+}
+
+.studio b {
+  color: var(--ink);
+}
+
+.studio p {
+  margin: 8px 0 0;
+  color: var(--dim);
+  font-size: 13.5px;
+}
+
+/* Price block */
+.price {
+  display: flex;
+  gap: 18px;
+  flex-wrap: wrap;
+  align-items: baseline;
+  border-left: 2px solid var(--teal);
+  padding-left: 18px;
+  margin: 16px 0;
+}
+
+.price .amount {
+  font-size: 30px;
+  color: var(--ink);
+}
+
+.price .note {
+  color: var(--dim);
+  font-size: 13px;
+}
+
+ul.plain {
+  list-style: none;
+  padding: 0;
+  margin: 10px 0 0;
+}
+
+ul.plain li {
+  color: var(--dim);
+  font-size: 13.5px;
+  padding-left: 20px;
+  position: relative;
+  margin-bottom: 7px;
+}
+
+ul.plain li:before {
+  content: "\203A";
+  position: absolute;
+  left: 2px;
+  color: var(--teal);
+}
+
+/* Steps */
+.steps {
+  counter-reset: s;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  gap: 14px;
+}
+
+.step {
+  background: var(--panel);
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  padding: 16px 18px 16px 52px;
+  position: relative;
+}
+
+.step:before {
+  counter-increment: s;
+  content: counter(s);
+  position: absolute;
+  left: 16px;
+  top: 15px;
+  width: 24px;
+  height: 24px;
+  border-radius: 50%;
+  background: var(--panel-2);
+  border: 1px solid var(--line-strong);
+  color: var(--ink);
+  font-weight: 600;
+  text-align: center;
+  line-height: 22px;
+  font-size: 13px;
+}
+
+.step b {
+  color: var(--ink);
+}
+
+.step p {
+  margin: 6px 0 0;
+  color: var(--dim);
+  font-size: 13.5px;
+}
+
+/* Tables */
+table {
+  border-collapse: collapse;
+  width: 100%;
+  font-size: 13.5px;
+  margin: 14px 0;
+}
+
+th,
+td {
+  border: 1px solid var(--line);
+  padding: 9px 11px;
+  text-align: left;
+  color: var(--dim);
+}
+
+th {
+  color: var(--ink);
+  background: var(--panel);
+  font-weight: 600;
+}
+
+td.us {
+  color: var(--ink);
+}
+
+/* Details / FAQ */
+details {
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  background: var(--panel);
+  padding: 12px 16px;
+  margin: 8px 0;
+}
+
+summary {
+  cursor: pointer;
+  color: var(--ink);
+  font-size: 14px;
+}
+
+details p {
+  color: var(--dim);
+  font-size: 13.5px;
+  margin: 10px 0 2px;
+}
+
+.disclaimer {
+  color: var(--dim);
+  font-size: 12.5px;
+  margin-top: 10px;
+}
+
+/* Footer */
+footer {
+  border-top: 1px solid var(--line);
+  margin-top: 54px;
+  padding: 24px 0;
+  color: var(--dim);
+  font-size: 12.5px;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  align-items: center;
+}
+
+footer .spacer {
+  margin-left: auto;
+}
+
+footer a {
+  color: var(--dim);
+}
+
+footer a:hover {
+  color: var(--ink);
+  text-decoration: none;
+}
