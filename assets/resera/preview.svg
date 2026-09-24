@@ -1,0 +1,53 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="750" viewBox="0 0 1200 750" role="img" aria-label="The Resera app window: drop PDFs, enter the password you know, save an unlocked copy — locally.">
+  <defs>
+    <radialGradient id="glow" cx="0.82" cy="0.04" r="0.7">
+      <stop offset="0" stop-color="#4f8cff" stop-opacity="0.16"/>
+      <stop offset="1" stop-color="#4f8cff" stop-opacity="0"/>
+    </radialGradient>
+    <radialGradient id="glow2" cx="0.04" cy="0.02" r="0.6">
+      <stop offset="0" stop-color="#35d0e0" stop-opacity="0.14"/>
+      <stop offset="1" stop-color="#35d0e0" stop-opacity="0"/>
+    </radialGradient>
+    <linearGradient id="btn" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0" stop-color="#35d0e0"/>
+      <stop offset="1" stop-color="#4f8cff"/>
+    </linearGradient>
+  </defs>
+
+  <rect width="1200" height="750" fill="#04040c"/>
+  <rect width="1200" height="750" fill="url(#glow)"/>
+  <rect width="1200" height="750" fill="url(#glow2)"/>
+
+  <rect x="48" y="44" width="1104" height="662" rx="20" fill="#0a1120" stroke="#1a2233"/>
+
+  <g transform="translate(90,84) scale(1.75)">
+    <path d="M7 10V8a5 5 0 0 1 9.9-1" fill="none" stroke="#35d0e0" stroke-width="2" stroke-linecap="round"/>
+    <rect x="4" y="10" width="16" height="11" rx="2.5" fill="#35d0e0"/>
+    <circle cx="12" cy="15.5" r="1.6" fill="#0a1120"/>
+  </g>
+  <text x="152" y="120" fill="#dfe6ff" font-family="ui-monospace, Menlo, Consolas, monospace" font-size="34" font-weight="600" letter-spacing="10">RESERA</text>
+  <text x="154" y="148" fill="#93a7c6" font-family="ui-monospace, Menlo, Consolas, monospace" font-size="15" letter-spacing="1">Unbar your PDFs. Locally.</text>
+
+  <rect x="88" y="182" width="1024" height="150" rx="16" fill="#0b1322" stroke="#1a2233" stroke-dasharray="9 7"/>
+  <text x="600" y="250" text-anchor="middle" fill="#dfe6ff" font-family="ui-monospace, Menlo, Consolas, monospace" font-size="24" font-weight="600">Drop PDFs here</text>
+  <text x="600" y="284" text-anchor="middle" fill="#93a7c6" font-family="ui-monospace, Menlo, Consolas, monospace" font-size="16">or choose files</text>
+  <text x="600" y="314" text-anchor="middle" fill="#93a7c6" opacity="0.85" font-family="ui-monospace, Menlo, Consolas, monospace" font-size="13">Passwords are removed on your device — nothing is uploaded.</text>
+
+  <rect x="88" y="360" width="1024" height="66" rx="12" fill="#0d1526" stroke="#1a2233"/>
+  <text x="116" y="400" fill="#dfe6ff" font-family="ui-monospace, Menlo, Consolas, monospace" font-size="17">quarterly-report.pdf</text>
+  <rect x="898" y="378" width="190" height="30" rx="15" fill="#0a1120" stroke="#ffca6b"/>
+  <text x="993" y="398" text-anchor="middle" fill="#ffca6b" font-family="ui-monospace, Menlo, Consolas, monospace" font-size="12" letter-spacing="1">PASSWORD NEEDED</text>
+
+  <rect x="88" y="440" width="1024" height="66" rx="12" fill="#0d1526" stroke="#1a2233"/>
+  <text x="116" y="480" fill="#dfe6ff" font-family="ui-monospace, Menlo, Consolas, monospace" font-size="17">tax-return-2025.pdf</text>
+  <rect x="898" y="458" width="190" height="30" rx="15" fill="#0a1120" stroke="#62e6a8"/>
+  <text x="993" y="478" text-anchor="middle" fill="#62e6a8" font-family="ui-monospace, Menlo, Consolas, monospace" font-size="12" letter-spacing="1">UNLOCKED · 0.3s</text>
+
+  <rect x="88" y="528" width="560" height="54" rx="10" fill="#060b16" stroke="#1a2233"/>
+  <text x="112" y="561" fill="#93a7c6" font-family="ui-monospace, Menlo, Consolas, monospace" font-size="16">PDF password</text>
+  <rect x="668" y="528" width="150" height="54" rx="10" fill="url(#btn)"/>
+  <text x="743" y="561" text-anchor="middle" fill="#04121a" font-family="ui-monospace, Menlo, Consolas, monospace" font-size="17" font-weight="600">Unlock</text>
+  <text x="842" y="561" fill="#93a7c6" font-family="ui-monospace, Menlo, Consolas, monospace" font-size="14">Save to same folder</text>
+
+  <text x="600" y="654" text-anchor="middle" fill="#93a7c6" font-family="ui-monospace, Menlo, Consolas, monospace" font-size="14">No uploads · No tracking · Files never leave your device</text>
+</svg>

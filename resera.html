@@ -1,0 +1,234 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<link rel="icon" href="/favicon.ico" sizes="any">
+<link rel="icon" type="image/png" href="/assets/logo/favicon-64.png">
+<link rel="apple-touch-icon" href="/assets/logo/apple-touch-icon.png">
+
+<title>Resera — remove PDF passwords offline — by Cherishvale</title>
+<meta name="description" content="Resera removes the password from PDFs you own, on your own device. Batch unlock, no uploads, no account, no ads. Works offline on Windows, macOS and Linux.">
+<link rel="canonical" href="https://cherishvale.com/resera">
+<meta property="og:title" content="Resera — remove PDF passwords offline — by Cherishvale">
+<meta property="og:description" content="Remove the password from PDFs you own, on your own device. Batch, offline, no uploads, no account.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://cherishvale.com/resera">
+<meta property="og:image" content="https://cherishvale.com/assets/resera/preview.svg">
+<meta name="twitter:card" content="summary_large_image">
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"SoftwareApplication","name":"Resera","applicationCategory":"UtilitiesApplication","applicationSubCategory":"PDF","operatingSystem":"Windows, macOS, Linux","url":"https://cherishvale.com/resera","description":"Remove the password from PDFs you own, on your own device — offline, batch, no uploads, no account.","offers":{"@type":"Offer","price":"20.00","priceCurrency":"USD"},"author":{"@type":"Organization","name":"Cherishvale","url":"https://cherishvale.com"}}</script>
+<style>
+  :root{--bg:#04040c;--panel:#0a1120;--line:#1a2233;--ink:#dfe6ff;--dim:#93a7c6;--teal:#35d0e0;--blue:#4f8cff;--green:#62e6a8}
+  *{box-sizing:border-box}
+  html,body{margin:0;background:var(--bg);color:var(--ink);
+    font-family:ui-monospace,"SFMono-Regular","JetBrains Mono",Menlo,Consolas,monospace;line-height:1.6}
+  body{background-color:#04040c;background-image:url("assets/backdrop.jpg");
+    background-size:cover;background-position:center top;background-repeat:no-repeat;
+    background-attachment:fixed}
+  a{color:var(--teal);text-decoration:none}
+  a:hover{text-decoration:underline}
+  .wrap{max-width:1000px;margin:0 auto;padding:0 20px}
+  nav{display:flex;align-items:center;gap:16px;height:64px;border-bottom:1px solid var(--line)}
+  nav .brand{display:flex;align-items:center;gap:10px}
+  nav .brand-mark{height:32px;width:auto;display:block}
+  nav .brand-word{height:17px;width:auto;display:block}
+  nav .spacer{margin-left:auto}
+  nav a{color:var(--dim);font-size:13px}
+  nav a:hover{color:var(--ink)}
+  header{padding:70px 0 40px;text-align:center}
+  header h1{font-size:clamp(28px,6vw,52px);margin:0 0 8px;letter-spacing:6px}
+  header .sub{color:var(--dim);font-size:clamp(13px,2.4vw,17px);margin-bottom:24px;max-width:720px;
+    margin-left:auto;margin-right:auto}
+  .badge{display:inline-block;border:1px solid var(--line);border-radius:999px;
+    padding:8px 16px;color:var(--teal);font-size:13px;background:var(--panel)}
+  .badges{display:flex;gap:10px;flex-wrap:wrap;justify-content:center}
+  h2{font-size:20px;margin:48px 0 14px;letter-spacing:.5px}
+  .shot{width:100%;display:block;border:1px solid var(--line);border-radius:14px;background:var(--panel);margin:10px 0 6px}
+  .grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:14px}
+  .card{background:var(--panel);border:1px solid var(--line);border-radius:12px;padding:16px 18px}
+  .card b{color:var(--teal)}
+  .card p{margin:6px 0 0;color:var(--dim);font-size:13.5px}
+  .steps{counter-reset:s;display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:14px}
+  .step{background:var(--panel);border:1px solid var(--line);border-radius:12px;padding:16px 18px 16px 52px;position:relative}
+  .step:before{counter-increment:s;content:counter(s);position:absolute;left:16px;top:15px;width:24px;height:24px;
+    border-radius:50%;background:var(--teal);color:#04121a;font-weight:700;text-align:center;line-height:24px;font-size:14px}
+  .step b{color:var(--ink)}
+  .step p{margin:6px 0 0;color:var(--dim);font-size:13.5px}
+  table{border-collapse:collapse;width:100%;font-size:13.5px;margin:14px 0}
+  th,td{border:1px solid var(--line);padding:9px 11px;text-align:left;color:var(--dim)}
+  th{color:var(--ink);background:var(--panel)}
+  td.us{color:var(--ink)}
+  td.us b{color:var(--green)}
+  .studio{margin:46px 0;padding:22px;border:1px solid var(--line);border-radius:12px;background:var(--panel)}
+  .studio p{margin:8px 0 0;color:var(--dim);font-size:13.5px}
+  .price{display:flex;gap:18px;flex-wrap:wrap;align-items:baseline;
+    border-left:2px solid var(--teal);padding-left:18px;margin:14px 0}
+  .price .amount{font-size:30px;color:var(--ink)}
+  .price .note{color:var(--dim);font-size:13px}
+  ul.plain{list-style:none;padding:0;margin:10px 0 0}
+  ul.plain li{color:var(--dim);font-size:13.5px;padding-left:20px;position:relative;margin-bottom:7px}
+  ul.plain li:before{content:"›";position:absolute;left:2px;color:var(--teal)}
+  details{border:1px solid var(--line);border-radius:12px;background:var(--panel);padding:12px 16px;margin:8px 0}
+  summary{cursor:pointer;color:var(--ink);font-size:14px}
+  details p{color:var(--dim);font-size:13.5px;margin:10px 0 2px}
+  .disclaimer{color:var(--dim);font-size:12.5px;opacity:.9;margin-top:10px}
+  footer{border-top:1px solid var(--line);margin-top:50px;padding:24px 0;color:var(--dim);font-size:12.5px;
+    display:flex;flex-wrap:wrap;gap:12px;align-items:center}
+  footer .spacer{margin-left:auto}
+</style>
+</head>
+<body>
+<nav>
+  <div class="wrap" style="display:flex;align-items:center;gap:16px;width:100%">
+    <a class="brand" href="/"><img class="brand-mark" src="/assets/logo/mark-transparent.png" alt=""><img class="brand-word" src="/assets/logo/wordmark-transparent.png" alt="Cherishvale"></a>
+    <span class="spacer"></span>
+    <a href="/#apps">Apps</a>
+    <a href="/privacy">Privacy</a>
+  </div>
+</nav>
+
+<header class="wrap">
+  <h1>RESERA</h1>
+  <div class="sub">Remove the password from PDFs you own — right on your own device.
+    No uploads, no account, no ads.</div>
+  <div class="badges">
+    <span class="badge">NO UPLOADS</span>
+    <span class="badge">NO ACCOUNT</span>
+    <span class="badge">WORKS OFFLINE</span>
+    <span class="badge">BATCH</span>
+  </div>
+  <p style="margin-top:22px">
+    <span class="badge" style="border-color:var(--blue);color:#8fc3ff">In development · Windows · macOS · Linux</span>
+  </p>
+</header>
+
+<div class="wrap" style="padding-top:6px">
+  <img class="shot" src="assets/resera/preview.svg" alt="Resera: drag in locked PDFs, type the password you know, save an unlocked copy — all locally">
+</div>
+
+<div class="wrap">
+  <h2>Why unlock locally</h2>
+  <div class="grid">
+    <div class="card">
+      <b>Your documents stay yours</b>
+      <p>The files people lock are the ones that matter most — tax returns, bank statements,
+         contracts, IDs. They are the last files you should upload to a random website.</p>
+    </div>
+    <div class="card">
+      <b>Nothing to trust</b>
+      <p>No server, no queue, no link that expires. Resera reads the file, removes the password
+         and writes the copy — entirely on your machine.</p>
+    </div>
+    <div class="card">
+      <b>It even works on a plane</b>
+      <p>Fully offline. There is no account to sign into and no connection to wait for.</p>
+    </div>
+  </div>
+
+  <h2>How it works</h2>
+  <div class="steps">
+    <div class="step">
+      <b>Drop in your PDFs</b>
+      <p>Drag one file or a whole folder's worth. Resera shows what each one needs.</p>
+    </div>
+    <div class="step">
+      <b>Type the password you know</b>
+      <p>Use the password you already have for the document. One password unlocks the batch.</p>
+    </div>
+    <div class="step">
+      <b>Save the unlocked copy</b>
+      <p>A clean PDF is written next to the original. The original is left untouched.</p>
+    </div>
+  </div>
+  <p class="disclaimer">Already-openable but restricted PDFs — the kind that block printing or copying —
+    carry only owner restrictions. Resera clears those in one click, with no password needed.</p>
+
+  <h2>Built the Cherishvale way</h2>
+  <div class="grid">
+    <div class="card">
+      <b>Batch by default</b>
+      <p>Unlock a single file or fifty in one go. No daily caps, no per-file charges.</p>
+    </div>
+    <div class="card">
+      <b>Both kinds of lock</b>
+      <p>Handles files that need a password to open, and files that open but restrict printing, copying or editing.</p>
+    </div>
+    <div class="card">
+      <b>Instant, any size</b>
+      <p>There is no waiting queue and no re-upload. Even large documents are processed in place.</p>
+    </div>
+    <div class="card">
+      <b>No limits, no watermark</b>
+      <p>Unlimited pages, unlimited files, nothing stamped over your document.</p>
+    </div>
+    <div class="card">
+      <b>Private by architecture</b>
+      <p>Not "we promise not to look" — there is nothing to look at, because nothing is ever sent.</p>
+    </div>
+    <div class="card">
+      <b>Pay once</b>
+      <p>One purchase, yours to keep. Never a subscription.</p>
+    </div>
+  </div>
+
+  <h2>Compared with free online unlockers</h2>
+  <table>
+    <tr><th></th><th>Typical free online unlocker</th><th>Resera</th></tr>
+    <tr><td>Your file</td><td>Uploaded to their server</td><td class="us"><b>Never leaves your device</b></td></tr>
+    <tr><td>Ads</td><td>Usually</td><td class="us">None</td></tr>
+    <tr><td>Account</td><td>Often required</td><td class="us">None</td></tr>
+    <tr><td>Daily limits</td><td>Common</td><td class="us">None</td></tr>
+    <tr><td>Watermark</td><td>Sometimes</td><td class="us">Never</td></tr>
+    <tr><td>Price</td><td>"Free" — you pay with privacy</td><td class="us">$20 once</td></tr>
+  </table>
+
+  <h2>Price</h2>
+  <div class="price">
+    <span class="amount">$20 once</span>
+    <span class="note">One-time purchase. Not a subscription.</span>
+  </div>
+  <ul class="plain">
+    <li>Unlock unlimited PDFs, for good</li>
+    <li>Windows, macOS and Linux</li>
+    <li>Every future update included</li>
+    <li>Same offline promise as every Cherishvale app</li>
+  </ul>
+
+  <h2>Questions</h2>
+  <details>
+    <summary>Do I need the password?</summary>
+    <p>Yes. Resera removes a password you already know. It is not a password cracker and cannot
+       recover a password you have forgotten.</p>
+  </details>
+  <details>
+    <summary>What about PDFs I can open but can't print or copy?</summary>
+    <p>Those carry only owner restrictions rather than an open password. Resera removes those in
+       one click, with no password required.</p>
+  </details>
+  <details>
+    <summary>Is it really offline?</summary>
+    <p>Completely. Resera makes no network requests — no telemetry, no accounts, no update pings.
+       You can run it with the network disconnected.</p>
+  </details>
+  <details>
+    <summary>Which systems?</summary>
+    <p>Windows, macOS and Linux, from a single codebase.</p>
+  </details>
+
+  <div class="studio">
+    <b style="color:var(--teal)">On privacy</b>
+    <p>Resera runs entirely on your machine. Unlocking a PDF opens the file, removes the password
+      and writes a copy beside it; the original is never modified. No file, filename or password is
+      ever transmitted, logged or stored anywhere.</p>
+  </div>
+</div>
+
+<footer class="wrap">
+  <span>© <span id="y"></span> Cherishvale. All rights reserved.</span>
+  <span class="spacer"></span>
+  <a href="mailto:hello@cherishvale.com">Contact</a>
+  <a href="/privacy">Privacy Policy</a>
+</footer>
+<script>document.getElementById("y").textContent=new Date().getFullYear();</script>
+</body>
+</html>
