@@ -6,80 +6,18 @@
 <link rel="icon" href="/favicon.ico" sizes="any">
 <link rel="icon" type="image/png" href="/assets/logo/favicon-64.png">
 <link rel="apple-touch-icon" href="/assets/logo/apple-touch-icon.png">
+<link rel="stylesheet" href="/assets/site.css">
 
-<title>Shikatsu — learn kana stroke order and keystrokes — by Cherishvale</title>
-<meta name="description" content="Shikatsu teaches Japanese kana by writing: watch every stroke drawn in order with direction arrows, trace it with a pen or finger and get each stroke checked. Free, offline, no ads and no account.">
+<title>Shikatsu — learn Japanese kana by writing — Cherishvale</title>
+<meta name="description" content="Shikatsu teaches Japanese kana by writing: watch every stroke drawn in order, trace it with a pen or finger, and get each stroke checked. Free and offline.">
 <link rel="canonical" href="https://cherishvale.com/shikatsu">
-<meta property="og:title" content="Shikatsu — learn kana stroke order and keystrokes — by Cherishvale">
-<meta property="og:description" content="Watch the stroke order, trace it with a pen, get every stroke checked. Free, offline, no ads.">
+<meta property="og:title" content="Shikatsu — learn Japanese kana by writing">
+<meta property="og:description" content="Watch the stroke order, trace it with a pen, get every stroke checked. Free and offline.">
 <meta property="og:type" content="website">
 <meta property="og:url" content="https://cherishvale.com/shikatsu">
 <meta property="og:image" content="https://cherishvale.com/assets/shikatsu/feature.png">
 <meta name="twitter:card" content="summary_large_image">
-<script type="application/ld+json">{"@context":"https://schema.org","@type":"SoftwareApplication","name":"Shikatsu","applicationCategory":"EducationApplication","applicationSubCategory":"Language learning","operatingSystem":"Web","url":"https://cherishvale.com/shikatsu","description":"Learn Japanese kana stroke order and keystrokes: watch each stroke drawn with direction arrows, then trace it with a pen or finger and get every stroke checked. Free, offline, no ads.","offers":{"@type":"Offer","price":"0","priceCurrency":"USD"},"author":{"@type":"Organization","name":"Cherishvale","url":"https://cherishvale.com"}}</script>
-<style>
-  :root{--bg:#04040c;--panel:#0a1120;--line:#1a2233;--ink:#dfe6ff;--dim:#93a7c6;--teal:#35d0e0;--blue:#4f8cff;--purple:#9a9ce8;--green:#62e6a8;--gold:#fbbf24}
-  *{box-sizing:border-box}
-  html,body{margin:0;background:var(--bg);color:var(--ink);
-    font-family:ui-monospace,"SFMono-Regular","JetBrains Mono",Menlo,Consolas,monospace;line-height:1.6}
-  body{background-color:#04040c;background-image:url("assets/backdrop.jpg");
-    background-size:cover;background-position:center top;background-repeat:no-repeat;
-    background-attachment:fixed}
-  a{color:var(--teal);text-decoration:none}
-  a:hover{text-decoration:underline}
-  .wrap{max-width:1000px;margin:0 auto;padding:0 20px}
-  nav{display:flex;align-items:center;gap:16px;height:64px;border-bottom:1px solid var(--line)}
-  nav .brand{display:flex;align-items:center;gap:10px}
-  nav .brand-mark{height:32px;width:auto;display:block}
-  nav .brand-word{height:17px;width:auto;display:block}
-  nav .spacer{margin-left:auto}
-  nav a{color:var(--dim);font-size:13px}
-  nav a:hover{color:var(--ink)}
-  header{padding:66px 0 34px;text-align:center}
-  header .mark{width:76px;height:76px;border-radius:20px;display:block;margin:0 auto 16px}
-  header h1{font-size:clamp(30px,6vw,54px);margin:0 0 6px;letter-spacing:4px}
-  header .kanji{color:var(--dim);font-size:clamp(14px,3vw,20px);letter-spacing:8px;margin:0 0 14px}
-  header .sub{color:var(--dim);font-size:clamp(13px,2.4vw,17px);margin:0 auto 24px;max-width:760px}
-  .badge{display:inline-block;border:1px solid var(--line);border-radius:999px;
-    padding:8px 16px;color:var(--teal);font-size:13px;background:var(--panel)}
-  .badges{display:flex;gap:10px;flex-wrap:wrap;justify-content:center}
-  .cta-row{display:flex;gap:12px;flex-wrap:wrap;justify-content:center;margin-top:26px}
-  .cta{display:inline-block;border:1px solid var(--teal);border-radius:999px;padding:13px 26px;
-    color:#04121a;background:var(--teal);font-size:15px;font-weight:600}
-  .cta:hover{text-decoration:none;filter:brightness(1.08)}
-  .cta.ghost{background:var(--panel);color:var(--teal)}
-  h2{font-size:20px;margin:48px 0 14px;letter-spacing:.5px}
-  h3{font-size:15px;margin:26px 0 6px;color:var(--teal)}
-  .shot{width:100%;display:block;border:1px solid var(--line);border-radius:14px;background:var(--panel);margin:14px 0 6px}
-  .shots{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:14px;margin:16px 0}
-  .shots img{width:100%;display:block;border:1px solid var(--line);border-radius:12px;background:var(--panel)}
-  .grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:14px}
-  .card{background:var(--panel);border:1px solid var(--line);border-radius:12px;padding:16px 18px}
-  .card b{color:var(--teal)}
-  .card p{margin:6px 0 0;color:var(--dim);font-size:13.5px}
-  .steps{counter-reset:s;display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:14px}
-  .step{background:var(--panel);border:1px solid var(--line);border-radius:12px;padding:16px 18px 16px 52px;position:relative}
-  .step:before{counter-increment:s;content:counter(s);position:absolute;left:16px;top:15px;width:24px;height:24px;
-    border-radius:50%;background:var(--teal);color:#04121a;font-weight:700;text-align:center;line-height:24px;font-size:14px}
-  .step b{color:var(--ink)}
-  .step p{margin:6px 0 0;color:var(--dim);font-size:13.5px}
-  table{border-collapse:collapse;width:100%;font-size:13.5px;margin:14px 0}
-  th,td{border:1px solid var(--line);padding:9px 11px;text-align:left;color:var(--dim)}
-  th{color:var(--ink);background:var(--panel)}
-  td.us{color:var(--ink)}
-  td.us b{color:var(--green)}
-  .studio{margin:46px 0;padding:22px;border:1px solid var(--line);border-radius:12px;background:var(--panel)}
-  .studio p{margin:8px 0 0;color:var(--dim);font-size:13.5px}
-  ul.plain{list-style:none;padding:0;margin:10px 0 0}
-  ul.plain li{color:var(--dim);font-size:13.5px;padding-left:20px;position:relative;margin-bottom:7px}
-  ul.plain li:before{content:"›";position:absolute;left:2px;color:var(--teal)}
-  details{border:1px solid var(--line);border-radius:12px;background:var(--panel);padding:12px 16px;margin:8px 0}
-  summary{cursor:pointer;color:var(--ink);font-size:14px}
-  details p{color:var(--dim);font-size:13.5px;margin:10px 0 2px}
-  footer{border-top:1px solid var(--line);margin-top:50px;padding:24px 0;color:var(--dim);font-size:12.5px;
-    display:flex;flex-wrap:wrap;gap:12px;align-items:center}
-  footer .spacer{margin-left:auto}
-</style>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"SoftwareApplication","name":"Shikatsu","applicationCategory":"EducationApplication","applicationSubCategory":"Language learning","operatingSystem":"Web","url":"https://cherishvale.com/shikatsu","description":"Learn Japanese kana by writing: watch each stroke drawn in order, trace it with a pen or finger, and get every stroke checked. Free and offline.","offers":{"@type":"Offer","price":"0","priceCurrency":"USD"},"author":{"@type":"Organization","name":"Cherishvale","url":"https://cherishvale.com"}}</script>
 </head>
 <body>
 <nav>
@@ -93,55 +31,51 @@
 
 <header class="wrap">
   <img class="mark" src="assets/shikatsu/icon-512.png" alt="Shikatsu">
-  <h1>SHIKATSU</h1>
+  <h1>Shikatsu</h1>
   <p class="kanji">死活</p>
-  <div class="sub">Learn to <b style="color:var(--ink)">write</b> Japanese kana the right way.
-    Watch each stroke drawn in order with a direction arrow, then trace it with a pen or your
-    finger — and Shikatsu checks <b style="color:var(--ink)">every stroke</b> as you go.</div>
+  <p class="sub">Learn to write Japanese kana. Watch each stroke drawn in order, trace it
+     with a pen or your finger, and Shikatsu checks every stroke as you go.</p>
   <div class="badges">
-    <span class="badge">STROKE ORDER</span>
-    <span class="badge">DIRECTION ARROWS</span>
-    <span class="badge">PEN &amp; TOUCH</span>
-    <span class="badge">TYPING DRILLS</span>
-    <span class="badge">OFFLINE</span>
-    <span class="badge">NO ADS</span>
+    <span class="badge">Stroke order</span>
+    <span class="badge">Direction arrows</span>
+    <span class="badge">Pen and touch</span>
+    <span class="badge">Typing drills</span>
+    <span class="badge">Offline</span>
+    <span class="badge">No ads</span>
   </div>
   <div class="cta-row">
-    <a class="cta" href="/shikatsu-live/">▶ Play in your browser</a>
-    <a class="cta ghost" href="#how">How it works</a>
+    <a class="cta primary" href="/shikatsu-live/">Play in your browser</a>
+    <a class="cta" href="#how">How it works</a>
   </div>
   <p style="margin-top:20px">
-    <span class="badge" style="border-color:var(--green);color:var(--green)">Playable now · Free · Works offline</span>
+    <span class="badge">Playable now · Free · Works offline</span>
   </p>
 </header>
 
 <div class="wrap" style="padding-top:6px">
-  <img class="shot" src="assets/shikatsu/feature.png" alt="Shikatsu: watching a kana stroke order with a direction arrow, then tracing it on the grid">
+  <img class="shot" src="assets/shikatsu/feature.png" alt="A kana stroke order with a direction arrow, then traced on the grid">
 </div>
 
 <div class="wrap">
-  <h2>Learn a character properly, not just recognise it</h2>
-  <p style="color:var(--dim);font-size:14px;max-width:780px">Most apps flash a card and ask you to
-    pick the meaning. Shikatsu teaches the thing you actually need to write by hand — the
-    <b style="color:var(--ink)">order, direction and shape of every stroke</b> — and then makes you
-    do it. Browse the whole kana chart and tap any character to hear it, watch it and write it.</p>
-  <div class="grid" style="margin-top:14px">
+  <h2>Learn to write, not just recognise</h2>
+  <p class="lead">Most apps flash a card and ask you to pick the meaning. Shikatsu teaches
+     what you need to write by hand: the order, direction and shape of every stroke. Browse
+     the kana chart and tap any character to hear it, watch it, and write it.</p>
+  <div class="grid">
     <div class="card">
       <b>Watch it drawn</b>
-      <p>Each stroke animates on in the correct order — <b style="color:var(--ink)">numbered</b>,
-         with a bright arrow showing which way the pen travels. The full character sits faintly
-         behind as a guide.</p>
+      <p>Each stroke animates on in order, numbered, with an arrow showing which way the pen
+         travels. The finished character sits faintly behind as a guide.</p>
     </div>
     <div class="card">
       <b>Trace it with a pen</b>
-      <p>Draw on the grid with a stylus or your finger. Shikatsu recognises each stroke and checks
-         it against the real thing — wrong strokes flash red, and it hints the right one if you
-         get stuck.</p>
+      <p>Draw on the grid with a stylus or your finger. Shikatsu checks each stroke against the
+         real thing, marks a wrong one in red, and hints the next if you get stuck.</p>
     </div>
     <div class="card">
-      <b>Practise what's weak</b>
-      <p>Your drills quietly favour the characters you keep missing, so time goes where it's
-         needed. Streaks and accuracy are tracked on your device.</p>
+      <b>Practise what is weak</b>
+      <p>Drills come round more often for the characters you keep missing. Streaks and accuracy
+         are tracked on your device.</p>
     </div>
   </div>
 
@@ -149,63 +83,58 @@
   <div class="steps">
     <div class="step">
       <b>Watch</b>
-      <p>The character draws itself stroke by stroke, arrow by arrow — the way a teacher would
-         write it on the board.</p>
+      <p>The character draws itself stroke by stroke, the way a teacher would write it.</p>
     </div>
     <div class="step">
       <b>Trace</b>
-      <p>Draw it yourself. Every stroke is graded in order, so you can't accidentally learn it
-         backwards.</p>
+      <p>Draw it yourself. Every stroke is graded in order, so you cannot learn it backwards.</p>
     </div>
     <div class="step">
       <b>Remember</b>
-      <p>Switch to the typing and reading drills to lock the sound, the kana and the keystrokes
-         together.</p>
+      <p>Typing and reading drills tie the sound, the kana and the keystrokes together.</p>
     </div>
   </div>
 
-  <h2>Three ways to drill the same character</h2>
+  <h2>Three ways to drill a character</h2>
   <div class="grid">
     <div class="card">
       <b>Write</b>
-      <p>Stroke order, direction arrows and guided tracing with a pen or finger — the full
-         handwriting workout.</p>
+      <p>Stroke order, direction arrows and guided tracing with a pen or finger.</p>
     </div>
     <div class="card">
       <b>Type</b>
-      <p>See the reading, build the kana. Shikatsu converts as you type, so “kya” becomes きゃ
-         and you learn the keystrokes by doing.</p>
+      <p>See the reading, build the kana. Shikatsu converts as you type, so "kya" becomes きゃ
+         and you pick up the keystrokes by doing.</p>
     </div>
     <div class="card">
       <b>Read</b>
-      <p>See a kana, type its romaji. A quick, keyboard-friendly drill for recognition and speed.</p>
+      <p>See a kana, type its romaji. A quick keyboard drill for recognition and speed.</p>
     </div>
   </div>
 
   <div class="shots">
-    <img src="assets/shikatsu/chart.png" alt="The Shikatsu kana chart — every hiragana with its romaji, tappable">
-    <img src="assets/shikatsu/numbers.png" alt="Learning か: numbered strokes, a direction arrow and the practice controls">
+    <img src="assets/shikatsu/chart.png" alt="The kana chart, every hiragana with its romaji">
+    <img src="assets/shikatsu/numbers.png" alt="Learning か: numbered strokes, a direction arrow and the controls">
     <img src="assets/shikatsu/watch.png" alt="Stroke-order animation of し with a direction arrow">
-    <img src="assets/shikatsu/practice.png" alt="Tracing た on the grid — the first stroke accepted, the rest as a guide">
+    <img src="assets/shikatsu/practice.png" alt="Tracing た on the grid">
     <img src="assets/shikatsu/home.png" alt="Shikatsu home screen with decks, modes and progress">
   </div>
 
-  <h2>Free, and honest about it</h2>
+  <h2>Free and offline</h2>
   <table>
     <tr><th></th><th>A typical kana app</th><th>Shikatsu</th></tr>
-    <tr><td>Price</td><td>Free with ads, or a subscription</td><td class="us"><b>Free</b></td></tr>
-    <tr><td>Ads &amp; tracking</td><td>Common</td><td class="us">None</td></tr>
+    <tr><td>Price</td><td>Ads, or a subscription</td><td class="us">Free</td></tr>
+    <tr><td>Ads and tracking</td><td>Common</td><td class="us">None</td></tr>
     <tr><td>Stroke order</td><td>Sometimes a static diagram</td><td class="us">Animated, with arrows</td></tr>
     <tr><td>Handwriting check</td><td>Rare, or behind a paywall</td><td class="us">Every stroke, in order</td></tr>
-    <tr><td>Works offline</td><td>Varies</td><td class="us"><b>Yes — installable app</b></td></tr>
+    <tr><td>Works offline</td><td>Varies</td><td class="us">Installable app</td></tr>
     <tr><td>Your data</td><td>Often an account</td><td class="us">Stays on your device</td></tr>
   </table>
 
-  <h2>Japanese now — more scripts on the way</h2>
-  <p style="color:var(--dim);font-size:14px;max-width:780px">Shikatsu starts with the full
-    hiragana and katakana sets, including dakuten and yōon combinations. The same engine is built
-    for writing systems generally, so Chinese, Korean, Arabic and more can follow as new decks —
-    the drills, the tracing and the scoring all stay the same.</p>
+  <h2>Japanese first, more scripts later</h2>
+  <p class="lead">Shikatsu starts with the full hiragana and katakana sets, including
+     dakuten and yōon. The same engine is built for writing systems generally, so other
+     scripts can follow as new decks. The drills, tracing and scoring stay the same.</p>
   <ul class="plain">
     <li>Hiragana 五十音 and 全部, with dakuten and handakuten</li>
     <li>Yōon combinations like きゃ, しゅ, ちょ</li>
@@ -216,41 +145,41 @@
   <h2>Questions</h2>
   <details>
     <summary>Is it really free?</summary>
-    <p>Yes. No ads, no subscription, no account. It's part of the Cherishvale studio's set of calm,
-       offline apps.</p>
+    <p>Yes. No ads, no subscription and no account.</p>
   </details>
   <details>
     <summary>Do I need a Japanese keyboard?</summary>
-    <p>No. The typing drills work with the on-screen romaji keyboard (or a physical one) and convert
-       what you type into kana, so you learn the keystrokes without configuring an IME.</p>
+    <p>No. The typing drills work with the on-screen romaji keyboard, or a physical one, and
+       convert what you type into kana, so you learn the keystrokes without setting up an IME.</p>
   </details>
   <details>
     <summary>Does it work offline?</summary>
-    <p>Yes. Shikatsu is an installable web app — add it to your home screen and it keeps working with
-       no connection. All the stroke data ships with it.</p>
+    <p>Yes. Shikatsu is an installable web app. Add it to your home screen and it keeps
+       working with no connection; the stroke data ships with it.</p>
   </details>
   <details>
     <summary>Will it work with my stylus?</summary>
-    <p>Yes. It uses standard pointer input, so an Apple Pencil, an S Pen or any stylus on a tablet or
-       phone works — as does a finger.</p>
+    <p>Yes. It uses standard pointer input, so an Apple Pencil, an S Pen or any stylus works,
+       as does a finger.</p>
   </details>
   <details>
     <summary>How does it check my handwriting?</summary>
-    <p>Each character ships as its real strokes and stroke centre-lines, from the open KanjiVG and
-       animCJK data. As you draw, Shikatsu matches your stroke against the expected one and grades it
-       in order.</p>
+    <p>Each character ships with its real strokes and stroke centre-lines, from the open
+       KanjiVG and animCJK data. As you draw, Shikatsu matches your stroke against the
+       expected one and grades it in order.</p>
   </details>
   <details>
     <summary>What does the name mean?</summary>
-    <p>死活 (shikatsu) is a term from the game of Go — “life and death”. Here it means learning a
-       writing system so well it becomes second nature.</p>
+    <p>死活 (shikatsu) is a term from the game of Go, meaning "life and death". Here it means
+       learning a writing system well enough that it becomes second nature.</p>
   </details>
 
   <div class="studio">
-    <b style="color:var(--teal)">On privacy</b>
-    <p>Shikatsu runs entirely in your browser. There is no account, no analytics and nothing sent
-      anywhere — your practice stays on your device. Stroke data comes from the open KanjiVG and
-      animCJK projects; animation and handwriting recognition use the open-source Hanzi Writer.</p>
+    <b>On privacy</b>
+    <p>Shikatsu runs entirely in your browser. There is no account and no analytics, and
+       nothing is sent anywhere: your practice stays on your device. Stroke data comes from
+       the open KanjiVG and animCJK projects; animation and recognition use the open-source
+       Hanzi Writer.</p>
   </div>
 </div>
 

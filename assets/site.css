@@ -19,6 +19,7 @@
   --teal: #3ec8d8;
   --blue: #6fa8ff;
   --gold: #d9b269;
+  --on-accent: #06222a;
 
   --radius: 10px;
 }
@@ -56,6 +57,12 @@ a:hover {
   max-width: 1000px;
   margin: 0 auto;
   padding: 0 22px;
+}
+
+main {
+  max-width: 760px;
+  margin: 0 auto;
+  padding: 48px 22px 24px;
 }
 
 /* Nav */
@@ -461,4 +468,153 @@ footer a {
 footer a:hover {
   color: var(--ink);
   text-decoration: none;
+}
+
+/* --- landing-page bits also used by the homepage and SEO pages --- */
+
+.lead {
+  color: var(--dim);
+  font-size: clamp(15px, 2.4vw, 18px);
+  margin: 0 0 22px;
+}
+
+.shot {
+  width: 100%;
+  display: block;
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  background: var(--panel);
+  margin: 14px 0;
+}
+
+.cta {
+  display: inline-block;
+  border: 1px solid var(--line-strong);
+  border-radius: 8px;
+  padding: 10px 18px;
+  color: var(--ink);
+  background: var(--panel);
+  margin: 8px 8px 8px 0;
+}
+
+.cta:hover {
+  border-color: var(--teal);
+  color: var(--teal);
+  text-decoration: none;
+}
+
+.cta.primary {
+  background: var(--teal);
+  border-color: transparent;
+  color: var(--on-accent);
+  font-weight: 600;
+}
+
+.cta.primary:hover {
+  filter: brightness(1.06);
+  color: var(--on-accent);
+}
+
+.cta-row {
+  display: flex;
+  gap: 12px;
+  flex-wrap: wrap;
+  justify-content: center;
+  margin-top: 24px;
+}
+
+header .mark {
+  width: 76px;
+  height: 76px;
+  border-radius: 20px;
+  display: block;
+  margin: 0 auto 16px;
+}
+
+header .kanji {
+  color: var(--dim);
+  font-size: clamp(14px, 3vw, 20px);
+  letter-spacing: 0.2em;
+  margin: 0 0 14px;
+}
+
+/* Homepage app grid */
+.mission {
+  border-left: 2px solid var(--teal);
+  padding-left: 18px;
+  color: var(--dim);
+  max-width: 720px;
+}
+
+.mission b {
+  color: var(--ink);
+  font-weight: 600;
+}
+
+.mission p {
+  margin: 0 0 12px;
+}
+
+.apps-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 16px;
+  align-items: start;
+}
+
+.app {
+  display: block;
+  background: var(--panel);
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  overflow: hidden;
+  transition: border-color 0.15s;
+}
+
+a.app:hover {
+  border-color: var(--line-strong);
+  text-decoration: none;
+}
+
+.app img {
+  width: 100%;
+  aspect-ratio: 3 / 2;
+  object-fit: cover;
+  object-position: top center;
+  display: block;
+  border-bottom: 1px solid var(--line);
+}
+
+.app .body {
+  padding: 16px 18px 18px;
+}
+
+.app h3 {
+  margin: 0 0 6px;
+  font-size: 17px;
+}
+
+.app p {
+  margin: 0;
+  color: var(--dim);
+  font-size: 13.5px;
+}
+
+.app .tag {
+  display: inline-block;
+  margin-top: 12px;
+  font-size: 11px;
+  letter-spacing: 0.02em;
+  border: 1px solid var(--line);
+  border-radius: 999px;
+  padding: 4px 10px;
+  color: var(--dim);
+}
+
+.app.soon {
+  opacity: 0.72;
+}
+
+.app.soon h3 {
+  color: var(--dim);
 }

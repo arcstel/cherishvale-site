@@ -6,55 +6,18 @@
 <link rel="icon" href="/favicon.ico" sizes="any">
 <link rel="icon" type="image/png" href="/assets/logo/favicon-64.png">
 <link rel="apple-touch-icon" href="/assets/logo/apple-touch-icon.png">
+<link rel="stylesheet" href="/assets/site.css">
 
-<title>Cherishvale — independent software studio</title>
-<meta name="description" content="Cherishvale is an independent studio building calm, useful, offline apps that respect your time, your data and your attention.">
+<title>Cherishvale — offline apps by an independent studio</title>
+<meta name="description" content="An independent studio making apps that run offline and keep your files on your own device: a planetarium, a document scanner, a PDF password remover, and more.">
 <meta property="og:title" content="Cherishvale">
-<meta property="og:description" content="An independent studio building calm, useful, offline apps.">
+<meta property="og:description" content="Offline apps that keep your files on your own device.">
 <meta property="og:type" content="website">
 <meta property="og:url" content="https://cherishvale.com/">
-<style>
-  :root{--bg:#04040c;--panel:#0a1120;--line:#1a2233;--ink:#dfe6ff;--dim:#93a7c6;--teal:#35d0e0;--blue:#4f8cff}
-  *{box-sizing:border-box}
-  html,body{margin:0;background:var(--bg) url("/assets/backdrop.jpg") center top / cover no-repeat fixed;color:var(--ink);
-    font-family:ui-monospace,"SFMono-Regular","JetBrains Mono",Menlo,Consolas,monospace;line-height:1.6}
-  a{color:inherit;text-decoration:none}
-  .wrap{max-width:1000px;margin:0 auto;padding:0 20px}
-  nav{display:flex;align-items:center;gap:18px;height:64px;border-bottom:1px solid var(--line)}
-  nav .brand{display:flex;align-items:center;gap:10px}
-  nav .brand-mark{height:32px;width:auto;display:block}
-  nav .brand-word{height:17px;width:auto;display:block}
-  nav .spacer{margin-left:auto}
-  nav a{color:var(--dim);font-size:13px}
-  nav a:hover{color:var(--ink)}
-  header{padding:84px 0 30px}
-  header h1{font-size:clamp(30px,7vw,58px);margin:0 0 14px;letter-spacing:2px;line-height:1.15}
-  header h1 .teal{color:var(--teal)}
-  header p{color:var(--dim);font-size:clamp(14px,2.4vw,17px);max-width:640px}
-  h2{font-size:13px;letter-spacing:3px;color:var(--blue);margin:56px 0 16px;text-transform:uppercase}
-  .mission{border-left:2px solid var(--teal);padding-left:18px;color:var(--dim);max-width:720px}
-  .mission b{color:var(--ink);font-weight:400}
-  .grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:16px;align-items:start}
-  .app{display:block;background:var(--panel);border:1px solid var(--line);border-radius:14px;
-    overflow:hidden;transition:border-color .15s}
-  a.app:hover{border-color:var(--blue)}
-  .app img{width:100%;aspect-ratio:3/2;object-fit:cover;object-position:top center;display:block;border-bottom:1px solid var(--line)}
-  .app .body{padding:16px 18px 18px}
-  .app h3{margin:0 0 6px;font-size:17px}
-  .app p{margin:0;color:var(--dim);font-size:13.5px}
-  .app .tag{display:inline-block;margin-top:12px;font-size:11px;letter-spacing:1px;
-    border:1px solid var(--line);border-radius:999px;padding:4px 10px;color:var(--teal)}
-  .app.soon{opacity:.72}
-  .app.soon h3{color:var(--dim)}
-  footer{border-top:1px solid var(--line);margin-top:60px;padding:24px 0;color:var(--dim);font-size:12.5px;
-    display:flex;flex-wrap:wrap;gap:12px;align-items:center}
-  footer .spacer{margin-left:auto}
-  footer a:hover{color:var(--ink)}
-</style>
 </head>
 <body>
 <nav>
-  <div class="wrap" style="display:flex;align-items:center;gap:18px;width:100%">
+  <div class="wrap" style="display:flex;align-items:center;gap:16px;width:100%">
     <a class="brand" href="/"><img class="brand-mark" src="/assets/logo/mark-transparent.png" alt=""><img class="brand-word" src="/assets/logo/wordmark-transparent.png" alt="Cherishvale"></a>
     <span class="spacer"></span>
     <a href="#apps">Apps</a>
@@ -64,65 +27,64 @@
 </nav>
 
 <header class="wrap">
-  <h1>CALM SOFTWARE,<br><span class="teal">MADE TO LAST.</span></h1>
-  <p>Cherishvale is an independent software studio. We build focused, offline apps
-     that respect your time, your data and your attention.</p>
+  <h1>Apps that run offline.</h1>
+  <p class="sub">Cherishvale is a small independent studio. Our apps work without a
+     connection and keep your files on your own device.</p>
 </header>
 
 <div class="wrap" id="apps">
   <h2>Apps</h2>
-  <div class="grid">
+  <div class="apps-grid">
     <a class="app" href="/planetary-explorer">
-      <img src="assets/screens/system.jpg" alt="Planetary Explorer — the Solar System map">
+      <img src="assets/screens/system.jpg" alt="Planetary Explorer, the Solar System map">
       <div class="body">
         <h3>Planetary Explorer</h3>
-        <p>An offline 3D atlas of the Solar System — 20 worlds, a live orbit map for any
-           date, 244,625 place names, street-level maps of Earth, a 41,411-star chart
-           with all 88 constellations, and a solar-flare projection.</p>
+        <p>An offline 3D atlas of the Solar System. Twenty worlds, a live orbit map for
+           any date, a 41,411-star chart with all 88 constellations, and 244,625 place
+           names on Earth.</p>
         <span class="tag">COMING SOON · GOOGLE PLAY</span>
       </div>
     </a>
     <a class="app soon" href="/purepage">
-      <img src="assets/purepage/card.jpg" alt="Purepage — offline document scanner for Android">
+      <img src="assets/purepage/card.jpg" alt="Purepage, a document scanner for Android">
       <div class="body">
         <h3>Purepage</h3>
-        <p>An offline document scanner for Android. Scan paper to clean multi-page PDFs —
-           no ads, no account, no subscription nag. Your files never leave your device.</p>
+        <p>A document scanner for Android. Turn paper into clean multi-page PDFs.
+           Scans stay on your phone.</p>
         <span class="tag">IN DEVELOPMENT · ANDROID</span>
       </div>
     </a>
     <a class="app" href="/resera">
-      <img src="assets/resera/app-dark.png" alt="Resera — remove PDF passwords offline, on your own device">
+      <img src="assets/resera/app-dark.png" alt="Resera, a PDF password remover for desktop">
       <div class="body">
         <h3>Resera</h3>
-        <p>Remove the password from PDFs you own — batch, offline, on your own device.
-           No uploads, no account, no ads. Windows, macOS and Linux.</p>
+        <p>Removes the password from PDFs you own, on Windows, macOS and Linux.
+           Your files are never uploaded.</p>
         <span class="tag">IN DEVELOPMENT · DESKTOP</span>
       </div>
     </a>
-    <a class="app" href="/shikatsu">
-      <img src="assets/shikatsu/feature.png" alt="Shikatsu — learn Japanese kana stroke order with a pen">
-      <div class="body">
-        <h3>Shikatsu</h3>
-        <p>Learn to write Japanese kana: watch each stroke drawn in order with a direction arrow,
-           then trace it with a pen or finger and get every stroke checked. Free, offline, no ads.</p>
-        <span class="tag">PLAYABLE NOW · WEB</span>
-      </div>
-    </a>
     <a class="app soon" href="/rooks">
-      <img src="assets/rooks/chat.png" alt="Rooks — self-hosted team chat, calls and screen sharing">
+      <img src="assets/rooks/chat.png" alt="Rooks, self-hosted team chat and calls">
       <div class="body">
         <h3>Rooks</h3>
-        <p>Bring your team together — channels, real-time chat with reactions and mentions,
-           file sharing, and audio/video meetings with screen sharing. Self-hosted: no accounts,
-           no ads, no per-seat fees.</p>
+        <p>Self-hosted team chat: channels, file sharing, and audio and video calls
+           with screen sharing. You run the server.</p>
         <span class="tag">IN DEVELOPMENT · SELF-HOSTED</span>
+      </div>
+    </a>
+    <a class="app" href="/shikatsu">
+      <img src="assets/shikatsu/feature.png" alt="Shikatsu, learn to write Japanese kana">
+      <div class="body">
+        <h3>Shikatsu</h3>
+        <p>Learn to write Japanese kana. Watch each stroke drawn in order, then trace it
+           and have every stroke checked. Free and offline.</p>
+        <span class="tag">PLAYABLE NOW · WEB</span>
       </div>
     </a>
     <div class="app soon">
       <div class="body">
         <h3>More in development</h3>
-        <p>We are building quietly. New Cherishvale apps are on the way.</p>
+        <p>More apps are in the works.</p>
         <span class="tag">IN DEVELOPMENT</span>
       </div>
     </div>
@@ -132,11 +94,12 @@
 <div class="wrap" id="about">
   <h2>About</h2>
   <div class="mission">
-    <p><b>No ads. No tracking. No noise.</b> We think good software should do one thing
-       well and then get out of your way. Every Cherishvale app works offline, keeps your
-       data on your device, and asks nothing of you that it does not need.</p>
-    <p>We are small by choice and in no hurry. We would rather take the time to build a
-       few things exceptionally well than chase quantity.</p>
+    <p>Every app here runs on your device. Files you open, scan or unlock stay on your
+       machine. There are no ads and no analytics, and the only time an app connects to
+       the internet is when something needs it: checking for an update, or validating a
+       purchase through the app store.</p>
+    <p>Cherishvale is an independent studio. New apps are added when they are ready,
+       not on a schedule.</p>
   </div>
 </div>
 
