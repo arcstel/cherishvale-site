@@ -1,0 +1,215 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<link rel="icon" href="/favicon.ico" sizes="any">
+<link rel="icon" type="image/png" href="/assets/logo/favicon-64.png">
+<link rel="apple-touch-icon" href="/assets/logo/apple-touch-icon.png">
+
+<title>Rooks — self-hosted team chat, meetings and calls — by Cherishvale</title>
+<meta name="description" content="Rooks brings your team together: real-time chat and presence, audio and video meetings, and screen sharing — self-hosted, with no accounts, no ads and no per-seat fees.">
+<link rel="canonical" href="https://cherishvale.com/rooks">
+<meta property="og:title" content="Rooks — self-hosted team chat, meetings and calls — by Cherishvale">
+<meta property="og:description" content="Chat, meet, call and share your screen — on a server you own. No accounts, no ads, no per-seat fees.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://cherishvale.com/rooks">
+<meta property="og:image" content="https://cherishvale.com/assets/rooks/chat.png">
+<meta name="twitter:card" content="summary_large_image">
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"SoftwareApplication","name":"Rooks","applicationCategory":"BusinessApplication","applicationSubCategory":"Team collaboration","operatingSystem":"Web","url":"https://cherishvale.com/rooks","description":"A self-hosted workspace for your team: real-time chat and presence, audio and video meetings, and screen sharing — no accounts, no ads, no per-seat fees.","offers":{"@type":"Offer","price":"0","priceCurrency":"USD"},"author":{"@type":"Organization","name":"Cherishvale","url":"https://cherishvale.com"}}</script>
+<style>
+  :root{--bg:#04040c;--panel:#0a1120;--line:#1a2233;--ink:#dfe6ff;--dim:#93a7c6;--teal:#35d0e0;--blue:#4f8cff;--purple:#9a9ce8;--green:#62e6a8}
+  *{box-sizing:border-box}
+  html,body{margin:0;background:var(--bg);color:var(--ink);
+    font-family:ui-monospace,"SFMono-Regular","JetBrains Mono",Menlo,Consolas,monospace;line-height:1.6}
+  body{background-color:#04040c;background-image:url("assets/backdrop.jpg");
+    background-size:cover;background-position:center top;background-repeat:no-repeat;
+    background-attachment:fixed}
+  a{color:var(--teal);text-decoration:none}
+  a:hover{text-decoration:underline}
+  .wrap{max-width:1000px;margin:0 auto;padding:0 20px}
+  nav{display:flex;align-items:center;gap:16px;height:64px;border-bottom:1px solid var(--line)}
+  nav .brand{display:flex;align-items:center;gap:10px}
+  nav .brand-mark{height:32px;width:auto;display:block}
+  nav .brand-word{height:17px;width:auto;display:block}
+  nav .spacer{margin-left:auto}
+  nav a{color:var(--dim);font-size:13px}
+  nav a:hover{color:var(--ink)}
+  header{padding:70px 0 40px;text-align:center}
+  header h1{font-size:clamp(28px,6vw,52px);margin:0 0 8px;letter-spacing:6px}
+  header .sub{color:var(--dim);font-size:clamp(13px,2.4vw,17px);margin-bottom:24px;max-width:740px;
+    margin-left:auto;margin-right:auto}
+  .badge{display:inline-block;border:1px solid var(--line);border-radius:999px;
+    padding:8px 16px;color:var(--teal);font-size:13px;background:var(--panel)}
+  .badges{display:flex;gap:10px;flex-wrap:wrap;justify-content:center}
+  h2{font-size:20px;margin:48px 0 14px;letter-spacing:.5px}
+  .shot{width:100%;display:block;border:1px solid var(--line);border-radius:14px;background:var(--panel);margin:10px 0 6px}
+  .grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:14px}
+  .card{background:var(--panel);border:1px solid var(--line);border-radius:12px;padding:16px 18px}
+  .card b{color:var(--teal)}
+  .card p{margin:6px 0 0;color:var(--dim);font-size:13.5px}
+  .steps{counter-reset:s;display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:14px}
+  .step{background:var(--panel);border:1px solid var(--line);border-radius:12px;padding:16px 18px 16px 52px;position:relative}
+  .step:before{counter-increment:s;content:counter(s);position:absolute;left:16px;top:15px;width:24px;height:24px;
+    border-radius:50%;background:var(--teal);color:#04121a;font-weight:700;text-align:center;line-height:24px;font-size:14px}
+  .step b{color:var(--ink)}
+  .step p{margin:6px 0 0;color:var(--dim);font-size:13.5px}
+  table{border-collapse:collapse;width:100%;font-size:13.5px;margin:14px 0}
+  th,td{border:1px solid var(--line);padding:9px 11px;text-align:left;color:var(--dim)}
+  th{color:var(--ink);background:var(--panel)}
+  td.us{color:var(--ink)}
+  td.us b{color:var(--green)}
+  .studio{margin:46px 0;padding:22px;border:1px solid var(--line);border-radius:12px;background:var(--panel)}
+  .studio p{margin:8px 0 0;color:var(--dim);font-size:13.5px}
+  ul.plain{list-style:none;padding:0;margin:10px 0 0}
+  ul.plain li{color:var(--dim);font-size:13.5px;padding-left:20px;position:relative;margin-bottom:7px}
+  ul.plain li:before{content:"›";position:absolute;left:2px;color:var(--teal)}
+  details{border:1px solid var(--line);border-radius:12px;background:var(--panel);padding:12px 16px;margin:8px 0}
+  summary{cursor:pointer;color:var(--ink);font-size:14px}
+  details p{color:var(--dim);font-size:13.5px;margin:10px 0 2px}
+  footer{border-top:1px solid var(--line);margin-top:50px;padding:24px 0;color:var(--dim);font-size:12.5px;
+    display:flex;flex-wrap:wrap;gap:12px;align-items:center}
+  footer .spacer{margin-left:auto}
+</style>
+</head>
+<body>
+<nav>
+  <div class="wrap" style="display:flex;align-items:center;gap:16px;width:100%">
+    <a class="brand" href="/"><img class="brand-mark" src="/assets/logo/mark-transparent.png" alt=""><img class="brand-word" src="/assets/logo/wordmark-transparent.png" alt="Cherishvale"></a>
+    <span class="spacer"></span>
+    <a href="/#apps">Apps</a>
+    <a href="/privacy">Privacy</a>
+  </div>
+</nav>
+
+<header class="wrap">
+  <h1>ROOKS</h1>
+  <div class="sub">Chat. Meet. Call. Collaborate. Rooks brings your team together in one calm
+    workspace — <b style="color:var(--ink)">on a server you own</b>. No accounts, no ads, no per-seat fees.</div>
+  <div class="badges">
+    <span class="badge">REAL-TIME CHAT</span>
+    <span class="badge">AUDIO &amp; VIDEO</span>
+    <span class="badge">SCREEN SHARING</span>
+    <span class="badge">SELF-HOSTED</span>
+    <span class="badge">NO ACCOUNTS</span>
+    <span class="badge">NO ADS</span>
+  </div>
+  <p style="margin-top:22px">
+    <span class="badge" style="border-color:var(--purple);color:#c3c5ff">In development · Web · Self-hosted</span>
+  </p>
+</header>
+
+<div class="wrap" style="padding-top:6px">
+  <img class="shot" src="assets/rooks/chat.png" alt="Rooks: a chat workspace with contacts, presence and a conversation in progress">
+</div>
+
+<div class="wrap">
+  <h2>One workspace for the whole team</h2>
+  <div class="grid">
+    <div class="card">
+      <b>Chat that keeps up</b>
+      <p>Message teammates one-to-one with live presence, so you always know who's around.
+         Conversations persist and reload the moment you reconnect.</p>
+    </div>
+    <div class="card">
+      <b>Meet face to face</b>
+      <p>Start an audio or video meeting straight from any conversation. Calls are peer-to-peer
+         over WebRTC, so media goes between people — not through a third party.</p>
+    </div>
+    <div class="card">
+      <b>Share your screen</b>
+      <p>Present a slide, a build or a tricky bug in one click, and switch back to your camera
+         when you're done.</p>
+    </div>
+    <div class="card">
+      <b>Everyone in one place</b>
+      <p>See who's online at a glance. When someone joins or leaves, presence updates instantly
+         across the team.</p>
+    </div>
+    <div class="card">
+      <b>Yours to host</b>
+      <p>Run the whole thing on a box you control. No cloud dependency, no vendor in the middle,
+         no seat you have to buy.</p>
+    </div>
+    <div class="card">
+      <b>Small and open</b>
+      <p>A compact Deno server and a static client — easy to read, easy to run, easy to make
+         your own.</p>
+    </div>
+  </div>
+
+  <h2>How it works</h2>
+  <div class="steps">
+    <div class="step">
+      <b>Run the server</b>
+      <p>One small Deno server hosts the client and relays messages between people.</p>
+    </div>
+    <div class="step">
+      <b>Open the client</b>
+      <p>Teammates visit the address and enter a display name. That's the whole sign-up.</p>
+    </div>
+    <div class="step">
+      <b>Talk, meet, share</b>
+      <p>Chat one-to-one, start an audio or video call, or share your screen — all in the same window.</p>
+    </div>
+  </div>
+
+  <h2>Built for teams, without the overhead</h2>
+  <table>
+    <tr><th></th><th>A typical team suite</th><th>Rooks</th></tr>
+    <tr><td>Where it runs</td><td>Their cloud</td><td class="us"><b>Your server</b></td></tr>
+    <tr><td>Sign-up</td><td>Accounts and profiles</td><td class="us">Just a display name</td></tr>
+    <tr><td>Pricing</td><td>Monthly, per seat</td><td class="us"><b>No per-seat fees</b></td></tr>
+    <tr><td>Ads &amp; tracking</td><td>Often</td><td class="us">None</td></tr>
+    <tr><td>Your conversations</td><td>On their servers</td><td class="us">On yours</td></tr>
+    <tr><td>Calls</td><td>Routed through a service</td><td class="us">Peer-to-peer WebRTC</td></tr>
+  </table>
+  <p style="color:var(--dim);font-size:13px">Rooks is early. It is honest about that — chat, presence,
+    calls and screen sharing work today; a fuller collaboration suite is on the roadmap.</p>
+
+  <h2>Run it yourself</h2>
+  <ul class="plain">
+    <li>Self-hosted — you run it, you own it</li>
+    <li>No per-seat pricing, no subscription</li>
+    <li>No advertising and nothing to track you</li>
+    <li>Same calm, private-by-architecture promise as every Cherishvale app</li>
+  </ul>
+
+  <h2>Questions</h2>
+  <details>
+    <summary>Do we need accounts?</summary>
+    <p>No. You enter a display name and you're in — no email, no password, no profile to fill out.</p>
+  </details>
+  <details>
+    <summary>Where do our messages live?</summary>
+    <p>On the server you run. There is no Cherishvale-hosted service and no third party holding
+       your conversations.</p>
+  </details>
+  <details>
+    <summary>Does it work offline?</summary>
+    <p>No — and it doesn't pretend to. Rooks is for real-time collaboration, so it needs the server
+       reachable. (Our other apps, like Planetary Explorer and Resera, are the fully offline ones.)</p>
+  </details>
+  <details>
+    <summary>What powers the calls?</summary>
+    <p>WebRTC. Audio, video and screen share connect peers directly, so the media itself doesn't
+       pass through a central server.</p>
+  </details>
+
+  <div class="studio">
+    <b style="color:var(--teal)">On privacy</b>
+    <p>Rooks runs on your infrastructure. Messages are relayed by the server you host; calls are
+      peer-to-peer. There are no ads, no analytics and nothing phoning home to us — because there
+      is nowhere for it to phone.</p>
+  </div>
+</div>
+
+<footer class="wrap">
+  <span>© <span id="y"></span> Cherishvale. All rights reserved.</span>
+  <span class="spacer"></span>
+  <a href="mailto:hello@cherishvale.com">Contact</a>
+  <a href="/privacy">Privacy Policy</a>
+</footer>
+<script>document.getElementById("y").textContent=new Date().getFullYear();</script>
+</body>
+</html>
