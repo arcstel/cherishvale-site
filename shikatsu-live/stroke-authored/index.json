@@ -1,0 +1,152 @@
+{
+  "а": {
+    "file": "00430.json",
+    "script": "ru",
+    "strokes": 2
+  },
+  "б": {
+    "file": "00431.json",
+    "script": "ru",
+    "strokes": 2
+  },
+  "в": {
+    "file": "00432.json",
+    "script": "ru",
+    "strokes": 3
+  },
+  "г": {
+    "file": "00433.json",
+    "script": "ru",
+    "strokes": 1
+  },
+  "д": {
+    "file": "00434.json",
+    "script": "ru",
+    "strokes": 2
+  },
+  "А": {
+    "file": "00410.json",
+    "script": "ru",
+    "strokes": 2
+  },
+  "Б": {
+    "file": "00411.json",
+    "script": "ru",
+    "strokes": 2
+  },
+  "В": {
+    "file": "00412.json",
+    "script": "ru",
+    "strokes": 3
+  },
+  "Г": {
+    "file": "00413.json",
+    "script": "ru",
+    "strokes": 1
+  },
+  "Д": {
+    "file": "00414.json",
+    "script": "ru",
+    "strokes": 2
+  },
+  "α": {
+    "file": "003b1.json",
+    "script": "el",
+    "strokes": 2
+  },
+  "β": {
+    "file": "003b2.json",
+    "script": "el",
+    "strokes": 2
+  },
+  "γ": {
+    "file": "003b3.json",
+    "script": "el",
+    "strokes": 1
+  },
+  "δ": {
+    "file": "003b4.json",
+    "script": "el",
+    "strokes": 2
+  },
+  "ε": {
+    "file": "003b5.json",
+    "script": "el",
+    "strokes": 1
+  },
+  "Α": {
+    "file": "00391.json",
+    "script": "el",
+    "strokes": 2
+  },
+  "Β": {
+    "file": "00392.json",
+    "script": "el",
+    "strokes": 3
+  },
+  "Γ": {
+    "file": "00393.json",
+    "script": "el",
+    "strokes": 1
+  },
+  "Δ": {
+    "file": "00394.json",
+    "script": "el",
+    "strokes": 2
+  },
+  "Ε": {
+    "file": "00395.json",
+    "script": "el",
+    "strokes": 1
+  },
+  "א": {
+    "file": "005d0.json",
+    "script": "he",
+    "strokes": 1
+  },
+  "ב": {
+    "file": "005d1.json",
+    "script": "he",
+    "strokes": 1
+  },
+  "ג": {
+    "file": "005d2.json",
+    "script": "he",
+    "strokes": 1
+  },
+  "ד": {
+    "file": "005d3.json",
+    "script": "he",
+    "strokes": 1
+  },
+  "ה": {
+    "file": "005d4.json",
+    "script": "he",
+    "strokes": 2
+  },
+  "ا": {
+    "file": "00627.json",
+    "script": "ar",
+    "strokes": 1
+  },
+  "ب": {
+    "file": "00628.json",
+    "script": "ar",
+    "strokes": 2
+  },
+  "ت": {
+    "file": "0062a.json",
+    "script": "ar",
+    "strokes": 3
+  },
+  "ث": {
+    "file": "0062b.json",
+    "script": "ar",
+    "strokes": 4
+  },
+  "ج": {
+    "file": "0062c.json",
+    "script": "ar",
+    "strokes": 2
+  }
+}
