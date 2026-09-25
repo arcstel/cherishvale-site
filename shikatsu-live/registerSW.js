@@ -1,0 +1,1 @@
+if('serviceWorker' in navigator) {window.addEventListener('load', () => {navigator.serviceWorker.register('/shikatsu-live/sw.js', { scope: '/shikatsu-live/' })})}
