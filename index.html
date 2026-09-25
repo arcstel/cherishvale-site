@@ -38,7 +38,7 @@
   .app{display:block;background:var(--panel);border:1px solid var(--line);border-radius:14px;
     overflow:hidden;transition:border-color .15s}
   a.app:hover{border-color:var(--blue)}
-  .app img{width:100%;display:block;border-bottom:1px solid var(--line)}
+  .app img{width:100%;aspect-ratio:3/2;object-fit:cover;object-position:top center;display:block;border-bottom:1px solid var(--line)}
   .app .body{padding:16px 18px 18px}
   .app h3{margin:0 0 6px;font-size:17px}
   .app p{margin:0;color:var(--dim);font-size:13.5px}
@@ -113,8 +113,9 @@
       <img src="assets/rooks/chat.png" alt="Rooks — self-hosted team chat, calls and screen sharing">
       <div class="body">
         <h3>Rooks</h3>
-        <p>Bring your team together — real-time chat and presence, audio and video meetings,
-           and screen sharing. Self-hosted: no accounts, no ads, no per-seat fees.</p>
+        <p>Bring your team together — channels, real-time chat with reactions and mentions,
+           file sharing, and audio/video meetings with screen sharing. Self-hosted: no accounts,
+           no ads, no per-seat fees.</p>
         <span class="tag">IN DEVELOPMENT · SELF-HOSTED</span>
       </div>
     </a>
