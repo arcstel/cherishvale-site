@@ -15,16 +15,52 @@ body {
   min-height: 100dvh;
   display: flex;
   flex-direction: column;
+}
+
+.device {
   position: relative;
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+  min-height: 100dvh;
+  overflow: hidden;
+}
+
+.device > :not(#bg) {
+  position: relative;
+  z-index: 1;
 }
 
 #bg {
-  position: fixed;
+  position: absolute;
   inset: 0;
   width: 100%;
   height: 100%;
-  z-index: -1;
+  z-index: 0;
   pointer-events: none;
+}
+
+@media (min-width: 780px) {
+  body {
+    background: #0e1116;
+    display: grid;
+    place-items: center;
+    padding: 22px;
+    min-height: 100dvh;
+  }
+  .device {
+    flex: none;
+    width: 470px;
+    height: min(920px, calc(100dvh - 44px));
+    min-height: 0;
+    border-radius: 34px;
+    border: 1px solid #2a2f36;
+    box-shadow: 0 30px 90px rgba(0, 0, 0, 0.55);
+    background: #000;
+  }
+  .device main {
+    overflow-y: auto;
+  }
 }
 
 .topbar {

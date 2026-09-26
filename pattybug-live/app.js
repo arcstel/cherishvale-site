@@ -277,17 +277,10 @@ function drawCoverImage(canvas, src, background) {
     imageCache.set(src, img);
   }
   if (!img.complete || !img.naturalWidth) return;
-  if (W > H) {
-    const h = H;
-    const w = (img.width / img.height) * h;
-    const start = (W % w) / 2 - w;
-    for (let x = start; x < W; x += w) ctx.drawImage(img, x, 0, w, h);
-  } else {
-    const scale = Math.max(W / img.width, H / img.height);
-    const w = img.width * scale;
-    const h = img.height * scale;
-    ctx.drawImage(img, (W - w) / 2, (H - h) / 2, w, h);
-  }
+  const scale = Math.max(W / img.width, H / img.height);
+  const sw = img.width * scale;
+  const sh = img.height * scale;
+  ctx.drawImage(img, (W - sw) / 2, (H - sh) / 2, sw, sh);
 }
 
 function drawBg() {

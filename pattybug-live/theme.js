@@ -9,7 +9,12 @@ export const SKINS = [
   { key: "mothers", label: "Mother's Day", primary: "#D4869C", secondary: "#8E6BAE", tertiary: "#D9A441", motif: "flowers", image: IMG("skin_mothers") },
   { key: "cats", label: "Kittens", primary: "#9C7BD6", secondary: "#6D5A9C", tertiary: "#5B8DEF", motif: "cats", image: IMG("skin_cats") },
   { key: "puppies", label: "Puppies", primary: "#4F8FEF", secondary: "#7E8FA8", tertiary: "#7EC8E3", motif: "dogs", image: IMG("skin_puppies") },
-  { key: "cheetah", label: "Cheetah", primary: "#A9741E", secondary: "#6B4A2B", tertiary: "#C2A878", motif: "cheetah", image: null },
+  { key: "cheetah", label: "Cheetah", primary: "#B07A3C", secondary: "#6B4A2B", tertiary: "#E3C48D", motif: "cheetah", image: IMG("skin_cheetah") },
+  { key: "christmas", label: "Christmas", primary: "#C0392B", secondary: "#1F5C3A", tertiary: "#C9A227", motif: "none", image: IMG("skin_christmas") },
+  { key: "newyears", label: "New Year's", primary: "#C9A227", secondary: "#1B2A5B", tertiary: "#E8C766", motif: "none", image: IMG("skin_newyear") },
+  { key: "fathers", label: "Father's Day", primary: "#33506E", secondary: "#6E4A2A", tertiary: "#C9A227", motif: "none", image: IMG("skin_fathers") },
+  { key: "patrick", label: "St. Patrick's Day", primary: "#2E8B57", secondary: "#1F6B3A", tertiary: "#D4AF37", motif: "none", image: IMG("skin_patrick") },
+  { key: "easter", label: "Easter", primary: "#E8A0BF", secondary: "#A78BC7", tertiary: "#8FCB9B", motif: "none", image: IMG("skin_easter") },
   { key: "plain", label: "Plain", primary: "#4C6FFF", secondary: "#5B6472", tertiary: "#2FA3A9", motif: "none", image: null },
 ];
 
