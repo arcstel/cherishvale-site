@@ -1,5 +1,6 @@
 import { AngleMode, REASONS, evaluate, format, slope, circle } from "./engine.js";
 import { SKINS, applyTheme } from "./theme.js";
+import { drawMotifBackground } from "./motif.js";
 
 const $ = (id) => document.getElementById(id);
 
@@ -16,16 +17,20 @@ const state = {
   result: null,
   error: null,
   justEvaluated: false,
+  inv: false,
   lastAns: 0,
   history: [],
 };
 
 function loadSettings() {
-  const skin = localStorage.getItem("pb.skin") || "ladybug";
-  const brightness = localStorage.getItem("pb.brightness") || "system";
-  $("skin").value = SKINS.some((s) => s.key === skin) ? skin : "ladybug";
-  $("brightness").value = brightness;
-  applyTheme($("skin").value, brightness);
+  const params = new URLSearchParams(location.search);
+  const querySkin = params.get("skin");
+  const queryBrightness = params.get("brightness");
+  const storedSkin = querySkin || localStorage.getItem("pb.skin") || "ladybug";
+  const storedBrightness = queryBrightness || localStorage.getItem("pb.brightness") || "system";
+  $("skin").value = SKINS.some((s) => s.key === storedSkin) ? storedSkin : "ladybug";
+  $("brightness").value = ["system", "light", "dark"].includes(storedBrightness) ? storedBrightness : "system";
+  applyTheme($("skin").value, $("brightness").value);
   try {
     state.history = JSON.parse(localStorage.getItem("pb.history") || "[]");
   } catch {
@@ -139,7 +144,7 @@ function useValue(text) {
   render();
 }
 
-const ROWS = [
+const ROWS = () => [
   [
     { label: "DEG", kind: "angle", id: "angle-key", action: toggleAngle },
     { label: "(", kind: "func", action: () => input("(") },
@@ -148,11 +153,11 @@ const ROWS = [
     { label: "e", kind: "const", action: () => input("e") },
   ],
   [
-    { label: "sin", kind: "func", action: () => input("sin(") },
-    { label: "cos", kind: "func", action: () => input("cos(") },
-    { label: "tan", kind: "func", action: () => input("tan(") },
-    { label: "ln", kind: "func", action: () => input("ln(") },
-    { label: "log", kind: "func", action: () => input("log(") },
+    { label: state.inv ? "sin⁻¹" : "sin", kind: "func", action: () => input(state.inv ? "asin(" : "sin(") },
+    { label: state.inv ? "cos⁻¹" : "cos", kind: "func", action: () => input(state.inv ? "acos(" : "cos(") },
+    { label: state.inv ? "tan⁻¹" : "tan", kind: "func", action: () => input(state.inv ? "atan(" : "tan(") },
+    { label: state.inv ? "eˣ" : "ln", kind: "func", action: () => input(state.inv ? "exp(" : "ln(") },
+    { label: state.inv ? "10ˣ" : "log", kind: "func", action: () => input(state.inv ? "10^(" : "log(") },
   ],
   [
     { label: "√", kind: "func", action: () => input("sqrt(") },
@@ -194,7 +199,7 @@ const ROWS = [
 function buildKeypad() {
   const pad = $("keypad");
   pad.innerHTML = "";
-  for (const row of ROWS) {
+  for (const row of ROWS()) {
     const rowEl = document.createElement("div");
     rowEl.className = "key-row";
     for (const key of row) {
@@ -245,6 +250,13 @@ const graph = { centerX: 0, halfWidth: 10 };
 
 function cssVar(name) {
   return getComputedStyle(document.documentElement).getPropertyValue(name).trim();
+}
+
+function drawBg() {
+  const canvas = $("bg");
+  if (!canvas) return;
+  const skin = SKINS.find((s) => s.key === $("skin").value) || SKINS[0];
+  drawMotifBackground(canvas, skin.motif, cssVar("--bg") || "#ffffff");
 }
 
 function fitY(ys) {
@@ -520,21 +532,30 @@ function setupChrome() {
   $("skin").addEventListener("change", () => {
     localStorage.setItem("pb.skin", $("skin").value);
     applyTheme($("skin").value, $("brightness").value);
+    drawBg();
     drawGraph();
     if ($("panel-tools").hidden === false) drawSlopeMini(num("x1"), num("y1"), num("x2"), num("y2"));
   });
   $("brightness").addEventListener("change", () => {
     localStorage.setItem("pb.brightness", $("brightness").value);
     applyTheme($("skin").value, $("brightness").value);
+    drawBg();
     drawGraph();
   });
   window.matchMedia("(prefers-color-scheme: dark)").addEventListener("change", () => {
     if ($("brightness").value === "system") {
       applyTheme($("skin").value, "system");
+      drawBg();
       drawGraph();
     }
   });
   $("history-open").addEventListener("click", openHistory);
+  $("inv").addEventListener("click", () => {
+    state.inv = !state.inv;
+    $("inv").classList.toggle("active", state.inv);
+    buildKeypad();
+    render();
+  });
   $("history-close").addEventListener("click", closeHistory);
   $("history-clear").addEventListener("click", () => {
     state.history = [];
@@ -595,5 +616,15 @@ setupGraph();
 setupTools();
 setupKeyboard();
 render();
+drawBg();
+if (new URLSearchParams(location.search).get("inv") === "1") {
+  state.inv = true;
+  $("inv").classList.add("active");
+  buildKeypad();
+  render();
+}
 if (document.fonts && document.fonts.ready) document.fonts.ready.then(drawGraph);
-window.addEventListener("resize", drawGraph);
+window.addEventListener("resize", () => {
+  drawBg();
+  drawGraph();
+});
