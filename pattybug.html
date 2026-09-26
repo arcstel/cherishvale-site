@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<link rel="icon" href="/favicon.ico" sizes="any">
+<link rel="icon" type="image/png" href="/assets/logo/favicon-64.png">
+<link rel="apple-touch-icon" href="/assets/logo/apple-touch-icon.png">
+
+<title>PattyBug — a ladybug-themed scientific calculator — by Cherishvale</title>
+<meta name="description" content="PattyBug is an offline scientific calculator for Android: a full expression engine, live results, trig, logs, powers, factorials and percent — with a ladybug theme. No ads, no account, no network access.">
+<meta property="og:title" content="PattyBug — a ladybug-themed scientific calculator — by Cherishvale">
+<meta property="og:description" content="A scientific calculator that keeps everything on your device. Built offline, no ads, no account.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://cherishvale.com/pattybug">
+<meta property="og:image" content="https://cherishvale.com/assets/pattybug/card.jpg">
+<link rel="canonical" href="https://cherishvale.com/pattybug">
+<link rel="stylesheet" href="/assets/site.css">
+</head>
+<body>
+<nav>
+  <div class="wrap" style="display:flex;align-items:center;gap:16px;width:100%">
+    <a class="brand" href="/"><img class="brand-mark" src="/assets/logo/mark-transparent.png" alt=""><img class="brand-word" src="/assets/logo/wordmark-transparent.png" alt="Cherishvale"></a>
+    <span class="spacer"></span>
+    <a href="/#apps">Apps</a>
+    <a href="/privacy">Privacy</a>
+  </div>
+</nav>
+
+<header class="wrap">
+  <img class="mark" src="/assets/pattybug/icon-512.png" alt="PattyBug, a ladybug-themed calculator">
+  <h1>PattyBug</h1>
+  <div class="sub">A scientific calculator with a ladybug theme. Type a whole expression,
+    watch the answer update as you go, and keep everything on your own device.</div>
+  <div class="badges">
+    <span class="badge">No ads</span>
+    <span class="badge">No account</span>
+    <span class="badge">Works offline</span>
+    <span class="badge">Scientific</span>
+  </div>
+  <p style="margin-top:22px">
+    <span class="badge" style="border-color:var(--line-strong);color:var(--teal)">In development · Android</span>
+  </p>
+</header>
+
+<div class="wrap" style="padding-top:6px">
+  <div class="shots">
+    <img src="assets/pattybug/shot-1.png" alt="PattyBug in a light theme, showing 250+15% = 287.5">
+    <img src="assets/pattybug/shot-2.png" alt="PattyBug in a dark theme, showing 12×8+5! = 216">
+    <img src="assets/pattybug/shot-3.png" alt="PattyBug history, tap a result to reuse it">
+  </div>
+</div>
+
+<div class="wrap">
+  <h2>What it does</h2>
+  <div class="grid">
+    <div class="card">
+      <b>A real expression engine</b>
+      <p>Type the whole sum the way you would write it — brackets, precedence and all.
+         Get it right the first time instead of chaining one operation at a time.</p>
+    </div>
+    <div class="card">
+      <b>Live results</b>
+      <p>The answer updates as you type, so you can see a mistake before you commit to it.</p>
+    </div>
+    <div class="card">
+      <b>Scientific functions</b>
+      <p>sin, cos, tan and their inverses, sinh/cosh/tanh, ln, log, log₂, square and cube
+         roots, powers, absolute value, floor, ceiling and rounding.</p>
+    </div>
+    <div class="card">
+      <b>Degrees or radians</b>
+      <p>One tap switches the angle mode, and the keypad shows which one is active.</p>
+    </div>
+    <div class="card">
+      <b>Percent that behaves</b>
+      <p>250 + 15% is 287.5, 200 × 10% is 20, and a lone 50% is 0.5 — the way a pocket
+         calculator has always worked.</p>
+    </div>
+    <div class="card">
+      <b>Constants, factorials, Ans</b>
+      <p>π and e, factorials, and an <b>Ans</b> key that reuses the last result in the
+         next expression.</p>
+    </div>
+    <div class="card">
+      <b>History you can reuse</b>
+      <p>Every calculation is saved on the device. Tap a past result to drop it straight
+         back into the display.</p>
+    </div>
+    <div class="card">
+      <b>Light, dark or automatic</b>
+      <p>A warm ladybug palette that follows your phone or sticks to the setting you pick.</p>
+    </div>
+    <div class="card">
+      <b>No ads, no account, no network</b>
+      <p>There is no sign-up, nothing plays before a result, and the app never needs a
+         connection. It works with the radio off.</p>
+    </div>
+  </div>
+
+  <h2>Why a ladybug?</h2>
+  <p class="lead">PattyBug was built as a gift for Patty, who loves ladybugs — so the
+     buttons are red like an elytra, the operators carry the spots, and the whole thing
+     is named for her. Underneath is a calculator serious enough for coursework.</p>
+
+  <h2>Available in</h2>
+  <ul class="plain">
+    <li>English and Spanish</li>
+    <li>Android 8.0 and newer</li>
+  </ul>
+
+  <div class="studio">
+    <b style="color:var(--teal)">On privacy</b>
+    <p>PattyBug does the maths on your device. Expressions, results and history are
+      stored locally, there are no analytics or advertising libraries, and there is no
+      network permission at all — the app cannot send your data anywhere, because it
+      has no way to.</p>
+  </div>
+</div>
+
+<footer class="wrap">
+  <span>© <span id="y"></span> Cherishvale. All rights reserved.</span>
+  <span class="spacer"></span>
+  <a href="/doseright">DoseRight</a>
+  <a href="mailto:hello@cherishvale.com">Contact</a>
+  <a href="/privacy">Privacy Policy</a>
+</footer>
+<script>document.getElementById("y").textContent=new Date().getFullYear();</script>
+</body>
+</html>
