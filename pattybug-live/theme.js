@@ -1,14 +1,16 @@
+const IMG = (n) => "/pattybug-live/assets/skins/" + n + ".jpg";
+
 export const SKINS = [
-  { key: "ladybug", label: "Ladybug", primary: "#D7263D", secondary: "#1B1B1E", tertiary: "#3E9B4F", motif: "ladybugs" },
-  { key: "pink", label: "Pink", primary: "#EC6A9C", secondary: "#B23A72", tertiary: "#FFC1D9", motif: "sparkles" },
-  { key: "halloween", label: "Halloween", primary: "#F26A1B", secondary: "#6A2C91", tertiary: "#7CB342", motif: "pumpkins" },
-  { key: "valentine", label: "Valentine's Day", primary: "#E5487E", secondary: "#B3123C", tertiary: "#D9A441", motif: "hearts" },
-  { key: "independence", label: "Independence Day", primary: "#B22234", secondary: "#3C3B6E", tertiary: "#C9A227", motif: "stars" },
-  { key: "mothers", label: "Mother's Day", primary: "#D4869C", secondary: "#8E6BAE", tertiary: "#D9A441", motif: "flowers" },
-  { key: "cats", label: "Kittens", primary: "#9C7BD6", secondary: "#6D5A9C", tertiary: "#5B8DEF", motif: "cats" },
-  { key: "puppies", label: "Puppies", primary: "#4F8FEF", secondary: "#7E8FA8", tertiary: "#7EC8E3", motif: "dogs" },
-  { key: "cheetah", label: "Cheetah", primary: "#A9741E", secondary: "#6B4A2B", tertiary: "#C2A878", motif: "cheetah" },
-  { key: "plain", label: "Plain", primary: "#4C6FFF", secondary: "#5B6472", tertiary: "#2FA3A9", motif: "none" },
+  { key: "ladybug", label: "Ladybug", primary: "#D7263D", secondary: "#1B1B1E", tertiary: "#3E9B4F", motif: "ladybugs", image: IMG("skin_ladybug") },
+  { key: "pink", label: "Pink", primary: "#EC6A9C", secondary: "#B23A72", tertiary: "#FFC1D9", motif: "sparkles", image: IMG("skin_pink") },
+  { key: "halloween", label: "Halloween", primary: "#F26A1B", secondary: "#6A2C91", tertiary: "#7CB342", motif: "pumpkins", image: IMG("skin_halloween") },
+  { key: "valentine", label: "Valentine's Day", primary: "#E5487E", secondary: "#B3123C", tertiary: "#D9A441", motif: "hearts", image: IMG("skin_valentine") },
+  { key: "independence", label: "Independence Day", primary: "#B22234", secondary: "#3C3B6E", tertiary: "#C9A227", motif: "stars", image: IMG("skin_independence") },
+  { key: "mothers", label: "Mother's Day", primary: "#D4869C", secondary: "#8E6BAE", tertiary: "#D9A441", motif: "flowers", image: IMG("skin_mothers") },
+  { key: "cats", label: "Kittens", primary: "#9C7BD6", secondary: "#6D5A9C", tertiary: "#5B8DEF", motif: "cats", image: IMG("skin_cats") },
+  { key: "puppies", label: "Puppies", primary: "#4F8FEF", secondary: "#7E8FA8", tertiary: "#7EC8E3", motif: "dogs", image: IMG("skin_puppies") },
+  { key: "cheetah", label: "Cheetah", primary: "#A9741E", secondary: "#6B4A2B", tertiary: "#C2A878", motif: "cheetah", image: null },
+  { key: "plain", label: "Plain", primary: "#4C6FFF", secondary: "#5B6472", tertiary: "#2FA3A9", motif: "none", image: null },
 ];
 
 const WHITE = [255, 255, 255];

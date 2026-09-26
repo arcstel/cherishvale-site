@@ -252,11 +252,48 @@ function cssVar(name) {
   return getComputedStyle(document.documentElement).getPropertyValue(name).trim();
 }
 
+const imageCache = new Map();
+let currentBgSrc = null;
+
+function drawCoverImage(canvas, src, background) {
+  const dpr = window.devicePixelRatio || 1;
+  const W = canvas.clientWidth;
+  const H = canvas.clientHeight;
+  canvas.width = Math.max(1, Math.round(W * dpr));
+  canvas.height = Math.max(1, Math.round(H * dpr));
+  const ctx = canvas.getContext("2d");
+  ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+  ctx.clearRect(0, 0, W, H);
+  ctx.fillStyle = background;
+  ctx.fillRect(0, 0, W, H);
+
+  let img = imageCache.get(src);
+  if (!img) {
+    img = new Image();
+    img.onload = () => {
+      if (currentBgSrc === src) drawCoverImage(canvas, src, background);
+    };
+    img.src = src;
+    imageCache.set(src, img);
+  }
+  if (!img.complete || !img.naturalWidth) return;
+  const scale = Math.max(W / img.width, H / img.height);
+  const w = img.width * scale;
+  const h = img.height * scale;
+  ctx.drawImage(img, (W - w) / 2, (H - h) / 2, w, h);
+}
+
 function drawBg() {
   const canvas = $("bg");
   if (!canvas) return;
   const skin = SKINS.find((s) => s.key === $("skin").value) || SKINS[0];
-  drawMotifBackground(canvas, skin.motif, cssVar("--bg") || "#ffffff");
+  const background = cssVar("--bg") || "#ffffff";
+  currentBgSrc = skin.image || null;
+  if (skin.image) {
+    drawCoverImage(canvas, skin.image, background);
+  } else {
+    drawMotifBackground(canvas, skin.motif, background);
+  }
 }
 
 function fitY(ys) {
