@@ -232,22 +232,25 @@ function dogFace(ctx, x, y, r) {
 }
 
 function cheetahField(ctx, W, H) {
-  ctx.fillStyle = "#D9B679";
+  ctx.fillStyle = "#E3C48D";
   ctx.fillRect(0, 0, W, H);
-  const rand = rng(99);
-  const spot = "rgba(74,48,22,0.92)";
-  const count = Math.max(40, Math.min(700, Math.round((W * H) / (120 * 120))));
-  for (let i = 0; i < count; i++) {
-    const x = rand() * W;
-    const y = rand() * H;
-    const r = Math.min(W, H) * (0.008 + rand() * 0.014);
-    const blobs = 2 + Math.floor(rand() * 3);
-    ctx.fillStyle = spot;
-    for (let b = 0; b < blobs; b++) {
-      const ox = (rand() - 0.5) * r * 2.2;
-      const oy = (rand() - 0.5) * r * 2.2;
+  const rand = rng(7);
+  const spot = "#5A3A1B";
+  const min = Math.min(W, H);
+  const step = min * 0.15;
+  const cols = Math.max(4, Math.min(20, Math.round(W / step)));
+  const rows = Math.max(6, Math.min(40, Math.round(H / step)));
+  const cellW = W / cols;
+  const cellH = H / rows;
+  ctx.fillStyle = spot;
+  for (let row = 0; row < rows; row++) {
+    for (let col = 0; col < cols; col++) {
+      const cx = (col + 0.5 + (rand() - 0.5) * 0.5) * cellW;
+      const cy = (row + 0.5 + (rand() - 0.5) * 0.5) * cellH;
+      const r = min * (0.017 + rand() * 0.011);
+      const squash = 0.72 + rand() * 0.2;
       ctx.beginPath();
-      ctx.ellipse(x + ox, y + oy, r, r * 0.75, 0, 0, Math.PI * 2);
+      ctx.ellipse(cx, cy, r, r * squash, 0, 0, Math.PI * 2);
       ctx.fill();
     }
   }
