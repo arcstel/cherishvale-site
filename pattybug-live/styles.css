@@ -206,34 +206,34 @@ main {
 }
 
 .key-digit {
-  background: var(--surface, #fff);
+  background: color-mix(in srgb, var(--surface, #fff) 82%, transparent);
   color: var(--on-surface, #241c1e);
 }
 
 .key-op {
-  background: var(--primary-container, #ffd9dd);
+  background: color-mix(in srgb, var(--primary-container, #ffd9dd) 82%, transparent);
   color: var(--on-primary-container, #40000a);
 }
 
 .key-func,
 .key-const,
 .key-angle {
-  background: var(--secondary-container, #eee);
+  background: color-mix(in srgb, var(--secondary-container, #eee) 82%, transparent);
   color: var(--on-secondary-container, #222);
 }
 
 .key-clear {
-  background: var(--tertiary-container, #c4ebc9);
+  background: color-mix(in srgb, var(--tertiary-container, #c4ebc9) 82%, transparent);
   color: var(--on-tertiary-container, #033);
 }
 
 .key-back {
-  background: var(--secondary-container, #eee);
+  background: color-mix(in srgb, var(--secondary-container, #eee) 82%, transparent);
   color: var(--on-secondary-container, #222);
 }
 
 .key-equals {
-  background: var(--primary, #d7263d);
+  background: color-mix(in srgb, var(--primary, #d7263d) 88%, transparent);
   color: var(--on-primary, #fff);
   font-weight: 700;
 }
