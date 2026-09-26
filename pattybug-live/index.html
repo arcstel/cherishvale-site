@@ -1,0 +1,96 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>PattyBug — live demo — by Cherishvale</title>
+<meta name="description" content="Try PattyBug in your browser: a ladybug-themed scientific calculator with graphing, a slope finder, circle tools and six themes.">
+<meta name="theme-color" content="#D7263D">
+<link rel="icon" type="image/png" href="/assets/pattybug/icon-512.png">
+<link rel="stylesheet" href="/pattybug-live/styles.css">
+</head>
+<body>
+<header class="topbar">
+  <a class="back" href="/pattybug">← PattyBug</a>
+  <div class="settings">
+    <label>Theme <select id="skin"></select></label>
+    <label>Brightness
+      <select id="brightness">
+        <option value="system">Automatic</option>
+        <option value="light">Light</option>
+        <option value="dark">Dark</option>
+      </select>
+    </label>
+  </div>
+</header>
+
+<nav class="tabs">
+  <button class="tab active" type="button" data-tab="calc">Calc</button>
+  <button class="tab" type="button" data-tab="graph">Graph</button>
+  <button class="tab" type="button" data-tab="tools">Tools</button>
+</nav>
+
+<main>
+  <section class="panel" id="panel-calc" data-panel="calc">
+    <div class="display">
+      <div class="display-expr" id="expr"></div>
+      <div class="display-value" id="value">0</div>
+    </div>
+    <div class="display-actions">
+      <button id="copy" type="button">Copy</button>
+      <button id="history-open" type="button">History</button>
+    </div>
+    <div class="keypad" id="keypad"></div>
+  </section>
+
+  <section class="panel" id="panel-graph" data-panel="graph" hidden>
+    <label class="field">f(x) = <input id="fx" value="x^2 - 3" spellcheck="false" autocomplete="off"></label>
+    <div class="graph-controls">
+      <span id="graph-range">x: -10 … 10</span>
+      <button id="graph-out" type="button">−</button>
+      <button id="graph-in" type="button">+</button>
+      <button id="graph-reset" type="button">Reset</button>
+    </div>
+    <canvas id="graph"></canvas>
+    <p class="muted small">Drag the graph to pan · use + / − to zoom</p>
+  </section>
+
+  <section class="panel" id="panel-tools" data-panel="tools" hidden>
+    <div class="card">
+      <h2>Slope</h2>
+      <p class="muted small">Slope, angle and line through two points</p>
+      <div class="grid4">
+        <label>x₁<input id="x1" value="0" inputmode="decimal"></label>
+        <label>y₁<input id="y1" value="0" inputmode="decimal"></label>
+        <label>x₂<input id="x2" value="2" inputmode="decimal"></label>
+        <label>y₂<input id="y2" value="4" inputmode="decimal"></label>
+      </div>
+      <div id="slope-result"></div>
+      <canvas id="slope-graph"></canvas>
+    </div>
+    <div class="card">
+      <h2>Circle &amp; &pi;</h2>
+      <p class="muted small">Circumference and area from a radius</p>
+      <label class="field">Radius <input id="radius" value="1" inputmode="decimal"></label>
+      <div id="circle-result"></div>
+    </div>
+  </section>
+</main>
+
+<footer class="byline">PattyBug — live demo · by Cherishvale</footer>
+
+<div id="history" hidden>
+  <div class="history-sheet">
+    <div class="history-head">
+      <h2>History</h2>
+      <button id="history-clear" type="button">Clear</button>
+      <button id="history-close" type="button">Close</button>
+    </div>
+    <p class="muted small">Tap a result to reuse it.</p>
+    <div id="history-list"></div>
+  </div>
+</div>
+
+<script type="module" src="/pattybug-live/app.js"></script>
+</body>
+</html>
