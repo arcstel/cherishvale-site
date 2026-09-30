@@ -261,43 +261,69 @@ main {
 .orb {
   position: relative;
   z-index: 3;
-  width: 36%;
-  height: 56%;
-  border-radius: 4px 4px 7px 7px;
+  width: 31%;
+  height: 60%;
+  border-radius: 46% 46% 18% 18% / 26% 26% 8% 8%;
   box-shadow:
-    0 5px 9px -3px rgba(0, 0, 0, 0.6),
+    0 6px 11px -4px rgba(0, 0, 0, 0.62),
     0 1px 2px rgba(0, 0, 0, 0.45),
-    inset 0 -7px 11px rgba(0, 0, 0, 0.38),
-    inset 4px 0 7px rgba(255, 255, 255, 0.3),
-    inset -3px 0 7px rgba(0, 0, 0, 0.3);
-  background-image: linear-gradient(
-    to bottom,
-    rgba(255, 255, 255, 0) 0 34%,
-    rgba(255, 255, 255, 0.72) 34% 56%,
-    rgba(255, 255, 255, 0) 56% 100%
-  );
-  z-index: 2;
+    inset 0 -4px 7px rgba(0, 0, 0, 0.32),
+    inset 0 3px 5px rgba(255, 255, 255, 0.22);
+  background-image:
+    linear-gradient(
+      90deg,
+      rgba(255, 255, 255, 0.4) 0%,
+      rgba(255, 255, 255, 0.12) 16%,
+      rgba(255, 255, 255, 0) 46%,
+      rgba(0, 0, 0, 0.16) 76%,
+      rgba(0, 0, 0, 0.36) 100%
+    ),
+    linear-gradient(
+      180deg,
+      rgba(0, 0, 0, 0) 0 84%,
+      rgba(255, 255, 255, 0.32) 84% 86.5%,
+      rgba(0, 0, 0, 0.34) 86.5% 100%
+    ),
+    linear-gradient(
+      180deg,
+      rgba(0, 0, 0, 0) 0 37%,
+      rgba(255, 255, 255, 0.88) 37% 53%,
+      rgba(0, 0, 0, 0.3) 53% 56%,
+      rgba(255, 255, 255, 0.55) 56% 65%,
+      rgba(0, 0, 0, 0) 65% 100%
+    );
 }
 .orb::before {
   content: "";
   position: absolute;
-  top: -24%;
-  left: 26%;
-  width: 48%;
+  top: -22%;
+  left: 31%;
+  width: 38%;
   height: 26%;
-  border-radius: 3px 3px 1px 1px;
-  background: #2b2622;
-  box-shadow: 0 -7px 0 -4px #2b2622;
+  border-radius: 3px 3px 2px 2px;
+  background:
+    radial-gradient(circle at 50% 36%, #100e17 0 26%, transparent 28%),
+    linear-gradient(90deg, #4b4356 0%, #766d84 34%, #382f40 100%);
+  box-shadow:
+    0 -5px 0 -2px #2a2433,
+    0 2px 3px rgba(0, 0, 0, 0.45);
 }
 .orb::after {
   content: "";
   position: absolute;
   left: 11%;
-  top: 7%;
-  width: 15%;
-  height: 84%;
-  border-radius: 3px;
-  background: rgba(255, 255, 255, 0.5);
+  top: 9%;
+  width: 14%;
+  height: 82%;
+  border-radius: 999px;
+  background: linear-gradient(
+    180deg,
+    rgba(255, 255, 255, 0) 0%,
+    rgba(255, 255, 255, 0.72) 24%,
+    rgba(255, 255, 255, 0.72) 76%,
+    rgba(255, 255, 255, 0) 100%
+  );
+  pointer-events: none;
 }
 .orb.pop { animation: pop 0.42s cubic-bezier(0.2, 0.9, 0.3, 1.4); }
 @media (hover: hover) and (prefers-reduced-motion: no-preference) {

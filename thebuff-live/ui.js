@@ -807,12 +807,13 @@
 
   function applyMural() {
     if (!level || !cellEls.length) return;
-    const placed = placedCount() === n;
-    const show = won || (save.diff && placed);
     for (let i = 0; i < n * n; i++) {
       const el = cellEls[i];
       if (!el) continue;
-      el.classList.toggle("reveal", !!(show && pattern && pattern[i] === level.target[i]));
+      el.classList.toggle(
+        "reveal",
+        !!pattern && pattern[i] === level.target[i]
+      );
     }
   }
 
