@@ -1,0 +1,32 @@
+{
+  "name": "The Buff — graffiti order puzzle",
+  "short_name": "The Buff",
+  "description": "Tag one spot per region, layer your paint in the right order, match the piece. Daily puzzle included.",
+  "start_url": "./index.html",
+  "scope": "./",
+  "display": "standalone",
+  "orientation": "portrait",
+  "background_color": "#15111d",
+  "theme_color": "#15111d",
+  "categories": ["games", "puzzle"],
+  "icons": [
+    {
+      "src": "icon-192.png",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "any"
+    },
+    {
+      "src": "icon-512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any"
+    },
+    {
+      "src": "icon-maskable-512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "maskable"
+    }
+  ]
+}
