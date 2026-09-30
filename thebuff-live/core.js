@@ -268,6 +268,7 @@
           region: region.slice(),
           target: target.slice(),
           solution: sols[0],
+          mural: muralFor(seed),
           unique: true,
         };
       }
@@ -277,6 +278,7 @@
           region: region.slice(),
           target: target.slice(),
           solution: placement,
+          mural: muralFor(seed),
           unique: false,
         };
         bestCount = sols.length;
@@ -364,6 +366,12 @@
 
   function parFor(n) {
     return n;
+  }
+
+  const MURAL_COUNT = 6;
+
+  function muralFor(seed) {
+    return ((seed >>> 0) % MURAL_COUNT) | 0;
   }
 
   function moveBudget(n) {
@@ -570,6 +578,8 @@
     HINT_COST,
     parFor,
     moveBudget,
+    MURAL_COUNT,
+    muralFor,
     timeBudget,
     scoreLevel,
     formatTime,
