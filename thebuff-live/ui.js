@@ -689,10 +689,6 @@
 
   function renderBoard() {
     els.board.style.setProperty("--n", n);
-    els.board.style.setProperty(
-      "--mural",
-      'url("mural-' + ((level && level.mural) || 0) + '.png")'
-    );
     els.board.innerHTML = "";
     cellEls = [];
     for (let r = 0; r < n; r++) {
@@ -706,8 +702,6 @@
         d.dataset.i = i;
         d.setAttribute("role", "gridcell");
         d.tabIndex = -1;
-        d.style.setProperty("--mx", n === 1 ? "0%" : (c * 100) / (n - 1) + "%");
-        d.style.setProperty("--my", n === 1 ? "0%" : (r * 100) / (n - 1) + "%");
         row.appendChild(d);
         cellEls.push(d);
       }
@@ -802,18 +796,6 @@
       }, 750);
     }
     checkWin();
-    applyMural();
-  }
-
-  function applyMural() {
-    if (!level || !cellEls.length) return;
-    const placed = placedCount() === n;
-    const show = won || (save.diff && placed);
-    for (let i = 0; i < n * n; i++) {
-      const el = cellEls[i];
-      if (!el) continue;
-      el.classList.toggle("reveal", !!(show && pattern && pattern[i] === level.target[i]));
-    }
   }
 
   function renderOrbs(popRid) {
@@ -1305,13 +1287,10 @@
       els.winTitle.textContent = "Level " + num + " complete!";
       els.nextBtn.textContent = "Next level →";
     }
-    setTimeout(() => {
-      if (!won) return;
-      els.winOverlay.classList.remove("hidden");
-      rememberFocus();
-      focusOverlay(els.winOverlay);
-      burstConfetti();
-    }, 700);
+    els.winOverlay.classList.remove("hidden");
+    rememberFocus();
+    focusOverlay(els.winOverlay);
+    burstConfetti();
     sound("win");
     buzz([30, 50, 30, 50, 60]);
     persist();
@@ -1589,7 +1568,6 @@
     save.diff = !save.diff;
     persist();
     renderDots();
-    applyMural();
     updateButtons();
   });
   els.patBtn.addEventListener("click", () => {
