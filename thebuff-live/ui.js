@@ -694,14 +694,16 @@
 
   function renderBoard() {
     els.board.style.setProperty("--n", n);
-    els.board.style.setProperty("--mural", 'url("murals.jpg")');
+    const slot = (level && level.slot) || 0;
+    const tCol = (slot % ATLAS_TILES) % ATLAS_COLS;
+    const tRow = Math.floor((slot % ATLAS_TILES) / ATLAS_COLS);
     const across = ATLAS_COLS * n;
     const down = ATLAS_ROWS * n;
+    els.board.style.setProperty(
+      "--mural", 'url("murals-' + Math.floor(slot / ATLAS_TILES) + '.jpg")'
+    );
     els.board.style.setProperty("--mcols", across);
     els.board.style.setProperty("--mrows", down);
-    const slot = (level && level.slot) || 0;
-    const tCol = slot % ATLAS_COLS;
-    const tRow = Math.floor(slot / ATLAS_COLS);
     els.board.innerHTML = "";
     cellEls = [];
     for (let r = 0; r < n; r++) {
@@ -814,8 +816,9 @@
     applyMural();
   }
 
-  const ATLAS_COLS = 7;
-  const ATLAS_ROWS = 7;
+  const ATLAS_COLS = 4;
+  const ATLAS_ROWS = 3;
+  const ATLAS_TILES = 12;
   const CREDITS = [{"i":1,"t":"Blown Away","o":"Woman with a Parasol","a":"Claude Monet","y":1875},{"i":2,"t":"Sweet Enough","o":"L'Absinthe","a":"Edgar Degas","y":1876},{"i":3,"t":"Big Blue Boots","o":"The Blue Boy","a":"Thomas Gainsborough","y":1770},{"i":4,"t":"Liberty Leading the Party","o":"Liberty Leading the People","a":"Eugene Delacroix","y":1830},{"i":5,"t":"The Big Carrot","o":"The Gleaners","a":"Jean-Francois Millet","y":1857},{"i":6,"t":"The Last Food Fight","o":"The Last Supper","a":"Leonardo da Vinci","y":1498},{"i":8,"t":"Tongue Tide","o":"The Great Wave off Kanagawa","a":"Katsushika Hokusai","y":1831},{"i":9,"t":"Picnic Panic","o":"Luncheon on the Grass","a":"Edouard Manet","y":1863},{"i":10,"t":"Disco Earring","o":"Girl with a Pearl Earring","a":"Johannes Vermeer","y":1665},{"i":11,"t":"Shoe Fly","o":"The Swing","a":"Jean-Honore Fragonard","y":1767},{"i":12,"t":"Hobby Horse","o":"Napoleon Crossing the Alps","a":"Jacques-Louis David","y":1801},{"i":13,"t":"Frog Splash","o":"Water Lilies","a":"Claude Monet","y":1915},{"i":14,"t":"Double Trouble","o":"The Ambassadors","a":"Hans Holbein the Younger","y":1533},{"i":15,"t":"Lady of the Quack","o":"The Lady of Shalott","a":"John William Waterhouse","y":1888},{"i":16,"t":"The Spillmaid","o":"The Milkmaid","a":"Johannes Vermeer","y":1658},{"i":17,"t":"Pillow Fight","o":"The Bedroom","a":"Vincent van Gogh","y":1888},{"i":18,"t":"Sunny Side Up","o":"Sunflowers","a":"Vincent van Gogh","y":1888},{"i":19,"t":"Sunday Funday","o":"A Sunday Afternoon on the Island of La Grande Jatte","a":"Georges Seurat","y":1885},{"i":20,"t":"Moulin Groove","o":"Bal du moulin de la Galette","a":"Pierre-Auguste Renoir","y":1876},{"i":21,"t":"Ice Slide","o":"Hunters in the Snow","a":"Pieter Bruegel the Elder","y":1565},{"i":22,"t":"Bath Time","o":"The Death of Marat","a":"Jacques-Louis David","y":1793},{"i":23,"t":"Tower of Bagels","o":"The Tower of Babel","a":"Pieter Bruegel the Elder","y":1563},{"i":24,"t":"Wind Section","o":"The Flute Concert of Frederick the Great at Sanssouci","a":"Adolph Menzel","y":1852},{"i":25,"t":"Pop Goes the Lisa","o":"Mona Lisa","a":"Leonardo da Vinci","y":1517},{"i":26,"t":"Tug of War","o":"The Fighting Temeraire","a":"J. M. W. Turner","y":1839},{"i":27,"t":"Party Raft","o":"The Raft of the Medusa","a":"Theodore Gericault","y":1819},{"i":28,"t":"Pool Party","o":"Ophelia","a":"John Everett Millais","y":1852},{"i":29,"t":"Peel Scream","o":"The Scream","a":"Edvard Munch","y":1893},{"i":30,"t":"Snooze Button","o":"Impression, Sunrise","a":"Claude Monet","y":1872},{"i":31,"t":"Arnolfini's Dog","o":"The Arnolfini Portrait","a":"Jan van Eyck","y":1434},{"i":32,"t":"Las Perros","o":"Las Meninas","a":"Diego Velazquez","y":1656},{"i":33,"t":"Mother's Day Off","o":"Arrangement in Grey and Black No. 1","a":"James Abbott McNeill Whistler","y":1871},{"i":34,"t":"Roasted","o":"American Gothic","a":"Grant Wood","y":1930},{"i":35,"t":"The Group Chat","o":"The School of Athens","a":"Raphael","y":1511},{"i":36,"t":"Tiger Kiss","o":"The Kiss","a":"Gustav Klimt","y":1908},{"i":37,"t":"Ear Muffs","o":"Self-Portrait with Bandaged Ear","a":"Vincent van Gogh","y":1889},{"i":38,"t":"So Close","o":"The Creation of Adam","a":"Michelangelo","y":1512},{"i":39,"t":"The Cat Players","o":"The Card Players","a":"Paul Cezanne","y":1894},{"i":40,"t":"Twinkle Twinkle","o":"The Starry Night","a":"Vincent van Gogh","y":1889},{"i":41,"t":"Beach Day","o":"The Birth of Venus","a":"Sandro Botticelli","y":1485},{"i":42,"t":"Confetti Cannon","o":"The Third of May 1808","a":"Francisco Goya","y":1814},{"i":43,"t":"Party Watch","o":"The Night Watch","a":"Rembrandt van Rijn","y":1642},{"i":44,"t":"Pancake Terrace","o":"Cafe Terrace at Night","a":"Vincent van Gogh","y":1888},{"i":46,"t":"Gone Apples","o":"Still Life with a Basket of Apples","a":"Paul Cezanne","y":1893},{"i":47,"t":"Hay There","o":"The Hay Wain","a":"John Constable","y":1821}];
 
   function applyMural() {
@@ -1276,12 +1279,16 @@
       tutCleanup();
     }
     const slot = (level && level.slot) || 0;
+    const local = slot % ATLAS_TILES;
     const art = CREDITS[slot];
     els.winThumb.style.setProperty(
-      "--tx", ((slot % ATLAS_COLS) * 100) / (ATLAS_COLS - 1) + "%"
+      "--mural", 'url("murals-' + Math.floor(slot / ATLAS_TILES) + '.jpg")'
     );
     els.winThumb.style.setProperty(
-      "--ty", (Math.floor(slot / ATLAS_COLS) * 100) / (ATLAS_ROWS - 1) + "%"
+      "--tx", ((local % ATLAS_COLS) * 100) / (ATLAS_COLS - 1) + "%"
+    );
+    els.winThumb.style.setProperty(
+      "--ty", (Math.floor(local / ATLAS_COLS) * 100) / (ATLAS_ROWS - 1) + "%"
     );
     els.creditTitle.textContent = art ? art.t : "";
     els.creditAfter.textContent = art
