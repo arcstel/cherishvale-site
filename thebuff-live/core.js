@@ -268,7 +268,7 @@
           region: region.slice(),
           target: target.slice(),
           solution: sols[0],
-          slot: muralFor(seed),
+          mural: muralFor(seed),
           unique: true,
         };
       }
@@ -278,7 +278,7 @@
           region: region.slice(),
           target: target.slice(),
           solution: placement,
-          slot: muralFor(seed),
+          mural: muralFor(seed),
           unique: false,
         };
         bestCount = sols.length;
@@ -368,7 +368,7 @@
     return n;
   }
 
-  const MURAL_COUNT = 45;
+  const MURAL_COUNT = 6;
 
   function muralFor(seed) {
     return ((seed >>> 0) % MURAL_COUNT) | 0;
