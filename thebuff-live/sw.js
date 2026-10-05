@@ -1,4 +1,4 @@
-const CACHE = "thebuff-v3";
+const CACHE = "thebuff-v5";
 const SHELL = [
   "./",
   "index.html",
@@ -10,12 +10,10 @@ const SHELL = [
   "icon-maskable-512.png",
   "music.ogg",
   "wall.png",
-  "mural-0.png",
-  "mural-1.png",
-  "mural-2.png",
-  "mural-3.png",
-  "mural-4.png",
-  "mural-5.png",
+  "murals-0.jpg",
+  "murals-1.jpg",
+  "murals-2.jpg",
+  "murals-3.jpg",
 ];
 
 self.addEventListener("install", (event) => {
