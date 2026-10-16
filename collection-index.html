@@ -1,0 +1,281 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="robots" content="noindex,follow,noarchive,nosnippet,noimageindex">
+<meta name="googlebot" content="noindex,follow,noarchive,nosnippet,noimageindex">
+<meta name="referrer" content="no-referrer">
+<title>Collection Index — Family Antiques Inventory</title>
+<link rel="stylesheet" href="/assets/site.css">
+<style>
+  body { background-attachment: fixed; }
+  .private-nav { min-height:58px; border-bottom:1px solid var(--line); }
+  .private-nav .wrap { display:flex; align-items:center; min-height:58px; }
+  .private-main { max-width:1180px; margin:auto; padding:42px 22px 64px; }
+  .private-hero { padding:28px; border:1px solid var(--line); border-radius:var(--radius); background:rgba(28,30,34,.94); }
+  .private-hero h1 { margin:0 0 8px; font-size:clamp(28px,5vw,42px); }
+  .private-hero h2 { margin:26px 0 8px; font-size:22px; }
+  .private-hero h3 { margin:18px 0 5px; font-size:15px; color:var(--teal); text-transform:uppercase; letter-spacing:.06em; }
+  .private-hero p { max-width:820px; color:var(--dim); margin:8px 0; }
+  .private-warning { margin-top:18px; padding:12px 14px; border-left:3px solid var(--gold); background:var(--panel-2); color:var(--ink)!important; }
+  .tag-private { display:inline-block; margin:0 6px 5px 0; padding:3px 9px; border:1px solid var(--line-strong); border-radius:99px; color:var(--dim); font-size:12px; }
+  .tag-private a { color:var(--teal); }
+
+  .stat-row { display:grid; grid-template-columns:repeat(auto-fit,minmax(150px,1fr)); gap:12px; margin:20px 0 4px; }
+  .stat { padding:14px 16px; background:var(--panel-2); border-radius:var(--radius); }
+  .stat b { display:block; font-size:26px; color:var(--gold); line-height:1.2; }
+  .stat span { color:var(--dim); font-size:13px; }
+
+  .highlights { display:grid; grid-template-columns:repeat(auto-fit,minmax(280px,1fr)); gap:16px; margin-top:20px; }
+  .hl { display:grid; grid-template-columns:96px 1fr; gap:14px; padding:16px; border:1px solid var(--line); border-radius:var(--radius); background:rgba(28,30,34,.96); }
+  .hl img { width:96px; height:96px; object-fit:cover; border-radius:7px; background:#111; }
+  .hl h3 { margin:0 0 4px; font-size:16px; color:var(--ink); text-transform:none; letter-spacing:0; }
+  .hl p { margin:4px 0; font-size:13px; color:var(--dim); }
+  .hl .range { color:var(--gold); font-weight:600; }
+  .hl a { color:var(--teal); font-size:13px; }
+
+  .idx { display:grid; grid-template-columns:repeat(auto-fill,minmax(215px,1fr)); gap:14px; margin-top:20px; }
+  .card { display:block; padding:0; border:1px solid var(--line); border-radius:var(--radius); background:rgba(28,30,34,.96); overflow:hidden; text-decoration:none; color:inherit; transition:border-color .15s, transform .15s; }
+  .card:hover { border-color:var(--teal); transform:translateY(-2px); }
+  .card img { display:block; width:100%; height:150px; object-fit:cover; background:#111; }
+  .card .body { padding:12px 13px 14px; }
+  .card .num { color:var(--gold); font-size:12px; font-weight:700; letter-spacing:.05em; }
+  .card h3 { margin:3px 0 6px; font-size:14.5px; line-height:1.35; color:var(--ink); }
+  .card .rg { font-size:13px; color:var(--teal); font-weight:600; }
+  .card .bt { display:block; margin-top:5px; font-size:11.5px; color:var(--dim); }
+  .tier { display:inline-block; margin-top:7px; padding:2px 8px; border-radius:99px; font-size:10.5px; font-weight:700; letter-spacing:.04em; text-transform:uppercase; }
+  .tier-high { background:rgba(212,165,62,.18); color:var(--gold); border:1px solid rgba(212,165,62,.4); }
+  .tier-mid { background:rgba(64,158,170,.14); color:var(--teal); border:1px solid rgba(64,158,170,.35); }
+  .tier-low { background:var(--panel-2); color:var(--dim); border:1px solid var(--line); }
+
+  .checklist { margin-top:18px; }
+  .checklist ul { margin:8px 0; padding-left:22px; }
+  .checklist li { margin:5px 0; color:var(--dim); }
+  .checklist li b { color:var(--ink); }
+  .checklist .grp { padding:14px 16px; margin:10px 0; border-left:3px solid var(--teal); background:var(--panel-2); border-radius:0 7px 7px 0; }
+  .checklist .grp h3 { margin-top:0; }
+
+  @media(max-width:700px) { .private-main { padding:24px 14px 44px; } .hl { grid-template-columns:1fr; } .hl img { width:100%; height:160px; } }
+  @media print { body { background:#fff; color:#111; } .private-nav { display:none; } .private-main { max-width:none; padding:0; } .private-hero,.hl,.card,.checklist .grp { background:#fff; border-color:#aaa; } a { color:#111; } .card img,.hl img { filter:grayscale(.2); } }
+</style>
+</head>
+<body>
+<nav class="private-nav" aria-label="Private collection index">
+  <div class="wrap"><span class="badge">Collection index</span><span class="spacer"></span><span class="sub" style="font-size:12px">Unlisted · not linked from site navigation</span></div>
+</nav>
+<main class="private-main">
+  <header class="private-hero">
+    <h1>Family Collection — Master Index</h1>
+    <p>A single navigable overview of every catalogued object across both inventory batches. Built so a family member can jump straight to any item, and so the whole set can be shared as one document with an appraiser, auction house, or an <i>Antiques Roadshow</i> evaluation team.</p>
+    <p class="private-warning"><b>Please read first:</b> Every valuation here is a preliminary, photo-based U.S.-dollar estimate for triage only — not a certified appraisal, insurance value, or offer to buy. A photograph cannot prove age, material, maker, or originality. Nothing should be polished, cleaned, reframed, or repaired before a specialist has examined it. When sharing this index, share the direct URL only; it is deliberately kept out of search engines and site navigation.</p>
+
+    <div class="stat-row">
+      <div class="stat"><b>28</b><span>catalogued objects</span></div>
+      <div class="stat"><b>36</b><span>photo files documented</span></div>
+      <div class="stat"><b>2</b><span>inventory batches</span></div>
+      <div class="stat"><b>Oct 16</b><span>2026 photo session</span></div>
+    </div>
+
+    <div style="margin-top:18px">
+      <span class="tag-private">Jump to: <a href="#highlights">Highlights</a> · <a href="#full-index">Full index</a> · <a href="#checklist">Photo checklist</a> · <a href="#sharing">Sharing notes</a></span>
+    </div>
+    <div style="margin-top:8px">
+      <span class="tag-private"><a href="/mom-collection">Batch 1 (items 1–19)</a></span><span class="tag-private"><a href="/mom-collection2">Batch 2 (items 20–28)</a></span>
+    </div>
+  </header>
+
+  <section class="private-hero" style="margin-top:22px" id="highlights">
+    <h2 style="margin-top:0">Pieces most worth an appraiser's attention</h2>
+    <p>Most of the collection is modest 20th-century decorative material. These are the items with the clearest identification, the widest potential value spread, or the strongest story — the ones to lead with if you are pursuing an <i>Antiques Roadshow</i> evaluation or a specialist opinion.</p>
+
+    <div class="highlights">
+
+      <div class="hl">
+        <img src="/assets/mom-collection/IMG_20261016_114332.jpg" alt="Full-length portrait of a girl holding a basket of flowers">
+        <div>
+          <h3>17 · Girl's portrait with flower basket</h3>
+          <p><span class="range">$30–$150 as a reproduction — potentially hundreds to low thousands if it is an original 19th-century American folk portrait (c. 1840–1860).</span> The single largest swing in the collection, and the highest priority for in-person review. Needs an unobstructed frontal photo and the reverse.</p>
+          <a href="/mom-collection#item-17">Open item 17 →</a>
+        </div>
+      </div>
+
+      <div class="hl">
+        <img src="/assets/mom-collection2/IMG_20261016_154001.jpg" alt="Pair of blue frosted glass mermaid candlesticks">
+        <div>
+          <h3>21 · Mermaid candlesticks</h3>
+          <p><span class="range">$80–$200 the pair if period.</span> Closely match the <b>Walther &amp; Söhne “Nymphen”</b> pattern (Germany, catalogued 1934) — a named Art Deco maker, which is rare in this collection. Check the bases for pontil marks; reproductions exist.</p>
+          <a href="/mom-collection2#item-21">Open item 21 →</a>
+        </div>
+      </div>
+
+      <div class="hl">
+        <img src="/assets/mom-collection2/IMG_20261016_170223.jpg" alt="Blue and white hundred boys charger">
+        <div>
+          <h3>28 · Hundred-boys charger</h3>
+          <p><span class="range">$80–$250 as 20th-century export; more only if authenticated as 18th–19th century.</span> Classic 百子 (baizi) motif with a lion dance at center and a six-character seal mark on the base — a strong candidate for a ceramics specialist to read.</p>
+          <a href="/mom-collection2#item-28">Open item 28 →</a>
+        </div>
+      </div>
+
+      <div class="hl">
+        <img src="/assets/mom-collection/IMG_20261016_114205.jpg" alt="Framed Cozzen's Dock West Point print">
+        <div>
+          <h3>1 · Cozzen's Dock, West Point print</h3>
+          <p><span class="range">$20–$60 as a reproduction; about $100–$300 if a genuine period Currier &amp; Ives impression.</span> Caption and subject are identified; what's missing is the publisher imprint and paper evidence from the lower margin and reverse.</p>
+          <a href="/mom-collection#item-1">Open item 1 →</a>
+        </div>
+      </div>
+
+      <div class="hl">
+        <img src="/assets/mom-collection/IMG_20261016_114239.jpg" alt="Blue and white handled jardiniere">
+        <div>
+          <h3>2 · Jardinière with Royal Arms mark</h3>
+          <p><span class="range">$40–$150.</span> The underside carries a blue transfer-printed <b>British Royal Arms</b> backstamp — the strongest mark found so far in either batch, pointing to English (likely Staffordshire) transferware rather than Asian or Delft origin.</p>
+          <a href="/mom-collection#item-2">Open item 2 →</a>
+        </div>
+      </div>
+
+      <div class="hl">
+        <img src="/assets/mom-collection/IMG_20261016_114304.jpg" alt="Orangefield Texas oil boom family photograph reproduction">
+        <div>
+          <h3>13 &amp; 14 · Orangefield oil-boom images</h3>
+          <p><span class="range">Documented local history.</span> Matches a UNT Libraries archive record for the c. 1921–22 Orangefield, Texas boom. The photographed items are reproductions, but if the family holds the <b>original</b> prints, local-history value and research interest follow.</p>
+          <a href="/mom-collection#item-13">Open item 13 →</a>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <section class="private-hero" style="margin-top:22px" id="full-index">
+    <h2 style="margin-top:0">Full index — all 28 objects</h2>
+    <p>Each card links to the full record, verification checklist, and comparables on its batch page. “Highlight” marks pieces with named makers or the widest value spread; “Mid” marks the solid $40–$200 tier; “Modest” marks decorative material generally under $100.</p>
+
+    <div class="idx">
+
+      <a class="card" href="/mom-collection#item-1"><img src="/assets/mom-collection/IMG_20261016_114205.jpg" alt="Cozzen's Dock print"><div class="body"><span class="num">ITEM 1</span><h3>Cozzen's Dock, West Point print</h3><span class="rg">$20–$300</span><span class="bt">Batch 1</span><span class="tier tier-mid">Mid</span></div></a>
+
+      <a class="card" href="/mom-collection#item-2"><img src="/assets/mom-collection/IMG_20261016_114239.jpg" alt="Blue and white jardiniere"><div class="body"><span class="num">ITEM 2</span><h3>Blue-and-white jardinière (Royal Arms)</h3><span class="rg">$40–$150</span><span class="bt">Batch 1</span><span class="tier tier-mid">Mid</span></div></a>
+
+      <a class="card" href="/mom-collection#item-3"><img src="/assets/mom-collection/IMG_20261016_114211.jpg" alt="Pair of serving spoons"><div class="body"><span class="num">ITEM 3</span><h3>Pair of decorated serving spoons</h3><span class="rg">$10–$40</span><span class="bt">Batch 1</span><span class="tier tier-low">Modest</span></div></a>
+
+      <a class="card" href="/mom-collection#item-4"><img src="/assets/mom-collection/IMG_20261016_114215.jpg" alt="Ornate serving tray"><div class="body"><span class="num">ITEM 4</span><h3>Large two-handled serving tray</h3><span class="rg">$40–$150</span><span class="bt">Batch 1</span><span class="tier tier-mid">Mid</span></div></a>
+
+      <a class="card" href="/mom-collection#item-5"><img src="/assets/mom-collection/IMG_20261016_114219.jpg" alt="Stoneware crock marked 3"><div class="body"><span class="num">ITEM 5</span><h3>Stoneware crock marked “3”</h3><span class="rg">$40–$150</span><span class="bt">Batch 1</span><span class="tier tier-mid">Mid</span></div></a>
+
+      <a class="card" href="/mom-collection#item-6"><img src="/assets/mom-collection/IMG_20261016_114223.jpg" alt="Victorian family and dogs print"><div class="body"><span class="num">ITEM 6</span><h3>Victorian family-and-dogs print</h3><span class="rg">$30–$100</span><span class="bt">Batch 1</span><span class="tier tier-low">Modest</span></div></a>
+
+      <a class="card" href="/mom-collection#item-7"><img src="/assets/mom-collection/IMG_20261016_114231.jpg" alt="Two framed genre prints"><div class="body"><span class="num">ITEM 7</span><h3>Two smaller framed genre prints</h3><span class="rg">$20–$80 each</span><span class="bt">Batch 1</span><span class="tier tier-low">Modest</span></div></a>
+
+      <a class="card" href="/mom-collection#item-8"><img src="/assets/mom-collection/IMG_20261016_114227.jpg" alt="Ladder-back armchair"><div class="body"><span class="num">ITEM 8</span><h3>Ladder-back armchair (“OIL SALEM”)</h3><span class="rg">$30–$100</span><span class="bt">Batch 1</span><span class="tier tier-low">Modest</span></div></a>
+
+      <a class="card" href="/mom-collection#item-9"><img src="/assets/mom-collection/IMG_20261016_114236.jpg" alt="Carved wooden lidded container"><div class="body"><span class="num">ITEM 9</span><h3>Carved wooden lidded container</h3><span class="rg">$25–$100</span><span class="bt">Batch 1</span><span class="tier tier-low">Modest</span></div></a>
+
+      <a class="card" href="/mom-collection#item-10"><img src="/assets/mom-collection/IMG_20261016_114243.jpg" alt="Blue glazed figure group"><div class="body"><span class="num">ITEM 10</span><h3>Blue-glazed figure group with child</h3><span class="rg">$30–$150</span><span class="bt">Batch 1</span><span class="tier tier-mid">Mid</span></div></a>
+
+      <a class="card" href="/mom-collection#item-11"><img src="/assets/mom-collection/IMG_20261016_114247.jpg" alt="Yellow-robed sage figure"><div class="body"><span class="num">ITEM 11</span><h3>Yellow-robed sage figure</h3><span class="rg">$20–$100</span><span class="bt">Batch 1</span><span class="tier tier-low">Modest</span></div></a>
+
+      <a class="card" href="/mom-collection#item-12"><img src="/assets/mom-collection/IMG_20261016_114207.jpg" alt="Terracotta warrior figure"><div class="body"><span class="num">ITEM 12</span><h3>Terracotta-army-style warrior</h3><span class="rg">$10–$40</span><span class="bt">Batch 1</span><span class="tier tier-low">Modest</span></div></a>
+
+      <a class="card" href="/mom-collection#item-13"><img src="/assets/mom-collection/IMG_20261016_114304.jpg" alt="Orangefield oil boom image"><div class="body"><span class="num">ITEM 13</span><h3>Goldfine / Orangefield oil-boom image</h3><span class="rg">$5–$25 (copy)</span><span class="bt">Batch 1 · Texas history</span><span class="tier tier-low">Modest</span></div></a>
+
+      <a class="card" href="/mom-collection#item-14"><img src="/assets/mom-collection/IMG_20261016_114308.jpg" alt="Orange Oil Field image"><div class="body"><span class="num">ITEM 14</span><h3>“Orange Oil Field, Texas” image</h3><span class="rg">$5–$25 (copy)</span><span class="bt">Batch 1 · Texas history</span><span class="tier tier-low">Modest</span></div></a>
+
+      <a class="card" href="/mom-collection#item-15"><img src="/assets/mom-collection/IMG_20261016_114312.jpg" alt="Assorted costume jewelry"><div class="body"><span class="num">ITEM 15</span><h3>Assorted brooches, pins &amp; jewelry</h3><span class="rg">$40–$150 bulk</span><span class="bt">Batch 1</span><span class="tier tier-mid">Mid</span></div></a>
+
+      <a class="card" href="/mom-collection#item-16"><img src="/assets/mom-collection/IMG_20261016_114320.jpg" alt="Madonna and Child print"><div class="body"><span class="num">ITEM 16</span><h3>Madonna della Sedia reproduction</h3><span class="rg">$20–$80</span><span class="bt">Batch 1</span><span class="tier tier-low">Modest</span></div></a>
+
+      <a class="card" href="/mom-collection#item-17"><img src="/assets/mom-collection/IMG_20261016_114332.jpg" alt="Girl with flower basket portrait"><div class="body"><span class="num">ITEM 17</span><h3>Girl's portrait with flower basket</h3><span class="rg">$30–$150 · up to low thousands</span><span class="bt">Batch 1 · top priority</span><span class="tier tier-high">Highlight</span></div></a>
+
+      <a class="card" href="/mom-collection#item-18"><img src="/assets/mom-collection/IMG_20261016_114336.jpg" alt="Framed street scene artwork"><div class="body"><span class="num">ITEM 18</span><h3>Framed street-scene artwork</h3><span class="rg">$20–$100</span><span class="bt">Batch 1</span><span class="tier tier-low">Modest</span></div></a>
+
+      <a class="card" href="/mom-collection#item-19"><img src="/assets/mom-collection/IMG_20261016_114316.jpg" alt="Green cabochon stick pin"><div class="body"><span class="num">ITEM 19</span><h3>Green cabochon stick pin</h3><span class="rg">$10–$50</span><span class="bt">Batch 1</span><span class="tier tier-low">Modest</span></div></a>
+
+      <a class="card" href="/mom-collection2#item-20"><img src="/assets/mom-collection2/IMG_20261016_153958.jpg" alt="Green crackle glaze jar"><div class="body"><span class="num">ITEM 20</span><h3>Green crackle-glaze ginger jar</h3><span class="rg">$15–$50</span><span class="bt">Batch 2</span><span class="tier tier-low">Modest</span></div></a>
+
+      <a class="card" href="/mom-collection2#item-21"><img src="/assets/mom-collection2/IMG_20261016_154001.jpg" alt="Blue mermaid candlesticks"><div class="body"><span class="num">ITEM 21</span><h3>Mermaid candlesticks (Walther “Nymphen”)</h3><span class="rg">$80–$200 pair</span><span class="bt">Batch 2 · named maker</span><span class="tier tier-high">Highlight</span></div></a>
+
+      <a class="card" href="/mom-collection2#item-22"><img src="/assets/mom-collection2/IMG_20261016_154004.jpg" alt="Double gourd landscape vase"><div class="body"><span class="num">ITEM 22</span><h3>Double-gourd (hulu) landscape vase</h3><span class="rg">$50–$200</span><span class="bt">Batch 2</span><span class="tier tier-mid">Mid</span></div></a>
+
+      <a class="card" href="/mom-collection2#item-23"><img src="/assets/mom-collection2/IMG_20261016_154008.jpg" alt="Blue transferware pitcher"><div class="body"><span class="num">ITEM 23</span><h3>Transferware courting-couple pitcher</h3><span class="rg">$20–$250</span><span class="bt">Batch 2</span><span class="tier tier-mid">Mid</span></div></a>
+
+      <a class="card" href="/mom-collection2#item-24"><img src="/assets/mom-collection2/IMG_20261016_154013.jpg" alt="Brass lamp with milk glass shade"><div class="body"><span class="num">ITEM 24</span><h3>Brass lamp with milk-glass shade</h3><span class="rg">$30–$80</span><span class="bt">Batch 2 · rewire first</span><span class="tier tier-low">Modest</span></div></a>
+
+      <a class="card" href="/mom-collection2#item-25"><img src="/assets/mom-collection2/IMG_20261016_154018.jpg" alt="White crackle vase with blue florals"><div class="body"><span class="num">ITEM 25</span><h3>White crackle-glaze blue floral vase</h3><span class="rg">$20–$60</span><span class="bt">Batch 2</span><span class="tier tier-low">Modest</span></div></a>
+
+      <a class="card" href="/mom-collection2#item-26"><img src="/assets/mom-collection2/IMG_20261016_154021.jpg" alt="Silver plated teapot"><div class="body"><span class="num">ITEM 26</span><h3>Ornate silver-plated teapot</h3><span class="rg">$30–$100</span><span class="bt">Batch 2 · do not polish</span><span class="tier tier-mid">Mid</span></div></a>
+
+      <a class="card" href="/mom-collection2#item-27"><img src="/assets/mom-collection2/IMG_20261016_154026.jpg" alt="Blue and white ruffled rim vase"><div class="body"><span class="num">ITEM 27</span><h3>Ruffled-rim bird-and-landscape vase</h3><span class="rg">$30–$100</span><span class="bt">Batch 2</span><span class="tier tier-mid">Mid</span></div></a>
+
+      <a class="card" href="/mom-collection2#item-28"><img src="/assets/mom-collection2/IMG_20261016_170223.jpg" alt="Hundred boys charger"><div class="body"><span class="num">ITEM 28</span><h3>“Hundred boys” charger with seal mark</h3><span class="rg">$80–$250</span><span class="bt">Batch 2 · seal mark</span><span class="tier tier-high">Highlight</span></div></a>
+
+    </div>
+  </section>
+
+  <section class="private-hero checklist" style="margin-top:22px" id="checklist">
+    <h2 style="margin-top:0">Authentication photo checklist</h2>
+    <p>Consolidated from the “verification to request” notes on every item page. Photographing these will let a specialist move much faster — and is exactly what an <i>Antiques Roadshow</i> appraiser will ask for if the objects cannot be examined in person. Shoot in bright, even light; get close; keep the object still.</p>
+
+    <div class="grp">
+      <h3>Every ceramic, glass, and stoneware piece</h3>
+      <ul>
+        <li><b>The entire base/underside</b>, straight-on and in sharp focus — this is where marks live.</li>
+        <li>Any <b>stamp, seal, backstamp, or painted mark</b>, filling the frame.</li>
+        <li><b>Height and maximum diameter</b> (a ruler or tape in the shot helps).</li>
+        <li>The <b>interior</b>, plus close-ups of chips, hairlines, or repairs.</li>
+        <li>Items 22, 27, 28: read the seal/reign marks — a Chinese-ceramics specialist can often identify these from a clear photo.</li>
+        <li>Item 21: the <b>underside of each candlestick base</b> (look for pontil scarring or an etched mark) and the height.</li>
+      </ul>
+    </div>
+
+    <div class="grp">
+      <h3>Prints, paintings, and framed works (items 1, 6, 7, 16, 17, 18)</h3>
+      <ul>
+        <li>The <b>full lower margin / caption / signature</b>, shot straight-on without glare.</li>
+        <li>The <b>back of the frame</b>: any labels, stencils, gallery stickers, or handwritten notes.</li>
+        <li>What the image is printed on — <b>paper, canvas-textured paper, or board</b> (visible at an edge).</li>
+        <li>Item 17 specifically: an <b>unobstructed, full-frontal photo</b> of the whole portrait plus the reverse. This is the collection's top-value unknown.</li>
+        <li>Item 1: the <b>entire bottom edge</b> looking for Currier &amp; Ives / Nassau Street publisher text.</li>
+      </ul>
+    </div>
+
+    <div class="grp">
+      <h3>Silver, plate, and metalwork (items 3, 4, 15, 19, 26)</h3>
+      <ul>
+        <li>Every <b>hallmark or stamp</b>: “STERLING,” “925,” “800,” “EPNS,” “A1,” “plate,” or a maker's mark.</li>
+        <li><b>Weights</b> where practical — especially the tray (4) and teapot (26).</li>
+        <li>A simple <b>magnet test</b> noted per piece (magnet sticks = not sterling).</li>
+        <li>Do <b>not</b> polish before photographing — tarnish can hide marks, and polishing can reduce value.</li>
+        <li>Item 15: photograph <b>each jewelry piece individually</b> — front, back, clasp, and any mark — one at a time over a padded surface.</li>
+      </ul>
+    </div>
+
+    <div class="grp">
+      <h3>Wood and furniture (items 8, 9)</h3>
+      <ul>
+        <li>The <b>underside</b> and any joints, labels, or stencils.</li>
+        <li>Item 8: a close-up of the <b>“OIL SALEM”</b> stencil on the seat rail, and whether the chair rocks steadily.</li>
+        <li>Item 9: how the <b>lid fits/opens</b>, the interior, and the underside of both the container and the carved plate beneath it.</li>
+      </ul>
+    </div>
+
+    <div class="grp">
+      <h3>Photographs and paper history (items 13, 14)</h3>
+      <ul>
+        <li>If the family holds the <b>physical originals</b> (not a printout or screen photo): front <i>and</i> back, the mount or album page, paper edges, and any studio stamp.</li>
+        <li>Any accompanying captions, envelopes, or provenance notes.</li>
+      </ul>
+    </div>
+  </section>
+
+  <section class="private-hero" style="margin-top:22px" id="sharing">
+    <h2 style="margin-top:0">Notes on sharing &amp; appraisals</h2>
+    <p>This index and the two batch pages are set to <code>noindex</code> and are intentionally absent from the site's navigation and sitemap, so they will not turn up in search results. Share them by sending the direct link to a chosen recipient — an appraiser, auction house, or an <i>Antiques Roadshow</i> submission contact. Search-engine directives are requests to crawlers, not access control: anyone who has the URL can open it, so treat the link itself as the private thing.</p>
+    <p><b>For an Antiques Roadshow submission</b>, the practical path is their official casting/submission process rather than waiting to be discovered online. Leading with the highlighted items — particularly the item-17 portrait and the item-21 candlesticks — gives an appraiser the clearest reason to look closer. Bring the objects themselves if attending an event; bring this index as supporting documentation.</p>
+    <p><b>Before any formal decision</b> (estate, insurance, tax, or sale), a licensed appraiser or relevant specialist should examine the objects in person. The estimates here are triage numbers assembled from photographs and public comparables, and they will change — sometimes a great deal — once material, marks, and condition are verified.</p>
+    <p style="margin-top:14px"><span class="tag-private"><a href="#highlights">↑ Highlights</a></span><span class="tag-private"><a href="#full-index">↑ Full index</a></span><span class="tag-private"><a href="#checklist">↑ Photo checklist</a></span><span class="tag-private"><a href="/mom-collection">Batch 1</a></span><span class="tag-private"><a href="/mom-collection2">Batch 2</a></span></p>
+  </section>
+</main>
+</body>
+</html>
