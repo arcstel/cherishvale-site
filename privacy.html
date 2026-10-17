@@ -9,28 +9,61 @@
 <link rel="stylesheet" href="/assets/site.css">
 
 <title>Privacy Policy — Cherishvale</title>
-<meta name="description" content="Privacy policy for the applications published by Cherishvale.">
+<meta name="description" content="Privacy policy covering Hearthlight acoustic detection and the applications published by Cherishvale. No recording, no analytics, no accounts.">
 </head>
 <body>
 <nav>
   <div class="wrap" style="display:flex;align-items:center;gap:16px;width:100%">
     <a class="brand" href="/"><img class="brand-mark" src="/assets/logo/mark-transparent.png" alt=""><img class="brand-word" src="/assets/logo/wordmark-transparent.png" alt="Cherishvale"></a>
     <span class="spacer"></span>
-    <a href="/#apps">Apps</a>
+    <a href="/apps#apps">Apps</a>
   </div>
 </nav>
 
 <div class="wrap" style="max-width:760px">
   <h1 style="margin-top:48px">Privacy Policy</h1>
-  <p class="disclaimer">Last updated: 26 September 2026</p>
+  <p class="disclaimer">Last updated: 17 October 2026</p>
 
-  <p class="lead">This policy covers the applications published by Cherishvale. It does
-     not cover this website's host or any third-party site we link to.</p>
+  <p class="lead">This policy covers Hearthlight and the applications published by
+     Cherishvale. It does not cover this website's host or any third-party site we
+     link to.</p>
 
   <h2>The short version</h2>
   <p>Our apps have no accounts, no analytics, no advertising and no trackers. We do not
      collect personal information and we do not sell or share it. What the apps do happens
      on your device.</p>
+  <p>Hearthlight does not record audio. It captures sound, processes it in memory on the
+     device, and discards it. No audio is stored, and none is attached to an alert. It has
+     no camera.</p>
+
+  <h2>Hearthlight</h2>
+  <p>Hearthlight is a wall-mounted acoustic device rather than an app, so it works
+     differently from the rest of this catalogue — but the principle is the same: the
+     processing happens on the device, not in a cloud service.</p>
+  <p><b>Audio is not recorded.</b> The node captures sound in order to analyse it. The
+     audio is held only in memory long enough to run detection on it, then discarded. There
+     is no rolling buffer, no retained clip, no &ldquo;keep the last ten seconds for
+     debugging&rdquo; feature, and no audio upload path. This is absent from the design
+     rather than switched off by default.</p>
+  <p><b>Alerts are metadata only.</b> When the node determines that gunfire has occurred,
+     it sends roughly 200 bytes of JSON: the node identifier, room, UTC timestamp,
+     confidence score, number of shots, and a direction bearing where the microphone array
+     can resolve one. The alert contains no audio, no image, and no identifier of any
+     person.</p>
+  <p><b>There is no camera.</b> The device contains no lens and no image sensor.</p>
+  <p><b>Direction is room-level.</b> Where a bearing is reported, it is a coarse direction
+     such as &ldquo;north corridor.&rdquo; The device is not designed to track individuals
+     or reconstruct movement through a building.</p>
+  <p><b>Connections are outbound only.</b> The node accepts no inbound connection. It
+     makes an outbound request to a single alert destination configured by the installing
+     organisation, and to no one else. It holds no accounts and runs no analytics.</p>
+  <p><b>Who receives an alert.</b> Alerts go only to the destination the installing
+     organisation configures — for example its own mass-notification platform. That
+     organisation's handling of alerts is governed by its own policies, not ours. We do not
+     operate a central service that receives or stores them, and we have no ability to
+     retrieve audio, because none is retained to retrieve.</p>
+  <p>We will provide a one-page written attestation covering the above to any
+     organisation's counsel before a pilot begins.</p>
 
   <h2>Planetary Explorer</h2>
   <p>Planetary Explorer collects, transmits and shares no personal data. It has no user

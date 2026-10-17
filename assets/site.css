@@ -660,3 +660,31 @@ a.app:hover {
   font-size: 13.5px;
   margin: 16px 0 0;
 }
+
+/* Product figures (Hearthlight) */
+figure.shotfig {
+  margin: 18px 0;
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  background: var(--panel);
+  overflow: hidden;
+}
+
+figure.shotfig img {
+  width: 100%;
+  height: auto;
+  display: block;
+  vertical-align: middle;
+}
+
+figure.shotfig figcaption {
+  color: var(--dim);
+  font-size: 12.5px;
+  line-height: 1.55;
+  padding: 10px 14px 12px;
+  border-top: 1px solid var(--line);
+}
+
+figure.shotfig.bleed {
+  margin-top: 26px;
+}
