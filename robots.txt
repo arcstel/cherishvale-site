@@ -1,5 +1,8 @@
 User-agent: *
 Allow: /
 Disallow: /assets/screens/
+Disallow: /records/
+Disallow: /corbello-granger-research
+Disallow: /hearthlight
 
 Sitemap: https://cherishvale.com/sitemap.xml
