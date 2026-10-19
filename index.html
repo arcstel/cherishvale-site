@@ -6,305 +6,47 @@
 <link rel="icon" href="/favicon.ico" sizes="any">
 <link rel="icon" type="image/png" href="/assets/logo/favicon-64.png">
 <link rel="apple-touch-icon" href="/assets/logo/apple-touch-icon.png">
-<link rel="stylesheet" href="/assets/site.css">
-
-<title>Hearthlight — acoustic gunshot detection for schools | Cherishvale</title>
-<meta name="description" content="Hearthlight is a ceiling-corner acoustic node that detects gunfire and sends a metadata-only alert. No camera. No recording. No audio ever leaves the device. In development, seeking pilots.">
-<meta property="og:title" content="Hearthlight — acoustic gunshot detection">
-<meta property="og:description" content="A ceiling-corner box that hears a gunshot and sends an alert. No camera, and no audio ever leaves the device.">
-<meta property="og:type" content="website">
-<meta property="og:url" content="https://cherishvale.com/">
+<link rel="canonical" href="https://cherishvale.com/">
+<title>Cherishvale</title>
+<style>
+  *,*::before,*::after{box-sizing:border-box}
+  html,body{
+    margin:0;
+    padding:0;
+    width:100%;
+    height:100%;
+    background:#0c0f12 url("/assets/backdrop.jpg") center center / cover no-repeat fixed;
+    color:#e9eef0;
+  }
+  main{
+    min-height:100vh;
+    min-height:100dvh;
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+    justify-content:center;
+    padding:32px;
+    gap:22px;
+    user-select:none;
+  }
+  .mark{
+    width:clamp(140px,22vw,240px);
+    height:auto;
+    display:block;
+    filter:drop-shadow(0 12px 36px rgba(0,0,0,.65));
+  }
+  .wordmark{
+    width:clamp(210px,36vw,380px);
+    height:auto;
+    display:block;
+    filter:drop-shadow(0 8px 28px rgba(0,0,0,.65));
+  }
+</style>
 </head>
 <body>
-<nav>
-  <div class="wrap" style="display:flex;align-items:center;gap:16px;width:100%">
-    <a class="brand" href="/"><img class="brand-mark" src="/assets/logo/mark-transparent.png" alt=""><img class="brand-word" src="/assets/logo/wordmark-transparent.png" alt="Cherishvale"></a>
-    <span class="spacer"></span>
-    <a href="#how">How it works</a>
-    <a href="#privacy">Privacy</a>
-    <a href="#pilots">Pilots</a>
-    <a href="mailto:hello@cherishvale.com">Contact</a>
-  </div>
-</nav>
-
-<header class="wrap">
-  <h1>Hearthlight</h1>
-  <p class="sub">A ceiling-corner box that hears a gunshot and sends an alert —
-     and never records, stores, or transmits a second of audio.</p>
-  <div class="badges">
-    <span class="badge accent">In development</span>
-    <span class="badge accent">Seeking pilots</span>
-    <span class="badge">No camera</span>
-    <span class="badge">No audio leaves the device</span>
-  </div>
-</header>
-
-<div class="wrap">
-
-  <figure class="shotfig bleed" style="margin-top:4px">
-    <picture>
-      <source type="image/webp"
-              srcset="/assets/hearthlight/insitu-720.webp 720w,
-                      /assets/hearthlight/insitu-1000.webp 1000w,
-                      /assets/hearthlight/insitu-1536.webp 1536w"
-              sizes="(max-width: 1000px) 100vw, 956px">
-      <img src="/assets/hearthlight/insitu-1536.jpg"
-           srcset="/assets/hearthlight/insitu-720.jpg 720w,
-                   /assets/hearthlight/insitu-1000.jpg 1000w,
-                   /assets/hearthlight/insitu-1536.jpg 1536w"
-           sizes="(max-width: 1000px) 100vw, 956px"
-           width="1536" height="1024" fetchpriority="high"
-           alt="A small white Hearthlight node mounted high in the corner of a school corridor, above painted block walls and a bank of lockers. It is about the size of a smoke detector and reads as ordinary building hardware.">
-    </picture>
-    <figcaption>A node installed in a corridor. It is about the size of a smoke
-      detector, and it is meant to look like nothing in particular.</figcaption>
-  </figure>
-
-  <h2>What it is</h2>
-  <div class="grid" style="align-items:center;margin-top:10px">
-    <figure class="shotfig" style="margin:0">
-      <picture>
-        <source type="image/webp"
-                srcset="/assets/hearthlight/hero-720.webp 720w,
-                        /assets/hearthlight/hero-1000.webp 1000w,
-                        /assets/hearthlight/hero-1254.webp 1254w"
-                sizes="(max-width: 700px) 100vw, 460px">
-        <img src="/assets/hearthlight/hero-1254.jpg"
-             srcset="/assets/hearthlight/hero-720.jpg 720w,
-                     /assets/hearthlight/hero-1000.jpg 1000w,
-                     /assets/hearthlight/hero-1254.jpg 1254w"
-             sizes="(max-width: 700px) 100vw, 460px"
-             width="1254" height="1254" loading="lazy"
-             alt="Studio shot of the Hearthlight node: a white sealed enclosure with rounded corners, a fine perforated acoustic grille across the front, and a single small cyan status light. There is no lens or camera anywhere on the device.">
-      </picture>
-    </figure>
-    <div>
-      <p class="lead">Hearthlight is an acoustic detection node for schools and other
-         facilities. Four microphones, a Raspberry&nbsp;Pi-class computer, and no lens.
-         It listens for the shape of a muzzle blast, and when it hears one it sends a
-         short alert — room, time, confidence, direction — into whatever system you
-         already run.</p>
-      <p>The whole product is shaped by one constraint: it has to be accepted, in
-         writing, by a district's technology, safety, legal, and community groups.
-         That constraint decides what is in the box and, more importantly, what is
-         not.</p>
-    </div>
-  </div>
-
-  <h2 id="how">How it works</h2>
-  <div class="steps">
-    <div class="step">
-      <b>Listen</b>
-      <p>Stage&nbsp;1 runs continuously and cheaply, asking only one question:
-         did a sharp, fast-rising event just happen? Onset speed is the
-         separator. A muzzle blast reaches peak in well under a millisecond; a
-         door slam, a dropped book, or a body fall ramps over several. Energy
-         alone is why naive detectors cry wolf in a school.</p>
-    </div>
-    <div class="step">
-      <b>Decide</b>
-      <p>Only when Stage&nbsp;1 fires does Stage&nbsp;2 run: twenty-two measurable
-         features and a small decision tree. Not a neural embedding — a safety
-         director will ask why the system called a shot, and the answer has to be
-         a human-readable reason, not a number.</p>
-    </div>
-    <div class="step">
-      <b>Alert</b>
-      <p>A few hundred bytes: node, room, timestamp, confidence, shot count,
-         direction. Outbound only, to the platform you already use. Plus a local
-         buzzer on the wall that keeps working when the network does not.</p>
-    </div>
-  </div>
-
-  <div class="studio">
-    <b>Precision over recall — deliberately.</b>
-    <p>A missed detection is a failure. A false lockdown in an occupied school is
-       worse: it makes the local news and ends the pilot. Hearthlight is tuned to
-       be reasonably sure before it speaks, and its calibration step will refuse
-       to deploy an operating point it cannot statistically defend. We would
-       rather tell you it stayed quiet than invent a detection rate.</p>
-  </div>
-
-  <h2 id="privacy">Privacy, by construction</h2>
-  <p class="lead">Raw audio is captured, processed in memory, and discarded.
-     It never leaves the device.</p>
-  <div class="grid">
-    <div class="card">
-      <b>No recording</b>
-      <p>There is no buffer, no clip attached to an alert, no "keep the last ten
-         seconds for debugging," and no audio upload path. Not disabled by
-         default — absent from the design.</p>
-    </div>
-    <div class="card">
-      <b>No camera</b>
-      <p>No lens, no image sensor, no imaging hardware of any kind. The box has
-         an acoustic port and one status light. It is built to read as
-         infrastructure, like a smoke detector, not as surveillance.</p>
-    </div>
-    <div class="card">
-      <b>Room-level, not tracking</b>
-      <p>The node reports a bearing — "north corridor" — not a person's path
-         through a building. Precise tracking invites a surveillance conversation
-         nobody wants, and a room is what a lockdown decision needs.</p>
-    </div>
-    <div class="card">
-      <b>No inbound connections</b>
-      <p>The node accepts no inbound connection. Outbound HTTPS to one
-         destination, and nothing else. A device that cannot be connected to
-         cannot be an attack surface.</p>
-    </div>
-    <div class="card">
-      <b>Metadata-only alerts</b>
-      <p>An alert is roughly 200 bytes of JSON. No audio, no identifiers, no
-         student data. Keeping it that way is what keeps it outside FERPA.</p>
-    </div>
-    <div class="card">
-      <b>Works air-gapped</b>
-      <p>Detection and the local buzzer are entirely on-device. A district with
-         no route to the internet still gets a working alarm, and alerts queue
-         with their true timestamps until connectivity returns.</p>
-    </div>
-  </div>
-  <p class="disclaimer">These are design commitments, and we will put them in a
-     one-page written attestation for your counsel before a pilot begins.</p>
-
-  <figure class="shotfig">
-    <picture>
-      <source type="image/webp"
-              srcset="/assets/hearthlight/detail-720.webp 720w,
-                      /assets/hearthlight/detail-1000.webp 1000w,
-                      /assets/hearthlight/detail-1536.webp 1536w"
-              sizes="(max-width: 1000px) 100vw, 956px">
-      <img src="/assets/hearthlight/detail-1536.jpg"
-           srcset="/assets/hearthlight/detail-720.jpg 720w,
-                   /assets/hearthlight/detail-1000.jpg 1000w,
-                   /assets/hearthlight/detail-1536.jpg 1536w"
-           sizes="(max-width: 1000px) 100vw, 956px"
-           width="1536" height="1024" loading="lazy"
-           alt="Macro photograph of the node's acoustic port: fine machined perforations in the white powder-coated front panel, with dark acoustic mesh behind them and a single small cyan LED lit at the lower right. There is no lens or glass.">
-    </picture>
-    <figcaption>The acoustic port, up close — perforations, mesh, and one status
-      light. There is no glass anywhere on the device, because there is nothing
-      to look through.</figcaption>
-  </figure>
-
-  <h2 id="pilots">How a pilot runs</h2>
-  <div class="steps">
-    <div class="step">
-      <b>Mount, buzzer only</b>
-      <p>One building, ceiling corners, local alarm. Nothing connected to mass
-         notification yet.</p>
-    </div>
-    <div class="step">
-      <b>Log a full term</b>
-      <p>Every trigger and every decision — counts and confidence, never audio.
-         The number that matters is how often it was wrong.</p>
-    </div>
-    <div class="step">
-      <b>Tune against the real log</b>
-      <p>Calibrate the threshold against that building's actual acoustic
-         environment, not a laboratory's.</p>
-    </div>
-    <div class="step">
-      <b>Then go live</b>
-      <p>Only after the false-alarm rate is understood does the node talk to your
-         mass-notification system.</p>
-    </div>
-  </div>
-
-  <div class="studio">
-    <b>Status: in development, seeking pilots.</b>
-    <p>Hearthlight is not a shipped product. The detection core is built and
-       tested; what it needs is real buildings, real ambient noise, and real
-       pilots before any accuracy figure means anything. We publish no
-       performance numbers today, and we will only publish numbers measured on
-       recordings we collected in the building types we name.</p>
-  </div>
-
-  <h2>Questions</h2>
-
-  <details>
-    <summary>Does it record audio?</summary>
-    <p>No. Sound is captured, processed in memory, and discarded immediately
-       after classification. There is no rolling buffer and no audio in the
-       alert payload. If you need to verify what the node hears, the answer is a
-       count and a confidence score, not a playback.</p>
-  </details>
-
-  <details>
-    <summary>Is there a camera anywhere in it?</summary>
-    <p>No. There is no lens and no image sensor. This is a deliberate design
-       constraint: a lens changes what the object is, legally and in the eyes of
-       a school community, and a device that looks like surveillance gets
-       rejected regardless of how well it works.</p>
-  </details>
-
-  <details>
-    <summary>What exactly is in an alert?</summary>
-    <p>Roughly 200 bytes of JSON: node identifier, room, UTC timestamp,
-       confidence, number of shots, and a bearing if the microphone array can
-       resolve one. No audio, no identifiers of people, no student data.</p>
-  </details>
-
-  <details>
-    <summary>What is the false alarm rate?</summary>
-    <p>Not yet published, because we have not measured it in a real building —
-       and that is the only measurement that counts. Numbers produced from
-       simulated audio are an engineering check, not a performance claim. The
-       first term of a pilot exists precisely to establish this figure, and we
-       will publish it once we have it.</p>
-  </details>
-
-  <details>
-    <summary>What happens if the network fails?</summary>
-    <p>Detection and the local buzzer are entirely on the device, so the room
-       alarm still fires. Delivery to your notification platform is best-effort
-       with retries; queued alerts carry their true timestamps, so the sequence
-       is correct when connectivity returns.</p>
-  </details>
-
-  <details>
-    <summary>What hardware is it?</summary>
-    <p>A Raspberry&nbsp;Pi-class single-board computer, a four-microphone I2S
-       array on a fixed carrier board, a sealed tamper-evident enclosure with an
-       acoustic port, and a local buzzer. Roughly the footprint and appearance
-       of a smoke detector. Power over Ethernet or a battery backup.</p>
-  </details>
-
-  <details>
-    <summary>Will it work in our building?</summary>
-    <p>Acoustics vary enormously — a carpeted library and a hard-surfaced
-       corridor are different problems, and a locker slam is a harder problem
-       than a gunshot. That is exactly why we are looking for pilots rather
-       than shipping a box with a number on the carton. One building type, one
-       full term, honest logging.</p>
-  </details>
-
-  <div class="cta-row">
-    <a class="cta primary" href="mailto:hello@cherishvale.com?subject=Hearthlight%20pilot">Discuss a pilot</a>
-    <a class="cta" href="mailto:hello@cherishvale.com?subject=Hearthlight%20technical%20questions">Technical questions</a>
-  </div>
-
-  <div class="studio">
-    <b>About Cherishvale</b>
-    <p>Hearthlight is built by Cherishvale, an independent studio working on
-       safety software and hardware. We build systems that have to be accepted
-       by the people they are installed in front of, so the defaults are
-       conservative and the privacy constraints are structural rather than
-       configurable.</p>
-  </div>
-
-</div>
-
-<footer class="wrap">
-  <span>© <span id="y"></span> Cherishvale. All rights reserved.</span>
-  <span class="spacer"></span>
-  <a href="#how">How it works</a>
-  <a href="#privacy">Privacy</a>
-  <a href="#pilots">Pilots</a>
-  <a href="mailto:hello@cherishvale.com">Contact</a>
-  <a href="/privacy">Privacy Policy</a>
-</footer>
-<script>document.getElementById("y").textContent=new Date().getFullYear();</script>
+<main aria-label="Cherishvale">
+  <img class="mark" src="/assets/logo/mark-transparent.png" alt="">
+  <img class="wordmark" src="/assets/logo/wordmark-transparent.png" alt="Cherishvale">
+</main>
 </body>
 </html>
