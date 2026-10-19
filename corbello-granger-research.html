@@ -20,18 +20,61 @@ html{scroll-behavior:smooth}body{background-attachment:fixed}.research{max-width
 .toc-grid a.current{background:rgba(143,214,202,.2);border-color:var(--teal,#8fd6ca)}
 .plat-box{background:rgba(255,255,255,.03);border:1px solid #4c5a55;border-radius:12px;padding:18px;margin:18px 0}
 .plat-box figcaption{font-size:13px;color:var(--dim,#bdc5c9);margin-top:10px;text-align:center}
+.plat-zoom-btn{display:inline-flex;align-items:center;gap:6px;margin-top:8px;padding:7px 14px;border-radius:999px;border:1px solid var(--teal,#8fd6ca);background:rgba(143,214,202,.14);color:var(--teal,#8fd6ca);font-size:13px;font-weight:600;cursor:pointer;text-decoration:none}
+.plat-zoom-btn:hover{background:rgba(143,214,202,.25);text-decoration:none}
 .tag-verified{display:inline-block;padding:2px 8px;border-radius:999px;font-size:11px;font-weight:600;background:rgba(143,214,202,.18);color:#8fd6ca;border:1px solid #4c7a72}
 .tag-claim{display:inline-block;padding:2px 8px;border-radius:999px;font-size:11px;font-weight:600;background:rgba(203,181,121,.16);color:#e6d3a3;border:1px solid #7a6b43}
+.device-badge{display:none;margin:0 0 12px;padding:8px 12px;border-radius:8px;background:rgba(143,214,202,.12);border:1px solid #46665f;font-size:12.5px;color:#cfeae5;text-align:center}
+.is-mobile .device-badge,.is-tablet .device-badge{display:block}
+.mobile-fab{position:fixed;right:14px;bottom:14px;z-index:90;display:none;gap:6px;background:rgba(18,22,25,.96);border:1px solid var(--teal,#8fd6ca);border-radius:999px;padding:6px 10px;box-shadow:0 6px 20px rgba(0,0,0,.6)}
+.mobile-fab a{color:#e8eaed;font-size:13px;font-weight:600;padding:6px 10px;border-radius:999px;background:rgba(143,214,202,.16);text-decoration:none}
+.mobile-fab a:hover{background:rgba(143,214,202,.3);text-decoration:none}
+.is-mobile .mobile-fab,.is-tablet .mobile-fab{display:flex}
+.plat-modal{position:fixed;inset:0;z-index:220;display:none;flex-direction:column;background:rgba(8,10,12,.96);padding:12px}
+.plat-modal.open{display:flex}
+.plat-modal-bar{display:flex;align-items:center;justify-content:space-between;gap:10px;padding:8px 12px;background:#181e21;border:1px solid #465450;border-radius:10px;margin-bottom:10px;font-size:13px}
+.plat-modal-scroll{flex:1;overflow:auto;-webkit-overflow-scrolling:touch;display:flex;align-items:flex-start;justify-content:center;padding:8px}
+.plat-modal-scroll img{max-width:none;width:min(1800px,220vw);height:auto;background:#fff;border-radius:6px}
 section{scroll-margin-top:24px}
 .to-top{margin:20px 0 0;text-align:right;font-size:13px}
 .to-top a{color:var(--dim,#bdc5c9);text-decoration:none}
 .to-top a:hover{color:var(--teal,#8fd6ca)}
-@media print{.to-top{display:none}.plat-box{border:1px solid #888}}
+/* Tablet layout (681px - 1024px) */
+@media(max-width:1024px){
+  body{background-attachment:scroll}
+  .research{padding:20px 16px 80px}
+  .panel{padding:22px 20px;margin:16px 0}
+  .toc-grid{grid-template-columns:repeat(2,1fr)}
+  .mobile-fab{display:flex}
+}
+/* Phone layout (<= 720px): stacked card tables & thumb-friendly controls */
+@media(max-width:720px){
+  .research{padding:12px 10px 84px}
+  .panel{padding:18px 14px;border-radius:12px;margin:12px 0}
+  h1{font-size:28px}
+  h2{font-size:21px;line-height:1.25}
+  h3{font-size:17.5px;margin-top:22px}
+  p,li{font-size:15px;line-height:1.68}
+  .facts{grid-template-columns:1fr;gap:8px}
+  .toc-grid{grid-template-columns:1fr;gap:8px}
+  .toc-grid a{padding:12px 14px;font-size:14.5px}
+  .plat-box{padding:12px 10px}
+  /* Convert wide tables into stacked mobile cards */
+  .table-wrap{overflow-x:visible}
+  table,thead,tbody,th,td,tr{display:block;width:100%}
+  thead tr{position:absolute;top:-9999px;left:-9999px}
+  tbody tr{border:1px solid #465450;border-radius:10px;background:rgba(255,255,255,.03);margin:0 0 12px;padding:10px 12px}
+  td{border:0;border-bottom:1px solid rgba(255,255,255,.07);padding:7px 0;font-size:14px;line-height:1.55}
+  td:last-child{border-bottom:0}
+  td[data-label]::before{content:attr(data-label);display:block;font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:.08em;color:var(--teal,#8fd6ca);margin-bottom:2px}
+}
+@media print{.to-top,.mobile-fab,.device-badge,.plat-modal{display:none!important}.plat-box{border:1px solid #888}}
 </style>
 </head>
 <body>
 <main class="research">
 <header class="panel" id="top">
+<div class="device-badge" id="device-badge" aria-live="polite"></div>
 <div class="eyebrow">Cherishvale · Unlisted family research · Attorney &amp; title-examiner briefing</div>
 <h1>Corbello–Granger<br>Land &amp; Mineral Records</h1>
 <p>An objective, source-indexed title and heirship briefing concerning <strong>Division / Block No. 3 (300 acres) of the Estate of Treville Granger Sr.</strong> in the <strong>William Dyson League, Abstract No. 10, Orange County, Texas</strong>, prepared for legal and title examination.</p>
@@ -66,6 +109,7 @@ section{scroll-margin-top:24px}
 <li><a href="#new-findings"><strong>Section 13B</strong>Primary-record breakthroughs (Oct. 19): Probate No. 15, OPR #291245 Plat, 1924/1926 Judgments &amp; Two Corbello Families</a></li>
 <li><a href="#forever-language"><strong>Section 14</strong>“Heirs and assigns forever” — exact habendum &amp; warranty clauses</a></li>
 <li><a href="#official-lease"><strong>Section 15</strong>Official RRC wellbore check (Lease 03-03243) &amp; local archive index</a></li>
+<li><a href="#family-action-plan"><strong>Section 16</strong>Action plan for the Lovett → Thomas → Frances Hargrove branch</a></li>
 </ul>
 </div>
 </section>
@@ -74,44 +118,50 @@ section{scroll-margin-top:24px}
 <p>This chronological digest synthesizes all verified deeds, probate entries, federal and state court decrees, and later heirship filings examined to date. Primary recorded instruments and court judgments are tagged <span class="tag-verified">Verified Record</span>; later family affidavits and self-serving notices are tagged <span class="tag-claim">Claimant Filing</span>.</p>
 
 <figure class="plat-box">
-<svg viewBox="0 0 820 390" width="100%" role="img" aria-label="Diagram of Exhibit A Plat showing the 1888 Partition of the Estate of Treville Granger in Probate Minutes Vol. E, pp. 147-150">
-  <rect x="1" y="1" width="818" height="388" rx="8" fill="#14191c" stroke="#4c5a55"/>
-  <text x="410" y="28" fill="#8fd6ca" font-size="14" font-weight="bold" text-anchor="middle">EXHIBIT “A” PLAT — PARTITION OF ESTATE OF TREVILLE GRANGER, WM. DYSON LEAGUE, ORANGE CO., TX (PROBATE VOL. E, PP. 147–150)</text>
-  <text x="410" y="46" fill="#bdc5c9" font-size="11.5" text-anchor="middle">Reconstructed from the NARA-certified plat in Equity No. 234 (recorded Dec. 13, 2005 in Orange County OPR #291245, p. 18) · North is at top</text>
+<a href="/assets/plat-1888-exhibit-a.png" target="_blank" rel="noreferrer" title="Click to open full-resolution NARA-certified Exhibit A Partition Plat (2400×1545) in a new tab" style="display:block;margin-bottom:16px">
+  <img src="/assets/plat-1888-exhibit-a.png" alt="NARA-certified Exhibit A Plat showing the Partition of the Estate of Treville Granger, a part of the William Dyson League, Orange County, Texas, Vol. E, pp. 147–150, showing Divisions 1 through 5 (300 acres each) along Cow Bayou and Big Marie" style="width:100%;height:auto;display:block;border-radius:8px;border:1px solid #4c5a55;background:#fff">
+</a>
+<a href="/assets/plat-1888-exhibit-a.png" target="_blank" rel="noreferrer" title="Click to open full-resolution Exhibit A Partition Plat in a new tab" style="display:block;text-decoration:none">
+<svg viewBox="0 0 960 500" width="100%" role="img" aria-label="Color-coded schematic of the Exhibit A Plat showing the 1888 Partition of the Estate of Treville Granger in Probate Minutes Vol. E, pp. 147-150">
+  <rect x="2" y="2" width="956" height="496" rx="10" fill="#14191c" stroke="#4c5a55" stroke-width="2"/>
+  <text x="480" y="34" fill="#8fd6ca" font-size="16" font-weight="bold" text-anchor="middle">COLOR-CODED SCHEMATIC OF EXHIBIT “A” PARTITION PLAT (PROBATE MINUTES VOL. E, PP. 147–150)</text>
+  <text x="480" y="56" fill="#bdc5c9" font-size="13" text-anchor="middle">Estate of Treville Granger Sr. · 1,500 Acres in Five 300-Acre Divisions · William Dyson League (A-10), Orange County, Texas</text>
   <!-- West boundary -->
-  <line x1="70" y1="65" x2="70" y2="345" stroke="#cbb579" stroke-width="2"/>
+  <line x1="80" y1="80" x2="80" y2="435" stroke="#cbb579" stroke-width="2.5"/>
   <!-- North boundary -->
-  <line x1="70" y1="65" x2="670" y2="65" stroke="#cbb579" stroke-width="2"/>
+  <line x1="80" y1="80" x2="770" y2="80" stroke="#cbb579" stroke-width="2.5"/>
   <!-- Division 5 (NW block) -->
-  <rect x="70" y="65" width="350" height="105" fill="rgba(255,255,255,0.03)" stroke="#8fd6ca" stroke-width="1.5"/>
-  <text x="245" y="98" fill="#fff" font-size="13" font-weight="bold" text-anchor="middle">Division No. 5 — 300 Ac.</text>
-  <text x="245" y="116" fill="#bdc5c9" font-size="11.5" text-anchor="middle">Cecile Granger, Guardian of Minor Heirs of</text>
-  <text x="245" y="132" fill="#bdc5c9" font-size="11.5" text-anchor="middle">Treville Granger Jr., dec’d (confirmed DR 35:137, 1922)</text>
+  <rect x="80" y="80" width="400" height="125" fill="rgba(255,255,255,0.035)" stroke="#8fd6ca" stroke-width="1.8"/>
+  <text x="280" y="118" fill="#fff" font-size="15" font-weight="bold" text-anchor="middle">Division No. 5 — 300 Acres</text>
+  <text x="280" y="142" fill="#bdc5c9" font-size="13" text-anchor="middle">Cecile Granger, Guardian of Minor Heirs of</text>
+  <text x="280" y="162" fill="#bdc5c9" font-size="13" text-anchor="middle">Treville Granger Jr., dec’d (confirmed DR 35:137)</text>
   <!-- Division 4 (wraps east of Div 5 and south of Div 5) -->
-  <path d="M 420 65 L 670 65 Q 685 120 640 195 L 70 195 L 70 170 L 420 170 Z" fill="rgba(255,255,255,0.02)" stroke="#8fd6ca" stroke-width="1.5"/>
-  <text x="545" y="130" fill="#fff" font-size="13" font-weight="bold" text-anchor="middle">Division No. 4 — 300 Ac.</text>
-  <text x="545" y="148" fill="#bdc5c9" font-size="11.5" text-anchor="middle">Martine [Martin] Granger</text>
+  <path d="M 480 80 L 770 80 Q 790 150 740 245 L 80 245 L 80 205 L 480 205 Z" fill="rgba(255,255,255,0.02)" stroke="#8fd6ca" stroke-width="1.8"/>
+  <text x="625" y="155" fill="#fff" font-size="15" font-weight="bold" text-anchor="middle">Division No. 4 — 300 Acres</text>
+  <text x="625" y="178" fill="#bdc5c9" font-size="13" text-anchor="middle">Martine [Martin] Granger</text>
   <!-- Division 3 (Erisse Carbello - highlighted) -->
-  <path d="M 70 195 L 640 195 Q 615 225 605 245 L 70 245 Z" fill="rgba(143,214,202,0.16)" stroke="#8fd6ca" stroke-width="2.2"/>
-  <text x="335" y="218" fill="#8fd6ca" font-size="13.5" font-weight="bold" text-anchor="middle">Division No. 3 — Erissie Carbello — 300 Ac. (Subject Tract / Block No. 3)</text>
-  <text x="335" y="235" fill="#e6d3a3" font-size="11" text-anchor="middle">Includes 50 ac Tresimond→John Granger (DR 14:241), 50 ac Mose Granger, &amp; 29 ac Granger Heirs tract on Cow Bayou (DR 40:204)</text>
+  <path d="M 80 245 L 740 245 Q 715 282 702 310 L 80 310 Z" fill="rgba(143,214,202,0.18)" stroke="#8fd6ca" stroke-width="2.6"/>
+  <text x="395" y="274" fill="#8fd6ca" font-size="15.5" font-weight="bold" text-anchor="middle">Division No. 3 — Erissie Carbello — 300 Acres (Subject Tract / Block No. 3)</text>
+  <text x="395" y="296" fill="#e6d3a3" font-size="12.5" text-anchor="middle">50 ac Tresimond→John Granger (DR 14:241) · 50 ac Mose Granger · 29 ac Granger Heirs tract on Cow Bayou (DR 40:204)</text>
   <!-- Division 2 (Tresimo Granger) -->
-  <path d="M 70 245 L 605 245 Q 610 272 645 295 L 70 295 Z" fill="rgba(255,255,255,0.02)" stroke="#8fd6ca" stroke-width="1.5"/>
-  <text x="335" y="274" fill="#fff" font-size="13" font-weight="bold" text-anchor="middle">Division No. 2 — Tresimo [Tresimond] Granger — 300 Ac.</text>
+  <path d="M 80 310 L 702 310 Q 710 345 750 372 L 80 372 Z" fill="rgba(255,255,255,0.02)" stroke="#8fd6ca" stroke-width="1.8"/>
+  <text x="395" y="347" fill="#fff" font-size="15" font-weight="bold" text-anchor="middle">Division No. 2 — Tresimo [Tresimond] Granger — 300 Acres</text>
   <!-- Division 1 (Michael Granger) -->
-  <path d="M 70 295 L 645 295 Q 675 320 690 345 L 175 345 Q 115 325 70 295 Z" fill="rgba(255,255,255,0.02)" stroke="#8fd6ca" stroke-width="1.5"/>
-  <text x="355" y="325" fill="#fff" font-size="13" font-weight="bold" text-anchor="middle">Division No. 1 — Michael Granger — 300 Ac.</text>
+  <path d="M 80 372 L 750 372 Q 782 404 798 435 L 210 435 Q 140 412 80 372 Z" fill="rgba(255,255,255,0.02)" stroke="#8fd6ca" stroke-width="1.8"/>
+  <text x="415" y="410" fill="#fff" font-size="15" font-weight="bold" text-anchor="middle">Division No. 1 — Michael Granger — 300 Acres</text>
   <!-- Cow Bayou on East -->
-  <path d="M 675 58 Q 692 120 645 195 Q 618 228 610 245 Q 616 272 652 295 Q 682 320 698 352" fill="none" stroke="#5fb3d4" stroke-width="5"/>
-  <text x="692" y="225" fill="#5fb3d4" font-size="12" font-weight="bold">COW BAYOU →</text>
-  <text x="115" y="342" fill="#5fb3d4" font-size="11">Big Marie Bayou</text>
+  <path d="M 776 72 Q 798 150 746 245 Q 720 284 708 310 Q 716 345 756 372 Q 788 404 806 442" fill="none" stroke="#5fb3d4" stroke-width="6"/>
+  <text x="815" y="282" fill="#5fb3d4" font-size="14" font-weight="bold">COW BAYOU</text>
+  <text x="145" y="430" fill="#5fb3d4" font-size="13" font-weight="bold">Big Marie Bayou</text>
   <!-- North arrow -->
-  <line x1="765" y1="145" x2="765" y2="80" stroke="#8fd6ca" stroke-width="2"/>
-  <polygon points="765,72 759,85 771,85" fill="#8fd6ca"/>
-  <text x="765" y="66" fill="#8fd6ca" font-size="12" font-weight="bold" text-anchor="middle">N</text>
-  <text x="765" y="162" fill="#bdc5c9" font-size="11" text-anchor="middle">S</text>
+  <line x1="885" y1="185" x2="885" y2="105" stroke="#8fd6ca" stroke-width="2.5"/>
+  <polygon points="885,93 878,110 892,110" fill="#8fd6ca"/>
+  <text x="885" y="85" fill="#8fd6ca" font-size="14" font-weight="bold" text-anchor="middle">N</text>
+  <circle cx="885" cy="145" r="14" fill="none" stroke="#8fd6ca" stroke-width="1.5"/>
+  <text x="885" y="206" fill="#bdc5c9" font-size="13" text-anchor="middle">S</text>
 </svg>
-<figcaption>Diagram of the <strong>Exhibit “A” Partition Plat</strong> attached to the 1921 Bill of Complaint in Federal Equity No. 234 (certified by NARA Fort Worth Dec. 2, 2005 and recorded Dec. 13, 2005 in <strong>Orange County OPR #291245, p. 18</strong>), showing the five 300-acre divisions (1,500 acres total) of the Estate of Treville Granger Sr. in <strong>Probate Minutes Vol. E, pp. 147–150</strong>.</figcaption>
+</a>
+<figcaption><strong>Top:</strong> Actual NARA-certified scan of the <strong>Exhibit “A” Partition Plat</strong> attached to the 1921 Bill of Complaint in Federal Equity No. 234 (certified by NARA Fort Worth Dec. 2, 2005; recorded Dec. 13, 2005 in <strong>Orange County OPR #291245, p. 18</strong>), showing the five 300-acre divisions of the Estate of Treville Granger Sr. in <strong>Probate Minutes Vol. E, pp. 147–150</strong>. <strong>Bottom:</strong> Color-coded schematic highlighting Erisse Carbello’s 300-acre Division No. 3.<br><button type="button" class="plat-zoom-btn" onclick="openPlatModal()">🔍 Tap / click to zoom full-resolution 1888 Partition Plat</button> &nbsp; <a class="plat-zoom-btn" href="/assets/plat-1888-exhibit-a.png" target="_blank" rel="noreferrer">↗ Open raw image in new tab</a></figcaption>
 </figure>
 
 <div class="table-wrap"><table>
@@ -125,7 +175,7 @@ section{scroll-margin-top:24px}
 <tr><td><strong>June 2, 1883</strong><br>(rec. June 25, 1883)</td><td><strong>Confirmation Deed:</strong> <strong>Moise L. LeBleu</strong> (Calcasieu Parish, LA) to the <strong>Heirs of Treville Granger Sr., dec’d</strong> (Heirs of Treville Granger Jr. dec’d, Michael Granger, Trasimond Granger, <strong>Erisse Corbello [Granger]</strong>, and Martin Granger) for <strong>900 acres, Wm. Dyson League</strong>, confirming the deed made to Treville Sr. in his lifetime.</td><td><strong>Deed Record Book H, pp. 560–561</strong></td><td><span class="tag-verified">Verified Record</span> Contemporaneous recorded deed vesting record title in the five named branches, explicitly naming <strong>Erisse Corbello (Granger)</strong> as one of the five co-heirs.</td></tr>
 <tr><td><strong>Aug. 3, 1885</strong></td><td><strong>Cecile Granger</strong> appointed guardian of the minor heirs of Treville Granger Jr. (<em>Modesty, Izami/Mary, Tresimo &amp; Martene</em>).</td><td><strong>Probate Minutes Book D, pp. 252–254, 311; Book E, pp. 150, 366</strong> (Index Sheet 70)</td><td><span class="tag-verified">Verified Record</span> Establishes the guardianship represented on Division No. 5 of the 1888 Partition Plat.</td></tr>
 <tr><td><strong>Jan. 6, 1888</strong></td><td><strong>Lunacy Proceedings:</strong> <em>Estate of Eddie [Erisse] Granger, N.C.M. (Non Compos Mentis)</em> entered in Orange County Probate Court one month before the estate partition.</td><td><strong>Probate Minutes Book E, p. 131</strong> (Index Sheet 70)</td><td><span class="tag-verified">Verified Record</span> Contemporaneous 1888 probate record corroborating the 1924 court finding that Erisse was of unsound mind by 1888.</td></tr>
-<tr><td><strong>Feb. 10, 1888</strong></td><td><strong>DECREE &amp; REPORT OF PARTITION OF THE ESTATE OF TREVILLE GRANGER SR.:</strong> Amended final account (`E 143`), Citation (`E 145`), Final account approved (`E 146`), <strong>Order for Partition (`Book E, p. 147`)</strong>, <strong>Report of Partition (`Book E, p. 147`)</strong>, and <strong>Partition Approved (`Book E, p. 150`)</strong>, surveyed by County Surveyor <strong>William Morgan</strong>, dividing the 1,500 acres into five 300-acre divisions and setting aside <strong>Division / Block / Share No. 3 (300 acres) to Erisse Granger Carbello</strong>.</td><td><strong>Probate Case No. 15; Probate Minutes Book E, pp. 143–150</strong> (Index Sheet 70; Plat in <strong>OPR #291245, p. 18</strong>; cited in DR 15:551, 40:206, 43:499)</td><td><span class="tag-verified">Verified Record</span> <strong>The foundational title instrument for this claim:</strong> vests separate fee-simple title to the 300-acre Division / Block No. 3 in Erisse Granger Corbello.</td></tr>
+<tr><td><strong>Feb. 10, 1888</strong></td><td><strong>DECREE &amp; REPORT OF PARTITION OF THE ESTATE OF TREVILLE GRANGER SR.:</strong> Amended final account (<code>E 143</code>), Citation (<code>E 145</code>), Final account approved (<code>E 146</code>), <strong>Order for Partition (<code>Book E, p. 147</code>)</strong>, <strong>Report of Partition (<code>Book E, p. 147</code>)</strong>, and <strong>Partition Approved (<code>Book E, p. 150</code>)</strong>, surveyed by County Surveyor <strong>William Morgan</strong>, dividing the 1,500 acres into five 300-acre divisions and setting aside <strong>Division / Block / Share No. 3 (300 acres) to Erisse Granger Carbello</strong>.</td><td><strong>Probate Case No. 15; Probate Minutes Book E, pp. 143–150</strong> (Index Sheet 70; Plat in <strong>OPR #291245, p. 18</strong>; cited in DR 15:551, 40:206, 43:499)</td><td><span class="tag-verified">Verified Record</span> <strong>The foundational title instrument for this claim:</strong> vests separate fee-simple title to the 300-acre Division / Block No. 3 in Erisse Granger Corbello.</td></tr>
 <tr><td><strong>Sept. 8, 1888</strong><br>(not recorded until <strong>Oct. 7, 1901</strong>)</td><td><strong>Purported Deed by Erisse &amp; Charles Carbello to Tresimond Granger:</strong> signed by mark in Lake Charles, LA before Notary Thomas Kleinpeter, purporting to sell all 300 acres of <strong>Block No. 3</strong> to her brother <strong>Tresimond Granger</strong> for <strong>$450 cash</strong>; held off the record for 13 years until Oct. 7, 1901.</td><td>Verbatim in Equity No. 234 Bill of Complaint § IV (<strong>OPR #291245, p. 7</strong>); cited in <strong>DR Vol. 40, p. 204</strong></td><td><span class="tag-verified">Verified Record</span> Explains why Tresimond Granger and his heirs occupied, subdivided, and leased Block/Subdivision No. 3 between 1888 and 1924. Later adjudged invalid as to Erisse’s capacity in Cause No. 23895 (1924), subject to the court-approved compromise.</td></tr>
 <tr><td><strong>June 13, 1913</strong></td><td><strong>Warranty Deed:</strong> <strong>Tresimon Granger</strong> conveys a <strong>50-acre square</strong> (531.4 × 531.4 varas) in the north line of Subdivision No. 3 (and part of Subdivision No. 2) to his son <strong>John Granger</strong> for $1 and love and affection.</td><td><strong>Deed Record Vol. 14, p. 241</strong></td><td><span class="tag-verified">Verified Record</span> Creates the “John Granger 50-acre tract” in Subdivision No. 3, later referenced in the 1924/1926 judgments, the 1929/1930 Sarah Jane Granger confirmations (DR 47:551, 50:304), and the 1931 Corbello-heirs mineral deeds (DR 52:123, 130, 171).</td></tr>
 <tr><td><strong>June 18 &amp; Aug. 30, 1913</strong></td><td><strong>Power of Attorney &amp; 5-Acre Deed:</strong> Erisse Carbello (without husband’s joinder) gives a 1/2-interest POA to <strong>W. O. Huggins &amp; J. T. Moss</strong>, who convey <strong>5 acres</strong> off the east end of Share No. 3 on Cow Bayou to <strong>Joe Lucas</strong> for $250 (who leases to <strong>Abe Sokolski</strong> on Apr. 18, 1921, Contract Vol. 2 p. 305).</td><td><strong>POA Vol. C, p. 57</strong> (verbatim in OPR #291245, p. 12); <strong>DR Vol. 15, pp. 551–552</strong></td><td><span class="tag-verified">Verified Record</span> Cites <em>“Block No. 3, as set aside to me in the partition of said Treville Granger estate, as shown in Book E, of the Probate Records of Orange County, Texas.”</em> Cancelled as against Lucas and Sokolski in Equity No. 234 (1921).</td></tr>
@@ -142,8 +192,8 @@ section{scroll-margin-top:24px}
 <tr><td><strong>Sept. 4, 1926</strong><br>(rec. Sept. 15, 1926)</td><td><strong>Consent Judgment in Orange County Dist. Ct. No. 5179 (<em>Samuel Duhon et al. v. Erisse Granger Carbello et al.</em>):</strong> Duhon, LeBleu, Benoit, Ogea &amp; Billeaud claimants recover a 1/50 oil interest from H. T. Staiti (50-acre tract) and Frank Granger (29-acre tract), and <strong>take nothing against Erisse Granger Carbello or her curator, Calcasieu National Bank</strong>.</td><td><strong>Deed Record Vol. 43, pp. 497–500</strong> (Dist. Ct. Minutes Vol. O, pp. 260–261)</td><td><span class="tag-verified">Verified Record</span> Confirms Erisse’s recovered interest against collateral Duhon/LeBleu claimants and again cites the 1888 partition in <strong>Probate Minutes Book E, p. 147</strong>.</td></tr>
 <tr><td><strong>Feb. 3, 1930</strong></td><td><strong>Death of Marguerite Erisse Granger Corbello</strong> in Lake Charles, LA, survived by <strong>eight children</strong>: Tresimond (“T. C.”), Mary Modest (LeBleu), Artemon, Angeline (Champyne), Josephine (Duhon), Clarise (Lovett), Martin, and Mary Doris (Savoie). Louisiana Supreme Court affirms curator’s final account ($4,414.34 net cash plus residence and Orange County oil properties) on Dec. 1, 1930 (reh’g denied Jan. 5, 1931).</td><td><em>Corbello v. Corbello</em>, 171 La. 735, 132 So. 127; Lake Charles <em>American Press</em> obit. Feb. 7, 1930</td><td><span class="tag-verified">Verified Record</span> Fixes Erisse’s true date of death (refuting the “Feb. 24, 1925” date in the 2001 affidavit) and passes her remaining Orange County estate intestate to her <strong>eight children (1/8 per branch)</strong>.</td></tr>
 <tr><td><strong>Nov. 5, 12 &amp; 30, 1931</strong></td><td><strong>Mineral Deeds by Seven of Erisse’s Children to J. H. Harlan:</strong> <strong>Mary LeBleu, Angeline Champyne, Dorie Savoie, T. C. Carbello, A. Carbello, Martin Carbello, and Clairese Lovett (with spouses)</strong> convey to <strong>J. H. Harlan</strong> their undivided mineral fee (warranted at ≥2.188 undivided acres) in the <strong>50-acre John Granger tract in Subdivision No. 3</strong> (citing Vol. 14 p. 241), <strong>reserving to the grantors, their heirs and assigns, a 1/96 net royalty</strong>.</td><td><strong>Deed Record Vol. 52, pp. 123, 130, 171</strong></td><td><span class="tag-verified">Verified Record</span> Proves in Orange County deed records that all seven named grantors (including <strong>Clairese Lovett</strong> and <strong>T. C. Carbello</strong>) were Erisse’s surviving children/heirs, divesting their mineral fee in that 50-acre tract while <strong>preserving a contractual 1/96 net royalty</strong>.</td></tr>
-<tr><td><strong>May–Oct. 1986</strong></td><td><strong>Coordinated 1986 Heirship &amp; Trustee Filings on Block 3:</strong> Six branch affidavits of heirship are recorded in Orange County OPR for deceased children/grandchildren of Erisse — <strong>Josephine Corbello Duhon</strong> (`Vol. 620 p. 356, #38603`), <strong>Doris Corbello Savoie</strong> (`Vol. 621 p. 753, #39110`), <strong>Tresimond Corbello</strong> (`Vol. 622 p. 767, #39480`), <strong>Mary Modess Corbello LeBleu</strong> (`Vol. 622 p. 898, #39522`), <strong>Artemon Corbello</strong> (`Vol. 623 p. 389, #39694`), <strong>Robert Oval Corbello</strong> (`Vol. 627 p. 962, #41237`), and <strong>Clarise Corbello Lovett</strong> (`Vol. 634 p. 184, #43273`) — alongside the June 18, 1986 deed from <strong>Dyson Descendants Corp. to Gary W. Duhon, Trustee for the heirs of Erisse Granger Corbello</strong> (`Vol. 624 pp. 211–215, #39960`).</td><td><strong>OPR Vols. 620, 621, 622, 623, 624, 627, 634</strong></td><td><span class="tag-claim">Claimant Filing</span> Documents the family genealogy of seven of Erisse’s eight branches as of 1986 (including the 1/8 branch claim for Clarise Corbello Lovett and her daughter <strong>Martha Lovett</strong>). Does not by itself revest title previously compromised in 1924 or conveyed in 1931.</td></tr>
-<tr><td><strong>Nov. 19, 1987 – June 6, 2006</strong></td><td><strong>Subsequent Family Filings &amp; 2005 NARA Recording:</strong> Handwritten claim by Robert L. Corbello (Nov. 19, 1987, `Vol. 672 p. 289, #55660`); 2001 affidavits by Robert Larry Corbello &amp; Norma Latham (`Vol. 1248 p. 888, #227435` &amp; `Vol. 1249 p. 491, #227585`); June 12, 2003 adverse-possession notice by Bill Duhon (`Vol. 1364 p. 816, #253349`); <strong>Dec. 13, 2005 recording of the 25-page NARA-certified Equity No. 234 file &amp; 1888 Partition Plat (`OPR #291245`)</strong>; and <strong>June 6, 2006 Affidavit of Heirship of Clarise Corbello Lovett (`OPR #298552`)</strong> naming daughter <strong>Martha Olivia Lovett Thomas (1911–1995)</strong> and describing the 29-acre and 271-acre portions of Block 3.</td><td><strong>OPR Vols. 672, 1248, 1249, 1364; OPR #291245 &amp; #298552</strong></td><td><span class="tag-claim">Claimant Filing</span> / <span class="tag-verified">Verified Record (#291245)</span> Preserves the NARA federal record on the county rolls (`#291245`) and updates the Clarise Corbello Lovett → Martha Olivia Lovett Thomas lineage (`#298552`).</td></tr>
+<tr><td><strong>May–Oct. 1986</strong></td><td><strong>Coordinated 1986 Heirship &amp; Trustee Filings on Block 3:</strong> Six branch affidavits of heirship are recorded in Orange County OPR for deceased children/grandchildren of Erisse — <strong>Josephine Corbello Duhon</strong> (<code>Vol. 620 p. 356, #38603</code>), <strong>Doris Corbello Savoie</strong> (<code>Vol. 621 p. 753, #39110</code>), <strong>Tresimond Corbello</strong> (<code>Vol. 622 p. 767, #39480</code>), <strong>Mary Modess Corbello LeBleu</strong> (<code>Vol. 622 p. 898, #39522</code>), <strong>Artemon Corbello</strong> (<code>Vol. 623 p. 389, #39694</code>), <strong>Robert Oval Corbello</strong> (<code>Vol. 627 p. 962, #41237</code>), and <strong>Clarise Corbello Lovett</strong> (<code>Vol. 634 p. 184, #43273</code>) — alongside the June 18, 1986 deed from <strong>Dyson Descendants Corp. to Gary W. Duhon, Trustee for the heirs of Erisse Granger Corbello</strong> (<code>Vol. 624 pp. 211–215, #39960</code>).</td><td><strong>OPR Vols. 620, 621, 622, 623, 624, 627, 634</strong></td><td><span class="tag-claim">Claimant Filing</span> Documents the family genealogy of seven of Erisse’s eight branches as of 1986 (including the 1/8 branch claim for Clarise Corbello Lovett and her daughter <strong>Martha Lovett</strong>). Does not by itself revest title previously compromised in 1924 or conveyed in 1931.</td></tr>
+<tr><td><strong>Nov. 19, 1987 – June 6, 2006</strong></td><td><strong>Subsequent Family Filings &amp; 2005 NARA Recording:</strong> Handwritten claim by Robert L. Corbello (Nov. 19, 1987, <code>Vol. 672 p. 289, #55660</code>); 2001 affidavits by Robert Larry Corbello &amp; Norma Latham (<code>Vol. 1248 p. 888, #227435</code> &amp; <code>Vol. 1249 p. 491, #227585</code>); June 12, 2003 adverse-possession notice by Bill Duhon (<code>Vol. 1364 p. 816, #253349</code>); <strong>Dec. 13, 2005 recording of the 25-page NARA-certified Equity No. 234 file &amp; 1888 Partition Plat (<code>OPR #291245</code>)</strong>; and <strong>June 6, 2006 Affidavit of Heirship of Clarise Corbello Lovett (<code>OPR #298552</code>)</strong> naming daughter <strong>Martha Olivia Lovett Thomas (1911–1995)</strong> and describing the 29-acre and 271-acre portions of Block 3.</td><td><strong>OPR Vols. 672, 1248, 1249, 1364; OPR #291245 &amp; #298552</strong></td><td><span class="tag-claim">Claimant Filing</span> / <span class="tag-verified">Verified Record (#291245)</span> Preserves the NARA federal record on the county rolls (<code>#291245</code>) and updates the Clarise Corbello Lovett → Martha Olivia Lovett Thomas lineage (<code>#298552</code>).</td></tr>
 </tbody>
 </table></div>
 <p class="to-top"><a href="#top">↑ Back to top</a></p>
@@ -428,10 +478,164 @@ section{scroll-margin-top:24px}
 <p class="source">Derived local files: <code>/tmp/opencode/corbello-night/</code>, including <code>inventory.json</code>, <code>progress.json</code>, <code>keyword-leads.txt</code> and <code>COMPLETE.json</code>. Source folder remains unchanged. The original PDFs include personal identifiers and are not hosted here.</p>
 <p class="to-top"><a href="#top">↑ Back to top</a></p>
 </section>
+
+<section class="panel" id="family-action-plan"><h2>16. Action plan for the Clarise Corbello Lovett → Martha Olivia Lovett Thomas → Wanda Lee Idella Thomas → Frances / Francine Hargrove branch</h2>
+<p class="note"><strong>Scope note for counsel and family review:</strong> This section translates the primary records retrieved above into a concrete step-by-step roadmap for the descendants of <strong>Frances / Francine Hargrove</strong> (daughter of <strong>Wanda Lee Idella Thomas</strong>, granddaughter of <strong>Martha Olivia Lovett Thomas</strong>, great-granddaughter of <strong>Clarise Corbello Lovett</strong>, and great-great-granddaughter of <strong>Marguerite Erisse Granger Corbello</strong>). It is an evidentiary and procedural guide for Texas oil-and-gas/probate counsel, not legal advice or a guarantee of recovery.</p>
+
+<h3>A. What the primary records already establish for this branch — and the exact fractional chain</h3>
+<p>Unlike branches relying on unverified family lore, the <strong>Clarise Corbello Lovett → Martha Olivia Lovett Thomas</strong> link is already documented on the official records of Orange County, Texas:</p>
+<div class="table-wrap"><table>
+<thead><tr><th>Generation &amp; Ancestor</th><th>Verified Record &amp; Recording Citation</th><th>Documented Share / Legal Effect on Block 3</th></tr></thead>
+<tbody>
+<tr><td><strong>Gen. 1 — Jean Treville Granger Sr.</strong><br>(d. Nov. 30, 1881)</td><td><strong>Orange County Probate Case No. 15</strong>; Partition Decree &amp; Report dated <strong>Feb. 10, 1888</strong>, <strong>Probate Minutes Book E, pp. 147–150</strong>; Exhibit “A” Plat in <strong>OPR #291245, p. 18</strong>.</td><td><strong>100% of Division / Block No. 3 (300 acres)</strong> in the William Dyson League (A-10) is set apart in fee simple to daughter <strong>Marguerite Erisse Granger Carbello</strong>.</td></tr>
+<tr><td><strong>Gen. 2 — Marguerite Erisse Granger Corbello</strong><br>(Aug. 3, 1849 – Feb. 3, 1930)<br>&amp; husband <strong>Manuel Carlos (“Charles”) Corbello</strong> (d. July 4, 1923)</td><td><strong>April 1, 1916 POA</strong> to John L. Wasey (<strong>DR Vol. 22, p. 507</strong>); <strong>Dec. 30, 1921 Final Decree in Federal Equity No. 234</strong> (<strong>DR Vol. 35, p. 75; OPR #291245</strong>); <strong>Oct. 1, 1924 Final Judgment in 60th Dist. Ct. No. 23895</strong> (<strong>DR Vol. 40, pp. 204–208</strong>); <strong>Sept. 4, 1926 Judgment in No. 5179</strong> (<strong>DR Vol. 43, p. 497</strong>); <em>Corbello v. Corbello</em>, 171 La. 735 (1930).</td><td><strong>50% to Erisse Carbello (separate property) / 50% to John L. Wasey:</strong><br>• On the compromised Tresimond Granger deed lands (including the <strong>29-acre Granger Heirs tract</strong> on Cow Bayou and the <strong>50-acre Mose Granger tract</strong> leased to Gulf Production Co.): plaintiffs recover <strong>1/5 of the 1/6 royalty (= 1/30 gross royalty) and 1/5 of minerals/bonuses</strong>, split half to Erisse (<strong>1/10 of minerals / 1/60 gross royalty</strong>) and half to Wasey.<br>• On the uncompromised remainder of the 300-acre Block No. 3: Erisse recovers an <strong>undivided 1/2 fee-simple interest</strong>.<br>• Died intestate Feb. 3, 1930 survived by <strong>eight children (1/8 of Erisse’s share per child)</strong>.</td></tr>
+<tr><td><strong>Gen. 3 — Clarise (Clarice) Corbello Lovett</strong><br>(Dec. 23, 1886 – Oct. 28, 1959)<br>&amp; husband <strong>Solomon (“Sol”) Lovett</strong><br>(Sept. 10, 1867 – Sept. 16, 1952)</td><td>• <strong>Nov. 1931 Mineral Deeds to J. H. Harlan</strong> (<strong>DR Vol. 52, pp. 123, 130, 171</strong>)<br>• <strong>Oct. 10, 1986 Affidavit of Heirship</strong> (<strong>OPR Vol. 634, pp. 184–185, #43273</strong>)<br>• <strong>June 6, 2006 Affidavit of Heirship</strong> (<strong>OPR #298552</strong>)</td><td><strong>1/8 of Erisse’s estate:</strong><br>• On the <strong>50-acre John Granger square</strong> (<code>DR 14:241</code>): Clarise and Sol Lovett joined six siblings in selling their mineral fee to J. H. Harlan in Nov. 1931, <strong>expressly reserving a 1/96 net royalty to the 7 grantors, their heirs and assigns forever</strong> (<strong>1/672 net royalty</strong> for Clarise’s branch).<br>• On the <strong>29-acre Granger Heirs tract</strong> and the <strong>remaining 271 acres of Block 3</strong> (explicitly claimed in <strong>OPR #298552</strong>): no conveyance from Clarise Lovett divesting her <strong>1/8 share of Erisse’s recovered interest</strong> appears in the Orange County index.<br>• Died intestate Oct. 28, 1959 leaving <strong>six surviving children (1/6 of Clarise’s 1/8 share = 1/48 of Erisse’s share each)</strong>.</td></tr>
+<tr><td><strong>Gen. 4 — Martha Olivia Lovett Thomas</strong><br>(Jan. 4, 1911 – Jan. 25, 1995)<br>&amp; husband <strong>Jefferson Davis Thomas</strong><br>(Mar. 15, 1908 – Apr. 21, 1988)</td><td>Named as surviving daughter and heir of Clarise Corbello Lovett in both <strong>OPR Vol. 634, p. 184 (#43273, 1986)</strong> and <strong>OPR #298552 (June 6, 2006)</strong> (<code>"Martha Lovett Thomas, date of birth January 04, 1911, date of death January 25, 1995"</code>).</td><td><strong>1/6 of Clarise Lovett’s 1/8 share (= 1/48 of Erisse’s estate):</strong><br>• Already established by name and birth/death dates on the Orange County Official Public Records in 1986 and 2006.</td></tr>
+<tr><td><strong>Gen. 5 — Wanda Lee Idella Thomas</strong><br>(July 12, 1938 – Aug. 22, 2007)<br>↓<br><strong>Gen. 6 — Frances / Francine Hargrove</strong><br>↓<br><strong>Gen. 7 — Current Descendants</strong></td><td>Supplied family-tree records (FamilySearch profile <code>PH5L-73R</code> for Wanda Lee Idella Thomas). <strong>NOT YET RECORDED in Orange County Official Public Records.</strong></td><td><strong>Pro-rata share of Martha Olivia Lovett Thomas’s 1/48 branch interest:</strong><br>• <em>Critical record gap to cure:</em> no Affidavit of Heirship or probate order is yet recorded in Orange County connecting <strong>Martha Olivia Lovett Thomas (d. 1995) → Wanda Lee Idella Thomas (d. 2007) → Frances/Francine Hargrove → current descendants</strong>.</td></tr>
+</tbody>
+</table></div>
+
+<h3>B. Why “compensation” vs. “reparations” must be distinguished for a lawyer</h3>
+<ul>
+<li><strong>Why a government “reparations” or sovereign-taking claim is not the legal mechanism here:</strong> In Texas oil-and-gas law, royalties and mineral interests are private property rights governed by recorded title, court decrees, leases, and division orders. The federal court in <strong>Equity No. 234 (1921/1925)</strong> and the state district court in <strong>Cause No. 23895 (1924)</strong> already adjudicated Erisse Corbello’s mental incapacity and restored her private title and royalty fractions. A government agency does not pay “reparations” on private oil leases; rather, <strong>oil operators, first purchasers, pipeline companies, trustees/co-tenants, and state unclaimed-property funds</strong> hold and owe unpaid or suspended mineral proceeds.</li>
+<li><strong>The three concrete paths to monetary recovery or title recognition for your branch:</strong>
+  <ol>
+    <li><strong>Suspended / Unclaimed Royalties &amp; Bonuses (Escheated to the State or Held in Operator Suspense):</strong> Under Texas Property Code Ch. 75 and Texas Natural Resources Code § 91.402, when an operator or first purchaser cannot locate the living heirs of a deceased royalty owner (such as Clarise Corbello Lovett, d. 1959, or Martha Lovett Thomas, d. 1995), the accrued royalties are placed in a <strong>suspense account</strong> and, after three years of inactivity, escheated to the <strong>Texas Comptroller’s Unclaimed Property Division</strong> (or Louisiana’s Unclaimed Property division if the last known address was Lake Charles).Those funds never expire and can be claimed by proving the heirship chain.</li>
+    <li><strong>Active &amp; Historical Lease Accounting / Division-Order Placement on Subdivision No. 3:</strong> Requiring operators on or pooled with Subdivision No. 3 (such as <strong>Kilmarnock Oil Company, Inc.</strong>, successors to <strong>Gulf Production Company / Chevron</strong>, or successors to <strong>J. H. Harlan</strong> under the 1931 reserved 1/96 royalty) to verify whether wells have produced from the 29-acre, 50-acre, or 271-acre tracts and to place the Lovett–Thomas–Hargrove heirs into pay status.</li>
+    <li><strong>Accounting from Co-Tenants / Trustees (1986 Duhon Trust &amp; 2006 Lovett Filing):</strong> Determining whether any lease bonuses, right-of-way payments (such as the 1990–1991 Enron pipeline easements or 2000 Enterprise Lou-Tex pipeline condemnation), or settlements were collected on behalf of the Clarise Corbello Lovett branch in 1986 (<code>OPR Vol. 624 p. 211</code>) or 2006 (<code>OPR #298552</code>).</li>
+  </ol>
+</li>
+</ul>
+
+<h3>C. Step-by-step action plan for the Frances / Francine Hargrove wing</h3>
+<ol>
+<li><strong>Step 1 — Assemble the Vital-Records Packet Linking Martha Olivia Lovett Thomas (d. 1995) to Frances Hargrove and You:</strong>
+  <ul>
+    <li>Because Orange County OPR <code>#298552</code> (June 6, 2006) already proves title descent from <strong>Erisse Granger Corbello → Clarise Corbello Lovett → Martha Olivia Lovett Thomas (1911–1995)</strong>, you only need to bridge the gap from <strong>Martha Olivia Lovett Thomas</strong> to the present.</li>
+    <li>Collect certified copies (or obituary/probate/census documentation) of:
+      <ol>
+        <li><strong>Death certificate &amp; obituary of Martha Olivia Lovett Thomas</strong> (d. Jan. 25, 1995) and husband <strong>Jefferson Davis Thomas</strong> (d. Apr. 21, 1988), listing all of Martha’s children (so the exact fraction of Martha’s share passing to Wanda Lee Idella Thomas is known).</li>
+        <li><strong>Birth, marriage, and death certificate (d. Aug. 22, 2007) of Wanda Lee Idella Thomas</strong>, listing all of Wanda’s children (including your mother, <strong>Frances / Francine Hargrove</strong>).</li>
+        <li><strong>Birth, marriage, and (if applicable) death/estate records for Frances / Francine Hargrove</strong> and birth certificates/IDs for her children (your generation).</li>
+      </ol>
+    </li>
+  </ul>
+</li>
+<li><strong>Step 2 — Record a Supplemental Affidavit of Heirship in Orange County, Texas:</strong>
+  <ul>
+    <li>Have a Texas oil-and-gas or probate attorney draft and record in the <strong>Orange County Official Public Records</strong> an <strong>Affidavit of Heirship of Martha Olivia Lovett Thomas and Wanda Lee Idella Thomas</strong> (sworn by two disinterested witnesses familiar with the family, plus a family member).</li>
+    <li>Ensure the affidavit explicitly cross-references:
+      <ul>
+        <li><strong>Orange County Probate Case No. 15, Probate Minutes Book E, pp. 147–150</strong> (Feb. 10, 1888 Partition of Treville Granger Sr.);</li>
+        <li><strong>OPR Instrument #291245</strong> (Dec. 13, 2005 NARA Equity No. 234 packet &amp; Exhibit “A” Partition Plat) and <strong>DR Vol. 35, p. 75</strong> / <strong>Vol. 41, p. 210</strong>;</li>
+        <li><strong>DR Vol. 40, pp. 204–208</strong> (Oct. 1, 1924 Judgment in 60th Dist. Ct. No. 23895);</li>
+        <li><strong>DR Vol. 52, pp. 123, 130, 171</strong> (Nov. 1931 Mineral Deeds reserving a 1/96 royalty to Clairese Lovett et al.); and</li>
+        <li><strong>OPR Vol. 634, pp. 184–185 (#43273)</strong> and <strong>OPR #298552</strong> (the 1986 and 2006 Clarise Corbello Lovett Heirship Affidavits).</li>
+      </ul>
+    </li>
+    <li><em>Why this is essential:</em> Until an instrument indexed under <strong>Thomas</strong> and <strong>Hargrove</strong> is recorded in Orange County OPR and tied to <strong>Lovett / Corbello</strong>, no title examiner or division-order analyst searching Orange County records can know that Frances Hargrove’s family descends from Clarise Corbello Lovett.</li>
+  </ul>
+</li>
+<li><strong>Step 3 — Search &amp; File Claims with Texas and Louisiana Unclaimed Property under Every Ancestral Surname:</strong>
+  <ul>
+    <li>Suspended royalties are reported under the name of the <em>last owner of record on the operator’s division order</em> — almost never under a living descendant’s married surname.</li>
+    <li>Search <a href="https://claimittexas.org/" rel="noreferrer"><strong>ClaimItTexas.gov</strong></a> (Texas Comptroller) and <a href="https://www.lacashclaim.org/" rel="noreferrer"><strong>LaCashClaim.org</strong></a> (Louisiana State Treasurer) for every ancestor in the chain:
+      <code>Erisse Corbello</code>, <code>Erisse Carbello</code>, <code>Charles Corbello</code>, <code>Clarise Lovett</code>, <code>Clarice Lovett</code>, <code>Sol Lovett</code>, <code>Solomon Lovett</code>, <code>Martha Lovett</code>, <code>Martha Thomas</code>, <code>Martha Olivia Thomas</code>, <code>Jefferson Thomas</code>, <code>Wanda Thomas</code>, <code>Wanda Lee Thomas</code>, <code>Frances Hargrove</code>, <code>Francine Hargrove</code>, <code>Joseph Lovett</code>, <code>Doc Lovett</code>, <code>Idellar Gilley</code>, <code>George Henry Lovett</code>, <code>James Edward Lovett</code>, and <code>Gary W. Duhon</code>.</li>
+    <li>Once your Vital-Records Packet and recorded Affidavit of Heirship (Steps 1–2) are ready, submit them with the Comptroller’s heirship claim form for any matching mineral/royalty accounts.</li>
+  </ul>
+</li>
+<li><strong>Step 4 — Contact the 2006 Lovett Affiants / Cousins &amp; Audit the 1986 Duhon Trusteeship:</strong>
+  <ul>
+    <li>Notice that on <strong>June 6, 2006</strong>, <strong>Clyde Perkins</strong> and <strong>Darrel Sarvaunt</strong> of Lake Charles, LA recorded the updated <strong>Affidavit of Heirship of Clarise Corbello Lovett (<code>OPR #298552</code>)</strong> — and on <strong>December 13, 2005</strong>, the NARA Equity No. 234 packet (<code>OPR #291245</code>) was recorded in Orange County. That means members of the Clarise Corbello Lovett branch were actively doing title-curative work in 2005–2006 on the 29-acre and 271-acre tracts!</li>
+    <li>Reaching out to the family members behind the 2005–2006 filings (and checking whether an oil company, pipeline company, or title company requested <code>#298552</code> in 2006) is the fastest shortcut to learning which operator or payor required that curative affidavit.</li>
+  </ul>
+</li>
+<li><strong>Step 5 — Engage a Texas Oil &amp; Gas Title Attorney for a Targeted Division-Order &amp; Lease Demand:</strong>
+  <ul>
+    <li>Hand this briefing and the recorded PDFs (<code>OPR #291245</code>, <code>DR 40:204</code>, <code>DR 43:497</code>, <code>DR 52:123/130/171</code>, <code>OPR 634:184</code>, <code>OPR #298552</code>, and <code>Probate Index Sheet 70</code>) to a board-certified Texas Oil, Gas &amp; Mineral Law attorney (or Orange/Jefferson County title counsel).</li>
+    <li>Ask counsel to:
+      <ol>
+        <li>Overlay the <strong>1888 Exhibit “A” Partition Plat (<code>OPR #291245</code>, p. 18)</strong> and the metes-and-bounds of the <strong>29-acre Granger Heirs tract</strong>, the <strong>50-acre John Granger tract</strong>, the <strong>50-acre Mose Granger tract</strong>, and the <strong>remaining 271 acres of Division No. 3</strong> onto the Railroad Commission of Texas (RRC) GIS map for Abstract 10 (Orange Field) to identify every active or historical well bored into Division No. 3;</li>
+        <li>Verify whether any post-1931 tax foreclosure, partition, or receiver’s lease affected the unleased portions of Division No. 3; and</li>
+        <li>Send statutory demand letters under <strong>Texas Natural Resources Code §§ 91.402 and 91.504</strong> to any operator or first purchaser producing from Division No. 3 (or pooled units encompassing it) demanding an accounting of suspended royalties attributable to Clarise Corbello Lovett’s 1/8 share (and Martha Olivia Lovett Thomas’s 1/48 share).</li>
+      </ol>
+    </li>
+  </ul>
+</li>
+</ol>
+<p class="to-top"><a href="#top">↑ Back to top</a></p>
+</section>
+
 <footer class="muted">Cherishvale · Corbello–Granger family research · October 19, 2026<br>Source-based research notes, not a title opinion or determination of legal entitlement.</footer>
 </main>
+
+<div class="mobile-fab" aria-label="Quick navigation">
+  <a href="#contents">☰ Contents</a>
+  <a href="#family-action-plan">★ Action Plan</a>
+  <a href="#top">↑ Top</a>
+</div>
+
+<div class="plat-modal" id="plat-modal" role="dialog" aria-modal="true" aria-label="Full-resolution 1888 Partition Plat">
+  <div class="plat-modal-bar">
+    <span><strong>Exhibit “A” Partition Plat (1888)</strong> · Scroll / pinch to zoom</span>
+    <div>
+      <a class="plat-zoom-btn" href="/assets/plat-1888-exhibit-a.png" target="_blank" rel="noreferrer" style="margin:0 8px 0 0;padding:5px 10px">↗ Raw image</a>
+      <button type="button" onclick="closePlatModal()" style="padding:5px 12px;border-radius:999px;background:#3a4a46">✕ Close</button>
+    </div>
+  </div>
+  <div class="plat-modal-scroll" onclick="if(event.target===this)closePlatModal()">
+    <img src="/assets/plat-1888-exhibit-a.png" alt="Full-resolution NARA-certified 1888 Partition Plat of the Estate of Treville Granger, Vol. E, pp. 147–150">
+  </div>
+</div>
+
 <script>
+function openPlatModal(){
+  var m=document.getElementById('plat-modal');
+  if(m){m.classList.add('open');document.body.style.overflow='hidden';}
+}
+function closePlatModal(){
+  var m=document.getElementById('plat-modal');
+  if(m){m.classList.remove('open');document.body.style.overflow='';}
+}
+document.addEventListener('keydown',function(e){if(e.key==='Escape')closePlatModal();});
 (function(){
+  /* 1. Stamp data-label on table cells for stacked mobile card tables */
+  var tables=document.querySelectorAll('table');
+  tables.forEach(function(tbl){
+    var headers=[].slice.call(tbl.querySelectorAll('thead th')).map(function(th){return th.textContent.trim();});
+    if(!headers.length)return;
+    tbl.querySelectorAll('tbody tr').forEach(function(tr){
+      [].slice.call(tr.querySelectorAll('td')).forEach(function(td,i){
+        if(headers[i]&&!td.hasAttribute('data-label'))td.setAttribute('data-label',headers[i]);
+      });
+    });
+  });
+
+  /* 2. Detect phone & tablet (via viewport + touch/UA) and adapt UI */
+  function updateDeviceClass(){
+    var w=window.innerWidth||document.documentElement.clientWidth;
+    var ua=navigator.userAgent||'';
+    var isTouch=('ontouchstart' in window)||(navigator.maxTouchPoints>0);
+    var isPhone=(w<=720)||(/iPhone|Android.*Mobile|Windows Phone/i.test(ua));
+    var isTablet=(!isPhone)&&((w>720&&w<=1024)||(/iPad|Android(?!.*Mobile)|Tablet/i.test(ua))||(isTouch&&w<=1180));
+    var b=document.documentElement;
+    b.classList.toggle('is-mobile',isPhone);
+    b.classList.toggle('is-tablet',isTablet);
+    var badge=document.getElementById('device-badge');
+    if(badge){
+      if(isPhone){
+        badge.textContent='📱 Phone layout active — tables are stacked as easy-reading cards · Use the bottom-right bar to jump to Contents or Action Plan.';
+      }else if(isTablet){
+        badge.textContent='📱 Tablet layout active — touch navigation & pinch-to-zoom plat viewer enabled.';
+      }else{
+        badge.textContent='';
+      }
+    }
+  }
+  updateDeviceClass();
+  window.addEventListener('resize',updateDeviceClass);
+
+  /* 3. Scroll-spy highlight for Contents links */
   var links=[].slice.call(document.querySelectorAll('.toc a[href^="#"]'));
   var byId={};
   links.forEach(function(a){byId[a.getAttribute('href').slice(1)]=a;});
