@@ -10,10 +10,10 @@
 <link rel="canonical" href="https://cherishvale.com/wellspring">
 <link rel="stylesheet" href="/assets/site.css">
 
-<title>Wellspring — Water-Positive Data Center Architecture &amp; Graphene Phase-Change Cooling | Cherishvale</title>
-<meta name="description" content="Wellspring is a regenerative perimeter, outbound waterway, and in-situ graphene phase-change cooling architecture that turns AI data centers into zero-draw flood defense and municipal water purification plants.">
-<meta property="og:title" content="Wellspring — Water-Positive AI Data Center Architecture | Cherishvale">
-<meta property="og:description" content="Zero municipal drinking water drawn. 24-hour graphene-armored thermal battery cooling, 100-year flood detention perimeter, and powered downstream watershed remediation.">
+<title>Wellspring — Water-Positive Data Center Architecture &amp; Preliminary Engineering Basis | Cherishvale</title>
+<meta name="description" content="Technical, financial, and legislative briefing for Wellspring: a closed-loop phase-change cooling, perimeter flood-detention, and waste-heat water treatment architecture for 100 MW AI data centers.">
+<meta property="og:title" content="Wellspring — Water-Positive Data Center Architecture &amp; Engineering Basis | Cherishvale">
+<meta property="og:description" content="Preliminary hydraulic, thermal, and civil engineering basis alongside executive TCO analysis and model municipal zoning language for net-positive-water AI data centers.">
 <meta property="og:type" content="website">
 <meta property="og:url" content="https://cherishvale.com/wellspring">
 <meta property="og:image" content="https://cherishvale.com/assets/wellspring/campus-1536.jpg">
@@ -23,79 +23,157 @@
 <meta name="twitter:image" content="https://cherishvale.com/assets/wellspring/campus-1536.jpg">
 
 <style>
+  :root {
+    --bg: #14171a;
+    --panel: #191d21;
+    --panel-2: #1f2429;
+    --line: #282e35;
+    --line-strong: #363e47;
+    --ink: #e6e9ec;
+    --dim: #9aa2ac;
+    --teal: #6ba4b8;
+    --gold: #c2a468;
+    --on-accent: #0d1317;
+  }
   html { scroll-behavior: smooth; }
+  body {
+    background: #14171a !important;
+    background-image: none !important;
+    color: var(--ink);
+  }
+  nav {
+    background: #14171a;
+    border-bottom: 1px solid var(--line);
+  }
   .ws-wrap {
-    max-width: 1020px;
+    max-width: 1060px;
     margin: 0 auto;
-    padding: 0 22px 72px;
+    padding: 0 22px 80px;
   }
   .ws-hero {
-    padding: 56px 0 32px;
-    text-align: center;
+    padding: 48px 0 28px;
+    text-align: left;
+    border-bottom: 1px solid var(--line);
+    margin-bottom: 24px;
   }
   .ws-eyebrow {
     color: var(--teal);
     text-transform: uppercase;
-    letter-spacing: 0.14em;
-    font-size: 12px;
-    font-weight: 600;
-    margin-bottom: 10px;
+    letter-spacing: 0.12em;
+    font-size: 11.5px;
+    font-weight: 700;
+    margin-bottom: 8px;
+    font-family: var(--mono);
   }
   .ws-hero h1 {
-    font-size: clamp(34px, 6.5vw, 56px);
+    font-size: clamp(32px, 5.5vw, 48px);
     letter-spacing: -0.02em;
     margin: 0 0 12px;
-    line-height: 1.08;
+    line-height: 1.1;
   }
   .ws-hero .sub {
     color: var(--dim);
-    font-size: clamp(15px, 2.3vw, 18.5px);
-    max-width: 780px;
-    margin: 0 auto 24px;
-    line-height: 1.6;
+    font-size: clamp(15px, 2.1vw, 17.5px);
+    max-width: 860px;
+    margin: 0 0 22px;
+    line-height: 1.65;
+  }
+  .ws-hero .badges {
+    justify-content: flex-start;
+  }
+  .ws-hero .cta-row {
+    justify-content: flex-start;
+  }
+  .ws-role-bar {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 12px;
+    margin: 22px 0;
+  }
+  .ws-role-card {
+    display: block;
+    background: #191d21;
+    border: 1px solid var(--line-strong);
+    border-left: 3px solid var(--teal);
+    border-radius: 8px;
+    padding: 14px 16px;
+    text-decoration: none;
+    transition: background 0.15s, border-color 0.15s;
+  }
+  .ws-role-card:hover {
+    background: #1f2429;
+    border-color: var(--teal);
+    text-decoration: none;
+  }
+  .ws-role-card small {
+    display: block;
+    font-family: var(--mono);
+    font-size: 11px;
+    color: var(--teal);
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    margin-bottom: 4px;
+  }
+  .ws-role-card b {
+    display: block;
+    color: var(--ink);
+    font-size: 15px;
+    margin-bottom: 4px;
+  }
+  .ws-role-card span {
+    display: block;
+    color: var(--dim);
+    font-size: 13px;
+    line-height: 1.45;
   }
   .ws-panel {
-    background: rgba(24, 27, 32, 0.96);
-    border: 1px solid var(--line-strong);
-    border-radius: 14px;
-    padding: clamp(20px, 3.8vw, 34px);
+    background: #191d21;
+    border: 1px solid var(--line);
+    border-radius: 8px;
+    padding: clamp(20px, 3.5vw, 32px);
     margin: 22px 0;
   }
   .ws-panel h2 {
     margin-top: 0;
-    font-size: clamp(20px, 3vw, 25px);
+    font-size: clamp(19px, 2.8vw, 24px);
     color: var(--ink);
+  }
+  .ws-panel h3 {
+    font-size: 16px;
+    color: var(--ink);
+    margin: 26px 0 8px;
   }
   .ws-kpis {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(210px, 1fr));
-    gap: 14px;
-    margin: 22px 0 8px;
+    grid-template-columns: repeat(auto-fit, minmax(215px, 1fr));
+    gap: 12px;
+    margin: 20px 0 8px;
   }
   .ws-kpi {
-    background: var(--panel);
+    background: #14171a;
     border: 1px solid var(--line);
     border-top: 2px solid var(--teal);
-    border-radius: 10px;
-    padding: 16px 18px;
+    border-radius: 6px;
+    padding: 15px 16px;
     text-align: left;
   }
   .ws-kpi strong {
     display: block;
-    font-size: clamp(22px, 3.2vw, 28px);
+    font-size: clamp(20px, 2.8vw, 26px);
     color: var(--ink);
     letter-spacing: -0.01em;
     margin-bottom: 4px;
+    font-family: var(--mono);
   }
   .ws-kpi span {
-    font-size: 13px;
+    font-size: 12.5px;
     color: var(--dim);
     line-height: 1.45;
     display: block;
   }
   .ws-toc {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    grid-template-columns: repeat(auto-fit, minmax(225px, 1fr));
     gap: 10px;
     list-style: none;
     padding: 0;
@@ -103,10 +181,10 @@
   }
   .ws-toc a {
     display: block;
-    padding: 11px 14px;
-    border-radius: 9px;
-    border: 1px solid var(--line-strong);
-    background: rgba(255, 255, 255, 0.025);
+    padding: 10px 14px;
+    border-radius: 6px;
+    border: 1px solid var(--line);
+    background: #14171a;
     color: var(--ink);
     font-size: 13.5px;
     text-decoration: none;
@@ -114,12 +192,13 @@
   }
   .ws-toc a:hover {
     border-color: var(--teal);
-    background: rgba(62, 200, 216, 0.1);
+    background: #1f2429;
     text-decoration: none;
   }
   .ws-toc a small {
     display: block;
     color: var(--teal);
+    font-family: var(--mono);
     font-size: 11px;
     text-transform: uppercase;
     letter-spacing: 0.08em;
@@ -127,48 +206,51 @@
     margin-bottom: 2px;
   }
   .ws-diagram {
-    background: #111418;
+    background: #111417;
     border: 1px solid var(--line-strong);
-    border-radius: 12px;
-    padding: 16px;
+    border-radius: 6px;
+    padding: 14px;
     margin: 18px 0;
     overflow-x: auto;
   }
   .ws-diagram figcaption {
     color: var(--dim);
     font-size: 12.5px;
-    text-align: center;
+    text-align: left;
     margin-top: 10px;
-    line-height: 1.5;
+    padding-top: 8px;
+    border-top: 1px solid var(--line);
+    line-height: 1.55;
   }
   .ws-zones {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
-    gap: 14px;
+    gap: 12px;
     margin-top: 16px;
   }
   .ws-zone {
-    background: var(--panel);
+    background: #14171a;
     border: 1px solid var(--line);
-    border-radius: 10px;
-    padding: 18px;
+    border-radius: 6px;
+    padding: 16px;
   }
   .ws-zone .z-tag {
     display: inline-block;
+    font-family: var(--mono);
     font-size: 11px;
     font-weight: 700;
     text-transform: uppercase;
-    letter-spacing: 0.08em;
-    padding: 3px 9px;
-    border-radius: 999px;
-    background: rgba(62, 200, 216, 0.14);
+    letter-spacing: 0.06em;
+    padding: 2px 8px;
+    border-radius: 4px;
+    background: #1f2429;
     color: var(--teal);
-    border: 1px solid rgba(62, 200, 216, 0.35);
+    border: 1px solid var(--line-strong);
     margin-bottom: 8px;
   }
   .ws-zone h3 {
     margin: 4px 0 8px;
-    font-size: 16px;
+    font-size: 15.5px;
     color: var(--ink);
   }
   .ws-zone p {
@@ -177,10 +259,52 @@
     color: var(--dim);
     line-height: 1.6;
   }
+  .ws-eq-box {
+    background: #14171a;
+    border: 1px solid var(--line-strong);
+    border-left: 3px solid var(--teal);
+    border-radius: 6px;
+    padding: 16px 20px;
+    margin: 16px 0;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 16px;
+  }
+  .ws-eq-math {
+    font-family: "Cambria Math", "STIX Two Math", Georgia, serif;
+    font-size: clamp(18px, 2.5vw, 22px);
+    color: var(--ink);
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+  }
+  .ws-frac {
+    display: inline-flex;
+    flex-direction: column;
+    align-items: center;
+    vertical-align: middle;
+    line-height: 1.15;
+    padding: 0 4px;
+  }
+  .ws-frac-num {
+    border-bottom: 1.5px solid var(--ink);
+    padding: 0 6px 2px;
+  }
+  .ws-frac-den {
+    padding: 2px 6px 0;
+  }
+  .ws-eq-note {
+    font-size: 12.5px;
+    color: var(--dim);
+    max-width: 460px;
+    line-height: 1.5;
+  }
   .ws-calc {
-    background: linear-gradient(180deg, rgba(62,200,216,0.07) 0%, rgba(28,30,34,0.95) 100%);
-    border: 1px solid rgba(62, 200, 216, 0.4);
-    border-radius: 12px;
+    background: #14171a;
+    border: 1px solid var(--line-strong);
+    border-radius: 8px;
     padding: 22px;
     margin: 18px 0;
   }
@@ -198,36 +322,45 @@
     cursor: pointer;
   }
   .ws-mw-pill {
-    background: var(--teal);
-    color: var(--on-accent);
+    background: #1f2429;
+    border: 1px solid var(--line-strong);
+    color: var(--ink);
+    font-family: var(--mono);
     font-weight: 700;
-    font-size: 18px;
-    padding: 6px 16px;
-    border-radius: 999px;
-    min-width: 130px;
+    font-size: 16px;
+    padding: 6px 14px;
+    border-radius: 6px;
+    min-width: 120px;
     text-align: center;
   }
   .ws-callout {
-    border-left: 3px solid var(--gold);
-    background: rgba(217, 178, 105, 0.07);
+    border-left: 3px solid var(--teal);
+    background: #14171a;
+    border-top: 1px solid var(--line);
+    border-right: 1px solid var(--line);
+    border-bottom: 1px solid var(--line);
     padding: 14px 18px;
-    border-radius: 0 10px 10px 0;
+    border-radius: 0 6px 6px 0;
     margin: 16px 0;
-    font-size: 14px;
-    color: var(--ink);
+    font-size: 13.5px;
+    color: var(--dim);
+    line-height: 1.6;
   }
   .ws-callout b {
-    color: var(--gold);
+    color: var(--ink);
+  }
+  .ws-callout.warn {
+    border-left-color: var(--gold);
   }
   .ws-btn {
     cursor: pointer;
     border: 1px solid var(--line-strong);
-    border-radius: 8px;
-    padding: 10px 18px;
+    border-radius: 6px;
+    padding: 9px 16px;
     color: var(--ink);
     background: var(--panel);
     font: inherit;
-    font-size: 14px;
+    font-size: 13.5px;
   }
   .ws-btn:hover {
     border-color: var(--teal);
@@ -235,28 +368,50 @@
   }
   .table-scroll {
     overflow-x: auto;
+    margin: 14px 0;
+  }
+  table {
+    font-size: 13px;
+  }
+  th, td {
+    vertical-align: top;
+    line-height: 1.5;
+  }
+  td.mono {
+    font-family: var(--mono);
+    color: var(--ink);
+    white-space: nowrap;
   }
   td.good {
     color: var(--teal);
     font-weight: 600;
   }
   td.bad {
-    color: #e08b7e;
+    color: #c9867b;
+  }
+  .to-top {
+    text-align: right;
+    font-size: 12.5px;
+    margin: 14px 0 0;
+  }
+  .to-top a {
+    color: var(--dim);
   }
   @media (max-width: 680px) {
     .ws-wrap { padding: 0 14px 56px; }
-    .ws-panel { padding: 18px 15px; }
+    .ws-panel { padding: 18px 14px; }
+    td.mono { white-space: normal; }
   }
   @media print {
     body { background: #fff !important; color: #111 !important; }
-    nav, .cta-row, .no-print { display: none !important; }
-    .ws-panel, .ws-kpi, .ws-zone, .card, .step, details {
+    nav, .cta-row, .no-print, .to-top { display: none !important; }
+    .ws-panel, .ws-kpi, .ws-zone, .card, .step, details, .ws-callout, .ws-eq-box {
       background: #fff !important;
       color: #111 !important;
       border: 1px solid #bbb !important;
       break-inside: avoid;
     }
-    h1, h2, h3, b, strong, th, td.good { color: #000 !important; }
+    h1, h2, h3, b, strong, th, td.good, td.mono { color: #000 !important; }
     p, span, td, figcaption, .sub, .lead { color: #222 !important; }
     .ws-diagram { background: #f8f9fa !important; border: 1px solid #aaa !important; }
   }
@@ -266,8 +421,8 @@
 {
   "@context": "https://schema.org",
   "@type": "TechArticle",
-  "headline": "Wellspring — Regenerative Water-Positive AI Data Center Architecture & In-Situ Graphene Phase-Change Cooling",
-  "description": "Engineering and civic policy blueprint for zero-municipal-water AI data centers with 100-year flood detention perimeters, graphene-encapsulated phase-change thermal battery loops, and powered downstream waterway remediation.",
+  "headline": "Wellspring — Water-Positive Data Center Architecture & Preliminary Engineering Basis",
+  "description": "Preliminary hydraulic, thermal, civil, financial, and legislative specification for closed-loop phase-change data center cooling and perimeter watershed infrastructure.",
   "author": {
     "@type": "Organization",
     "name": "Cherishvale",
@@ -285,268 +440,622 @@
 <body>
 <a class="skip-link" href="#main">Skip to content</a>
 
-<nav>
+<nav id="top">
   <div class="wrap" style="display:flex;align-items:center;gap:16px;width:100%;flex-wrap:wrap">
     <a class="brand" href="/"><img class="brand-mark" src="/assets/logo/mark-transparent.png" alt=""><img class="brand-word" src="/assets/logo/wordmark-transparent.png" alt="Cherishvale"></a>
     <span class="spacer"></span>
-    <a href="#architecture">4-Zone Perimeter</a>
-    <a href="#fluid">SpringCore-48 Fluid</a>
-    <a href="#waterways">Powered Waterways</a>
-    <a href="#calculator">Impact Calculator</a>
-    <a href="#policy">Policy &amp; Legislation</a>
-    <a href="mailto:hello@cherishvale.com?subject=Wellspring%20Briefing">Contact</a>
+    <a href="#engineering">Engineering Basis</a>
+    <a href="#pid">P&amp;ID &amp; Schematics</a>
+    <a href="#fluid">SpringCore-48</a>
+    <a href="#ceo">Executive ROI</a>
+    <a href="#policy">Model Ordinance</a>
+    <a href="mailto:hello@cherishvale.com?subject=Wellspring%20Engineering%20or%20Policy%20Briefing">Contact</a>
   </div>
 </nav>
 
 <div class="ws-wrap" id="main">
   <header class="ws-hero">
-    <div class="ws-eyebrow">Cherishvale Infrastructure &amp; Civic Engineering · Policy &amp; Technical Briefing</div>
+    <div class="ws-eyebrow">Cherishvale Infrastructure · Preliminary Engineering, Executive &amp; Legislative Briefing</div>
     <h1>Wellspring</h1>
-    <p class="sub">A regenerative perimeter, waterway, and phase-change cooling architecture that turns AI data centers from municipal water drains into privately funded flood defense and watershed purification plants.</p>
+    <p class="sub">A closed-loop phase-change cooling, perimeter flood-detention, and waste-heat water treatment architecture for 100&nbsp;MW AI data centers. Engineered to eliminate municipal drinking-water draw, maintain 100% independent summer heat-rejection standby, and fund local watershed resilience through private compute capital.</p>
+
     <div class="badges">
-      <span class="badge accent">0 Gal Municipal Drinking Water</span>
-      <span class="badge accent">24-Hr Phase-Change Thermal Battery</span>
-      <span class="badge">In-Situ Graphene Membrane Generation</span>
-      <span class="badge">100-Year Flood Detention Ring</span>
-      <span class="badge">Powered Downstream Waterways</span>
-    </div>
-    <div class="cta-row">
-      <a class="cta primary" href="#policy">Read the Legislative &amp; Mayor’s Brief</a>
-      <a class="cta" href="#calculator">Interactive MW Sizer</a>
-      <button type="button" class="ws-btn no-print" onclick="window.print()">Print / Save Policy Brief as PDF</button>
+      <span class="badge accent">0 Gal Municipal Potable Draw</span>
+      <span class="badge accent">37,900 GPM Closed Recirculation (100 MW<sub>th</sub>)</span>
+      <span class="badge">N+1 (5 &times; 25 MW) Modular Trains</span>
+      <span class="badge">Strict Hydraulic Separation</span>
+      <span class="badge">100% Dry/Sky Standby Rejection</span>
     </div>
 
-    <div class="ws-kpis">
-      <div class="ws-kpi">
-        <strong>0 Gal / Yr</strong>
-        <span>Municipal potable water drawn (replaces 450M+ gal/yr evaporative draw on a 100 MW campus)</span>
-      </div>
-      <div class="ws-kpi">
-        <strong>+220M Gal / Yr</strong>
-        <span>Net-positive distilled &amp; remediated flood/greywater returned to local aquifers and rivers</span>
-      </div>
-      <div class="ws-kpi">
-        <strong>~$2.80 / Liter</strong>
-        <span>Food-safe, non-toxic <b>SpringCore-48</b> graphene-armored salt-hydrate coolant cost (&lt;$11/gal)</span>
-      </div>
-      <div class="ws-kpi">
-        <strong>$40M–$80M</strong>
-        <span>Avoided municipal flood-control and PFAS water-treatment bond burden per 100 MW site</span>
-      </div>
+    <div class="cta-row" style="margin-top:18px">
+      <a class="cta primary" href="#engineering">Jump to Engineering Basis &amp; P&amp;ID</a>
+      <a class="cta" href="#ceo">CEO / Hyperscaler ROI</a>
+      <a class="cta" href="#policy">Mayor &amp; Legislative Brief</a>
+      <button type="button" class="ws-btn no-print" onclick="window.print()">Print / Export Dossier as PDF</button>
     </div>
 
-    <figure class="shotfig bleed" style="margin-top:26px;text-align:left">
+    <div class="ws-role-bar" aria-label="Audience entry points">
+      <a class="ws-role-card" href="#engineering">
+        <small>For Mechanical, Civil &amp; Utility Engineers</small>
+        <b>Preliminary Engineering Basis &amp; P&amp;ID</b>
+        <span>37,900 GPM hydraulic sizing (DN1200 mains, four 25&nbsp;MW DN600 trains + N+1), 3–5&nbsp;&deg;C HX approach targets, PRV/TRV/expansion protection, and EPA Class&nbsp;V recharge boundaries.</span>
+      </a>
+      <a class="ws-role-card" href="#ceo">
+        <small>For Data Center CEOs &amp; Infrastructure VPs</small>
+        <b>Time-to-Power, CapEx &amp; TCO Economics</b>
+        <span>How trading cooling towers for a closed-loop thermal battery and co-located municipal water easement unlocks 6-month fast-track zoning and saves $100M+ in delayed GPU lease revenue.</span>
+      </a>
+      <a class="ws-role-card" href="#policy">
+        <small>For Mayors, Legislators &amp; Water Boards</small>
+        <b>The “Water-Positive Compute” Mandate</b>
+        <span>Model fast-track zoning ordinance, fence-line utility easement structure, and federal grant stacking (EPA CWSRF, FEMA BRIC, IIJA PFAS) at zero taxpayer cost.</span>
+      </a>
+    </div>
+
+    <figure class="shotfig bleed" style="margin-top:20px;text-align:left">
       <picture>
         <source type="image/webp"
                 srcset="/assets/wellspring/campus-720.webp 720w,
                         /assets/wellspring/campus-1000.webp 1000w,
                         /assets/wellspring/campus-1536.webp 1536w"
-                sizes="(max-width: 1020px) 100vw, 976px">
+                sizes="(max-width: 1060px) 100vw, 1016px">
         <img src="/assets/wellspring/campus-1536.jpg"
              srcset="/assets/wellspring/campus-720.jpg 720w,
                      /assets/wellspring/campus-1000.jpg 1000w,
                      /assets/wellspring/campus-1536.jpg 1536w"
-             sizes="(max-width: 1020px) 100vw, 976px"
+             sizes="(max-width: 1060px) 100vw, 1016px"
              width="1536" height="864" fetchpriority="high"
-             alt="Aerial view of a Wellspring data center campus showing the matte-charcoal server hall, twin stainless-steel insulated thermal storage tanks (Cold and Hot Rings), rooftop atmospheric water harvesting arrays, and terraced riprap and wetland flood-detention basins with concrete weir structures.">
+             alt="Aerial architectural concept of a 100 MW Wellspring campus showing the central server hall, twin insulated stainless-steel thermal storage tanks, rooftop dry/sky rejection arrays, and terraced riprap and wetland stormwater retention basins.">
       </picture>
-      <figcaption><b>Concept Site Overview:</b> A 100 MW Wellspring campus. Twin insulated stainless-steel tanks store the <b>SpringCore-48</b> phase-change slurry between day and night cycles, while the terraced riprap and constructed-wetland perimeter absorbs 100-year stormwater surges before distillation.</figcaption>
+      <figcaption><b>Proposed Campus Concept (100 MW<sub>th</sub> Reference Basis):</b> Twin insulated thermal storage tanks buffer peak afternoon heat inside the closed facility loop, while the outer terraced riprap and constructed-wetland perimeter detains stormwater runoff. All closed cooling circuits remain physically and hydraulically isolated from stormwater and treatment loops via double-wall plate heat exchangers.</figcaption>
     </figure>
   </header>
 
-  <section class="ws-panel" aria-label="Quick navigation">
-    <h2>Briefing overview &amp; navigation</h2>
-    <p style="color:var(--dim);margin:0 0 10px">Designed for two audiences at once: <b>municipal &amp; state policymakers</b> weighing data-center permits against voter water concerns, and <b>hyperscale infrastructure engineers</b> seeking faster time-to-power without evaporative cooling towers.</p>
+  <!-- SCOPE & QUALIFICATION CALLOUT -->
+  <div class="ws-callout warn">
+    <b>Engineering Scope &amp; Qualification Notice:</b> This document provides a preliminary engineering basis, architectural concept cutaways, and schematic process diagrams for technical and policy evaluation. Values shown represent defensible starting points for feasibility study—not construction specifications or verified vendor selections. Final pipe bores, hydraulic transients, heat-exchanger plate selections, maintenance clearances, membrane flux ratings, and EPA Class&nbsp;V underground injection permits require site-specific Professional Engineer (PE) and hydrogeological sign-off during Phase&nbsp;1–2 piloting.
+  </div>
+
+  <!-- TABLE OF CONTENTS -->
+  <section class="ws-panel" aria-label="Document contents">
+    <h2>Document Structure</h2>
     <ul class="ws-toc">
-      <li><a href="#problem"><small>Section 01</small>The Civic Deadlock &amp; The Third Option</a></li>
-      <li><a href="#architecture"><small>Section 02</small>The 4-Zone Regenerative Campus Blueprint</a></li>
-      <li><a href="#fluid"><small>Section 03</small>SpringCore-48: Graphene-Armored Phase-Change Fluid</a></li>
-      <li><a href="#graphene-math"><small>Section 04</small>In-Situ Graphene Reactor &amp; Membrane Math</a></li>
-      <li><a href="#waterways"><small>Section 05</small>Powered Outbound Waterways (1–5 Miles Out)</a></li>
-      <li><a href="#calculator"><small>Section 06</small>Interactive Campus Impact &amp; Cost Calculator</a></li>
-      <li><a href="#policy"><small>Section 07</small>Model Ordinance: “The Clean Compute Mandate”</a></li>
-      <li><a href="#faq"><small>Section 08</small>Chief-of-Staff &amp; City Engineer FAQ</a></li>
+      <li><a href="#problem"><small>Section 01</small>The Civic Deadlock &amp; System Overview</a></li>
+      <li><a href="#architecture"><small>Section 02</small>4-Zone Spatial Architecture &amp; Civil Cutaway</a></li>
+      <li><a href="#engineering"><small>Section 03</small>Preliminary Engineering Basis (100 MW<sub>th</sub>)</a></li>
+      <li><a href="#pid"><small>Section 04</small>System Schematics: P&amp;ID (M-101) &amp; Hydraulic Boundaries (C-201)</a></li>
+      <li><a href="#fluid"><small>Section 05</small>SpringCore-48 Phase-Change Slurry &amp; Graphene Mass Balance</a></li>
+      <li><a href="#waterways"><small>Section 06</small>Outbound Canal Thermal &amp; Electrical Remediation</a></li>
+      <li><a href="#ceo"><small>Section 07</small>CEO &amp; Developer Business Case (CapEx, TCO &amp; Permitting ROI)</a></li>
+      <li><a href="#policy"><small>Section 08</small>Legislative Brief, Model Ordinance &amp; Pilot Roadmap</a></li>
     </ul>
   </section>
 
-  <!-- SECTION 1 -->
+  <!-- SECTION 01 -->
   <section class="ws-panel" id="problem">
-    <div class="ws-eyebrow">Section 01 · The Problem &amp; The Bargain</div>
-    <h2>Breaking the Data Center Water Deadlock</h2>
-    <p>Across the United States and Europe, local governments face an impossible choice when a $2 billion AI data center applies for a permit:</p>
-    <div class="grid" style="margin:16px 0">
-      <div class="card">
-        <b>Option A: Rubber-Stamp Conventional Cooling</b>
-        <p>A conventional 100 MW facility evaporates <b>1 to 2 million gallons of treated drinking water per day</b> during summer peaks and spikes afternoon grid demand by 30%+. Residents revolt over aquifer depletion and utility bills.</p>
+    <div class="ws-eyebrow">Section 01 · Executive Overview</div>
+    <h2>Resolving the Data Center Water &amp; Permitting Deadlock</h2>
+    <p>A conventional 100&nbsp;MW data center using evaporative cooling towers consumes <b>1 to 2 million gallons of potable municipal water per day</b> during peak summer design conditions and adds 25–35% electrical overhead for chillers and fans during peak grid hours. Communities increasingly block permits over aquifer depletion, while moratoria cost cities billions in tax base and cost developers <b>$12M–$25M per month</b> in delayed compute deployment.</p>
+
+    <div class="ws-kpis">
+      <div class="ws-kpi">
+        <strong>0 Gal / Yr</strong>
+        <span>Municipal potable water consumed for cooling (100% closed-loop recirculation)</span>
       </div>
-      <div class="card">
-        <b>Option B: Moratorium or Ban</b>
-        <p>Blocking the facility forfeits tens of millions in annual property tax revenue, union construction jobs, and fiber infrastructure to neighboring jurisdictions.</p>
+      <div class="ws-kpi">
+        <strong>37,900 GPM</strong>
+        <span>Recirculating closed-loop flow rate for 100&nbsp;MW<sub>th</sub> at &Delta;T = 10&nbsp;&deg;C (18&nbsp;&deg;F)</span>
       </div>
-      <div class="card" style="border-color:var(--teal)">
-        <b style="color:var(--teal)">Option C: The Wellspring Mandate</b>
-        <p>Require the data center’s outer perimeter, waste heat, and curtailed power to operate as <b>privately funded flood defense, atmospheric water harvesting, and watershed purification infrastructure</b> in exchange for expedited zoning.</p>
+      <div class="ws-kpi">
+        <strong>4 + 1 (N+1)</strong>
+        <span>Modular 25&nbsp;MW<sub>th</sub> cooling trains (9,475&nbsp;GPM / DN600 each) with full dry-cooler standby</span>
+      </div>
+      <div class="ws-kpi">
+        <strong>100 GPM Pilot</strong>
+        <span>Phase&nbsp;2 containerized water-treatment skid (DN80 header) for site-specific verification</span>
       </div>
     </div>
+
     <div class="ws-callout">
-      <b>Why developers say yes:</b> A 12-to-18-month permitting delay costs a 100 MW AI operator <b>$150M–$300M in delayed compute revenue</b>. Investing $18M–$25M into a regenerative perimeter that shaves a year off permitting—while qualifying for EPA and FEMA resilience grants—saves the operator over $100M net.
+      <b>Core Architectural Principle — Strict Circuit Separation:</b> To satisfy both utility engineers and environmental regulators, Wellspring enforces a hard boundary between (1) the <b>closed facility cooling circuits</b> (which never touch outside water or air), (2) the <b>100% capacity standby dry/sky heat-rejection loop</b> (which guarantees full 100&nbsp;MW cooling even when external heat recovery or canal loops are offline), and (3) the <b>perimeter stormwater detention, treatment, and recharge facility</b> (coupled only across double-wall sanitary isolation heat exchangers and fence-line electrical feeders).
     </div>
   </section>
 
-  <!-- SECTION 2 -->
+  <!-- SECTION 02 -->
   <section class="ws-panel" id="architecture">
-    <div class="ws-eyebrow">Section 02 · Spatial Engineering</div>
-    <h2>The 4-Zone Regenerative Campus Architecture</h2>
-    <p>Data centers possess two massive underutilized assets required for large-scale water treatment: <b>hundreds of acres of secure perimeter land</b> and <b>hundreds of megawatts of $45^\circ\text{C}\text{–}55^\circ\text{C}$ ($113^\circ\text{F}\text{–}131^\circ\text{F}$) low-grade waste heat</b>. Wellspring couples them across four concentric zones:</p>
+    <div class="ws-eyebrow">Section 02 · Spatial &amp; Civil Layout</div>
+    <h2>The 4-Zone Campus &amp; Subsurface Separation Concept</h2>
+    <p>Rather than treating the mandatory 150–300&nbsp;ft security setback as sterile turfgrass, Wellspring grades the campus into four functional zones from the elevated central compute pad outward to the regional watershed:</p>
 
-    <figure class="ws-diagram">
-      <svg viewBox="0 0 940 390" width="100%" role="img" aria-label="Cross-section architectural schematic of the Wellspring 4-Zone Regenerative Data Center Campus">
-        <defs>
-          <linearGradient id="skyGrad" x1="0" y1="0" x2="0" y2="1">
-            <stop offset="0%" stop-color="#0d1520"></stop>
-            <stop offset="100%" stop-color="#152230"></stop>
-          </linearGradient>
-          <linearGradient id="waterGrad" x1="0" y1="0" x2="1" y2="0">
-            <stop offset="0%" stop-color="#2a6f87"></stop>
-            <stop offset="100%" stop-color="#3ec8d8"></stop>
-          </linearGradient>
-          <linearGradient id="heatGrad" x1="0" y1="0" x2="1" y2="0">
-            <stop offset="0%" stop-color="#d9b269"></stop>
-            <stop offset="100%" stop-color="#e07a5f"></stop>
-          </linearGradient>
-        </defs>
+    <div class="ws-zones">
+      <div class="ws-zone">
+        <span class="z-tag">Zone 0 · Compute Core</span>
+        <h3>100 MW IT Hall &amp; CDU Mains</h3>
+        <p>Four operating 25&nbsp;MW cooling trains (plus a fifth N+1 redundant train) circulate closed-loop coolant through direct-to-chip cold plates and Coolant Distribution Units (CDUs). Zero evaporative cooling towers.</p>
+      </div>
+      <div class="ws-zone">
+        <span class="z-tag">Zone 1 · Thermal Buffer</span>
+        <h3>Thermal Storage &amp; Standby Dry Coolers</h3>
+        <p>Insulated Cold and Hot buffer tanks shift afternoon peak thermal loads to cooler night hours. Full-capacity fin-fan dry coolers and radiative sky panels provide 100% standalone heat rejection whenever external heat recovery is unavailable.</p>
+      </div>
+      <div class="ws-zone">
+        <span class="z-tag">Zone 2 · Perimeter Berm</span>
+        <h3>Stormwater Detention &amp; Isolation HX</h3>
+        <p>Terraced riprap bioswales and subsurface geocell crates detain 100-year storm surges. Across a double-wall isolation heat exchanger, recovered low-grade heat assists containerized membrane treatment and monitored EPA Class&nbsp;V recharge.</p>
+      </div>
+      <div class="ws-zone">
+        <span class="z-tag">Zone 3 · Outbound Corridor</span>
+        <h3>Stepped Aeration &amp; Sub-Bed Loop</h3>
+        <p>Treated water discharges down gravity-head vortex aeration basins with micro-hydro recovery, an assigned-duty closed PEX sub-bed winter biological warming circuit, and curtailed-DC water-quality polishing nodes.</p>
+      </div>
+    </div>
 
-        <rect x="0" y="0" width="940" height="390" rx="8" fill="url(#skyGrad)"></rect>
-
-        <!-- Zone headers -->
-        <g font-family="system-ui, sans-serif" font-size="11" font-weight="700" letter-spacing="1">
-          <rect x="16" y="14" width="215" height="26" rx="4" fill="rgba(224,122,95,0.18)" stroke="#e07a5f"></rect>
-          <text x="123" y="31" fill="#f3b3a0" text-anchor="middle">ZONE 0 · AI COMPUTE CORE</text>
-
-          <rect x="243" y="14" width="220" height="26" rx="4" fill="rgba(217,178,105,0.18)" stroke="#d9b269"></rect>
-          <text x="353" y="31" fill="#f0d49b" text-anchor="middle">ZONE 1 · THERMAL BATTERY &amp; AWG</text>
-
-          <rect x="475" y="14" width="225" height="26" rx="4" fill="rgba(62,200,216,0.18)" stroke="#3ec8d8"></rect>
-          <text x="587" y="31" fill="#8be8f2" text-anchor="middle">ZONE 2 · FLOOD &amp; KIDNEY MOAT</text>
-
-          <rect x="712" y="14" width="212" height="26" rx="4" fill="rgba(111,168,255,0.18)" stroke="#6fa8ff"></rect>
-          <text x="818" y="31" fill="#a8caff" text-anchor="middle">ZONE 3 · POWERED WATERWAY</text>
-        </g>
-
-        <!-- Ground profile (stepped elevation for gravity head) -->
-        <path d="M 16 250 L 455 250 L 490 295 L 685 295 L 710 270 L 924 315 L 924 378 L 16 378 Z" fill="#182026" stroke="#3a4652" stroke-width="2"></path>
-
-        <!-- Subsurface Aquifer Cistern -->
-        <rect x="485" y="315" width="195" height="48" rx="6" fill="rgba(62,200,216,0.16)" stroke="#3ec8d8" stroke-dasharray="5,3"></rect>
-        <text x="582" y="336" fill="#8be8f2" font-family="system-ui" font-size="11" font-weight="600" text-anchor="middle">SUBSURFACE GEOCELL CISTERN</text>
-        <text x="582" y="352" fill="#9ba2ad" font-family="system-ui" font-size="10" text-anchor="middle">&amp; Aquifer Recharge Wells (ASR)</text>
-
-        <!-- Zone 0: Compute Hall -->
-        <rect x="28" y="115" width="190" height="135" rx="6" fill="#1e242b" stroke="#e07a5f" stroke-width="2"></rect>
-        <text x="123" y="140" fill="#e8eaed" font-family="system-ui" font-size="12.5" font-weight="700" text-anchor="middle">100 MW AI Server Hall</text>
-        <rect x="44" y="152" width="158" height="36" rx="4" fill="#14181d" stroke="#3a3e45"></rect>
-        <text x="123" y="168" fill="#d9b269" font-family="system-ui" font-size="11" font-weight="600" text-anchor="middle">Direct-to-Chip Cold Plates</text>
-        <text x="123" y="182" fill="#9ba2ad" font-family="system-ui" font-size="10" text-anchor="middle">48°C Latent Phase Transition</text>
-
-        <!-- Cavitation Graphene Reactor -->
-        <rect x="44" y="198" width="158" height="40" rx="4" fill="rgba(62,200,216,0.12)" stroke="#3ec8d8"></rect>
-        <text x="123" y="215" fill="#3ec8d8" font-family="system-ui" font-size="11" font-weight="700" text-anchor="middle">Venturi Cavitation Loop</text>
-        <text x="123" y="230" fill="#cfeae5" font-family="system-ui" font-size="10" text-anchor="middle">Shears Graphite → Graphene</text>
-
-        <!-- Zone 1: Dual Thermal Battery Rings + Roof Desiccant AWG -->
-        <rect x="252" y="70" width="200" height="42" rx="5" fill="rgba(62,200,216,0.14)" stroke="#3ec8d8"></rect>
-        <text x="352" y="88" fill="#8be8f2" font-family="system-ui" font-size="11" font-weight="700" text-anchor="middle">ROOF DESICCANT AWG + SKY COOLER</text>
-        <text x="352" y="103" fill="#9ba2ad" font-family="system-ui" font-size="10" text-anchor="middle">Night Moisture Capture · 48°C Day Regen</text>
-
-        <!-- Cold & Hot Tanks -->
-        <rect x="255" y="130" width="92" height="108" rx="8" fill="rgba(62,200,216,0.15)" stroke="#3ec8d8" stroke-width="1.8"></rect>
-        <text x="301" y="156" fill="#3ec8d8" font-family="system-ui" font-size="11.5" font-weight="700" text-anchor="middle">COLD RING</text>
-        <text x="301" y="174" fill="#e8eaed" font-family="system-ui" font-size="10.5" text-anchor="middle">Solid Beads</text>
-        <text x="301" y="190" fill="#9ba2ad" font-family="system-ui" font-size="10" text-anchor="middle">30°C–45°C</text>
-        <text x="301" y="216" fill="#8be8f2" font-family="system-ui" font-size="10" font-weight="600" text-anchor="middle">0 Peak Chiller</text>
-
-        <rect x="358" y="130" width="92" height="108" rx="8" fill="rgba(217,178,105,0.17)" stroke="#d9b269" stroke-width="1.8"></rect>
-        <text x="404" y="156" fill="#d9b269" font-family="system-ui" font-size="11.5" font-weight="700" text-anchor="middle">HOT RING</text>
-        <text x="404" y="174" fill="#e8eaed" font-family="system-ui" font-size="10.5" text-anchor="middle">Melted Beads</text>
-        <text x="404" y="190" fill="#9ba2ad" font-family="system-ui" font-size="10" text-anchor="middle">48°C–54°C</text>
-        <text x="404" y="216" fill="#f0d49b" font-family="system-ui" font-size="10" font-weight="600" text-anchor="middle">Drives Kidney</text>
-
-        <!-- Zone 2: Flood Berm + GO Membrane Distillation -->
-        <rect x="485" y="135" width="195" height="68" rx="6" fill="#1e262c" stroke="#d9b269" stroke-width="1.6"></rect>
-        <text x="582" y="156" fill="#f0d49b" font-family="system-ui" font-size="11.5" font-weight="700" text-anchor="middle">Graphene-Oxide (GO) Membrane</text>
-        <text x="582" y="172" fill="#e8eaed" font-family="system-ui" font-size="11" text-anchor="middle">Vacuum Distillation Plant</text>
-        <text x="582" y="190" fill="#9ba2ad" font-family="system-ui" font-size="10" text-anchor="middle">Powered by 48°C Server Heat · Strips PFAS</text>
-
-        <!-- Retention Moat Water -->
-        <path d="M 465 258 L 490 293 L 682 293 L 705 268 Z" fill="url(#waterGrad)" opacity="0.85"></path>
-        <text x="585" y="283" fill="#041e24" font-family="system-ui" font-size="11" font-weight="700" text-anchor="middle">100-YR FLOOD BIOSWALE &amp; MOAT</text>
-
-        <!-- Zone 3: Outbound Stepped Waterway -->
-        <path d="M 710 268 L 760 280 L 760 290 L 815 292 L 815 302 L 870 304 L 870 314 L 924 315" fill="none" stroke="#3ec8d8" stroke-width="5"></path>
-        <!-- Radiant heat pipe under canal -->
-        <line x1="712" y1="282" x2="918" y2="326" stroke="#d9b269" stroke-width="3" stroke-dasharray="6,4"></line>
-        <text x="818" y="344" fill="#f0d49b" font-family="system-ui" font-size="10.5" font-weight="600" text-anchor="middle">22°C Winter Sub-Bed Bio-Heating</text>
-        <text x="818" y="360" fill="#8be8f2" font-family="system-ui" font-size="10" text-anchor="middle">+ Buried DC Line &amp; Fiber Spine</text>
-
-        <!-- Callout boxes in Zone 3 -->
-        <rect x="720" y="135" width="198" height="105" rx="6" fill="#1c222b" stroke="#6fa8ff" stroke-width="1.5"></rect>
-        <text x="819" y="156" fill="#a8caff" font-family="system-ui" font-size="11.5" font-weight="700" text-anchor="middle">Powered Outbound Canal</text>
-        <text x="819" y="175" fill="#e8eaed" font-family="system-ui" font-size="10.5" text-anchor="middle">• Vortex Aeration Weirs + Micro-Hydro</text>
-        <text x="819" y="193" fill="#e8eaed" font-family="system-ui" font-size="10.5" text-anchor="middle">• DC Electrocoagulation Gates</text>
-        <text x="819" y="211" fill="#e8eaed" font-family="system-ui" font-size="10.5" text-anchor="middle">• Nanobubble Ozone Algae Control</text>
-        <text x="819" y="229" fill="#8be8f2" font-family="system-ui" font-size="10.5" text-anchor="middle">• AI Predictive Flood Sluice Gates</text>
-      </svg>
-      <figcaption><b>Figure 1:</b> Cross-section of the <b>Wellspring</b> campus from the raised central server pad (Zone 0) through the thermal storage ring (Zone 1), sunken flood-detention &amp; graphene distillation moat (Zone 2), and gravity-fed outbound treatment waterway (Zone 3).</figcaption>
-    </figure>
-
-    <figure class="shotfig" style="margin:18px 0">
+    <figure class="shotfig" style="margin:20px 0 0">
       <picture>
         <source type="image/webp"
                 srcset="/assets/wellspring/crosssection-720.webp 720w,
                         /assets/wellspring/crosssection-1000.webp 1000w,
                         /assets/wellspring/crosssection-1536.webp 1536w"
-                sizes="(max-width: 1020px) 100vw, 950px">
+                sizes="(max-width: 1060px) 100vw, 996px">
         <img src="/assets/wellspring/crosssection-1536.jpg"
              srcset="/assets/wellspring/crosssection-720.jpg 720w,
                      /assets/wellspring/crosssection-1000.jpg 1000w,
                      /assets/wellspring/crosssection-1536.jpg 1536w"
-             sizes="(max-width: 1020px) 100vw, 950px"
+             sizes="(max-width: 1060px) 100vw, 996px"
              width="1536" height="864" loading="lazy"
-             alt="Proposed civil infrastructure concept cross-section showing the raised data center pad on left with insulated stainless-steel pipes feeding a terraced riprap and reed-bed stormwater detention basin, subsurface modular geocell water-storage cisterns, a vertical stainless-steel aquifer storage and recovery (ASR) well screen reaching into the deep gravel water table, and a stepped concrete outbound canal with orange closed-loop PEX sub-bed heating pipes.">
+             alt="Proposed civil infrastructure concept cross-section showing the closed stainless-steel cooling loop terminating inside its own sealed concrete utility vault on the left, physically separated by undisturbed soil from the gravel-wrapped modular geocell stormwater storage crates, the vertical stainless-steel ASR recharge well, and the stepped concrete outbound canal with buried orange PEX sub-bed heating tubing.">
       </picture>
-      <figcaption><b>Proposed civil infrastructure concept:</b> Subsurface cross-section from the server pad (left) through the riprap stormwater detention basin, modular geocell storage cisterns, vertical Aquifer Storage &amp; Recovery (ASR) well screen (center), and stepped outbound canal with buried PEX sub-bed winter bio-heating loops (right). Illustrates the proposal; pipe connections, maintenance clearances, and groundwater recharge rates require site-specific civil and hydrogeological verification.</figcaption>
+      <figcaption><b>Proposed civil infrastructure concept:</b> Subsurface cross-section illustrating physical separation between the sealed concrete cooling-pipe vault (left), the riprap stormwater detention pond and subsurface geocell storage crates (center-left), the vertical Aquifer Storage &amp; Recovery (ASR) well screen (center-right), and the stepped outbound canal with closed-loop PEX sub-bed winter bio-warming tubing (right). Pipe connections, maintenance clearances, groundwater recharge rates, and membrane specifications require site-specific engineering verification.</figcaption>
     </figure>
-
-    <div class="ws-zones">
-      <div class="ws-zone">
-        <span class="z-tag">Zone 0 · Core</span>
-        <h3>AI Hall &amp; Cavitation Reactor</h3>
-        <p>Direct-to-chip liquid cooling circulates <b>SpringCore-48</b> at $48^\circ\text{C}$. Venturi cavitation nozzles ahead of the manifolds use pump shear to exfoliate raw flake graphite into few-layer graphene nanosheets continuously inside the closed loop.</p>
-      </div>
-      <div class="ws-zone">
-        <span class="z-tag">Zone 1 · Inner Ring</span>
-        <h3>24-Hr Thermal Battery &amp; AWG</h3>
-        <p>During hot afternoons (12 PM–7 PM), melted phase-change slurry parks in the insulated Hot Ring—<b>zero water evaporated, zero chiller compressors running</b>. At night, stored $48^\circ\text{C}$ heat regenerates roof desiccant panels that pull fresh water from night humidity.</p>
-      </div>
-      <div class="ws-zone">
-        <span class="z-tag">Zone 2 · Outer Ring</span>
-        <h3>Flood Berm &amp; Graphene Kidney</h3>
-        <p>The 200-ft security buffer is graded as a sunken retention moat and constructed wetland over geocell cisterns, capturing 30M–50M gallons of storm surge. Server waste heat drives low-temp distillation across on-site-printed Graphene Oxide (GO) membranes.</p>
-      </div>
-      <div class="ws-zone">
-        <span class="z-tag">Zone 3 · 1–5 Miles Out</span>
-        <h3>Powered Remediation Canal</h3>
-        <p>Purified water exits down stepped hyperbolic aeration cascades with micro-hydro turbines, sub-gravel winter bio-heating pipes, and a buried DC microgrid powering nanobubble ozone and electrocoagulation stations miles downstream.</p>
-      </div>
-    </div>
+    <p class="to-top"><a href="#top">&uarr; Back to top</a></p>
   </section>
 
-  <!-- SECTION 3 -->
+  <!-- SECTION 03: PRELIMINARY ENGINEERING BASIS -->
+  <section class="ws-panel" id="engineering">
+    <div class="ws-eyebrow">Section 03 · Preliminary Engineering Basis (PE Review Reference)</div>
+    <h2>Hydraulic Sizing, Approach Temperatures &amp; Protection Basis</h2>
+    <p>Assume <b>100&nbsp;MW of thermal load (100&nbsp;MW<sub>th</sub>)</b> transferred into a liquid cooling system with water-like volumetric heat capacity (&rho;<i>c<sub>p</sub></i> &approx; 4.184&nbsp;MJ/m<sup>3</sup>&middot;K) and a design temperature rise of <b>&Delta;T = 10&nbsp;&deg;C (18&nbsp;&deg;F)</b>. Where “100&nbsp;MW” denotes electrical service capacity or IT load, facility air-side cooling, pump work, and auxiliary loads must be reconciled separately in the heat balance.</p>
+
+    <div class="ws-eq-box" role="region" aria-label="Volumetric flow equation">
+      <div class="ws-eq-math">
+        <span><i>V&#775;</i> =</span>
+        <span class="ws-frac">
+          <span class="ws-frac-num"><i>Q</i></span>
+          <span class="ws-frac-den"><i>&rho; c<sub>p</sub> &Delta;T</i></span>
+        </span>
+        <span>=</span>
+        <span class="ws-frac">
+          <span class="ws-frac-num">100&nbsp;MW</span>
+          <span class="ws-frac-den">(997&nbsp;kg/m<sup>3</sup>)(4,184&nbsp;J/kg&middot;K)(10&nbsp;K)</span>
+        </span>
+        <span>&approx; <b>2.39&nbsp;m<sup>3</sup>/s</b> &approx; <b>37,900&nbsp;US&nbsp;GPM</b></span>
+      </div>
+      <div class="ws-eq-note">
+        <b>Recirculating Flow Note:</b> 37,900&nbsp;US&nbsp;GPM is closed-loop <i>recirculating</i> flow, not freshwater consumption. At a <b>5&nbsp;&deg;C</b> rise, required flow doubles to <b>75,800&nbsp;GPM</b>; at a <b>15&nbsp;&deg;C</b> rise (or with latent phase-change augmentation), flow decreases to <b>&le;25,300&nbsp;GPM</b>.
+      </div>
+    </div>
+
+    <h3>Table 3.1 — Preliminary Hydraulic &amp; Pipe Sizing Schedule (100 MW<sub>th</sub> Basis, &Delta;T = 10&nbsp;&deg;C)</h3>
+    <div class="table-scroll">
+      <table>
+        <thead>
+          <tr>
+            <th>Circuit or Equipment</th>
+            <th>Preliminary Flow</th>
+            <th>Pipe Size (DN / Nominal in.)</th>
+            <th>Pump Head / &Delta;P Allowance</th>
+            <th>Engineering Basis &amp; Schematic Qualification</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><b>Campus Cooling Supply &amp; Return Mains</b> (each)</td>
+            <td class="mono">37,900 GPM<br>(2.39 m<sup>3</sup>/s)</td>
+            <td class="mono">DN1200 (48 in.)<br>or 2 &times; DN900 (36 in.)</td>
+            <td>Governed by critical hydraulic path (do not sum branch heads)</td>
+            <td>~2.1&nbsp;m/s velocity in 1.2&nbsp;m ID bore. Verify actual wall thickness/SDR, routing, water-hammer transients, and dual-header redundancy.</td>
+          </tr>
+          <tr>
+            <td><b>One 25 MW Cooling Train</b> (4 operating + 1 standby = N+1)</td>
+            <td class="mono">9,475 GPM<br>(0.60 m<sup>3</sup>/s)</td>
+            <td class="mono">DN600 (24 in.)<br>supply &amp; return</td>
+            <td class="mono">60–100 ft H<sub>2</sub>O<br>(180–300 kPa)</td>
+            <td>Illustrative closed-loop circulation pump study range only. Four operating trains deliver 100&nbsp;MW; fifth train provides N+1 mechanical redundancy.</td>
+          </tr>
+          <tr>
+            <td><b>One 5 MW Distribution Branch</b></td>
+            <td class="mono">1,895 GPM<br>(0.12 m<sup>3</sup>/s)</td>
+            <td class="mono">DN300 (12 in.)</td>
+            <td>Separate hydraulic calc incl. CDU, control valves, strainers &amp; headers</td>
+            <td>~1.7&nbsp;m/s velocity using 300&nbsp;mm ID basis.</td>
+          </tr>
+          <tr>
+            <td><b>One 1 MW Rack / Row Branch</b></td>
+            <td class="mono">379 GPM<br>(23.9 L/s)</td>
+            <td class="mono">DN150 (6 in.)</td>
+            <td>Vendor-specific CDU &amp; manifold pressure-drop curve</td>
+            <td>~1.35&nbsp;m/s velocity using 150&nbsp;mm ID basis; individual rack quick-disconnects sized per server OEM.</td>
+          </tr>
+          <tr>
+            <td><b>One 25 MW Water-to-Water Isolation Exchanger (HX-301)</b></td>
+            <td class="mono">~9,475 GPM<br>per side (&Delta;T = 10&nbsp;&deg;C)</td>
+            <td class="mono">DN600 (24 in.) mains;<br>ports per vendor</td>
+            <td class="mono">50–70 kPa<br>(17–23 ft) per side</td>
+            <td>Consistent with published plate-exchanger cooling guidance (e.g., Alfa Laval). Specify thermal duty, all 4 port temperatures, fouling factor, and design pressure.</td>
+          </tr>
+          <tr>
+            <td><b>Containerized Water-Treatment Pilot (“Kidney Pod”)</b></td>
+            <td class="mono">100 GPM feed<br>(assumed pilot basis)</td>
+            <td class="mono">DN80 (3 in.) feed;<br>permeate/brine separate</td>
+            <td>TBD by membrane process &amp; osmotic/vacuum stage selection</td>
+            <td>Membrane operating pressure cannot be inferred from vessel appearance. Specify feed water quality, recovery %, permeate quality, reject disposal, and CIP cycle.</td>
+          </tr>
+          <tr>
+            <td><b>Outbound Canal Sub-Bed Heat-Exchange Loop</b></td>
+            <td class="mono">TBD by assigned<br>kW / MW duty</td>
+            <td class="mono">Manifolds &amp; parallel<br>PEX sub-circuits</td>
+            <td>Governed by tube bore, circuit length, fluid viscosity &amp; balancing</td>
+            <td>Serves as a winter biological polishing assist (e.g., 1–5&nbsp;MW<sub>th</sub> assigned fraction)—never depicted as the sole 100&nbsp;MW heat sink.</td>
+          </tr>
+          <tr>
+            <td><b>Aquifer Storage &amp; Recovery (ASR) System</b></td>
+            <td class="mono">TBD by site<br>hydrogeology</td>
+            <td class="mono">Site-engineered well<br>casing &amp; column pipe</td>
+            <td>Governed by step-drawdown / injection testing &amp; permit limits</td>
+            <td>No generic GPM or head assumed. Subject to EPA Class&nbsp;V Underground Injection Control (UIC) permitting and pre-injection water-quality interlocks.</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <h3>Table 3.2 — Heat Exchanger Approach Targets &amp; Temperature Envelopes</h3>
+    <p style="color:var(--dim);font-size:13.5px;margin-top:0">“Approach” is the temperature difference between the hot and cold streams at the same end of the heat exchanger (distinct from the 10&nbsp;&deg;C temperature range within each loop):</p>
+    <div class="table-scroll">
+      <table>
+        <thead>
+          <tr>
+            <th>Exchanger Interface</th>
+            <th>Preliminary Approach Target</th>
+            <th>Illustrative Stream Temperatures</th>
+            <th>Selection Tradeoffs &amp; Qualifications</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><b>Clean Facility-Water Isolation Exchanger</b> (High-Efficiency Countercurrent)</td>
+            <td class="mono">3&nbsp;&deg;C (5.4&nbsp;&deg;F)</td>
+            <td class="mono">Hot side: 40&nbsp;&deg;C &rarr; 30&nbsp;&deg;C<br>Cold side: 27&nbsp;&deg;C &rarr; 37&nbsp;&deg;C</td>
+            <td>Countercurrent plate arrangement achieves 3&nbsp;&deg;C approach at both ends; requires larger plate surface area and clean/filtered fluids.</td>
+          </tr>
+          <tr>
+            <td><b>Smaller-Footprint / Fouling-Tolerant Isolation Exchanger</b></td>
+            <td class="mono">5&nbsp;&deg;C (9.0&nbsp;&deg;F)</td>
+            <td class="mono">Hot side: 40&nbsp;&deg;C &rarr; 30&nbsp;&deg;C<br>Cold side: 25&nbsp;&deg;C &rarr; 35&nbsp;&deg;C</td>
+            <td>Reduces exchanger capital cost and increases tolerance to secondary-side fouling; evaluate plate gap, CIP access, and source-water chemistry.</td>
+          </tr>
+          <tr>
+            <td><b>Elevated-Temperature Direct-to-Chip AI Loop</b> (Warm-Water / Phase-Change)</td>
+            <td class="mono">3–5&nbsp;&deg;C (5.4–9.0&nbsp;&deg;F)</td>
+            <td class="mono">Hot side: 50&nbsp;&deg;C &rarr; 40&nbsp;&deg;C<br>Cold side: 35&nbsp;&deg;C &rarr; 45&nbsp;&deg;C</td>
+            <td>Matches liquid-cooled AI GPU cold-plate envelopes; enables direct thermal drive for vacuum membrane distillation or heat-pump lift if higher utility temperatures are required.</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <h3>Table 3.3 — Required Overpressure Protection, Hydraulic Controls &amp; Utility Safeguards</h3>
+    <div class="table-scroll">
+      <table>
+        <thead>
+          <tr>
+            <th>Protection / Control Element</th>
+            <th>P&amp;ID Tag Series</th>
+            <th>Location &amp; Functional Purpose</th>
+            <th>Sizing &amp; Setpoint Engineering Basis</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><b>Pressure Relief Valves (PRV)</b></td>
+            <td class="mono">PSV / PRV-101..301</td>
+            <td>Each closed pressure boundary and exchanger shell/plate pack</td>
+            <td>Protect lowest-rated component against pump dead-head, thermal expansion, or tube/plate cross-leakage. Do not substitute a control bypass for ASME code relief.</td>
+          </tr>
+          <tr>
+            <td><b>Thermal Relief Valves (TRV)</b></td>
+            <td class="mono">TRV-102..302</td>
+            <td>Any liquid-filled pipe segment or exchanger side isolable between two block valves</td>
+            <td>Sized for trapped fluid volume, ambient/solar or process heat input, thermal expansion coefficient, and maximum allowable working pressure (MAWP).</td>
+          </tr>
+          <tr>
+            <td><b>Expansion Tank &amp; Pressurization Skid</b></td>
+            <td class="mono">ET-101 / MP-101</td>
+            <td>Connected near pump suction reference point (Point of No Pressure Change) on each closed circuit</td>
+            <td>Sized for total loop volume, full operating temperature swing (15–55&nbsp;&deg;C), static elevation head, minimum NPSH<sub>A</sub> at pump suction, and PRV margin.</td>
+          </tr>
+          <tr>
+            <td><b>Pump Discharge Check &amp; Isolation Valves</b></td>
+            <td class="mono">CV-101 / XV-101</td>
+            <td>Each parallel N+1 circulation pump train</td>
+            <td>Prevent reverse rotation/backflow through standby train and allow dry maintenance; evaluate non-slam check characteristics for surge mitigation.</td>
+          </tr>
+          <tr>
+            <td><b>Minimum Continuous Stable Flow (MCSF) Bypass</b></td>
+            <td class="mono">FCV-105</td>
+            <td>Pump discharge header back to suction/return header</td>
+            <td>Protects variable-speed pumps against dead-heading when downstream CDU 2-way valves throttle; sized per pump OEM minimum flow curve and &Delta;P.</td>
+          </tr>
+          <tr>
+            <td><b>3-Way Temperature &amp; Heat-Recovery Diverter Valves</b></td>
+            <td class="mono">TCV-201 / TCV-301</td>
+            <td>Interface between Standby Dry Coolers (DC-201) and Perimeter Heat-Recovery Exchangers (HX-301)</td>
+            <td>Selected for valve authority (&Delta;P<sub>valve</sub> / &Delta;P<sub>branch</sub>) and fail-safe spring-return position (fails 100% open to Standby Dry Coolers on power/signal loss).</td>
+          </tr>
+          <tr>
+            <td><b>Duplex Strainers with &Delta;P Transmitters</b></td>
+            <td class="mono">STR-101 / PDT-101</td>
+            <td>Upstream of plate heat exchangers, CDUs, and membrane feed pumps</td>
+            <td>Mesh perforated to exchanger/membrane vendor particle limit; high-&Delta;P alarm triggers duty/standby basket switchover before flow starvation.</td>
+          </tr>
+          <tr>
+            <td><b>Air Elimination, High-Point Vents &amp; Low-Point Drains</b></td>
+            <td class="mono">AS-101 / AAV / DRV</td>
+            <td>Coalescing microbubble air separator on main header; manual/auto vents at high points; drains at low traps</td>
+            <td>Essential for commissioning, preventing pump cavitation, and maintaining heat-transfer film coefficients.</td>
+          </tr>
+          <tr>
+            <td><b>RPZ Backflow Preventer / Air-Gapped Makeup</b></td>
+            <td class="mono">BFP-101</td>
+            <td>Initial fill and closed-loop makeup connection</td>
+            <td>Reduced-Pressure Zone (RPZ) assembly or physical air gap per local plumbing code and fluid hazard classification.</td>
+          </tr>
+          <tr>
+            <td><b>Off-Spec Water Diversion &amp; Class V Interlock</b></td>
+            <td class="mono">AIT-401 / XV-401</td>
+            <td>Downstream of water-treatment skid (MD-302) prior to canal discharge or ASR wellhead</td>
+            <td>Continuous online turbidity, conductivity, TOC, pH, and temperature analyzers. Out-of-spec water automatically diverts to lined retreatment holding basin.</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+    <p class="to-top"><a href="#top">&uarr; Back to top</a></p>
+  </section>
+
+  <!-- SECTION 04: SYSTEM ENGINEERING SCHEMATICS (P&ID & HYDRAULIC BOUNDARIES) -->
+  <section class="ws-panel" id="pid">
+    <div class="ws-eyebrow">Section 04 · System Engineering Schematics</div>
+    <h2>Piping &amp; Instrumentation Diagram (M-101) &amp; Hydraulic Isolation Plan (C-201)</h2>
+    <p>Unlike artistic renderings, the vector schematics below explicitly separate the <b>closed facility cooling loop</b>, the <b>100% capacity summer standby dry-cooler loop</b>, and the <b>isolated stormwater/treatment circuits</b>, showing required relief devices, expansion reference points, and fail-safe paths:</p>
+
+    <!-- SHEET M-101 -->
+    <figure class="ws-diagram">
+      <svg viewBox="0 0 1020 540" width="100%" role="img" aria-label="Sheet M-101 Piping and Instrumentation Diagram showing N+1 25 MW cooling trains, expansion tank, pressure and thermal relief valves, 100% capacity standby dry coolers, double-wall isolation heat exchanger, and 100 GPM pilot water treatment skid">
+        <rect x="0" y="0" width="1020" height="540" rx="4" fill="#0e1216"></rect>
+
+        <!-- Subtle Engineering Grid -->
+        <g stroke="#161d24" stroke-width="1">
+          <line x1="0" y1="90" x2="1020" y2="90"></line>
+          <line x1="0" y1="180" x2="1020" y2="180"></line>
+          <line x1="0" y1="270" x2="1020" y2="270"></line>
+          <line x1="0" y1="360" x2="1020" y2="360"></line>
+          <line x1="0" y1="450" x2="1020" y2="450"></line>
+          <line x1="200" y1="0" x2="200" y2="540"></line>
+          <line x1="400" y1="0" x2="400" y2="540"></line>
+          <line x1="600" y1="0" x2="600" y2="540"></line>
+          <line x1="800" y1="0" x2="800" y2="540"></line>
+        </g>
+
+        <!-- Title Block Header -->
+        <rect x="12" y="10" width="996" height="30" rx="2" fill="#151b21" stroke="#2c3640" stroke-width="1.2"></rect>
+        <text x="22" y="29" fill="#6ba4b8" font-family="ui-monospace, monospace" font-size="11.5" font-weight="700">SHEET M-101 · PRELIMINARY P&amp;ID — 100 MW CLOSED COOLING TRAINS (4+1 N+1), STANDBY REJECTION &amp; ISOLATED HEAT RECOVERY</text>
+        <text x="998" y="29" fill="#9aa2ac" font-family="ui-monospace, monospace" font-size="10.5" text-anchor="end">BASIS: 37,900 GPM (ΔT=10°C) · NOT FOR CONSTRUCTION</text>
+
+        <!-- HYDRAULIC BOUNDARY DIVIDER LINE -->
+        <line x1="655" y1="48" x2="655" y2="480" stroke="#c2a468" stroke-width="2" stroke-dasharray="8,5"></line>
+        <rect x="535" y="50" width="240" height="20" rx="2" fill="#151b21" stroke="#c2a468" stroke-width="1"></rect>
+        <text x="655" y="64" fill="#c2a468" font-family="ui-monospace, monospace" font-size="9.5" font-weight="700" text-anchor="middle">HYDRAULIC ISOLATION BOUNDARY (HX-301)</text>
+
+        <!-- ZONE A (LEFT): CLOSED FACILITY COOLING LOOP (37,900 GPM TOTAL / 4x 9,475 GPM TRAINS) -->
+        <!-- IT Racks & CDU Block -->
+        <rect x="20" y="110" width="145" height="210" rx="3" fill="#151b21" stroke="#6ba4b8" stroke-width="1.8"></rect>
+        <text x="92" y="132" fill="#e6e9ec" font-family="ui-monospace, monospace" font-size="11" font-weight="700" text-anchor="middle">ZONE 0 · IT LOAD</text>
+        <text x="92" y="148" fill="#9aa2ac" font-family="system-ui" font-size="10" text-anchor="middle">100 MWth Total (4 × 25 MW)</text>
+        <rect x="32" y="162" width="121" height="38" rx="2" fill="#101418" stroke="#2c3640"></rect>
+        <text x="92" y="178" fill="#6ba4b8" font-family="ui-monospace, monospace" font-size="9.5" text-anchor="middle">5 MW Branch: DN300</text>
+        <text x="92" y="192" fill="#9aa2ac" font-family="ui-monospace, monospace" font-size="9" text-anchor="middle">1,895 GPM (~1.7 m/s)</text>
+        <rect x="32" y="208" width="121" height="38" rx="2" fill="#101418" stroke="#2c3640"></rect>
+        <text x="92" y="224" fill="#6ba4b8" font-family="ui-monospace, monospace" font-size="9.5" text-anchor="middle">1 MW Branch: DN150</text>
+        <text x="92" y="238" fill="#9aa2ac" font-family="ui-monospace, monospace" font-size="9" text-anchor="middle">379 GPM (~1.35 m/s)</text>
+        <text x="92" y="272" fill="#e6e9ec" font-family="ui-monospace, monospace" font-size="9.5" text-anchor="middle">Supply: 30°C (or 38°C)</text>
+        <text x="92" y="288" fill="#c2a468" font-family="ui-monospace, monospace" font-size="9.5" text-anchor="middle">Return: 40°C (or 48°C)</text>
+        <text x="92" y="306" fill="#9aa2ac" font-family="ui-monospace, monospace" font-size="9" text-anchor="middle">PRV-101 / TRV-101 / AAV</text>
+
+        <!-- Main Supply Header (Bottom -> Left into IT Racks): DN1200 (48") / 37,900 GPM -->
+        <path d="M 595 365 L 360 365 L 360 285 L 165 285" fill="none" stroke="#6ba4b8" stroke-width="3.2"></path>
+        <text x="262" y="276" fill="#6ba4b8" font-family="ui-monospace, monospace" font-size="9.5" font-weight="700" text-anchor="middle">SUPPLY MAIN: DN1200 (48") · 37,900 GPM</text>
+        <text x="262" y="300" fill="#9aa2ac" font-family="ui-monospace, monospace" font-size="9" text-anchor="middle">FT-101 · TT-101 · PT-101 · STR-101 (ΔP)</text>
+
+        <!-- Main Return Header (Top out of IT Racks -> Right): DN1200 (48") / 37,900 GPM -->
+        <path d="M 165 145 L 445 145" fill="none" stroke="#c2a468" stroke-width="3.2"></path>
+        <text x="295" y="136" fill="#c2a468" font-family="ui-monospace, monospace" font-size="9.5" font-weight="700" text-anchor="middle">RETURN MAIN: DN1200 (48") · 37,900 GPM</text>
+        <text x="295" y="160" fill="#9aa2ac" font-family="ui-monospace, monospace" font-size="9" text-anchor="middle">AS-101 (Air Sep) · TT-102 · PT-102</text>
+
+        <!-- Expansion Tank & Makeup at Pump Suction Reference (ET-101 & BFP-101) -->
+        <rect x="190" y="390" width="110" height="75" rx="4" fill="#151b21" stroke="#6ba4b8" stroke-width="1.4"></rect>
+        <line x1="245" y1="390" x2="245" y2="285" stroke="#6ba4b8" stroke-width="1.5" stroke-dasharray="4,3"></line>
+        <text x="245" y="410" fill="#e6e9ec" font-family="ui-monospace, monospace" font-size="10" font-weight="700" text-anchor="middle">ET-101 &amp; BFP-101</text>
+        <text x="245" y="425" fill="#9aa2ac" font-family="system-ui" font-size="9.5" text-anchor="middle">Diaphragm Expansion</text>
+        <text x="245" y="439" fill="#9aa2ac" font-family="system-ui" font-size="9.5" text-anchor="middle">Tank + RPZ Makeup</text>
+        <text x="245" y="455" fill="#6ba4b8" font-family="ui-monospace, monospace" font-size="9" text-anchor="middle">Suction Ref (PONPC)</text>
+
+        <!-- N+1 Circulation Pump Station (P-101A..E: 4 Operating + 1 Standby, DN600 / 24" each) -->
+        <rect x="320" y="390" width="185" height="75" rx="4" fill="#151b21" stroke="#6ba4b8" stroke-width="1.6"></rect>
+        <text x="412" y="410" fill="#6ba4b8" font-family="ui-monospace, monospace" font-size="10" font-weight="700" text-anchor="middle">P-101A..E (4+1 N+1 TRAINS)</text>
+        <text x="412" y="426" fill="#e6e9ec" font-family="ui-monospace, monospace" font-size="9.5" text-anchor="middle">Each: 9,475 GPM · DN600 (24")</text>
+        <text x="412" y="441" fill="#9aa2ac" font-family="ui-monospace, monospace" font-size="9" text-anchor="middle">Head: 180–300 kPa (60–100 ft)</text>
+        <text x="412" y="456" fill="#9aa2ac" font-family="ui-monospace, monospace" font-size="9" text-anchor="middle">Incl. Check CV, Isol XV &amp; MCSF Bypass</text>
+
+        <!-- Thermal Storage Buffer Rings (TK-201 Cold & TK-202 Hot) -->
+        <rect x="335" y="185" width="95" height="80" rx="5" fill="#151b21" stroke="#6ba4b8" stroke-width="1.5"></rect>
+        <text x="382" y="205" fill="#6ba4b8" font-family="ui-monospace, monospace" font-size="10" font-weight="700" text-anchor="middle">TK-201 / 202</text>
+        <text x="382" y="220" fill="#e6e9ec" font-family="system-ui" font-size="9.5" text-anchor="middle">Diurnal Thermal</text>
+        <text x="382" y="234" fill="#e6e9ec" font-family="system-ui" font-size="9.5" text-anchor="middle">Buffer Tanks</text>
+        <text x="382" y="250" fill="#9aa2ac" font-family="ui-monospace, monospace" font-size="9" text-anchor="middle">LT-201 · PRV-201</text>
+
+        <!-- 3-Way Fail-Safe Diverter Valve TCV-201 -->
+        <circle cx="460" cy="145" r="14" fill="#151b21" stroke="#c2a468" stroke-width="2"></circle>
+        <text x="460" y="149" fill="#c2a468" font-family="ui-monospace, monospace" font-size="9" font-weight="700" text-anchor="middle">3W</text>
+        <text x="460" y="122" fill="#e6e9ec" font-family="ui-monospace, monospace" font-size="9.5" font-weight="700" text-anchor="middle">TCV-201 (Fail-Open to DC-201)</text>
+
+        <!-- Path 1 (UP): 100% CAPACITY SUMMER STANDBY DRY COOLERS / RADIATIVE SKY ARRAYS (DC-201A..E) -->
+        <path d="M 460 131 L 460 85 L 495 85" fill="none" stroke="#c2a468" stroke-width="2.8"></path>
+        <rect x="495" y="72" width="145" height="72" rx="3" fill="#151b21" stroke="#e6e9ec" stroke-width="1.6"></rect>
+        <text x="567" y="91" fill="#e6e9ec" font-family="ui-monospace, monospace" font-size="10" font-weight="700" text-anchor="middle">DC-201A..E (STANDBY)</text>
+        <text x="567" y="106" fill="#6ba4b8" font-family="ui-monospace, monospace" font-size="9.5" text-anchor="middle">100% Design Rejection</text>
+        <text x="567" y="120" fill="#9aa2ac" font-family="system-ui" font-size="9" text-anchor="middle">Fin-Fan Dry + Sky Coolers</text>
+        <text x="567" y="134" fill="#9aa2ac" font-family="ui-monospace, monospace" font-size="8.5" text-anchor="middle">(Guarantees Cooling if HX Offline)</text>
+        <path d="M 567 144 L 567 365" fill="none" stroke="#6ba4b8" stroke-width="2.5" stroke-dasharray="5,3"></path>
+
+        <!-- Path 2 (RIGHT): TO DOUBLE-WALL ISOLATION HEAT EXCHANGERS HX-301A..D -->
+        <path d="M 474 145 L 474 235 L 595 235" fill="none" stroke="#c2a468" stroke-width="2.8"></path>
+
+        <!-- DOUBLE-WALL ISOLATION PLATE HEAT EXCHANGERS (HX-301A..D) STRADDLING BOUNDARY -->
+        <rect x="595" y="210" width="120" height="175" rx="4" fill="#182028" stroke="#c2a468" stroke-width="2.2"></rect>
+        <line x1="655" y1="210" x2="655" y2="385" stroke="#c2a468" stroke-width="1.5" stroke-dasharray="4,3"></line>
+        <text x="655" y="230" fill="#c2a468" font-family="ui-monospace, monospace" font-size="10.5" font-weight="700" text-anchor="middle">HX-301A..D</text>
+        <text x="655" y="245" fill="#e6e9ec" font-family="system-ui" font-size="9.5" text-anchor="middle">Isolation Plate HXs</text>
+        <text x="655" y="261" fill="#6ba4b8" font-family="ui-monospace, monospace" font-size="9" text-anchor="middle">25 MW / 9,475 GPM ea</text>
+        <text x="655" y="276" fill="#9aa2ac" font-family="ui-monospace, monospace" font-size="9" text-anchor="middle">Ports: DN600 (24")</text>
+        <text x="655" y="291" fill="#9aa2ac" font-family="ui-monospace, monospace" font-size="9" text-anchor="middle">ΔP: 50–70 kPa / side</text>
+        <text x="655" y="306" fill="#e6e9ec" font-family="ui-monospace, monospace" font-size="9" text-anchor="middle">Approach: 3–5 °C</text>
+        <text x="655" y="322" fill="#9aa2ac" font-family="ui-monospace, monospace" font-size="8.5" text-anchor="middle">Hot: 40→30°C (or 50→40)</text>
+        <text x="655" y="336" fill="#9aa2ac" font-family="ui-monospace, monospace" font-size="8.5" text-anchor="middle">Cold: 27→37°C (or 25→35)</text>
+        <text x="655" y="354" fill="#c2a468" font-family="ui-monospace, monospace" font-size="8.5" text-anchor="middle">PRV-301 · TRV-301 · PDT</text>
+        <text x="655" y="370" fill="#9aa2ac" font-family="ui-monospace, monospace" font-size="8.5" text-anchor="middle">4×TT · 4×PT · 2×FT</text>
+
+        <!-- ZONE B (RIGHT): ISOLATED PERIMETER WATER TREATMENT, CANAL & RECHARGE CIRCUITS -->
+        <!-- Clean Secondary Thermal Transfer Loop (ET-301, P-301) -->
+        <path d="M 715 245 L 775 245 L 775 155 L 820 155" fill="none" stroke="#c2a468" stroke-width="2.5"></path>
+        <path d="M 715 350 L 775 350 L 775 395 L 820 395" fill="none" stroke="#6ba4b8" stroke-width="2.5"></path>
+
+        <!-- Box 1 on Right: Containerized Pilot Treatment Skid (MD-302, 100 GPM / DN80 Basis) -->
+        <rect x="820" y="95" width="180" height="125" rx="4" fill="#151b21" stroke="#6ba4b8" stroke-width="1.6"></rect>
+        <text x="910" y="115" fill="#6ba4b8" font-family="ui-monospace, monospace" font-size="10" font-weight="700" text-anchor="middle">MD-302 · PILOT SKID</text>
+        <text x="910" y="131" fill="#e6e9ec" font-family="ui-monospace, monospace" font-size="9.5" text-anchor="middle">Feed Basis: 100 GPM (DN80 / 3")</text>
+        <text x="910" y="146" fill="#9aa2ac" font-family="system-ui" font-size="9.5" text-anchor="middle">Storm/Greywater Pretreatment</text>
+        <text x="910" y="160" fill="#9aa2ac" font-family="system-ui" font-size="9.5" text-anchor="middle">+ GO Membrane / Thermal Skid</text>
+        <text x="910" y="176" fill="#c2a468" font-family="ui-monospace, monospace" font-size="9" text-anchor="middle">Brine/Reject → Contained Evap/Haul</text>
+        <text x="910" y="191" fill="#6ba4b8" font-family="ui-monospace, monospace" font-size="9" text-anchor="middle">AIT-401 Quality Interlock</text>
+        <text x="910" y="206" fill="#9aa2ac" font-family="ui-monospace, monospace" font-size="8.5" text-anchor="middle">(Off-Spec Diverts via XV-401)</text>
+
+        <!-- Box 2 on Right: Outbound Canal Sub-Bed Loop (CW-401, Assigned Partial Duty) -->
+        <rect x="820" y="240" width="180" height="95" rx="4" fill="#151b21" stroke="#c2a468" stroke-width="1.5"></rect>
+        <text x="910" y="260" fill="#c2a4b8" font-family="ui-monospace, monospace" font-size="10" font-weight="700" text-anchor="middle">CW-401 · CANAL PEX LOOP</text>
+        <text x="910" y="276" fill="#e6e9ec" font-family="ui-monospace, monospace" font-size="9.5" text-anchor="middle">Assigned Duty (e.g. 1–5 MWth)</text>
+        <text x="910" y="292" fill="#9aa2ac" font-family="system-ui" font-size="9.5" text-anchor="middle">Parallel Balanced PEX Manifolds</text>
+        <text x="910" y="307" fill="#9aa2ac" font-family="system-ui" font-size="9" text-anchor="middle">Winter Root-Zone Bio-Warming</text>
+        <text x="910" y="322" fill="#6ba4b8" font-family="ui-monospace, monospace" font-size="8.5" text-anchor="middle">(Not Depicted as Full 100 MW Sink)</text>
+
+        <!-- Box 3 on Right: Aquifer Storage & Recovery (ASR-402, EPA Class V UIC) -->
+        <rect x="820" y="355" width="180" height="105" rx="4" fill="#151b21" stroke="#6ba4b8" stroke-width="1.5"></rect>
+        <text x="910" y="375" fill="#6ba4b8" font-family="ui-monospace, monospace" font-size="10" font-weight="700" text-anchor="middle">ASR-402 · RECHARGE WELLS</text>
+        <text x="910" y="391" fill="#e6e9ec" font-family="ui-monospace, monospace" font-size="9.5" text-anchor="middle">EPA Class V UIC Framework</text>
+        <text x="910" y="407" fill="#9aa2ac" font-family="system-ui" font-size="9.5" text-anchor="middle">Flow &amp; Head TBD by Site Hydro-</text>
+        <text x="910" y="421" fill="#9aa2ac" font-family="system-ui" font-size="9.5" text-anchor="middle">geology &amp; Step-Injection Tests</text>
+        <text x="910" y="438" fill="#c2a468" font-family="ui-monospace, monospace" font-size="8.5" text-anchor="middle">Requires Permitted Water Quality</text>
+        <text x="910" y="451" fill="#9aa2ac" font-family="ui-monospace, monospace" font-size="8.5" text-anchor="middle">&amp; Failsafe Isolation Valve XV-402</text>
+
+        <!-- Connect MD-302 Permeate down to CW-401 and ASR-402 via AIT-401 Interlock -->
+        <path d="M 810 185 L 795 185 L 795 405 L 820 405" fill="none" stroke="#6ba4b8" stroke-width="2" stroke-dasharray="4,3"></path>
+
+        <!-- Bottom Footer Bar in Drawing -->
+        <rect x="12" y="488" width="996" height="40" rx="2" fill="#12171c" stroke="#282e35"></rect>
+        <text x="24" y="505" fill="#e6e9ec" font-family="ui-monospace, monospace" font-size="10" font-weight="700">KEY CREDIBILITY INVARIANTS SHOWN ON SHEET M-101:</text>
+        <text x="24" y="520" fill="#9aa2ac" font-family="ui-monospace, monospace" font-size="9.5">1) Closed coolant never contacts stormwater/groundwater.  2) 100% standby dry-cooling path (DC-201) when heat recovery is offline.  3) Full PRV/TRV/ET/MCSF protection.</text>
+      </svg>
+      <figcaption><b>Sheet M-101 (Preliminary P&amp;ID):</b> Hydraulic and thermal separation between the 37,900&nbsp;GPM closed facility cooling loop (four 25&nbsp;MW operating trains + fifth N+1 standby train), the 100% capacity summer standby dry coolers (<b>DC-201</b>), the double-wall isolation plate heat exchangers (<b>HX-301A..D</b>), and the perimeter pilot water-treatment (<b>MD-302</b>), canal sub-bed (<b>CW-401</b>), and EPA Class&nbsp;V aquifer recharge (<b>ASR-402</b>) systems.</figcaption>
+    </figure>
+
+    <!-- SHEET C-201 -->
+    <figure class="ws-diagram" style="margin-top:22px">
+      <svg viewBox="0 0 1020 340" width="100%" role="img" aria-label="Sheet C-201 Stormwater, Treatment Accountability, and Off-Spec Diversion Block Diagram">
+        <rect x="0" y="0" width="1020" height="340" rx="4" fill="#0e1216"></rect>
+        <rect x="12" y="10" width="996" height="30" rx="2" fill="#151b21" stroke="#2c3640" stroke-width="1.2"></rect>
+        <text x="22" y="29" fill="#6ba4b8" font-family="ui-monospace, monospace" font-size="11.5" font-weight="700">SHEET C-201 · STORMWATER DETENTION, TREATMENT MASS BALANCE, OFF-SPEC DIVERSION &amp; CLASS V UIC INTERLOCKS</text>
+        <text x="998" y="29" fill="#9aa2ac" font-family="ui-monospace, monospace" font-size="10.5" text-anchor="end">WATER ACCOUNTABILITY FLOW</text>
+
+        <!-- Step 1: Stormwater & Greywater Intake -->
+        <rect x="24" y="65" width="185" height="110" rx="4" fill="#151b21" stroke="#6ba4b8" stroke-width="1.5"></rect>
+        <text x="116" y="88" fill="#6ba4b8" font-family="ui-monospace, monospace" font-size="10.5" font-weight="700" text-anchor="middle">1. PERIMETER INTAKE</text>
+        <text x="116" y="106" fill="#e6e9ec" font-family="system-ui" font-size="10.5" text-anchor="middle">100-Yr Retention Bioswale</text>
+        <text x="116" y="122" fill="#9aa2ac" font-family="system-ui" font-size="10" text-anchor="middle">+ Subsurface Geocell Crates</text>
+        <text x="116" y="138" fill="#9aa2ac" font-family="system-ui" font-size="10" text-anchor="middle">+ Hydrodynamic Grit Trap</text>
+        <text x="116" y="158" fill="#6ba4b8" font-family="ui-monospace, monospace" font-size="9.5" text-anchor="middle"> Overflow Weir → Storm Drain</text>
+
+        <line x1="209" y1="120" x2="265" y2="120" stroke="#6ba4b8" stroke-width="2.5"></line>
+        <polygon points="258,115 268,120 258,125" fill="#6ba4b8"></polygon>
+        <text x="237" y="110" fill="#9aa2ac" font-family="ui-monospace, monospace" font-size="9" text-anchor="middle">DN80</text>
+        <text x="237" y="134" fill="#9aa2ac" font-family="ui-monospace, monospace" font-size="9" text-anchor="middle">100 GPM</text>
+
+        <!-- Step 2: Pretreatment & Membrane Skid -->
+        <rect x="268" y="65" width="210" height="110" rx="4" fill="#151b21" stroke="#6ba4b8" stroke-width="1.5"></rect>
+        <text x="373" y="88" fill="#6ba4b8" font-family="ui-monospace, monospace" font-size="10.5" font-weight="700" text-anchor="middle">2. TREATMENT SKID (MD-302)</text>
+        <text x="373" y="106" fill="#e6e9ec" font-family="system-ui" font-size="10.5" text-anchor="middle">UF Pretreatment + GO Membrane</text>
+        <text x="373" y="122" fill="#9aa2ac" font-family="system-ui" font-size="10" text-anchor="middle">Driven by Isolated HX-301 Heat</text>
+        <text x="373" y="138" fill="#9aa2ac" font-family="ui-monospace, monospace" font-size="9.5" text-anchor="middle">CIP Loop + ΔP Monitoring (PDT)</text>
+        <text x="373" y="158" fill="#c2a468" font-family="ui-monospace, monospace" font-size="9.5" text-anchor="middle">Product / Reject Mass Balance</text>
+
+        <!-- Reject / Brine Path Downward -->
+        <line x1="373" y1="175" x2="373" y2="235" stroke="#c2a468" stroke-width="2.2"></line>
+        <polygon points="368,228 373,238 378,228" fill="#c2a468"></polygon>
+        <rect x="268" y="238" width="210" height="75" rx="4" fill="#1a1815" stroke="#c2a468" stroke-width="1.5"></rect>
+        <text x="373" y="258" fill="#c2a468" font-family="ui-monospace, monospace" font-size="10" font-weight="700" text-anchor="middle">CONCENTRATE / REJECT HANDLING</text>
+        <text x="373" y="275" fill="#e6e9ec" font-family="system-ui" font-size="10" text-anchor="middle">Zero Unpermitted Brine Discharge</text>
+        <text x="373" y="291" fill="#9aa2ac" font-family="system-ui" font-size="9.5" text-anchor="middle">Routed to Lined Evap Crystallizer</text>
+        <text x="373" y="305" fill="#9aa2ac" font-family="system-ui" font-size="9.5" text-anchor="middle">or Permitted Sanitary Sewer / Haul</text>
+
+        <!-- Step 3: Online Water Quality Analyzer & Failsafe Diverter (AIT-401 / XV-401) -->
+        <line x1="478" y1="120" x2="540" y2="120" stroke="#6ba4b8" stroke-width="2.5"></line>
+        <rect x="540" y="65" width="195" height="110" rx="4" fill="#151b21" stroke="#e6e9ec" stroke-width="1.6"></rect>
+        <text x="637" y="88" fill="#e6e9ec" font-family="ui-monospace, monospace" font-size="10.5" font-weight="700" text-anchor="middle">3. QUALITY INTERLOCK</text>
+        <text x="637" y="106" fill="#6ba4b8" font-family="ui-monospace, monospace" font-size="10" text-anchor="middle">AIT-401 / XV-401</text>
+        <text x="637" y="122" fill="#9aa2ac" font-family="system-ui" font-size="10" text-anchor="middle">Continuous Turbidity, TOC,</text>
+        <text x="637" y="136" fill="#9aa2ac" font-family="system-ui" font-size="10" text-anchor="middle">Conductivity, pH &amp; Temp Check</text>
+        <text x="637" y="156" fill="#c2a468" font-family="ui-monospace, monospace" font-size="9" text-anchor="middle">Off-Spec → Retreatment Basin</text>
+
+        <!-- Off-spec diversion loop back to intake/holding -->
+        <path d="M 637 175 L 637 275 L 515 275" fill="none" stroke="#c2a468" stroke-width="2" stroke-dasharray="5,3"></path>
+        <text x="637" y="292" fill="#9aa2ac" font-family="ui-monospace, monospace" font-size="9" text-anchor="middle">Off-Spec Recycle Line (XV-401B)</text>
+
+        <!-- Step 4: Verified Product Water to Canal or Class V ASR -->
+        <line x1="735" y1="120" x2="795" y2="120" stroke="#6ba4b8" stroke-width="2.5"></line>
+        <polygon points="788,115 798,120 788,125" fill="#6ba4b8"></polygon>
+
+        <rect x="798" y="55" width="198" height="120" rx="4" fill="#151b21" stroke="#6ba4b8" stroke-width="1.6"></rect>
+        <text x="897" y="77" fill="#6ba4b8" font-family="ui-monospace, monospace" font-size="10.5" font-weight="700" text-anchor="middle">4A. NPDES CANAL DISCHARGE</text>
+        <text x="897" y="95" fill="#e6e9ec" font-family="system-ui" font-size="10" text-anchor="middle">Cooled &amp; Hyper-Oxygenated</text>
+        <text x="897" y="111" fill="#9aa2ac" font-family="system-ui" font-size="9.5" text-anchor="middle">Stepped Vortex Aeration Weirs</text>
+        <text x="897" y="127" fill="#9aa2ac" font-family="system-ui" font-size="9.5" text-anchor="middle">Meets Receiving-Stream ΔT Limit</text>
+        <text x="897" y="147" fill="#6ba4b8" font-family="ui-monospace, monospace" font-size="9" text-anchor="middle">Municipal Easement Operated</text>
+
+        <rect x="798" y="195" width="198" height="118" rx="4" fill="#151b21" stroke="#6ba4b8" stroke-width="1.6"></rect>
+        <text x="897" y="217" fill="#6ba4b8" font-family="ui-monospace, monospace" font-size="10.5" font-weight="700" text-anchor="middle">4B. EPA CLASS V ASR WELL</text>
+        <text x="897" y="235" fill="#e6e9ec" font-family="system-ui" font-size="10" text-anchor="middle">Site-Permitted Aquifer Recharge</text>
+        <text x="897" y="251" fill="#9aa2ac" font-family="system-ui" font-size="9.5" text-anchor="middle">Hydrogeological Step-Test Basis</text>
+        <text x="897" y="267" fill="#9aa2ac" font-family="system-ui" font-size="9.5" text-anchor="middle">Pre-Injection Disinfection &amp; TOC</text>
+        <text x="897" y="287" fill="#c2a468" font-family="ui-monospace, monospace" font-size="9" text-anchor="middle">Auto-Trip on Wellhead Pressure</text>
+        <path d="M 765 120 L 765 255 L 798 255" fill="none" stroke="#6ba4b8" stroke-width="2.5"></path>
+      </svg>
+      <figcaption><b>Sheet C-201 (Treatment Accountability &amp; Discharge Interlocks):</b> Explicit mass-balance accountability showing permeate vs. reject/brine handling, online analyzer interlocks (<b>AIT-401</b>), automatic off-spec diversion to retreatment (<b>XV-401</b>), and separate compliance pathways for surface-water NPDES discharge and EPA Class&nbsp;V Underground Injection Control (UIC) recharge.</figcaption>
+    </figure>
+    <p class="to-top"><a href="#top">&uarr; Back to top</a></p>
+  </section>
+
+  <!-- SECTION 05: FLUID CHEMISTRY & GRAPHENE MASS BALANCE -->
   <section class="ws-panel" id="fluid">
-    <div class="ws-eyebrow">Section 03 · Closed-Loop Coolant Chemistry</div>
-    <h2>SpringCore-48: The Non-Toxic, Graphene-Armored Thermal Battery Fluid</h2>
-    <p>Conventional data centers evaporate water because water only absorbs <i>sensible</i> heat ($4.18\text{ J/g}\cdot^\circ\text{C}$), requiring evaporative cooling towers when ambient afternoon air exceeds $95^\circ\text{F}$. Meanwhile, traditional liquid metals like mercury are neurotoxic, heavy ($13.5\text{ g/cm}^3$), corrode copper pipes via amalgamation, and undergo no phase change at server temperatures.</p>
-    <p><b>SpringCore-48</b> solves all four constraints using a microscopic 3-layer <b>“Jawbreaker” Phase-Change Bead</b> ($10\text{–}25\ \mu\text{m}$) suspended in a fire-safe, biodegradable ester/water carrier:</p>
+    <div class="ws-eyebrow">Section 05 · Advanced Thermal Fluid Option (R&amp;D Track)</div>
+    <h2>SpringCore-48: Phase-Change Slurry &amp; In-Situ Graphene Encapsulation</h2>
+    <p>While the baseline hydraulic design in Section&nbsp;03 operates on standard inhibited water so a facility can be permitted and built with off-the-shelf pumps and plate exchangers today, Wellspring’s Phase&nbsp;1 R&amp;D track upgrades the closed primary loop with <b>SpringCore-48</b>—a micro-encapsulated phase-change slurry that increases volumetric thermal storage capacity by <b>5&times; to 6&times;</b> and cuts required pumping flow rates during peak afternoon hours:</p>
 
     <div class="grid" style="grid-template-columns:repeat(auto-fit,minmax(300px,1fr));margin:18px 0">
       <figure class="shotfig" style="margin:0">
@@ -555,16 +1064,16 @@
                   srcset="/assets/wellspring/benchtop-720.webp 720w,
                           /assets/wellspring/benchtop-1000.webp 1000w,
                           /assets/wellspring/benchtop-1536.webp 1536w"
-                  sizes="(max-width: 720px) 100vw, 460px">
+                  sizes="(max-width: 720px) 100vw, 480px">
           <img src="/assets/wellspring/benchtop-1536.jpg"
                srcset="/assets/wellspring/benchtop-720.jpg 720w,
                        /assets/wellspring/benchtop-1000.jpg 1000w,
                        /assets/wellspring/benchtop-1536.jpg 1536w"
-               sizes="(max-width: 720px) 100vw, 460px"
+               sizes="(max-width: 720px) 100vw, 480px"
                width="1536" height="864" loading="lazy"
-               alt="Phase 1 benchtop hydrodynamic cavitation test rig built on an aluminum extrusion frame with a stainless-steel centrifugal pump, transparent acrylic Venturi cavitation tube shearing dark grey graphene slurry, copper direct-to-chip cold plate, and three sample vials showing raw flake graphite, bismuth-tin pellets with sodium acetate crystals, and the finished SpringCore-48 suspension.">
+               alt="Phase 1 benchtop hydrodynamic cavitation test rig built on an aluminum extrusion frame with a stainless-steel centrifugal pump, transparent acrylic Venturi cavitation tube, copper direct-to-chip cold plate, and three sample vials showing raw flake graphite, bismuth-tin pellets with sodium acetate crystals, and the finished SpringCore-48 suspension.">
         </picture>
-        <figcaption><b>Phase 1 Benchtop Loop:</b> Stainless pump, clear Venturi cavitation section shearing flake graphite into graphene, copper GPU cold-plate block, and raw feedstock vials (graphite powder, bismuth-tin + sodium acetate core, and finished <b>SpringCore-48</b> slurry).</figcaption>
+        <figcaption><b>Phase 1 Benchtop Loop (10 kW Test Rig Concept):</b> Stainless centrifugal pump, acrylic Venturi cavitation section shearing flake graphite into few-layer graphene, copper GPU cold-plate test block, and feedstock sample vials.</figcaption>
       </figure>
 
       <figure class="shotfig" style="margin:0">
@@ -573,260 +1082,87 @@
                   srcset="/assets/wellspring/microbead-720.webp 720w,
                           /assets/wellspring/microbead-1000.webp 1000w,
                           /assets/wellspring/microbead-1536.webp 1536w"
-                  sizes="(max-width: 720px) 100vw, 460px">
+                  sizes="(max-width: 720px) 100vw, 480px">
           <img src="/assets/wellspring/microbead-1536.jpg"
                srcset="/assets/wellspring/microbead-720.jpg 720w,
                        /assets/wellspring/microbead-1000.jpg 1000w,
                        /assets/wellspring/microbead-1536.jpg 1536w"
-               sizes="(max-width: 720px) 100vw, 460px"
+               sizes="(max-width: 720px) 100vw, 480px"
                width="1536" height="864" loading="lazy"
                alt="3/4 cutaway visualization of a 20-micron SpringCore-48 micro-bead resting on a machined copper micro-channel cold plate: outer armor of overlapping exfoliated graphene platelets, middle thermal bridge of metallic bismuth-tin nano-needles, and inner core of white crystalline sodium-acetate salt hydrate melting into golden liquid at 48 degrees Celsius.">
         </picture>
-        <figcaption><b>3-Layer Micro-Bead Cutaway ($20\ \mu\text{m}$):</b> Interlocking exfoliated graphene platelets (outer armor), bismuth-tin thermal bridge needles (middle), and $48^\circ\text{C}$ sodium-acetate/paraffin latent-heat core melting at the center.</figcaption>
+        <figcaption><b>3-Layer Micro-Bead Architecture (10–25 &mu;m Concept):</b> Interlocking exfoliated graphene platelets (outer shell), non-toxic bismuth-tin thermal bridge needles (middle), and 48&nbsp;&deg;C sodium-acetate/paraffin latent-heat core (center).</figcaption>
       </figure>
     </div>
-
-    <figure class="ws-diagram">
-      <svg viewBox="0 0 900 280" width="100%" role="img" aria-label="Diagram of the SpringCore-48 three-layer micro-bead and in-situ graphene exfoliation loop">
-        <rect x="0" y="0" width="900" height="280" rx="8" fill="#111418"></rect>
-
-        <!-- Left: Cross section of single microbead -->
-        <circle cx="175" cy="140" r="102" fill="rgba(62,200,216,0.12)" stroke="#3ec8d8" stroke-width="5" stroke-dasharray="10,4"></circle>
-        <circle cx="175" cy="140" r="82" fill="rgba(217,178,105,0.22)" stroke="#d9b269" stroke-width="2"></circle>
-        <!-- Bismuth-Tin thermal needles -->
-        <line x1="115" y1="140" x2="235" y2="140" stroke="#9ba2ad" stroke-width="3"></line>
-        <line x1="175" y1="80" x2="175" y2="200" stroke="#9ba2ad" stroke-width="3"></line>
-        <line x1="132" y1="97" x2="218" y2="183" stroke="#9ba2ad" stroke-width="2.5"></line>
-        <line x1="218" y1="97" x2="132" y2="183" stroke="#9ba2ad" stroke-width="2.5"></line>
-        <circle cx="175" cy="140" r="54" fill="#1d2d35" stroke="#8be8f2" stroke-width="1.5"></circle>
-
-        <text x="175" y="135" fill="#fff" font-family="system-ui" font-size="12" font-weight="700" text-anchor="middle">48°C Salt-Wax</text>
-        <text x="175" y="152" fill="#8be8f2" font-family="system-ui" font-size="11" text-anchor="middle">Latent Core (260 J/g)</text>
-
-        <!-- Labels pointing to layers -->
-        <g font-family="system-ui, sans-serif">
-          <line x1="268" y1="78" x2="335" y2="55" stroke="#3ec8d8" stroke-width="1.5"></line>
-          <text x="342" y="52" fill="#3ec8d8" font-size="13" font-weight="700">1. Outer Shell: In-Situ Exfoliated Graphene Armor (0.2 wt%)</text>
-          <text x="342" y="70" fill="#9ba2ad" font-size="12">Pickering-stabilized nanosheets wrap each droplet · Zero copper pipe corrosion · 3× thermal transfer</text>
-
-          <line x1="242" y1="125" x2="335" y2="125" stroke="#d9b269" stroke-width="1.5"></line>
-          <text x="342" y="122" fill="#d9b269" font-size="13" font-weight="700">2. Thermal Bridge: Non-Toxic Bismuth-Tin Nano-Spikes (2 wt%)</text>
-          <text x="342" y="140" fill="#9ba2ad" font-size="12">Pepto-Bismol-safe metal alloy conducts heat from the graphene skin into the core in milliseconds</text>
-
-          <line x1="215" y1="175" x2="335" y2="195" stroke="#8be8f2" stroke-width="1.5"></line>
-          <text x="342" y="192" fill="#8be8f2" font-size="13" font-weight="700">3. Latent Heat Core: Sodium Acetate Trihydrate + Bio-Paraffin (90%)</text>
-          <text x="342" y="210" fill="#9ba2ad" font-size="12">Food-grade pocket-warmer salt hydrate melts at 48°C (118°F) · 6× heat capacity of water · $0.80/kg</text>
-
-          <rect x="342" y="226" width="525" height="34" rx="6" fill="rgba(62,200,216,0.1)" stroke="#2b2e34"></rect>
-          <text x="604" y="248" fill="#e8eaed" font-size="12.5" font-weight="600" text-anchor="middle">Total Bulk Fluid Cost: ~$2.80 / Liter (~$10.60 / gal) — 92% cheaper than pure Gallium/Indium</text>
-        </g>
-      </svg>
-      <figcaption><b>Figure 2:</b> Architecture of a 20-micron <b>SpringCore-48</b> phase-change micro-bead. Pumping shear continuously exfoliates cheap flake graphite ($2/kg) to self-heal the outer graphene shell.</figcaption>
-    </figure>
 
     <div class="table-scroll">
       <table>
         <thead>
           <tr>
-            <th>Property</th>
-            <th>Municipal Water (Evaporative)</th>
-            <th>Liquid Mercury ($\text{Hg}$)</th>
-            <th>Pure Gallium-Indium (EGaIn)</th>
-            <th>Wellspring SpringCore-48</th>
+            <th>Coolant Candidate</th>
+            <th>Heat Capacity at 45–50&nbsp;&deg;C</th>
+            <th>Copper / Aluminum Pipe Compatibility</th>
+            <th>Environmental &amp; Spill Profile</th>
+            <th>Estimated Bulk Material Cost</th>
           </tr>
         </thead>
         <tbody>
           <tr>
-            <td><b>Effective Heat Capacity at $48^\circ\text{C}$</b></td>
-            <td>$4.18\text{ J/g}\cdot^\circ\text{C}$ (sensible only)</td>
-            <td class="bad">$0.14\text{ J/g}\cdot^\circ\text{C}$ (no phase change)</td>
-            <td>$0.30\text{ J/g}\cdot^\circ\text{C}$ (unless alloyed)</td>
-            <td class="good">$240\text{–}260\text{ J/g}$ (latent fusion at $48^\circ\text{C}$)</td>
+            <td><b>Inhibited Facility Water</b> (Baseline Design)</td>
+            <td class="mono">4.18 J/(g&middot;&deg;C) sensible<br>(41.8 J/g over &Delta;T=10&nbsp;&deg;C)</td>
+            <td class="good">Standard industry baseline</td>
+            <td class="good">Benign closed loop</td>
+            <td class="mono">&lt;$0.05 / L</td>
           </tr>
           <tr>
-            <td><b>Copper / Aluminum Pipe Safety</b></td>
-            <td>Scale &amp; bio-fouling</td>
-            <td class="bad">Dissolves pipes (amalgamation)</td>
-            <td class="bad">Embrittles aluminum/copper</td>
-            <td class="good">Graphene shell isolates core 100%</td>
+            <td><b>Liquid Mercury (Hg)</b> (Rejected)</td>
+            <td class="bad">0.14 J/(g&middot;&deg;C) sensible<br>(No phase change at 50&nbsp;&deg;C)</td>
+            <td class="bad">Severe liquid-metal amalgamation / pipe failure</td>
+            <td class="bad">Extreme neurotoxin &amp; toxic vapor pressure</td>
+            <td class="bad">$450+ / L (13.5&nbsp;g/cm<sup>3</sup> weight penalty)</td>
           </tr>
           <tr>
-            <td><b>Toxicity &amp; Watershed Safety</b></td>
-            <td>Safe, but depletes aquifers</td>
-            <td class="bad">Extreme neurotoxin / vapor hazard</td>
-            <td>Non-toxic</td>
-            <td class="good">Food-grade salt, plant wax, bismuth &amp; carbon</td>
+            <td><b>Pure Gallium-Indium Eutectic</b> (Die-Interface Only)</td>
+            <td class="mono">0.30 J/(g&middot;&deg;C)</td>
+            <td class="bad">Embrittles aluminum; requires nickel barrier</td>
+            <td>Non-toxic, zero vapor pressure</td>
+            <td class="bad">$600+ / L (too costly for bulk loop)</td>
           </tr>
           <tr>
-            <td><b>Afternoon Water Consumption</b></td>
-            <td class="bad">1–2 Million Gal/Day (100 MW)</td>
-            <td>None, but requires peak chillers</td>
-            <td>None, but requires peak chillers</td>
-            <td class="good">Zero (stores 6 hrs of heat in Hot Ring)</td>
-          </tr>
-          <tr>
-            <td><b>Bulk Material Cost</b></td>
-            <td>Low (until city bans draw)</td>
-            <td class="bad">$450+ / liter &amp; extreme weight</td>
-            <td class="bad">$600+ / liter</td>
-            <td class="good">~$2.80 / liter ($10.60 / gal)</td>
+            <td><b>SpringCore-48 Hybrid Slurry</b> (30 wt% mPCM + 0.2 wt% Graphene)</td>
+            <td class="good">~110–130 J/g effective<br>(260 J/g core latent fusion at 48&nbsp;&deg;C)</td>
+            <td class="good">Pickering graphene shell isolates core from pipe wall</td>
+            <td class="good">Food-grade sodium acetate, plant wax, bismuth &amp; carbon</td>
+            <td class="good">~$2.80 / L (~$10.60 / gal)</td>
           </tr>
         </tbody>
       </table>
     </div>
-  </section>
 
-  <!-- SECTION 4 -->
-  <section class="ws-panel" id="graphene-math">
-    <div class="ws-eyebrow">Section 04 · Material Mass Balance</div>
-    <h2>How Much Graphene Does a Data Center Actually Need?</h2>
-    <p>Because a single gram of monolayer graphene has a surface area of <b>$2,630\text{ m}^2$</b> (half an American football field), the total carbon required to armor the coolant loop and manufacture the perimeter’s water-purification membranes is remarkably small—and is produced <b>in-situ from $2/kg natural flake graphite</b> using the cooling pumps’ own hydrodynamic cavitation energy:</p>
-
+    <h3>Graphene Mass Balance (Why Feedstock Cost Is Negligible)</h3>
+    <p>Monolayer graphene has a theoretical specific surface area of <b>2,630&nbsp;m<sup>2</sup>/g</b>. At a 0.2&nbsp;wt% (2&nbsp;g/L) suspension loading, the raw natural flake graphite ($2,000/metric ton industrial grade) required across all three project scales is minimal:</p>
     <div class="grid">
       <div class="card">
-        <b>1. Single-Rack Pilot (10–30 kW)</b>
-        <p>Requires <b>100 Liters</b> of SpringCore-48 fluid at $2\text{ g/L}$ loading = <b>200 grams of graphene</b> (less than half a pound). Raw flake graphite feedstock cost: <b>~$1.00</b>.</p>
+        <b>Phase 1 Benchtop Skid (100 L)</b>
+        <p>Requires <b>200&nbsp;grams</b> of exfoliated graphene (&lt;0.5&nbsp;lb). Raw flake graphite feedstock cost: <b>~$1.00</b>.</p>
       </div>
       <div class="card">
-        <b>2. 100 MW Perimeter Water Plant</b>
-        <p>Graphene Oxide (GO) nanofiltration and distillation membranes are only $200\text{ nm}$ thick ($1\text{ g/m}^2$). Filtering 1M+ gal/day ($10,000\text{ m}^2$ membrane area) requires just <b>10 kg (22 lbs) of graphene</b>—about <b>$25 of raw graphite</b>.</p>
+        <b>Phase 2 Pilot Membranes (100 GPM)</b>
+        <p>Ultrathin (200&nbsp;nm) Graphene-Oxide (GO) selective layers require ~1&nbsp;g/m<sup>2</sup>—under <b>1&nbsp;kg</b> of GO for an entire 40-ft pilot container skid.</p>
       </div>
       <div class="card">
-        <b>3. Full 100 MW Thermal Battery Loop</b>
-        <p>A 4-million-liter (1M gal) closed thermal storage ring requires <b>8 Metric Tons</b> of exfoliated graphene ($0.2\text{ wt}\%$). Raw industrial flake graphite cost: <b>~$16,000 total</b> for a $1B+ campus.</p>
-      </div>
-      <div class="card" style="border-color:var(--gold)">
-        <b style="color:var(--gold)">4. The Byproduct Revenue Stream</b>
-        <p>A 50 kW side-stream cavitation loop exfoliates <b>2 to 5 metric tons/year</b> of surplus few-layer graphene beyond campus maintenance needs—worth <b>$100k–$500k/yr</b> to local concrete, battery, and composite manufacturers.</p>
+        <b>100 MW Full Thermal Loop (4,000 m<sup>3</sup>)</b>
+        <p>Requires <b>8.0&nbsp;Metric Tons</b> of graphene to charge the entire 1-million-gallon thermal storage ring. Raw flake graphite feedstock: <b>~$16,000 total</b>.</p>
       </div>
     </div>
-
-    <figure class="ws-diagram" style="margin-top:22px">
-      <svg viewBox="0 0 960 430" width="100%" role="img" aria-label="ASME and ISO style Piping and Instrumentation Diagram (P&ID) of the Wellspring closed-loop SpringCore-48 thermal battery, cavitation graphene reactor, and perimeter water distillation plant">
-        <rect x="0" y="0" width="960" height="430" rx="8" fill="#0d1116"></rect>
-
-        <!-- Blueprint grid lines -->
-        <g stroke="#18222c" stroke-width="1">
-          <line x1="0" y1="70" x2="960" y2="70"></line>
-          <line x1="0" y1="140" x2="960" y2="140"></line>
-          <line x1="0" y1="210" x2="960" y2="210"></line>
-          <line x1="0" y1="280" x2="960" y2="280"></line>
-          <line x1="0" y1="350" x2="960" y2="350"></line>
-          <line x1="160" y1="0" x2="160" y2="430"></line>
-          <line x1="320" y1="0" x2="320" y2="430"></line>
-          <line x1="480" y1="0" x2="480" y2="430"></line>
-          <line x1="640" y1="0" x2="640" y2="430"></line>
-          <line x1="800" y1="0" x2="800" y2="430"></line>
-        </g>
-
-        <!-- Title Block Header -->
-        <rect x="14" y="12" width="932" height="32" rx="4" fill="#141c24" stroke="#2c3e50" stroke-width="1.5"></rect>
-        <text x="26" y="32" fill="#3ec8d8" font-family="ui-monospace, monospace" font-size="12" font-weight="700">DWG NO: WS-PID-001 · PROCESS FLOW &amp; PIPING SCHEMATIC (PRIMARY LOOP, CAVITATION REACTOR &amp; PERIMETER KIDNEY)</text>
-        <text x="934" y="32" fill="#9ba2ad" font-family="ui-monospace, monospace" font-size="11" text-anchor="end">REV 1.0 · SCALE: NTS</text>
-
-        <!-- PIPING LINES -->
-        <!-- Cold Supply Line (Cyan) from TK-201 through P-101, VC-101 to GPU Rack -->
-        <path d="M 380 125 L 250 125 L 250 205 L 70 205" fill="none" stroke="#3ec8d8" stroke-width="3.5"></path>
-        <!-- Hot Return Line (Amber) from GPU Rack to TK-202 -->
-        <path d="M 155 150 L 155 82 L 515 82 L 515 110" fill="none" stroke="#d9b269" stroke-width="3.5"></path>
-        <!-- Hydrocyclone Skim Line (Dashed Teal) from VC-101 to HC-102 and MD-302 -->
-        <path d="M 250 250 L 250 345 L 620 345" fill="none" stroke="#8be8f2" stroke-width="2" stroke-dasharray="6,4"></path>
-        <!-- Night Rejection / Heat Recovery Loop from TK-202 through HX-301 back to TK-201 -->
-        <path d="M 565 165 L 650 165 L 650 215" fill="none" stroke="#e07a5f" stroke-width="3.5"></path>
-        <path d="M 650 285 L 650 310 L 425 310 L 425 220" fill="none" stroke="#3ec8d8" stroke-width="3"></path>
-        <!-- Secondary Water Loop: Flood Moat -> MD-302 -> Outbound Canal -->
-        <path d="M 730 120 L 795 120 L 795 215" fill="none" stroke="#6fa8ff" stroke-width="3"></path>
-        <path d="M 700 250 L 760 250" fill="none" stroke="#e07a5f" stroke-width="3"></path>
-        <path d="M 855 250 L 925 250 L 925 345" fill="none" stroke="#3ec8d8" stroke-width="3.5"></path>
-
-        <!-- COMPONENT 1: AI Server Rack Cold Plates (HX-101) -->
-        <rect x="28" y="145" width="145" height="105" rx="5" fill="#151d26" stroke="#e07a5f" stroke-width="2"></rect>
-        <text x="100" y="166" fill="#f3b3a0" font-family="ui-monospace, monospace" font-size="11" font-weight="700" text-anchor="middle">HX-101 · AI RACKS</text>
-        <text x="100" y="183" fill="#e8eaed" font-family="system-ui" font-size="11" text-anchor="middle">Direct-to-Chip Cold Plates</text>
-        <text x="100" y="200" fill="#8be8f2" font-family="ui-monospace, monospace" font-size="10.5" text-anchor="middle">IN: 38°C (Solid Beads)</text>
-        <text x="100" y="216" fill="#f0d49b" font-family="ui-monospace, monospace" font-size="10.5" text-anchor="middle">OUT: 48°C (Melted Core)</text>
-        <text x="100" y="236" fill="#9ba2ad" font-family="ui-monospace, monospace" font-size="10" text-anchor="middle">ΔH_fus = 260 J/g</text>
-
-        <!-- COMPONENT 2: Circulation Pump (P-101) & Flake Graphite Hopper (Hopper F-101) -->
-        <circle cx="250" cy="160" r="18" fill="#151d26" stroke="#3ec8d8" stroke-width="2"></circle>
-        <polygon points="243,167 243,153 260,160" fill="#3ec8d8"></polygon>
-        <text x="280" y="156" fill="#3ec8d8" font-family="ui-monospace, monospace" font-size="10.5" font-weight="700">P-101</text>
-        <text x="280" y="169" fill="#9ba2ad" font-family="system-ui" font-size="10">Main Slurry Pump</text>
-
-        <!-- Venturi Cavitation Nozzle (VC-101) -->
-        <rect x="195" y="215" width="110" height="44" rx="4" fill="#151d26" stroke="#3ec8d8" stroke-width="2"></rect>
-        <path d="M 205 223 L 240 234 L 260 234 L 295 223 M 205 251 L 240 240 L 260 240 L 295 251" fill="none" stroke="#8be8f2" stroke-width="1.8"></path>
-        <text x="250" y="274" fill="#8be8f2" font-family="ui-monospace, monospace" font-size="10.5" font-weight="700" text-anchor="middle">VC-101 · VENTURI</text>
-        <text x="250" y="287" fill="#9ba2ad" font-family="system-ui" font-size="10" text-anchor="middle">Graphite Shear Reactor</text>
-
-        <!-- Hydrocyclone Skimmer (HC-102) -->
-        <rect x="330" y="322" width="135" height="48" rx="4" fill="#151d26" stroke="#8be8f2" stroke-width="1.5"></rect>
-        <text x="397" y="342" fill="#8be8f2" font-family="ui-monospace, monospace" font-size="10.5" font-weight="700" text-anchor="middle">HC-102 · HYDROCYCLONE</text>
-        <text x="397" y="357" fill="#9ba2ad" font-family="system-ui" font-size="10" text-anchor="middle">Skims Excess GO Paste</text>
-
-        <!-- COMPONENT 3: Thermal Battery Tanks (TK-201 Cold & TK-202 Hot) -->
-        <rect x="380" y="110" width="90" height="110" rx="10" fill="#132229" stroke="#3ec8d8" stroke-width="2"></rect>
-        <text x="425" y="135" fill="#3ec8d8" font-family="ui-monospace, monospace" font-size="11" font-weight="700" text-anchor="middle">TK-201</text>
-        <text x="425" y="152" fill="#e8eaed" font-family="system-ui" font-size="11" font-weight="600" text-anchor="middle">COLD RING</text>
-        <text x="425" y="170" fill="#8be8f2" font-family="ui-monospace, monospace" font-size="10" text-anchor="middle">30°C–42°C</text>
-        <text x="425" y="186" fill="#9ba2ad" font-family="system-ui" font-size="10" text-anchor="middle">Solid Phase</text>
-        <text x="425" y="204" fill="#3ec8d8" font-family="ui-monospace, monospace" font-size="9.5" text-anchor="middle">2,000 m³</text>
-
-        <rect x="490" y="110" width="90" height="110" rx="10" fill="#261f14" stroke="#d9b269" stroke-width="2"></rect>
-        <text x="535" y="135" fill="#d9b269" font-family="ui-monospace, monospace" font-size="11" font-weight="700" text-anchor="middle">TK-202</text>
-        <text x="535" y="152" fill="#e8eaed" font-family="system-ui" font-size="11" font-weight="600" text-anchor="middle">HOT RING</text>
-        <text x="535" y="170" fill="#f0d49b" font-family="ui-monospace, monospace" font-size="10" text-anchor="middle">48°C–54°C</text>
-        <text x="535" y="186" fill="#9ba2ad" font-family="system-ui" font-size="10" text-anchor="middle">Liquid Phase</text>
-        <text x="535" y="204" fill="#d9b269" font-family="ui-monospace, monospace" font-size="9.5" text-anchor="middle">2,000 m³</text>
-
-        <!-- COMPONENT 4: Sanitary Heat Exchanger (HX-301) -->
-        <rect x="605" y="215" width="95" height="70" rx="5" fill="#151d26" stroke="#d9b269" stroke-width="2"></rect>
-        <line x1="615" y1="235" x2="690" y2="265" stroke="#d9b269" stroke-width="1.5"></line>
-        <line x1="615" y1="265" x2="690" y2="235" stroke="#3ec8d8" stroke-width="1.5"></line>
-        <text x="652" y="232" fill="#f0d49b" font-family="ui-monospace, monospace" font-size="10.5" font-weight="700" text-anchor="middle">HX-301</text>
-        <text x="652" y="277" fill="#9ba2ad" font-family="system-ui" font-size="9.5" text-anchor="middle"> Fence-Line HX</text>
-
-        <!-- COMPONENT 5: Flood Detention Moat & Wetland Intake (BW-301) -->
-        <rect x="625" y="75" width="135" height="52" rx="5" fill="#12212b" stroke="#6fa8ff" stroke-width="1.8"></rect>
-        <text x="692" y="96" fill="#a8caff" font-family="ui-monospace, monospace" font-size="10.5" font-weight="700" text-anchor="middle">BW-301 · FLOOD MOAT</text>
-        <text x="692" y="113" fill="#9ba2ad" font-family="system-ui" font-size="10" text-anchor="middle">Storm + Greywater + AWG</text>
-
-        <!-- COMPONENT 6: Graphene-Oxide Vacuum Membrane Distillation Skid (MD-302) -->
-        <rect x="755" y="205" width="135" height="90" rx="6" fill="#151d26" stroke="#3ec8d8" stroke-width="2"></rect>
-        <text x="822" y="226" fill="#3ec8d8" font-family="ui-monospace, monospace" font-size="11" font-weight="700" text-anchor="middle">MD-302 · GO SKID</text>
-        <text x="822" y="243" fill="#e8eaed" font-family="system-ui" font-size="10.5" text-anchor="middle">Graphene-Oxide Vacuum</text>
-        <text x="822" y="258" fill="#e8eaed" font-family="system-ui" font-size="10.5" text-anchor="middle">Membrane Distillation</text>
-        <text x="822" y="277" fill="#8be8f2" font-family="ui-monospace, monospace" font-size="9.5" text-anchor="middle">Rejects PFAS, Salts &amp; Metals</text>
-
-        <!-- Connect HC-102 to MD-302 Membrane Coater -->
-        <path d="M 620 345 L 822 345 L 822 295" fill="none" stroke="#8be8f2" stroke-width="2" stroke-dasharray="6,4"></path>
-        <text x="670" y="337" fill="#8be8f2" font-family="ui-monospace, monospace" font-size="9.5">In-Situ GO Membrane Feed (10 kg/yr)</text>
-
-        <!-- COMPONENT 7: Outbound Powered Waterway (CW-401) -->
-        <rect x="770" y="345" width="175" height="62" rx="5" fill="#122229" stroke="#3ec8d8" stroke-width="2"></rect>
-        <text x="857" y="365" fill="#3ec8d8" font-family="ui-monospace, monospace" font-size="10.5" font-weight="700" text-anchor="middle">CW-401 · OUTBOUND CANAL</text>
-        <text x="857" y="381" fill="#e8eaed" font-family="system-ui" font-size="10" text-anchor="middle">22°C Sub-Bed Bio-Heat + Vortex</text>
-        <text x="857" y="396" fill="#8be8f2" font-family="ui-monospace, monospace" font-size="9.5" text-anchor="middle">+220M Gal/yr Pure Output</text>
-
-        <!-- Legend Bottom Left -->
-        <rect x="24" y="320" width="280" height="86" rx="5" fill="#12171d" stroke="#2b2e34"></rect>
-        <text x="36" y="338" fill="#e8eaed" font-family="ui-monospace, monospace" font-size="10.5" font-weight="700">PROCESS STREAM LEGEND:</text>
-        <line x1="36" y1="352" x2="66" y2="352" stroke="#3ec8d8" stroke-width="3.5"></line>
-        <text x="74" y="356" fill="#9ba2ad" font-family="system-ui" font-size="10.5">38°C Solid-Core SpringCore-48 Supply</text>
-        <line x1="36" y1="372" x2="66" y2="372" stroke="#d9b269" stroke-width="3.5"></line>
-        <text x="74" y="376" fill="#9ba2ad" font-family="system-ui" font-size="10.5">48°C–54°C Melted-Core Thermal Return</text>
-        <line x1="36" y1="392" x2="66" y2="392" stroke="#8be8f2" stroke-width="2" stroke-dasharray="5,3"></line>
-        <text x="74" y="396" fill="#9ba2ad" font-family="system-ui" font-size="10.5">Exfoliated Graphene Oxide (GO) Side-Stream</text>
-      </svg>
-      <figcaption><b>Figure 3 (P&amp;ID WS-PID-001):</b> Closed-loop process flow from the AI server cold plates (<b>HX-101</b>) and Venturi graphite-shearing reactor (<b>VC-101</b>) through the dual-ring thermal battery (<b>TK-201/202</b>), fence-line heat exchanger (<b>HX-301</b>), and Graphene-Oxide distillation skid (<b>MD-302</b>) feeding the powered outbound canal (<b>CW-401</b>).</figcaption>
-    </figure>
+    <p class="to-top"><a href="#top">&uarr; Back to top</a></p>
   </section>
 
-  <!-- SECTION 5 -->
+  <!-- SECTION 06: OUTBOUND WATERWAYS -->
   <section class="ws-panel" id="waterways">
-    <div class="ws-eyebrow">Section 05 · Watershed Infrastructure</div>
-    <h2>The Powered Outbound Waterways (1 to 5 Miles Downstream)</h2>
-    <p>Conventional industrial discharge causes thermal pollution and oxygen depletion. Wellspring turns the outbound drainage canals leading away from the data center into <b>active, powered ecological treatment corridors</b>:</p>
+    <div class="ws-eyebrow">Section 06 · Watershed &amp; Canal Engineering</div>
+    <h2>Outbound Treatment Corridor &amp; Thermal Duty Boundaries</h2>
+    <p>Where treated stormwater or greywater is discharged to a surface waterway under an NPDES permit, the outbound channel is engineered as a <b>stepped aeration and biological polishing corridor</b>—subject to strict thermal and hydraulic limits:</p>
 
     <figure class="shotfig" style="margin:18px 0">
       <picture>
@@ -834,102 +1170,144 @@
                 srcset="/assets/wellspring/waterway-720.webp 720w,
                         /assets/wellspring/waterway-1000.webp 1000w,
                         /assets/wellspring/waterway-1536.webp 1536w"
-                sizes="(max-width: 1020px) 100vw, 950px">
+                sizes="(max-width: 1060px) 100vw, 996px">
         <img src="/assets/wellspring/waterway-1536.jpg"
              srcset="/assets/wellspring/waterway-720.jpg 720w,
                      /assets/wellspring/waterway-1000.jpg 1000w,
                      /assets/wellspring/waterway-1536.jpg 1536w"
-             sizes="(max-width: 1020px) 100vw, 950px"
+             sizes="(max-width: 1060px) 100vw, 996px"
              width="1536" height="864" loading="lazy"
-             alt="Stepped concrete vortex aeration basins leading from the data center perimeter toward an adjacent river, equipped with a stainless-steel roadside control cabinet, submerged nanobubble ozone diffuser pipe, and a galvanized-grating low-head vortex micro-hydro turbine chamber.">
+             alt="Stepped concrete vortex aeration basins leading from the data center perimeter toward an adjacent river, equipped with a stainless-steel roadside control cabinet, submerged nanobubble diffuser pipe, and a galvanized-grating low-head vortex micro-hydro turbine chamber.">
       </picture>
-      <figcaption><b>Zone 3 Outbound Treatment Corridor:</b> Stepped concrete vortex aeration basins, submerged nanobubble ozone injection (left), and a low-head vortex micro-hydro turbine (right) generating local power for downstream sensors and UV-C gates before the water joins the natural river.</figcaption>
+      <figcaption><b>Proposed Outbound Corridor Concept:</b> Stepped concrete vortex aeration basins, submerged nanobubble oxygen/ozone diffuser (left), and low-head vortex micro-hydro turbine (right) generating auxiliary power for local water-quality sensors before the channel joins the receiving river.</figcaption>
     </figure>
 
-    <div class="steps">
-      <div class="step">
-        <b>Gravity-Head Vortex Cascades &amp; Micro-Hydro</b>
-        <p>Because the server pad sits on an elevated flood-safe berm (15–25 ft head), outbound distilled water steps down hyperbolic <b>Flowform aeration weirs</b>. This saturates the water with dissolved oxygen while spinning low-head vortex micro-turbines that power remote sensors and UV-C LED disinfection banks along the canal.</p>
+    <div class="grid">
+      <div class="card">
+        <b>Assigned Canal Thermal Duty (Winter Only)</b>
+        <p>The closed PEX sub-bed heating circuit beneath the lined biological denitrification zone is sized for an assigned fractional duty (e.g., <b>1 to 5&nbsp;MW<sub>th</sub></b> during winter months) to keep root-zone microbes at 20–22&nbsp;&deg;C when ambient water falls below 10&nbsp;&deg;C. It is <i>never</i> relied upon as the primary 100&nbsp;MW heat sink, and automatically isolates in summer so receiving-stream temperature limits are strictly respected.</p>
       </div>
-      <div class="step">
-        <b>Sub-Bed Winter Biological Heating ($22^\circ\text{C}$)</b>
-        <p>Natural wetland bacteria stop removing agricultural nitrates and ammonia in winter when water drops below $10^\circ\text{C}$. Closed HDPE warm-water loops from the data center run <i>beneath the gravel bio-filter bed</i> of the first mile of canal, keeping root-zone microbes at peak summer efficiency 365 days a year while cooling the water before it meets natural trout/fish streams.</p>
+      <div class="card">
+        <b>Stepped Vortex Aeration &amp; Micro-Hydro</b>
+        <p>Gravity drop from the elevated campus pad drives hyperbolic weir cascades that mechanically raise Dissolved Oxygen (DO &gt; 8.5&nbsp;mg/L) while low-head vortex turbines harvest 5–25&nbsp;kW of local auxiliary power for turbidity/DO telemetry and UV-C disinfection banks.</p>
       </div>
-      <div class="step">
-        <b>Curtailed-Power Electro-Remediation Nodes</b>
-        <p>A buried low-voltage DC microgrid cable runs in the canal trench alongside fiber-optic lines. Whenever renewable solar/wind overproduces or GPU loads dip, excess DC power fires submerged <b>electrocoagulation plates</b> (clumping microplastics, phosphorus, and silt) and <b>nanobubble ozone injectors</b> that eradicate toxic blue-green algae blooms miles downstream.</p>
-      </div>
-      <div class="step">
-        <b>AI-Actuated Flood &amp; Drought Locks</b>
-        <p>Using county-wide hydrological sensors connected over the canal’s fiber spine, the data center’s own compute pre-drains retention basins ahead of incoming storm fronts—or reverses axial canal pumps during extreme droughts to pull impaired river water back up to the perimeter graphene kidneys for purification.</p>
+      <div class="card">
+        <b>Curtailed-Power Electro-Remediation</b>
+        <p>When on-site solar/wind PPAs curtail or AI workloads trough, a low-voltage DC feeder in the canal bank powers submerged electrocoagulation plates (precipitating phosphorus and suspended solids into cleanout sumps) and nanobubble generators that suppress downstream algal blooms.</p>
       </div>
     </div>
+    <p class="to-top"><a href="#top">&uarr; Back to top</a></p>
   </section>
 
-  <!-- SECTION 6: INTERACTIVE CALCULATOR -->
-  <section class="ws-panel" id="calculator">
-    <div class="ws-eyebrow">Section 06 · Interactive Fiscal &amp; Hydrological Sizer</div>
-    <h2>Size a Wellspring Campus for Your Jurisdiction</h2>
-    <p>Move the slider to model the annual water, flood-surge, material, and municipal budget impact for a proposed AI data center:</p>
+  <!-- SECTION 07: CEO & HYPERSCALER BUSINESS CASE -->
+  <section class="ws-panel" id="ceo">
+    <div class="ws-eyebrow">Section 07 · Executive &amp; Developer Business Case</div>
+    <h2>For Data Center CEOs: Time-to-Power, CapEx Tradeoffs &amp; Permitting ROI</h2>
+    <p>For a hyperscaler or AI infrastructure developer, the primary financial driver is <b>Time-to-Power</b>. In water-constrained or community-contested jurisdictions (Arizona, Northern Virginia, Texas, Georgia, Ireland, Spain), local water boards and county commissions routinely delay or reject 100&nbsp;MW+ zoning permits by <b>12 to 24 months</b>.</p>
 
+    <div class="table-scroll">
+      <table>
+        <thead>
+          <tr>
+            <th>Financial / Operational Metric (100 MW AI Campus)</th>
+            <th>Conventional Evaporative Tower Design</th>
+            <th>Dry-Chiller-Only Baseline</th>
+            <th>Wellspring Regenerative Architecture</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><b>Potable Municipal Water Draw</b></td>
+            <td class="bad">300M–500M Gal / yr</td>
+            <td class="mono">~0 Gal / yr</td>
+            <td class="good">0 Gal / yr (+ Net Watershed Credit)</td>
+          </tr>
+          <tr>
+            <td><b>Zoning &amp; Water-Board Permitting Timeline</b></td>
+            <td class="bad">24–42 Months (High NIMBY / Moratorium Risk)</td>
+            <td class="mono">18–30 Months (Grid Peak Contention)</td>
+            <td class="good">6–12 Months (Fast-Track Civic Infrastructure)</td>
+          </tr>
+          <tr>
+            <td><b>Cost of 12-Month Permitting Delay</b> (at $1.5M–$2.5M/MW/yr GPU Lease Value)</td>
+            <td class="bad">-$150M to -$250M Delayed Revenue</td>
+            <td class="bad">-$75M to -$150M Delayed Revenue</td>
+            <td class="good">$0 Delay (Unlocks 12+ Months Earlier Revenue)</td>
+          </tr>
+          <tr>
+            <td><b>Peak Summer Afternoon Chiller/Fan Load</b></td>
+            <td class="mono">12–18 MW<sub>e</sub></td>
+            <td class="bad">28–38 MW<sub>e</sub> (Coincides with Peak Grid Tariff)</td>
+            <td class="good">4–7 MW<sub>e</sub> (Diurnal Thermal Storage Shifts Reject to Night)</td>
+          </tr>
+          <tr>
+            <td><b>Incremental Perimeter Civil &amp; Isolation HX CapEx</b></td>
+            <td class="mono">Baseline ($0 incremental)</td>
+            <td class="mono">+$12M–$18M (Oversized Chiller/Radiator Yard)</td>
+            <td class="good">+$18M–$26M (Offset by $10M–$20M EPA/FEMA Grants)</td>
+          </tr>
+          <tr>
+            <td><b>Utility Regulation Exposure</b></td>
+            <td>Industrial Water Customer</td>
+            <td>Electric Utility Customer</td>
+            <td class="good">Zero Utility Burden (Fence-Line Municipal Easement)</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <h3>Interactive Campus Sizer (10 MW to 500 MW)</h3>
     <div class="ws-calc">
       <div class="ws-slider-row">
-        <label for="mw-slider" style="font-weight:600;color:var(--ink)">Campus IT Load:</label>
-        <input type="range" id="mw-slider" min="10" max="500" step="10" value="100" oninput="updateWellspringCalc(this.value)">
+        <label for="mw-slider" style="font-weight:600;color:var(--ink)">Select Campus Thermal Load (MW<sub>th</sub> at &Delta;T = 10&nbsp;&deg;C):</label>
+        <input type="range" id="mw-slider" min="25" max="500" step="25" value="100" oninput="updateWellspringCalc(this.value)">
         <div class="ws-mw-pill" id="mw-display">100 MW</div>
       </div>
 
       <div class="ws-kpis" style="margin-top:8px">
         <div class="ws-kpi">
-          <strong id="calc-saved">450M Gal/yr</strong>
-          <span>Drinking water <b>saved</b> vs. conventional evaporative towers</span>
+          <strong id="calc-gpm">37,900 GPM</strong>
+          <span>Closed-loop recirculating flow (<b><span id="calc-trains">4 + 1</span></b> &times; 25&nbsp;MW DN600 trains)</span>
         </div>
         <div class="ws-kpi">
-          <strong id="calc-produced">+220M Gal/yr</strong>
-          <span>Net purified storm/greywater returned to river or aquifer</span>
+          <strong id="calc-saved">450M Gal/yr</strong>
+          <span>Municipal potable water <b>saved</b> vs. evaporative cooling towers</span>
         </div>
         <div class="ws-kpi">
           <strong id="calc-flood">40M Gal</strong>
-          <span>100-year flash-flood surge detention capacity in perimeter moat</span>
+          <span>100-year storm surge detention volume in perimeter bioswale &amp; geocells</span>
         </div>
         <div class="ws-kpi">
           <strong id="calc-bonds">$60M</strong>
-          <span>Avoided municipal flood &amp; PFAS water-plant bond CapEx</span>
-        </div>
-        <div class="ws-kpi">
-          <strong id="calc-graphite">8.0 Tons</strong>
-          <span>Initial raw flake graphite needed (<span id="calc-graphite-cost">$16,000</span> feedstock)</span>
-        </div>
-        <div class="ws-kpi">
-          <strong id="calc-homes">4,500 Homes</strong>
-          <span>Equivalent residential water supply protected &amp; generated</span>
+          <span>Avoided municipal flood-control &amp; water-plant bond CapEx</span>
         </div>
       </div>
     </div>
+    <p class="to-top"><a href="#top">&uarr; Back to top</a></p>
   </section>
 
-  <!-- SECTION 7: LEGISLATIVE BRIEF -->
+  <!-- SECTION 08: LEGISLATIVE BRIEF & PILOT ROADMAP -->
   <section class="ws-panel" id="policy">
-    <div class="ws-eyebrow">Section 07 · Model Municipal &amp; State Policy</div>
-    <h2>The “Water-Positive Compute” Ordinance Framework</h2>
-    <p>Municipalities, counties, and state legislatures do not need to invent new utility regulations to deploy Wellspring. By structuring the perimeter as a <b>Conditioned Zoning Fast-Track &amp; Co-Located Municipal Easement</b>, a jurisdiction can enact this in three straightforward provisions:</p>
+    <div class="ws-eyebrow">Section 08 · Policy Framework &amp; Staged Pilot Roadmap</div>
+    <h2>The “Water-Positive Compute” Municipal Ordinance &amp; Containerized Pilot</h2>
+    <p>A city council, county commission, or state legislature can adopt the Wellspring standard without creating a new regulatory agency by establishing a <b>Conditioned Zoning Fast-Track</b> paired with a <b>Co-Located Fence-Line Municipal Easement</b>:</p>
 
     <div class="steps" style="margin:18px 0">
       <div class="step">
-        <b>1. The Net-Positive Water Fast-Track</b>
-        <p>Any data center exceeding 10 MW that commits to (a) <b>zero net draw</b> from municipal potable supplies via closed-loop phase-change cooling, and (b) <b>&ge;110% watershed return</b> via waste-heat purification of stormwater or impaired greywater qualifies for <b>6-month expedited site-plan and interconnect review</b>.</p>
+        <b>1. Expedited Zoning for Zero-Potable-Draw Facilities</b>
+        <p>Any data center &ge;10&nbsp;MW engineered for (a) zero net draw of municipal potable water for cooling, (b) 100% standalone non-evaporative summer heat-rejection standby, and (c) 100-year on-site stormwater detention receives a <b>6-month expedited site-plan and building-permit review</b>.</p>
       </div>
       <div class="step">
-        <b>2. Dual-Use Flood Buffer Mandate</b>
-        <p>Mandatory security setbacks (150–300 ft) must be engineered as tiered permeable retention bioswales and subsurface geocell cisterns sized to absorb a <b>100-year, 24-hour storm event</b> for the surrounding drainage sub-basin.</p>
+        <b>2. Fence-Line Thermal &amp; Electrical Easement</b>
+        <p>The data center operator does not become a regulated public water utility. Instead, the operator provides a dedicated pad at the perimeter fence supplied with isolated warm water (via double-wall exchanger <b>HX-301</b>) and curtailed DC power. The local Water District or its contracted operator owns and runs the treatment skid under existing NPDES / EPA Class&nbsp;V permits.</p>
       </div>
       <div class="step">
-        <b>3. Fence-Line Public-Private Easement</b>
-        <p>To prevent the data center operator from becoming a regulated public water utility, the operator delivers $48^\circ\text{C}$ thermal exchange loops, graphene membrane cartridges, and curtailed DC power to a <b>co-located municipal easement at the perimeter fence</b>, operated under existing county water district NPDES permits.</p>
+        <b>3. Federal &amp; State Resilience Grant Stacking</b>
+        <p>Because the perimeter detention basin, treatment skid, and outbound aeration canal are public watershed assets within the municipal easement, they qualify for <b>EPA Clean Water State Revolving Fund (CWSRF)</b> low-interest financing, <b>FEMA BRIC</b> pre-disaster flood mitigation grants, and <b>IIJA PFAS/emerging-contaminant</b> remediation funds.</p>
       </div>
       <div class="step">
-        <b>4. Federal &amp; State Grant Stacking</b>
-        <p>Because the outer ring and outbound waterway are public flood and water-quality infrastructure, the project unlocks <b>EPA Clean Water State Revolving Fund (CWSRF)</b>, <b>FEMA BRIC flood resilience grants</b>, and <b>IIJA PFAS remediation funds</b>—reducing the developer’s net CapEx.</p>
+        <b>4. Staged Verification Before Full-Scale Reliance</b>
+        <p>The ordinance requires a <b>100&nbsp;GPM containerized pilot (“Kidney Pod”)</b> to verify local source-water fouling, membrane flux, reject disposal, and hydrogeological recharge acceptance before full watershed credits are certified.</p>
       </div>
     </div>
 
@@ -939,55 +1317,30 @@
                 srcset="/assets/wellspring/kidneypod-720.webp 720w,
                         /assets/wellspring/kidneypod-1000.webp 1000w,
                         /assets/wellspring/kidneypod-1536.webp 1536w"
-                sizes="(max-width: 1020px) 100vw, 950px">
+                sizes="(max-width: 1060px) 100vw, 996px">
         <img src="/assets/wellspring/kidneypod-1536.jpg"
              srcset="/assets/wellspring/kidneypod-720.jpg 720w,
                      /assets/wellspring/kidneypod-1000.jpg 1000w,
                      /assets/wellspring/kidneypod-1536.jpg 1536w"
-             sizes="(max-width: 1020px) 100vw, 950px"
+             sizes="(max-width: 1060px) 100vw, 996px"
              width="1536" height="864" loading="lazy"
-             alt="Proposed containerized pilot layout inside a 40-foot shipping container cutaway showing a vertical stainless-steel hydrocyclone separator and centrifugal feed pump on the left, four horizontal white spiral-wound Graphene-Oxide membrane pressure vessels in the center, a bolted stainless-steel shell-and-tube heat exchanger on the right, and a NEMA industrial PLC control cabinet.">
+             alt="Proposed containerized pilot layout inside a 40-foot shipping container cutaway showing a vertical stainless-steel hydrocyclone separator and centrifugal feed pump on the left, four horizontal white spiral-wound membrane pressure vessels in the center, a bolted stainless-steel shell-and-tube heat exchanger on the right, and a NEMA industrial PLC control cabinet.">
       </picture>
-      <figcaption><b>Proposed containerized pilot layout (Phase 2 “Kidney Pod”):</b> A 40-ft ISO container skid housing the vertical hydrocyclone separator, four-stage spiral-wound Graphene-Oxide (GO) membrane pressure vessels, stainless shell-and-tube fence-line heat exchanger, and NEMA PLC cabinet. Illustrates the proposal; pipe connections, maintenance clearances, groundwater recharge, and membrane specifications are subject to engineering verification during Phase 1–2 piloting.</figcaption>
+      <figcaption><b>Proposed containerized pilot layout (100 GPM / DN80 Feed Basis):</b> A 40-ft ISO container skid housing pre-filtration/hydrocyclone separation (left), four-stage membrane vessels (center), stainless isolation heat exchanger (right), and NEMA PLC control cabinet with online water-quality interlocks (<b>AIT-401</b>). Illustrates the proposal; pipe connections, maintenance clearances, membrane operating pressures, and reject handling require site-specific engineering verification.</figcaption>
     </figure>
 
     <div class="studio" style="margin:18px 0 8px">
-      <b>Staged 3-Phase Pilot Roadmap &amp; Engineering Verification</b>
-      <p><b>Phase 1 — 10 kW Benchtop Loop ($75k–$150k, 90 Days):</b> University / municipal water lab skid demonstrating in-situ graphite-to-graphene cavitation exfoliation, SpringCore-48 $48^\circ\text{C}$ latent heat storage, and zero copper corrosion.<br>
-      <b>Phase 2 — 1 MW “Kidney Pod” Container ($1.2M, 6 Months):</b> A 40-ft shipping container plumbed into an existing data center’s warm return line and stormwater pond, verifying graphene-oxide membrane flux specifications, maintenance clearances, and downstream nanobubble canal oxygenation.<br>
-      <b>Phase 3 — Full 100 MW Wellspring Campus:</b> Standardized civic-industrial template for new AI compute campuses, subject to site-specific PE, NPDES, and hydrogeological sign-off.</p>
+      <b>3-Phase De-Risking Roadmap</b>
+      <p><b>Phase 1 — 10 kW Benchtop Loop ($75k–$150k, 90 Days):</b> University or municipal lab test loop measuring <b>SpringCore-48</b> latent heat capacity, pump curve / viscosity behavior, and copper/elastomer coupon compatibility.<br>
+      <b>Phase 2 — 100 GPM Containerized Water-Treatment Pilot ($850k–$1.2M, 6 Months):</b> Co-located 40-ft skid plumbed to an existing facility’s isolated heat-recovery exchanger and stormwater basin to log real-world membrane recovery, CIP frequency, brine mass balance, and EPA Class&nbsp;V recharge water quality.<br>
+      <b>Phase 3 — 100 MW Reference Campus Deployment:</b> Full integration of the 4+1 N+1 DN600 closed cooling trains, diurnal thermal buffer tanks, and perimeter flood-detention easement.</p>
     </div>
-  </section>
 
-  <!-- SECTION 8: FAQ -->
-  <section class="ws-panel" id="faq">
-    <div class="ws-eyebrow">Section 08 · Due Diligence</div>
-    <h2>Questions from Chiefs of Staff, City Engineers &amp; Hyperscalers</h2>
-
-    <details open>
-      <summary>What happens if a perimeter pipe ruptures during an earthquake or flood? Is the fluid hazardous?</summary>
-      <p>No. Unlike mercury, petroleum oils, or fluorinated refrigerants (PFAS), <b>SpringCore-48</b> is formulated from food-grade sodium acetate trihydrate (vinegar salt used in hand warmers), plant-derived paraffin wax, bismuth-tin (the safe mineral element in Pepto-Bismol), and pure carbon (graphite/graphene) in a biodegradable ester/water carrier. Furthermore, all primary thermal tanks sit inside the lined Zone 1 containment berm.</p>
-    </details>
-
-    <details>
-      <summary>If the campus doesn’t evaporate water in the afternoon, where does the heat ultimately go?</summary>
-      <p>During peak afternoon hours (12 PM–7 PM), the heat is absorbed as <b>latent heat of fusion</b> by melting the $48^\circ\text{C}$ core of the SpringCore-48 micro-beads and stored in the insulated Hot Ring tank. At night, when ambient air is cool and radiative sky-cooling panels are most efficient, the fluid freezes back into solid beads—using that stored heat to run vacuum membrane distillation, regenerate atmospheric water harvesters, and warm the winter denitrification beds under the outbound canal.</p>
-    </details>
-
-    <details>
-      <summary>Won’t heating the outbound canal cause thermal pollution for fish?</summary>
-      <p>No—the warm loop is a closed heat-exchanger buried <i>beneath the gravel bio-filter bed</i> in the first segment of the engineered treatment canal, where no fish live and where denitrifying bacteria need $20^\circ\text{C}\text{–}24^\circ\text{C}$ to strip agricultural nitrates during winter. Before the water enters natural streams, it passes through unheated cooling cascades and stepped vortex aeration weirs so it enters the river cool and hyper-oxygenated.</p>
-    </details>
-
-    <details>
-      <summary>Why hasn’t a hyperscaler built this already?</summary>
-      <p>Historically, data center thermal teams only designed inside the building walls, while civil engineers treated the perimeter as a grass lawn and chain-link fence. Only in 2025–2026 did 50–100+ MW liquid-cooled AI clusters make $48^\circ\text{C}\text{–}55^\circ\text{C}$ water returns standard—the exact temperature threshold where low-temperature membrane distillation, desiccant regeneration, and sodium-acetate phase-change storage converge.</p>
-    </details>
-
-    <div class="cta-row" style="margin-top:28px">
-      <a class="cta primary" href="mailto:hello@cherishvale.com?subject=Wellspring%20Policy%20or%20Pilot%20Inquiry">Request a Briefing or Pilot Spec</a>
-      <button type="button" class="ws-btn no-print" onclick="window.print()">Print / Save Briefing as PDF</button>
+    <div class="cta-row" style="margin-top:24px;justify-content:flex-start">
+      <a class="cta primary" href="mailto:hello@cherishvale.com?subject=Wellspring%20Engineering%20or%20Policy%20Inquiry">Request Engineering Review or Pilot Briefing</a>
+      <button type="button" class="ws-btn no-print" onclick="window.print()">Print / Save Complete Dossier as PDF</button>
     </div>
+    <p class="to-top"><a href="#top">&uarr; Back to top</a></p>
   </section>
 </div>
 
@@ -1013,15 +1366,14 @@
 
   function updateWellspringCalc(mw) {
     var m = Number(mw);
+    var gpm = Math.round(m * 379);
+    var trains = Math.ceil(m / 25);
     document.getElementById("mw-display").textContent = m + " MW";
+    document.getElementById("calc-gpm").textContent = gpm.toLocaleString() + " GPM";
+    document.getElementById("calc-trains").textContent = trains + " + 1";
     document.getElementById("calc-saved").textContent = fmtM(m * 4.5) + " Gal/yr";
-    document.getElementById("calc-produced").textContent = "+" + fmtM(m * 2.2) + " Gal/yr";
     document.getElementById("calc-flood").textContent = fmtM(m * 0.4) + " Gal";
     document.getElementById("calc-bonds").textContent = "$" + Math.round(m * 0.6) + "M";
-    var tons = (m * 0.08).toFixed(1);
-    var cost = Math.round(m * 160).toLocaleString();
-    document.getElementById("calc-graphite").innerHTML = tons + ' Tons';
-    document.getElementById("calc-homes").textContent = Math.round(m * 45).toLocaleString() + " Homes";
   }
 </script>
 </body>
