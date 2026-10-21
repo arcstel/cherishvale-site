@@ -1,0 +1,795 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<link rel="icon" href="/favicon.ico" sizes="any">
+<link rel="icon" type="image/png" href="/assets/logo/favicon-64.png">
+<link rel="apple-touch-icon" href="/assets/logo/apple-touch-icon.png">
+<meta name="robots" content="noindex,nofollow">
+<link rel="canonical" href="https://cherishvale.com/wellspring">
+<link rel="stylesheet" href="/assets/site.css">
+
+<title>Wellspring — Water-Positive Data Center Architecture &amp; Graphene Phase-Change Cooling | Cherishvale</title>
+<meta name="description" content="Wellspring is a regenerative perimeter, outbound waterway, and in-situ graphene phase-change cooling architecture that turns AI data centers into zero-draw flood defense and municipal water purification plants.">
+<meta property="og:title" content="Wellspring — Water-Positive AI Data Center Architecture | Cherishvale">
+<meta property="og:description" content="Zero municipal drinking water drawn. 24-hour graphene-armored thermal battery cooling, 100-year flood detention perimeter, and powered downstream watershed remediation.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://cherishvale.com/wellspring">
+<meta property="og:image" content="https://cherishvale.com/assets/logo/mark-transparent.png">
+<meta name="twitter:card" content="summary_large_image">
+
+<style>
+  html { scroll-behavior: smooth; }
+  .ws-wrap {
+    max-width: 1020px;
+    margin: 0 auto;
+    padding: 0 22px 72px;
+  }
+  .ws-hero {
+    padding: 56px 0 32px;
+    text-align: center;
+  }
+  .ws-eyebrow {
+    color: var(--teal);
+    text-transform: uppercase;
+    letter-spacing: 0.14em;
+    font-size: 12px;
+    font-weight: 600;
+    margin-bottom: 10px;
+  }
+  .ws-hero h1 {
+    font-size: clamp(34px, 6.5vw, 56px);
+    letter-spacing: -0.02em;
+    margin: 0 0 12px;
+    line-height: 1.08;
+  }
+  .ws-hero .sub {
+    color: var(--dim);
+    font-size: clamp(15px, 2.3vw, 18.5px);
+    max-width: 780px;
+    margin: 0 auto 24px;
+    line-height: 1.6;
+  }
+  .ws-panel {
+    background: rgba(24, 27, 32, 0.96);
+    border: 1px solid var(--line-strong);
+    border-radius: 14px;
+    padding: clamp(20px, 3.8vw, 34px);
+    margin: 22px 0;
+  }
+  .ws-panel h2 {
+    margin-top: 0;
+    font-size: clamp(20px, 3vw, 25px);
+    color: var(--ink);
+  }
+  .ws-kpis {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(210px, 1fr));
+    gap: 14px;
+    margin: 22px 0 8px;
+  }
+  .ws-kpi {
+    background: var(--panel);
+    border: 1px solid var(--line);
+    border-top: 2px solid var(--teal);
+    border-radius: 10px;
+    padding: 16px 18px;
+    text-align: left;
+  }
+  .ws-kpi strong {
+    display: block;
+    font-size: clamp(22px, 3.2vw, 28px);
+    color: var(--ink);
+    letter-spacing: -0.01em;
+    margin-bottom: 4px;
+  }
+  .ws-kpi span {
+    font-size: 13px;
+    color: var(--dim);
+    line-height: 1.45;
+    display: block;
+  }
+  .ws-toc {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 10px;
+    list-style: none;
+    padding: 0;
+    margin: 14px 0 0;
+  }
+  .ws-toc a {
+    display: block;
+    padding: 11px 14px;
+    border-radius: 9px;
+    border: 1px solid var(--line-strong);
+    background: rgba(255, 255, 255, 0.025);
+    color: var(--ink);
+    font-size: 13.5px;
+    text-decoration: none;
+    transition: border-color 0.15s, background 0.15s;
+  }
+  .ws-toc a:hover {
+    border-color: var(--teal);
+    background: rgba(62, 200, 216, 0.1);
+    text-decoration: none;
+  }
+  .ws-toc a small {
+    display: block;
+    color: var(--teal);
+    font-size: 11px;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    font-weight: 600;
+    margin-bottom: 2px;
+  }
+  .ws-diagram {
+    background: #111418;
+    border: 1px solid var(--line-strong);
+    border-radius: 12px;
+    padding: 16px;
+    margin: 18px 0;
+    overflow-x: auto;
+  }
+  .ws-diagram figcaption {
+    color: var(--dim);
+    font-size: 12.5px;
+    text-align: center;
+    margin-top: 10px;
+    line-height: 1.5;
+  }
+  .ws-zones {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
+    gap: 14px;
+    margin-top: 16px;
+  }
+  .ws-zone {
+    background: var(--panel);
+    border: 1px solid var(--line);
+    border-radius: 10px;
+    padding: 18px;
+  }
+  .ws-zone .z-tag {
+    display: inline-block;
+    font-size: 11px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    padding: 3px 9px;
+    border-radius: 999px;
+    background: rgba(62, 200, 216, 0.14);
+    color: var(--teal);
+    border: 1px solid rgba(62, 200, 216, 0.35);
+    margin-bottom: 8px;
+  }
+  .ws-zone h3 {
+    margin: 4px 0 8px;
+    font-size: 16px;
+    color: var(--ink);
+  }
+  .ws-zone p {
+    margin: 0;
+    font-size: 13.5px;
+    color: var(--dim);
+    line-height: 1.6;
+  }
+  .ws-calc {
+    background: linear-gradient(180deg, rgba(62,200,216,0.07) 0%, rgba(28,30,34,0.95) 100%);
+    border: 1px solid rgba(62, 200, 216, 0.4);
+    border-radius: 12px;
+    padding: 22px;
+    margin: 18px 0;
+  }
+  .ws-slider-row {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    flex-wrap: wrap;
+    margin: 12px 0 20px;
+  }
+  .ws-slider-row input[type="range"] {
+    flex: 1;
+    min-width: 200px;
+    accent-color: var(--teal);
+    cursor: pointer;
+  }
+  .ws-mw-pill {
+    background: var(--teal);
+    color: var(--on-accent);
+    font-weight: 700;
+    font-size: 18px;
+    padding: 6px 16px;
+    border-radius: 999px;
+    min-width: 130px;
+    text-align: center;
+  }
+  .ws-callout {
+    border-left: 3px solid var(--gold);
+    background: rgba(217, 178, 105, 0.07);
+    padding: 14px 18px;
+    border-radius: 0 10px 10px 0;
+    margin: 16px 0;
+    font-size: 14px;
+    color: var(--ink);
+  }
+  .ws-callout b {
+    color: var(--gold);
+  }
+  .ws-btn {
+    cursor: pointer;
+    border: 1px solid var(--line-strong);
+    border-radius: 8px;
+    padding: 10px 18px;
+    color: var(--ink);
+    background: var(--panel);
+    font: inherit;
+    font-size: 14px;
+  }
+  .ws-btn:hover {
+    border-color: var(--teal);
+    color: var(--teal);
+  }
+  .table-scroll {
+    overflow-x: auto;
+  }
+  td.good {
+    color: var(--teal);
+    font-weight: 600;
+  }
+  td.bad {
+    color: #e08b7e;
+  }
+  @media (max-width: 680px) {
+    .ws-wrap { padding: 0 14px 56px; }
+    .ws-panel { padding: 18px 15px; }
+  }
+  @media print {
+    body { background: #fff !important; color: #111 !important; }
+    nav, .cta-row, .no-print { display: none !important; }
+    .ws-panel, .ws-kpi, .ws-zone, .card, .step, details {
+      background: #fff !important;
+      color: #111 !important;
+      border: 1px solid #bbb !important;
+      break-inside: avoid;
+    }
+    h1, h2, h3, b, strong, th, td.good { color: #000 !important; }
+    p, span, td, figcaption, .sub, .lead { color: #222 !important; }
+    .ws-diagram { background: #f8f9fa !important; border: 1px solid #aaa !important; }
+  }
+</style>
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "TechArticle",
+  "headline": "Wellspring — Regenerative Water-Positive AI Data Center Architecture & In-Situ Graphene Phase-Change Cooling",
+  "description": "Engineering and civic policy blueprint for zero-municipal-water AI data centers with 100-year flood detention perimeters, graphene-encapsulated phase-change thermal battery loops, and powered downstream waterway remediation.",
+  "author": {
+    "@type": "Organization",
+    "name": "Cherishvale",
+    "url": "https://cherishvale.com/"
+  },
+  "publisher": {
+    "@type": "Organization",
+    "name": "Cherishvale",
+    "url": "https://cherishvale.com/"
+  },
+  "mainEntityOfPage": "https://cherishvale.com/wellspring"
+}
+</script>
+</head>
+<body>
+<a class="skip-link" href="#main">Skip to content</a>
+
+<nav>
+  <div class="wrap" style="display:flex;align-items:center;gap:16px;width:100%;flex-wrap:wrap">
+    <a class="brand" href="/"><img class="brand-mark" src="/assets/logo/mark-transparent.png" alt=""><img class="brand-word" src="/assets/logo/wordmark-transparent.png" alt="Cherishvale"></a>
+    <span class="spacer"></span>
+    <a href="#architecture">4-Zone Perimeter</a>
+    <a href="#fluid">SpringCore-48 Fluid</a>
+    <a href="#waterways">Powered Waterways</a>
+    <a href="#calculator">Impact Calculator</a>
+    <a href="#policy">Policy &amp; Legislation</a>
+    <a href="mailto:hello@cherishvale.com?subject=Wellspring%20Briefing">Contact</a>
+  </div>
+</nav>
+
+<div class="ws-wrap" id="main">
+  <header class="ws-hero">
+    <div class="ws-eyebrow">Cherishvale Infrastructure &amp; Civic Engineering · Policy &amp; Technical Briefing</div>
+    <h1>Wellspring</h1>
+    <p class="sub">A regenerative perimeter, waterway, and phase-change cooling architecture that turns AI data centers from municipal water drains into privately funded flood defense and watershed purification plants.</p>
+    <div class="badges">
+      <span class="badge accent">0 Gal Municipal Drinking Water</span>
+      <span class="badge accent">24-Hr Phase-Change Thermal Battery</span>
+      <span class="badge">In-Situ Graphene Membrane Generation</span>
+      <span class="badge">100-Year Flood Detention Ring</span>
+      <span class="badge">Powered Downstream Waterways</span>
+    </div>
+    <div class="cta-row">
+      <a class="cta primary" href="#policy">Read the Legislative &amp; Mayor’s Brief</a>
+      <a class="cta" href="#calculator">Interactive MW Sizer</a>
+      <button type="button" class="ws-btn no-print" onclick="window.print()">Print / Save Policy Brief as PDF</button>
+    </div>
+
+    <div class="ws-kpis">
+      <div class="ws-kpi">
+        <strong>0 Gal / Yr</strong>
+        <span>Municipal potable water drawn (replaces 450M+ gal/yr evaporative draw on a 100 MW campus)</span>
+      </div>
+      <div class="ws-kpi">
+        <strong>+220M Gal / Yr</strong>
+        <span>Net-positive distilled &amp; remediated flood/greywater returned to local aquifers and rivers</span>
+      </div>
+      <div class="ws-kpi">
+        <strong>~$2.80 / Liter</strong>
+        <span>Food-safe, non-toxic <b>SpringCore-48</b> graphene-armored salt-hydrate coolant cost (&lt;$11/gal)</span>
+      </div>
+      <div class="ws-kpi">
+        <strong>$40M–$80M</strong>
+        <span>Avoided municipal flood-control and PFAS water-treatment bond burden per 100 MW site</span>
+      </div>
+    </div>
+  </header>
+
+  <section class="ws-panel" aria-label="Quick navigation">
+    <h2>Briefing overview &amp; navigation</h2>
+    <p style="color:var(--dim);margin:0 0 10px">Designed for two audiences at once: <b>municipal &amp; state policymakers</b> weighing data-center permits against voter water concerns, and <b>hyperscale infrastructure engineers</b> seeking faster time-to-power without evaporative cooling towers.</p>
+    <ul class="ws-toc">
+      <li><a href="#problem"><small>Section 01</small>The Civic Deadlock &amp; The Third Option</a></li>
+      <li><a href="#architecture"><small>Section 02</small>The 4-Zone Regenerative Campus Blueprint</a></li>
+      <li><a href="#fluid"><small>Section 03</small>SpringCore-48: Graphene-Armored Phase-Change Fluid</a></li>
+      <li><a href="#graphene-math"><small>Section 04</small>In-Situ Graphene Reactor &amp; Membrane Math</a></li>
+      <li><a href="#waterways"><small>Section 05</small>Powered Outbound Waterways (1–5 Miles Out)</a></li>
+      <li><a href="#calculator"><small>Section 06</small>Interactive Campus Impact &amp; Cost Calculator</a></li>
+      <li><a href="#policy"><small>Section 07</small>Model Ordinance: “The Clean Compute Mandate”</a></li>
+      <li><a href="#faq"><small>Section 08</small>Chief-of-Staff &amp; City Engineer FAQ</a></li>
+    </ul>
+  </section>
+
+  <!-- SECTION 1 -->
+  <section class="ws-panel" id="problem">
+    <div class="ws-eyebrow">Section 01 · The Problem &amp; The Bargain</div>
+    <h2>Breaking the Data Center Water Deadlock</h2>
+    <p>Across the United States and Europe, local governments face an impossible choice when a $2 billion AI data center applies for a permit:</p>
+    <div class="grid" style="margin:16px 0">
+      <div class="card">
+        <b>Option A: Rubber-Stamp Conventional Cooling</b>
+        <p>A conventional 100 MW facility evaporates <b>1 to 2 million gallons of treated drinking water per day</b> during summer peaks and spikes afternoon grid demand by 30%+. Residents revolt over aquifer depletion and utility bills.</p>
+      </div>
+      <div class="card">
+        <b>Option B: Moratorium or Ban</b>
+        <p>Blocking the facility forfeits tens of millions in annual property tax revenue, union construction jobs, and fiber infrastructure to neighboring jurisdictions.</p>
+      </div>
+      <div class="card" style="border-color:var(--teal)">
+        <b style="color:var(--teal)">Option C: The Wellspring Mandate</b>
+        <p>Require the data center’s outer perimeter, waste heat, and curtailed power to operate as <b>privately funded flood defense, atmospheric water harvesting, and watershed purification infrastructure</b> in exchange for expedited zoning.</p>
+      </div>
+    </div>
+    <div class="ws-callout">
+      <b>Why developers say yes:</b> A 12-to-18-month permitting delay costs a 100 MW AI operator <b>$150M–$300M in delayed compute revenue</b>. Investing $18M–$25M into a regenerative perimeter that shaves a year off permitting—while qualifying for EPA and FEMA resilience grants—saves the operator over $100M net.
+    </div>
+  </section>
+
+  <!-- SECTION 2 -->
+  <section class="ws-panel" id="architecture">
+    <div class="ws-eyebrow">Section 02 · Spatial Engineering</div>
+    <h2>The 4-Zone Regenerative Campus Architecture</h2>
+    <p>Data centers possess two massive underutilized assets required for large-scale water treatment: <b>hundreds of acres of secure perimeter land</b> and <b>hundreds of megawatts of $45^\circ\text{C}\text{–}55^\circ\text{C}$ ($113^\circ\text{F}\text{–}131^\circ\text{F}$) low-grade waste heat</b>. Wellspring couples them across four concentric zones:</p>
+
+    <figure class="ws-diagram">
+      <svg viewBox="0 0 940 390" width="100%" role="img" aria-label="Cross-section architectural schematic of the Wellspring 4-Zone Regenerative Data Center Campus">
+        <defs>
+          <linearGradient id="skyGrad" x1="0" y1="0" x2="0" y2="1">
+            <stop offset="0%" stop-color="#0d1520"></stop>
+            <stop offset="100%" stop-color="#152230"></stop>
+          </linearGradient>
+          <linearGradient id="waterGrad" x1="0" y1="0" x2="1" y2="0">
+            <stop offset="0%" stop-color="#2a6f87"></stop>
+            <stop offset="100%" stop-color="#3ec8d8"></stop>
+          </linearGradient>
+          <linearGradient id="heatGrad" x1="0" y1="0" x2="1" y2="0">
+            <stop offset="0%" stop-color="#d9b269"></stop>
+            <stop offset="100%" stop-color="#e07a5f"></stop>
+          </linearGradient>
+        </defs>
+
+        <rect x="0" y="0" width="940" height="390" rx="8" fill="url(#skyGrad)"></rect>
+
+        <!-- Zone headers -->
+        <g font-family="system-ui, sans-serif" font-size="11" font-weight="700" letter-spacing="1">
+          <rect x="16" y="14" width="215" height="26" rx="4" fill="rgba(224,122,95,0.18)" stroke="#e07a5f"></rect>
+          <text x="123" y="31" fill="#f3b3a0" text-anchor="middle">ZONE 0 · AI COMPUTE CORE</text>
+
+          <rect x="243" y="14" width="220" height="26" rx="4" fill="rgba(217,178,105,0.18)" stroke="#d9b269"></rect>
+          <text x="353" y="31" fill="#f0d49b" text-anchor="middle">ZONE 1 · THERMAL BATTERY &amp; AWG</text>
+
+          <rect x="475" y="14" width="225" height="26" rx="4" fill="rgba(62,200,216,0.18)" stroke="#3ec8d8"></rect>
+          <text x="587" y="31" fill="#8be8f2" text-anchor="middle">ZONE 2 · FLOOD &amp; KIDNEY MOAT</text>
+
+          <rect x="712" y="14" width="212" height="26" rx="4" fill="rgba(111,168,255,0.18)" stroke="#6fa8ff"></rect>
+          <text x="818" y="31" fill="#a8caff" text-anchor="middle">ZONE 3 · POWERED WATERWAY</text>
+        </g>
+
+        <!-- Ground profile (stepped elevation for gravity head) -->
+        <path d="M 16 250 L 455 250 L 490 295 L 685 295 L 710 270 L 924 315 L 924 378 L 16 378 Z" fill="#182026" stroke="#3a4652" stroke-width="2"></path>
+
+        <!-- Subsurface Aquifer Cistern -->
+        <rect x="485" y="315" width="195" height="48" rx="6" fill="rgba(62,200,216,0.16)" stroke="#3ec8d8" stroke-dasharray="5,3"></rect>
+        <text x="582" y="336" fill="#8be8f2" font-family="system-ui" font-size="11" font-weight="600" text-anchor="middle">SUBSURFACE GEOCELL CISTERN</text>
+        <text x="582" y="352" fill="#9ba2ad" font-family="system-ui" font-size="10" text-anchor="middle">&amp; Aquifer Recharge Wells (ASR)</text>
+
+        <!-- Zone 0: Compute Hall -->
+        <rect x="28" y="115" width="190" height="135" rx="6" fill="#1e242b" stroke="#e07a5f" stroke-width="2"></rect>
+        <text x="123" y="140" fill="#e8eaed" font-family="system-ui" font-size="12.5" font-weight="700" text-anchor="middle">100 MW AI Server Hall</text>
+        <rect x="44" y="152" width="158" height="36" rx="4" fill="#14181d" stroke="#3a3e45"></rect>
+        <text x="123" y="168" fill="#d9b269" font-family="system-ui" font-size="11" font-weight="600" text-anchor="middle">Direct-to-Chip Cold Plates</text>
+        <text x="123" y="182" fill="#9ba2ad" font-family="system-ui" font-size="10" text-anchor="middle">48°C Latent Phase Transition</text>
+
+        <!-- Cavitation Graphene Reactor -->
+        <rect x="44" y="198" width="158" height="40" rx="4" fill="rgba(62,200,216,0.12)" stroke="#3ec8d8"></rect>
+        <text x="123" y="215" fill="#3ec8d8" font-family="system-ui" font-size="11" font-weight="700" text-anchor="middle">Venturi Cavitation Loop</text>
+        <text x="123" y="230" fill="#cfeae5" font-family="system-ui" font-size="10" text-anchor="middle">Shears Graphite → Graphene</text>
+
+        <!-- Zone 1: Dual Thermal Battery Rings + Roof Desiccant AWG -->
+        <rect x="252" y="70" width="200" height="42" rx="5" fill="rgba(62,200,216,0.14)" stroke="#3ec8d8"></rect>
+        <text x="352" y="88" fill="#8be8f2" font-family="system-ui" font-size="11" font-weight="700" text-anchor="middle">ROOF DESICCANT AWG + SKY COOLER</text>
+        <text x="352" y="103" fill="#9ba2ad" font-family="system-ui" font-size="10" text-anchor="middle">Night Moisture Capture · 48°C Day Regen</text>
+
+        <!-- Cold & Hot Tanks -->
+        <rect x="255" y="130" width="92" height="108" rx="8" fill="rgba(62,200,216,0.15)" stroke="#3ec8d8" stroke-width="1.8"></rect>
+        <text x="301" y="156" fill="#3ec8d8" font-family="system-ui" font-size="11.5" font-weight="700" text-anchor="middle">COLD RING</text>
+        <text x="301" y="174" fill="#e8eaed" font-family="system-ui" font-size="10.5" text-anchor="middle">Solid Beads</text>
+        <text x="301" y="190" fill="#9ba2ad" font-family="system-ui" font-size="10" text-anchor="middle">30°C–45°C</text>
+        <text x="301" y="216" fill="#8be8f2" font-family="system-ui" font-size="10" font-weight="600" text-anchor="middle">0 Peak Chiller</text>
+
+        <rect x="358" y="130" width="92" height="108" rx="8" fill="rgba(217,178,105,0.17)" stroke="#d9b269" stroke-width="1.8"></rect>
+        <text x="404" y="156" fill="#d9b269" font-family="system-ui" font-size="11.5" font-weight="700" text-anchor="middle">HOT RING</text>
+        <text x="404" y="174" fill="#e8eaed" font-family="system-ui" font-size="10.5" text-anchor="middle">Melted Beads</text>
+        <text x="404" y="190" fill="#9ba2ad" font-family="system-ui" font-size="10" text-anchor="middle">48°C–54°C</text>
+        <text x="404" y="216" fill="#f0d49b" font-family="system-ui" font-size="10" font-weight="600" text-anchor="middle">Drives Kidney</text>
+
+        <!-- Zone 2: Flood Berm + GO Membrane Distillation -->
+        <rect x="485" y="135" width="195" height="68" rx="6" fill="#1e262c" stroke="#d9b269" stroke-width="1.6"></rect>
+        <text x="582" y="156" fill="#f0d49b" font-family="system-ui" font-size="11.5" font-weight="700" text-anchor="middle">Graphene-Oxide (GO) Membrane</text>
+        <text x="582" y="172" fill="#e8eaed" font-family="system-ui" font-size="11" text-anchor="middle">Vacuum Distillation Plant</text>
+        <text x="582" y="190" fill="#9ba2ad" font-family="system-ui" font-size="10" text-anchor="middle">Powered by 48°C Server Heat · Strips PFAS</text>
+
+        <!-- Retention Moat Water -->
+        <path d="M 465 258 L 490 293 L 682 293 L 705 268 Z" fill="url(#waterGrad)" opacity="0.85"></path>
+        <text x="585" y="283" fill="#041e24" font-family="system-ui" font-size="11" font-weight="700" text-anchor="middle">100-YR FLOOD BIOSWALE &amp; MOAT</text>
+
+        <!-- Zone 3: Outbound Stepped Waterway -->
+        <path d="M 710 268 L 760 280 L 760 290 L 815 292 L 815 302 L 870 304 L 870 314 L 924 315" fill="none" stroke="#3ec8d8" stroke-width="5"></path>
+        <!-- Radiant heat pipe under canal -->
+        <line x1="712" y1="282" x2="918" y2="326" stroke="#d9b269" stroke-width="3" stroke-dasharray="6,4"></line>
+        <text x="818" y="344" fill="#f0d49b" font-family="system-ui" font-size="10.5" font-weight="600" text-anchor="middle">22°C Winter Sub-Bed Bio-Heating</text>
+        <text x="818" y="360" fill="#8be8f2" font-family="system-ui" font-size="10" text-anchor="middle">+ Buried DC Line &amp; Fiber Spine</text>
+
+        <!-- Callout boxes in Zone 3 -->
+        <rect x="720" y="135" width="198" height="105" rx="6" fill="#1c222b" stroke="#6fa8ff" stroke-width="1.5"></rect>
+        <text x="819" y="156" fill="#a8caff" font-family="system-ui" font-size="11.5" font-weight="700" text-anchor="middle">Powered Outbound Canal</text>
+        <text x="819" y="175" fill="#e8eaed" font-family="system-ui" font-size="10.5" text-anchor="middle">• Vortex Aeration Weirs + Micro-Hydro</text>
+        <text x="819" y="193" fill="#e8eaed" font-family="system-ui" font-size="10.5" text-anchor="middle">• DC Electrocoagulation Gates</text>
+        <text x="819" y="211" fill="#e8eaed" font-family="system-ui" font-size="10.5" text-anchor="middle">• Nanobubble Ozone Algae Control</text>
+        <text x="819" y="229" fill="#8be8f2" font-family="system-ui" font-size="10.5" text-anchor="middle">• AI Predictive Flood Sluice Gates</text>
+      </svg>
+      <figcaption><b>Figure 1:</b> Cross-section of the <b>Wellspring</b> campus from the raised central server pad (Zone 0) through the thermal storage ring (Zone 1), sunken flood-detention &amp; graphene distillation moat (Zone 2), and gravity-fed outbound treatment waterway (Zone 3).</figcaption>
+    </figure>
+
+    <div class="ws-zones">
+      <div class="ws-zone">
+        <span class="z-tag">Zone 0 · Core</span>
+        <h3>AI Hall &amp; Cavitation Reactor</h3>
+        <p>Direct-to-chip liquid cooling circulates <b>SpringCore-48</b> at $48^\circ\text{C}$. Venturi cavitation nozzles ahead of the manifolds use pump shear to exfoliate raw flake graphite into few-layer graphene nanosheets continuously inside the closed loop.</p>
+      </div>
+      <div class="ws-zone">
+        <span class="z-tag">Zone 1 · Inner Ring</span>
+        <h3>24-Hr Thermal Battery &amp; AWG</h3>
+        <p>During hot afternoons (12 PM–7 PM), melted phase-change slurry parks in the insulated Hot Ring—<b>zero water evaporated, zero chiller compressors running</b>. At night, stored $48^\circ\text{C}$ heat regenerates roof desiccant panels that pull fresh water from night humidity.</p>
+      </div>
+      <div class="ws-zone">
+        <span class="z-tag">Zone 2 · Outer Ring</span>
+        <h3>Flood Berm &amp; Graphene Kidney</h3>
+        <p>The 200-ft security buffer is graded as a sunken retention moat and constructed wetland over geocell cisterns, capturing 30M–50M gallons of storm surge. Server waste heat drives low-temp distillation across on-site-printed Graphene Oxide (GO) membranes.</p>
+      </div>
+      <div class="ws-zone">
+        <span class="z-tag">Zone 3 · 1–5 Miles Out</span>
+        <h3>Powered Remediation Canal</h3>
+        <p>Purified water exits down stepped hyperbolic aeration cascades with micro-hydro turbines, sub-gravel winter bio-heating pipes, and a buried DC microgrid powering nanobubble ozone and electrocoagulation stations miles downstream.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- SECTION 3 -->
+  <section class="ws-panel" id="fluid">
+    <div class="ws-eyebrow">Section 03 · Closed-Loop Coolant Chemistry</div>
+    <h2>SpringCore-48: The Non-Toxic, Graphene-Armored Thermal Battery Fluid</h2>
+    <p>Conventional data centers evaporate water because water only absorbs <i>sensible</i> heat ($4.18\text{ J/g}\cdot^\circ\text{C}$), requiring evaporative cooling towers when ambient afternoon air exceeds $95^\circ\text{F}$. Meanwhile, traditional liquid metals like mercury are neurotoxic, heavy ($13.5\text{ g/cm}^3$), corrode copper pipes via amalgamation, and undergo no phase change at server temperatures.</p>
+    <p><b>SpringCore-48</b> solves all four constraints using a microscopic 3-layer <b>“Jawbreaker” Phase-Change Bead</b> ($10\text{–}25\ \mu\text{m}$) suspended in a fire-safe, biodegradable ester/water carrier:</p>
+
+    <figure class="ws-diagram">
+      <svg viewBox="0 0 900 280" width="100%" role="img" aria-label="Diagram of the SpringCore-48 three-layer micro-bead and in-situ graphene exfoliation loop">
+        <rect x="0" y="0" width="900" height="280" rx="8" fill="#111418"></rect>
+
+        <!-- Left: Cross section of single microbead -->
+        <circle cx="175" cy="140" r="102" fill="rgba(62,200,216,0.12)" stroke="#3ec8d8" stroke-width="5" stroke-dasharray="10,4"></circle>
+        <circle cx="175" cy="140" r="82" fill="rgba(217,178,105,0.22)" stroke="#d9b269" stroke-width="2"></circle>
+        <!-- Bismuth-Tin thermal needles -->
+        <line x1="115" y1="140" x2="235" y2="140" stroke="#9ba2ad" stroke-width="3"></line>
+        <line x1="175" y1="80" x2="175" y2="200" stroke="#9ba2ad" stroke-width="3"></line>
+        <line x1="132" y1="97" x2="218" y2="183" stroke="#9ba2ad" stroke-width="2.5"></line>
+        <line x1="218" y1="97" x2="132" y2="183" stroke="#9ba2ad" stroke-width="2.5"></line>
+        <circle cx="175" cy="140" r="54" fill="#1d2d35" stroke="#8be8f2" stroke-width="1.5"></circle>
+
+        <text x="175" y="135" fill="#fff" font-family="system-ui" font-size="12" font-weight="700" text-anchor="middle">48°C Salt-Wax</text>
+        <text x="175" y="152" fill="#8be8f2" font-family="system-ui" font-size="11" text-anchor="middle">Latent Core (260 J/g)</text>
+
+        <!-- Labels pointing to layers -->
+        <g font-family="system-ui, sans-serif">
+          <line x1="268" y1="78" x2="335" y2="55" stroke="#3ec8d8" stroke-width="1.5"></line>
+          <text x="342" y="52" fill="#3ec8d8" font-size="13" font-weight="700">1. Outer Shell: In-Situ Exfoliated Graphene Armor (0.2 wt%)</text>
+          <text x="342" y="70" fill="#9ba2ad" font-size="12">Pickering-stabilized nanosheets wrap each droplet · Zero copper pipe corrosion · 3× thermal transfer</text>
+
+          <line x1="242" y1="125" x2="335" y2="125" stroke="#d9b269" stroke-width="1.5"></line>
+          <text x="342" y="122" fill="#d9b269" font-size="13" font-weight="700">2. Thermal Bridge: Non-Toxic Bismuth-Tin Nano-Spikes (2 wt%)</text>
+          <text x="342" y="140" fill="#9ba2ad" font-size="12">Pepto-Bismol-safe metal alloy conducts heat from the graphene skin into the core in milliseconds</text>
+
+          <line x1="215" y1="175" x2="335" y2="195" stroke="#8be8f2" stroke-width="1.5"></line>
+          <text x="342" y="192" fill="#8be8f2" font-size="13" font-weight="700">3. Latent Heat Core: Sodium Acetate Trihydrate + Bio-Paraffin (90%)</text>
+          <text x="342" y="210" fill="#9ba2ad" font-size="12">Food-grade pocket-warmer salt hydrate melts at 48°C (118°F) · 6× heat capacity of water · $0.80/kg</text>
+
+          <rect x="342" y="226" width="525" height="34" rx="6" fill="rgba(62,200,216,0.1)" stroke="#2b2e34"></rect>
+          <text x="604" y="248" fill="#e8eaed" font-size="12.5" font-weight="600" text-anchor="middle">Total Bulk Fluid Cost: ~$2.80 / Liter (~$10.60 / gal) — 92% cheaper than pure Gallium/Indium</text>
+        </g>
+      </svg>
+      <figcaption><b>Figure 2:</b> Architecture of a 20-micron <b>SpringCore-48</b> phase-change micro-bead. Pumping shear continuously exfoliates cheap flake graphite ($2/kg) to self-heal the outer graphene shell.</figcaption>
+    </figure>
+
+    <div class="table-scroll">
+      <table>
+        <thead>
+          <tr>
+            <th>Property</th>
+            <th>Municipal Water (Evaporative)</th>
+            <th>Liquid Mercury ($\text{Hg}$)</th>
+            <th>Pure Gallium-Indium (EGaIn)</th>
+            <th>Wellspring SpringCore-48</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><b>Effective Heat Capacity at $48^\circ\text{C}$</b></td>
+            <td>$4.18\text{ J/g}\cdot^\circ\text{C}$ (sensible only)</td>
+            <td class="bad">$0.14\text{ J/g}\cdot^\circ\text{C}$ (no phase change)</td>
+            <td>$0.30\text{ J/g}\cdot^\circ\text{C}$ (unless alloyed)</td>
+            <td class="good">$240\text{–}260\text{ J/g}$ (latent fusion at $48^\circ\text{C}$)</td>
+          </tr>
+          <tr>
+            <td><b>Copper / Aluminum Pipe Safety</b></td>
+            <td>Scale &amp; bio-fouling</td>
+            <td class="bad">Dissolves pipes (amalgamation)</td>
+            <td class="bad">Embrittles aluminum/copper</td>
+            <td class="good">Graphene shell isolates core 100%</td>
+          </tr>
+          <tr>
+            <td><b>Toxicity &amp; Watershed Safety</b></td>
+            <td>Safe, but depletes aquifers</td>
+            <td class="bad">Extreme neurotoxin / vapor hazard</td>
+            <td>Non-toxic</td>
+            <td class="good">Food-grade salt, plant wax, bismuth &amp; carbon</td>
+          </tr>
+          <tr>
+            <td><b>Afternoon Water Consumption</b></td>
+            <td class="bad">1–2 Million Gal/Day (100 MW)</td>
+            <td>None, but requires peak chillers</td>
+            <td>None, but requires peak chillers</td>
+            <td class="good">Zero (stores 6 hrs of heat in Hot Ring)</td>
+          </tr>
+          <tr>
+            <td><b>Bulk Material Cost</b></td>
+            <td>Low (until city bans draw)</td>
+            <td class="bad">$450+ / liter &amp; extreme weight</td>
+            <td class="bad">$600+ / liter</td>
+            <td class="good">~$2.80 / liter ($10.60 / gal)</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </section>
+
+  <!-- SECTION 4 -->
+  <section class="ws-panel" id="graphene-math">
+    <div class="ws-eyebrow">Section 04 · Material Mass Balance</div>
+    <h2>How Much Graphene Does a Data Center Actually Need?</h2>
+    <p>Because a single gram of monolayer graphene has a surface area of <b>$2,630\text{ m}^2$</b> (half an American football field), the total carbon required to armor the coolant loop and manufacture the perimeter’s water-purification membranes is remarkably small—and is produced <b>in-situ from $2/kg natural flake graphite</b> using the cooling pumps’ own hydrodynamic cavitation energy:</p>
+
+    <div class="grid">
+      <div class="card">
+        <b>1. Single-Rack Pilot (10–30 kW)</b>
+        <p>Requires <b>100 Liters</b> of SpringCore-48 fluid at $2\text{ g/L}$ loading = <b>200 grams of graphene</b> (less than half a pound). Raw flake graphite feedstock cost: <b>~$1.00</b>.</p>
+      </div>
+      <div class="card">
+        <b>2. 100 MW Perimeter Water Plant</b>
+        <p>Graphene Oxide (GO) nanofiltration and distillation membranes are only $200\text{ nm}$ thick ($1\text{ g/m}^2$). Filtering 1M+ gal/day ($10,000\text{ m}^2$ membrane area) requires just <b>10 kg (22 lbs) of graphene</b>—about <b>$25 of raw graphite</b>.</p>
+      </div>
+      <div class="card">
+        <b>3. Full 100 MW Thermal Battery Loop</b>
+        <p>A 4-million-liter (1M gal) closed thermal storage ring requires <b>8 Metric Tons</b> of exfoliated graphene ($0.2\text{ wt}\%$). Raw industrial flake graphite cost: <b>~$16,000 total</b> for a $1B+ campus.</p>
+      </div>
+      <div class="card" style="border-color:var(--gold)">
+        <b style="color:var(--gold)">4. The Byproduct Revenue Stream</b>
+        <p>A 50 kW side-stream cavitation loop exfoliates <b>2 to 5 metric tons/year</b> of surplus few-layer graphene beyond campus maintenance needs—worth <b>$100k–$500k/yr</b> to local concrete, battery, and composite manufacturers.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- SECTION 5 -->
+  <section class="ws-panel" id="waterways">
+    <div class="ws-eyebrow">Section 05 · Watershed Infrastructure</div>
+    <h2>The Powered Outbound Waterways (1 to 5 Miles Downstream)</h2>
+    <p>Conventional industrial discharge causes thermal pollution and oxygen depletion. Wellspring turns the outbound drainage canals leading away from the data center into <b>active, powered ecological treatment corridors</b>:</p>
+
+    <div class="steps">
+      <div class="step">
+        <b>Gravity-Head Vortex Cascades &amp; Micro-Hydro</b>
+        <p>Because the server pad sits on an elevated flood-safe berm (15–25 ft head), outbound distilled water steps down hyperbolic <b>Flowform aeration weirs</b>. This saturates the water with dissolved oxygen while spinning low-head vortex micro-turbines that power remote sensors and UV-C LED disinfection banks along the canal.</p>
+      </div>
+      <div class="step">
+        <b>Sub-Bed Winter Biological Heating ($22^\circ\text{C}$)</b>
+        <p>Natural wetland bacteria stop removing agricultural nitrates and ammonia in winter when water drops below $10^\circ\text{C}$. Closed HDPE warm-water loops from the data center run <i>beneath the gravel bio-filter bed</i> of the first mile of canal, keeping root-zone microbes at peak summer efficiency 365 days a year while cooling the water before it meets natural trout/fish streams.</p>
+      </div>
+      <div class="step">
+        <b>Curtailed-Power Electro-Remediation Nodes</b>
+        <p>A buried low-voltage DC microgrid cable runs in the canal trench alongside fiber-optic lines. Whenever renewable solar/wind overproduces or GPU loads dip, excess DC power fires submerged <b>electrocoagulation plates</b> (clumping microplastics, phosphorus, and silt) and <b>nanobubble ozone injectors</b> that eradicate toxic blue-green algae blooms miles downstream.</p>
+      </div>
+      <div class="step">
+        <b>AI-Actuated Flood &amp; Drought Locks</b>
+        <p>Using county-wide hydrological sensors connected over the canal’s fiber spine, the data center’s own compute pre-drains retention basins ahead of incoming storm fronts—or reverses axial canal pumps during extreme droughts to pull impaired river water back up to the perimeter graphene kidneys for purification.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- SECTION 6: INTERACTIVE CALCULATOR -->
+  <section class="ws-panel" id="calculator">
+    <div class="ws-eyebrow">Section 06 · Interactive Fiscal &amp; Hydrological Sizer</div>
+    <h2>Size a Wellspring Campus for Your Jurisdiction</h2>
+    <p>Move the slider to model the annual water, flood-surge, material, and municipal budget impact for a proposed AI data center:</p>
+
+    <div class="ws-calc">
+      <div class="ws-slider-row">
+        <label for="mw-slider" style="font-weight:600;color:var(--ink)">Campus IT Load:</label>
+        <input type="range" id="mw-slider" min="10" max="500" step="10" value="100" oninput="updateWellspringCalc(this.value)">
+        <div class="ws-mw-pill" id="mw-display">100 MW</div>
+      </div>
+
+      <div class="ws-kpis" style="margin-top:8px">
+        <div class="ws-kpi">
+          <strong id="calc-saved">450M Gal/yr</strong>
+          <span>Drinking water <b>saved</b> vs. conventional evaporative towers</span>
+        </div>
+        <div class="ws-kpi">
+          <strong id="calc-produced">+220M Gal/yr</strong>
+          <span>Net purified storm/greywater returned to river or aquifer</span>
+        </div>
+        <div class="ws-kpi">
+          <strong id="calc-flood">40M Gal</strong>
+          <span>100-year flash-flood surge detention capacity in perimeter moat</span>
+        </div>
+        <div class="ws-kpi">
+          <strong id="calc-bonds">$60M</strong>
+          <span>Avoided municipal flood &amp; PFAS water-plant bond CapEx</span>
+        </div>
+        <div class="ws-kpi">
+          <strong id="calc-graphite">8.0 Tons</strong>
+          <span>Initial raw flake graphite needed (<span id="calc-graphite-cost">$16,000</span> feedstock)</span>
+        </div>
+        <div class="ws-kpi">
+          <strong id="calc-homes">4,500 Homes</strong>
+          <span>Equivalent residential water supply protected &amp; generated</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SECTION 7: LEGISLATIVE BRIEF -->
+  <section class="ws-panel" id="policy">
+    <div class="ws-eyebrow">Section 07 · Model Municipal &amp; State Policy</div>
+    <h2>The “Water-Positive Compute” Ordinance Framework</h2>
+    <p>Municipalities, counties, and state legislatures do not need to invent new utility regulations to deploy Wellspring. By structuring the perimeter as a <b>Conditioned Zoning Fast-Track &amp; Co-Located Municipal Easement</b>, a jurisdiction can enact this in three straightforward provisions:</p>
+
+    <div class="steps" style="margin:18px 0">
+      <div class="step">
+        <b>1. The Net-Positive Water Fast-Track</b>
+        <p>Any data center exceeding 10 MW that commits to (a) <b>zero net draw</b> from municipal potable supplies via closed-loop phase-change cooling, and (b) <b>&ge;110% watershed return</b> via waste-heat purification of stormwater or impaired greywater qualifies for <b>6-month expedited site-plan and interconnect review</b>.</p>
+      </div>
+      <div class="step">
+        <b>2. Dual-Use Flood Buffer Mandate</b>
+        <p>Mandatory security setbacks (150–300 ft) must be engineered as tiered permeable retention bioswales and subsurface geocell cisterns sized to absorb a <b>100-year, 24-hour storm event</b> for the surrounding drainage sub-basin.</p>
+      </div>
+      <div class="step">
+        <b>3. Fence-Line Public-Private Easement</b>
+        <p>To prevent the data center operator from becoming a regulated public water utility, the operator delivers $48^\circ\text{C}$ thermal exchange loops, graphene membrane cartridges, and curtailed DC power to a <b>co-located municipal easement at the perimeter fence</b>, operated under existing county water district NPDES permits.</p>
+      </div>
+      <div class="step">
+        <b>4. Federal &amp; State Grant Stacking</b>
+        <p>Because the outer ring and outbound waterway are public flood and water-quality infrastructure, the project unlocks <b>EPA Clean Water State Revolving Fund (CWSRF)</b>, <b>FEMA BRIC flood resilience grants</b>, and <b>IIJA PFAS remediation funds</b>—reducing the developer’s net CapEx.</p>
+      </div>
+    </div>
+
+    <div class="studio" style="margin:24px 0 8px">
+      <b>Staged 3-Phase Pilot Roadmap (How a City &amp; Developer Start Tomorrow)</b>
+      <p><b>Phase 1 — 10 kW Benchtop Loop ($75k–$150k, 90 Days):</b> University / municipal water lab skid demonstrating in-situ graphite-to-graphene cavitation exfoliation, SpringCore-48 $48^\circ\text{C}$ latent heat storage, and zero copper corrosion.<br>
+      <b>Phase 2 — 1 MW “Kidney Pod” Container ($1.2M, 6 Months):</b> A 40-ft shipping container plumbed into an existing data center’s warm return line and stormwater pond, proving graphene-oxide membrane distillation and downstream nanobubble canal oxygenation.<br>
+      <b>Phase 3 — Full 100 MW Wellspring Campus:</b> Standardized civic-industrial template for all new AI compute campuses in the state.</p>
+    </div>
+  </section>
+
+  <!-- SECTION 8: FAQ -->
+  <section class="ws-panel" id="faq">
+    <div class="ws-eyebrow">Section 08 · Due Diligence</div>
+    <h2>Questions from Chiefs of Staff, City Engineers &amp; Hyperscalers</h2>
+
+    <details open>
+      <summary>What happens if a perimeter pipe ruptures during an earthquake or flood? Is the fluid hazardous?</summary>
+      <p>No. Unlike mercury, petroleum oils, or fluorinated refrigerants (PFAS), <b>SpringCore-48</b> is formulated from food-grade sodium acetate trihydrate (vinegar salt used in hand warmers), plant-derived paraffin wax, bismuth-tin (the safe mineral element in Pepto-Bismol), and pure carbon (graphite/graphene) in a biodegradable ester/water carrier. Furthermore, all primary thermal tanks sit inside the lined Zone 1 containment berm.</p>
+    </details>
+
+    <details>
+      <summary>If the campus doesn’t evaporate water in the afternoon, where does the heat ultimately go?</summary>
+      <p>During peak afternoon hours (12 PM–7 PM), the heat is absorbed as <b>latent heat of fusion</b> by melting the $48^\circ\text{C}$ core of the SpringCore-48 micro-beads and stored in the insulated Hot Ring tank. At night, when ambient air is cool and radiative sky-cooling panels are most efficient, the fluid freezes back into solid beads—using that stored heat to run vacuum membrane distillation, regenerate atmospheric water harvesters, and warm the winter denitrification beds under the outbound canal.</p>
+    </details>
+
+    <details>
+      <summary>Won’t heating the outbound canal cause thermal pollution for fish?</summary>
+      <p>No—the warm loop is a closed heat-exchanger buried <i>beneath the gravel bio-filter bed</i> in the first segment of the engineered treatment canal, where no fish live and where denitrifying bacteria need $20^\circ\text{C}\text{–}24^\circ\text{C}$ to strip agricultural nitrates during winter. Before the water enters natural streams, it passes through unheated cooling cascades and stepped vortex aeration weirs so it enters the river cool and hyper-oxygenated.</p>
+    </details>
+
+    <details>
+      <summary>Why hasn’t a hyperscaler built this already?</summary>
+      <p>Historically, data center thermal teams only designed inside the building walls, while civil engineers treated the perimeter as a grass lawn and chain-link fence. Only in 2025–2026 did 50–100+ MW liquid-cooled AI clusters make $48^\circ\text{C}\text{–}55^\circ\text{C}$ water returns standard—the exact temperature threshold where low-temperature membrane distillation, desiccant regeneration, and sodium-acetate phase-change storage converge.</p>
+    </details>
+
+    <div class="cta-row" style="margin-top:28px">
+      <a class="cta primary" href="mailto:hello@cherishvale.com?subject=Wellspring%20Policy%20or%20Pilot%20Inquiry">Request a Briefing or Pilot Spec</a>
+      <button type="button" class="ws-btn no-print" onclick="window.print()">Print / Save Briefing as PDF</button>
+    </div>
+  </section>
+</div>
+
+<footer class="wrap">
+  <span>© <span id="y"></span> Cherishvale. All rights reserved.</span>
+  <span class="spacer"></span>
+  <a href="/">Home</a>
+  <a href="/wellspring">Wellspring</a>
+  <a href="/hearthlight">Hearthlight</a>
+  <a href="/pilots">Pilots</a>
+  <a href="/apps">Apps</a>
+  <a href="/privacy">Privacy Policy</a>
+  <a href="mailto:hello@cherishvale.com">Contact</a>
+</footer>
+
+<script>
+  document.getElementById("y").textContent = new Date().getFullYear();
+
+  function fmtM(val) {
+    if (val >= 1000) return (val / 1000).toFixed(2).replace(/\.00$/, '') + "B";
+    return Math.round(val) + "M";
+  }
+
+  function updateWellspringCalc(mw) {
+    var m = Number(mw);
+    document.getElementById("mw-display").textContent = m + " MW";
+    document.getElementById("calc-saved").textContent = fmtM(m * 4.5) + " Gal/yr";
+    document.getElementById("calc-produced").textContent = "+" + fmtM(m * 2.2) + " Gal/yr";
+    document.getElementById("calc-flood").textContent = fmtM(m * 0.4) + " Gal";
+    document.getElementById("calc-bonds").textContent = "$" + Math.round(m * 0.6) + "M";
+    var tons = (m * 0.08).toFixed(1);
+    var cost = Math.round(m * 160).toLocaleString();
+    document.getElementById("calc-graphite").innerHTML = tons + ' Tons';
+    document.getElementById("calc-homes").textContent = Math.round(m * 45).toLocaleString() + " Homes";
+  }
+</script>
+</body>
+</html>
