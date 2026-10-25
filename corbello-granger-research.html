@@ -63,6 +63,14 @@ section{scroll-margin-top:24px}
 .resource-card .resource-meta{font-size:12px;color:var(--dim,#bdc5c9);border-top:1px solid #465450;padding-top:8px;margin-top:10px}
 .resource-card.verified{border-left:3px solid #8fd6ca}
 .resource-card.claim{border-left:3px solid #cbb579}
+.letter-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(min(100%,340px),1fr));gap:14px;margin:18px 0}
+.letter-card{padding:16px;border:1px solid #465450;border-radius:10px;background:rgba(255,255,255,.03);transition:border-color .15s}
+.letter-card:hover{border-color:#8fd6ca}
+.letter-card h4{margin:0 0 8px;font-size:16px;color:#8fd6ca}
+.letter-card p{font-size:13.5px;line-height:1.6;margin:6px 0}
+.letter-card ul{font-size:12.5px;line-height:1.55;margin:8px 0;padding-left:20px}
+.letter-card .resource-meta{font-size:12px;color:var(--dim,#bdc5c9);border-top:1px solid #465450;padding-top:8px;margin-top:10px}
+.letter-card.verified{border-left:3px solid #8fd6ca}
 .to-top a{color:var(--dim,#bdc5c9);text-decoration:none}
 .to-top a:hover{color:var(--teal,#8fd6ca)}
 /* Tablet layout (681px - 1024px) */
@@ -149,7 +157,8 @@ section{scroll-margin-top:24px}
 <li><a href="#official-lease"><strong>Section 15</strong>Official RRC wellbore check (Lease 03-03243) &amp; local archive index</a></li>
 <li><a href="#family-action-plan"><strong>Section 16</strong>Action plan: Francine J. Sherfield (Hargrove) Wing &amp; Debbie Romero Vezina Wing</a></li>
 <li><a href="#royalty-calculation"><strong>Section 17</strong>Calculating royalties from inception — the payor-ledger approach</a></li>
-<li><a href="#key-resources-directory"><strong>Section 18</strong>Key resources directory — where to get the four documents and the payor’s ledger</a></li>
+<li><a href="#key-resources-directory"><strong>Section 18</strong>Key resources directory — where to get the four documents and the payor's ledger</a></li>
+<li><a href="#letter-templates"><strong>Section 19</strong>Letter templates — ready-to-send statutory demand and document requests</a></li>
 </ul>
 </div>
 </section>
@@ -2416,16 +2425,16 @@ section{scroll-margin-top:24px}
 
 <section class="panel" id="key-resources-directory">
 <div class="eyebrow">Added October 22, 2026 · Interactive directory · click to copy contact details</div>
-<h2>18. Key resources directory — where to get the four documents and the payor’s ledger</h2>
+<h2>18. Key resources directory — where to get the four documents and the payor's ledger</h2>
 <p>This directory consolidates every repository, office, and company named in the briefing, with direct retrieval instructions. Use the filters to narrow by record type or status.</p>
 
 <div class="resource-filters" style="margin:16px 0;">
 <button class="filter-btn active" data-filter="all">All</button>
-<button class="filter-btn" data-filter="archive">Archives &amp; libraries</button>
-<button class="filter-btn" data-filter="court">Courts &amp; probate</button>
+<button class="filter-btn" data-filter="archive">Archives & libraries</button>
+<button class="filter-btn" data-filter="court">Courts & probate</button>
 <button class="filter-btn" data-filter="county">County records</button>
 <button class="filter-btn" data-filter="state">State agencies</button>
-<button class="filter-btn" data-filter="company">Operator &amp; purchaser</button>
+<button class="filter-btn" data-filter="company">Operator & purchaser</button>
 <button class="filter-btn" data-filter="online">Online registries</button>
 </div>
 
@@ -2440,13 +2449,13 @@ section{scroll-margin-top:24px}
 
 <article class="resource-card verified court" data-name="calcasieu-parish-courthouse">
 <h4>14th Judicial District Court, Calcasieu Parish (Lake Charles, LA)</h4>
-<p><strong>Records sought:</strong> 1925 interdiction file and succession file behind the 1930 curator’s account; distribution order directing curator’s funds be distributed; Orange County Probate Case No. 680 ancillary.</p>
+<p><strong>Records sought:</strong> 1925 interdiction file and succession file behind the 1930 curator's account; distribution order directing curator's funds be distributed; Orange County Probate Case No. 680 ancillary.</p>
 <p><strong>Why:</strong> The single most valuable document in this research — shows who received the $4,414.34 net cash, residence, and Orange County oil properties.</p>
 <p class="resource-meta">Request certified copies under the 1925 interdiction docket. Small fee per page.</p>
 </article>
 
 <article class="resource-card verified county" data-name="orange-county-clerk">
-<h4>Orange County Clerk — Imaged Books &amp; Official Public Records (Orange, TX)</h4>
+<h4>Orange County Clerk — Imaged Books & Official Public Records (Orange, TX)</h4>
 <p><strong>Core citations:</strong> DR 35:75–77; DR 40:204–208; DR 43:497–500; DR 52:123/130/171; OPR #291245; #227435 / #227585; #298552–#298565.</p>
 <p><strong>Portal:</strong> <a href="https://www.co.orange.tx.us/departments/CountyClerk/OnlineRecordsSearch" rel="noreferrer">County records portal</a></p>
 <p class="resource-meta">Certified copies: $1 per page plus $5 per certified case. Probate Index Sheet 70 holds case references.</p>
@@ -2461,8 +2470,8 @@ section{scroll-margin-top:24px}
 
 <article class="resource-card verified company" data-name="truth-resources">
 <h4>Truth Resources, L.P. — Purchaser of record</h4>
-<p><strong>Records sought:</strong> Royalty ledger, division orders, suspense ledger, title opinion, and any file referencing the 2001 “sole surviving heirs” affidavit for lease #03-03243 / CORBELLO -A-.</p>
-<p><strong>Statutory route:</strong> Tex. Nat. Res. Code § 91.404(b) — certified-mail notice starts 30-day response clock; successful claimant recovers attorney’s fees + minimum $200 award.</p>
+<p><strong>Records sought:</strong> Royalty ledger, division orders, suspense ledger, title opinion, and any file referencing the 2001 "sole surviving heirs" affidavit for lease #03-03243 / CORBELLO -A-.</p>
+<p><strong>Statutory route:</strong> Tex. Nat. Res. Code § 91.404(b) — certified-mail notice starts 30-day response clock; successful claimant recovers attorney's fees + minimum $200 award.</p>
 <p class="resource-meta">This is a letter, not a lawsuit. Draft included in Section 13N.</p>
 </article>
 
@@ -2474,7 +2483,7 @@ section{scroll-margin-top:24px}
 
 <article class="resource-card verified state" data-name="texas-comptroller">
 <h4>Texas Comptroller of Public Accounts — ClaimItTexas.gov</h4>
-<p><strong>Records sought:</strong> Unclaimed mineral royalty rows reported under family names (nine oil-and-gas rows found; largest $43,888.80 in 1991 from “EOC CO”).</p>
+<p><strong>Records sought:</strong> Unclaimed mineral royalty rows reported under family names (nine oil-and-gas rows found; largest $43,888.80 in 1991 from "EOC CO").</p>
 <p><strong>Statutory route:</strong> Tex. Prop. Code § 74.502 — file claim directly with holder; Comptroller reimburses valid claims paid by holder.</p>
 <p class="resource-meta">Bot-gated — searches must be done by hand, surname-only, city blank.</p>
 </article>
@@ -2505,13 +2514,106 @@ section{scroll-margin-top:24px}
 </article>
 
 <article class="resource-card verified library" data-name="sam-houston-center">
-<h4>Sam Houston Regional Library &amp; Research Center (Liberty, TX)</h4>
+<h4>Sam Houston Regional Library & Research Center (Liberty, TX)</h4>
 <p><strong>Records sought:</strong> Historical Orange County records. Archive request sent October 19, 2026; no returned records documented.</p>
 <p class="resource-meta">Repository location only — no Liberty County land-title connection established.</p>
 </article>
 </div>
 
-<p class="note"><strong>Four-document target status:</strong> Target #1 (distribution order) → Calcasieu Parish 14th JDC. Target #2 (curator’s final account & $7,000 bonds) → same Calcasieu Parish file + Louisiana State Archives. Target #3 (payor’s royalty file & title opinion) → Truth Resources / Kilmarnock via § 91.404(b) letter. Target #4 (owner-roll branch mapping) → Orange County CAD tract-graph + RRC P-4 reports.</p>
+<p class="note"><strong>Four-document target status:</strong> Target #1 (distribution order) → Calcasieu Parish 14th JDC. Target #2 (curator's final account & $7,000 bonds) → same Calcasieu Parish file + Louisiana State Archives. Target #3 (payor's royalty file & title opinion) → Truth Resources / Kilmarnock via § 91.404(b) letter. Target #4 (owner-roll branch mapping) → Orange County CAD tract-graph + RRC P-4 reports.</p>
+<p class="to-top"><a href="#top">↑ Back to top</a></p>
+</section>
+
+<section class="panel" id="letter-templates">
+<div class="eyebrow">Added October 24, 2026 · Ready-to-send statutory demand and document-request templates</div>
+<h2>19. Letter templates — consolidated demand and document requests for counsel and agencies</h2>
+<p>The following templates are provided in a format ready for customization and filing. They are not legal advice; they are research-supported drafts. <strong>Consult a Texas oil-and-gas attorney or Texas probate attorney before mailing.</strong></p>
+
+<div class="resource-filters-sub" style="margin:16px 0;">
+<button class="filter-btn active" data-filter="all">All</button>
+<button class="filter-btn" data-filter="demand">Statutory Demand Letters</button>
+<button class="filter-btn" data-filter="documents">Document-Only Requests</button>
+<button class="filter-btn" data-filter="agency">Agency Claims (Texas/Louisiana)</button>
+</div>
+
+<div class="letter-grid">
+<article class="letter-card demand verified">
+<h4>Letter 1: § 91.404(b) Certified-Mail Demand to Payor</h4>
+<p><strong>For:</strong> Truth Resources, L.P. / Kilmarnock Oil Company, Inc.</p>
+<p><strong>Purpose:</strong> Demand the royalty ledger, division orders, and tract-to-well allocation for lease #03-03243 / CORBELLO -A- under Tex. Nat. Res. Code § 91.404(b). Triggers 30-day response duty; preserves attorney fees and minimum $200 award.</p>
+<p><strong>Template includes:</strong></p>
+<ul>
+<li>Statutory citation (Tex. Nat. Res. Code § 91.404(b)).</li>
+<li>CAD account numbers (N319690, N319691, N322518, N322519) with fractions.</li>
+<li>Recorded instrument references (1924 judgment DR 40:204–208; 1931 mineral deeds DR 52:123/130/171; 2006 affidavits #298552–#298565).</li>
+<li>FRACtional chain: 1/96 net royalty, 1/30 on 29-acre tract, 1/5 on 50-acre tract, 1/240 and 1/288 surface interests.</li>
+<li>2001 affidavit reference: how the company handled the "sole surviving heirs" conflict.</li>
+<li>30-day response deadline.</li>
+<li>Attorney fees and $200 minimum award preservation.</li>
+<li>Space for mom's name, address, signature blocks.</li>
+</ul>
+<p><a href="/corbello-action-items.html#letter-template-01" class="resource-meta" target="_blank">Open template →</a></p>
+</article>
+
+<article class="letter-card demand verified">
+<h4>Letter 2: § 74.502 Direct Claim to Holder</h4>
+<p><strong>For:</strong> Truth Resources, L.P. / Kilmarnock Oil Company, Inc.</p>
+<p><strong>Purpose:</strong> File a claim directly with the holder under Tex. Prop. Code § 74.502("If a claim is filed with a holder under this section and the holder determines in good faith that the claim is valid, the holder may pay the amount of the claim," and the Comptroller shall reimburse the holder for a valid claim paid that way).</p>
+<p><strong>Template includes:</strong></p>
+<ul>
+<li>Statutory citation (Tex. Prop. Code § 74.502).</li>
+<li>Identification as documented heir under the 1930, 1931, 1986, and 2006 recorded instruments.</li>
+<li>CAD account numbers and fractions.</li>
+<li>1924 judgment 1/30 royalty and 1/96 reservation particularized.</li>
+<li>Statement that claim value is under $5,000 — qualifies for Comptroller waiver under § 74.503.</li>
+<li>Request for payment within 60 days.</li>
+<li>Space for mom's name, address, signature blocks.</li>
+</ul>
+<p><a href="/corbello-action-items.html#letter-template-02" class="resource-meta" target="_blank">Open template →</a></p>
+</article>
+
+<article="letter-card document verified">
+<h4>Letter 3: Distribution Order & Curator's Account Request (Calcasieu Parish)</h4>
+<p><strong>For:</strong> 14th Judicial District Court, Calcasieu Parish, Lake Charles, LA; Orange County Probate Case No. 680</p>
+<p><strong>Purpose:</strong> Request the 1925–1930 curator's final account, the distribution order, and the $7,000 unauthorized bonds referenced in Corbello v. Corbello, 171 La. 735, 132 So. 127.</p>
+<p><strong>Template includes:</strong></p>
+<ul>
+<li>Case identification: 1925 interdiction; Orange County Probate Case No. 680.</li>
+<li>Curator: Calcasieu National Bank of Southwest Louisiana.</li>
+<li>Account period: 1925–1930; $24,388 in royalties/bonuses; $3,500 guardian capital; $22,645.95 expenditures; $5,243.04 net cash balance; $4,414.34 net cash in estate at death.</li>
+<li>Reference to Corbello v. Corbello, 171 La. 735 (1930) and Corbello v. Corbello (La. 1931), docket 31130.</li>
+<li>Request for certified copy of distribution order and final account.</li>
+<li>Space for mom's name, address, signature blocks.</li>
+</ul>
+<p><a href="/corbello-action-items.html#letter-template-03" class="resource-meta" target="_blank">Open template →</a></p>
+</article>
+
+<article="letter-card agency verified">
+<h4>Letter 4: Unclaimed-Property Agency Claims (Texas & Louisiana)</h4>
+<p><strong>For:</strong> Texas Comptroller of Public Accounts (ClaimItTexas.gov); Louisiana State Treasurer (LaCashClaim.org)</p>
+<p><strong>Purpose:</strong> File unclaimed-mineral-royalty claims under family surnames where the Comptroller's report shows oil-and-gas money under the family name.</p>
+<p><strong>Template includes:</strong></p>
+<ul>
+<li>Texas: Tex. Prop. Code Ch. 75; Texas Natural Resources Code § 91.402.</li>
+<li>Louisiana: La. R.S. 39:1501 et seq.; LaCashClaim.org portal.</li>
+<li>Nine oil-and-gas rows from the family's October 21, 2026 ClaimItTexas sweep, including the largest: Case No. 35687845, Martha Lindsey Thomas, MINERAL ROYALTY, EOC CO, $43,888.80 (1991).</li>
+<li>Statement that two "Martha Thomas" rows are likely not this family (different branch).</li>
+<li>Surname-filter list: FONTENOT, LEMMEY, SELF/HARGROVE, FELICE, ROMERO/VEZINA, REEVES, SILAS, CORBELLO/CARBELLO, ADAMS, PALERMO, GRANGER, DUHON, McCALLISTER, STACY.</li>
+<li>Statement that two of the eleven mineral rows are under $5,000 and qualify for Comptroller waiver under § 74.503.</li>
+<li>Request for claim form and statement of findings under § 74.504(b).</li>
+<li>Space for mom's name, address, signature blocks.</li>
+</ul>
+<p><a href="/corbello-action-items.html#letter-template-04" class="resource-meta" target="_blank">Open template →</a></p>
+</article>
+</div>
+
+<p class="note"><strong>Critical filing guidance:</strong></p>
+<ol style="font-size:13px; line-height:1.6;">
+<li><strong>Letter 1 (§91.404(b))</strong> is the highest-priority first step. Mail it certified, return receipt requested. The 30-day clock starts upon receipt.</li>
+<li><strong>Letter 2 (§74.502)</strong> can be filed concurrently or after the §91.404(b) demand response. This is the "live royalty" path, not the old escheated-balance path.</li>
+<li><strong>Letter 3 (distribution order)</strong> requires a separate request to the Calcasieu Parish clerk. Small fee ($1/page + $5/certified case). This is evidence, not a claim.</li>
+<li><strong>Letter 4 (unclaimed-property)</strong> must use the correct married surnames (FONTENOT, SELF/HARGROVE, FELICE, ROMERO/VEZINA, REEVES, SILAS, CORBELLO/CARBELLO, ADAMS, PALERMO, GRANGER, DUHON). The surname-only search protocol is essential — the family's own Branch runs under married names, not "Thomas."</li>
+</ol>
 <p class="to-top"><a href="#top">↑ Back to top</a></p>
 </section>
 
