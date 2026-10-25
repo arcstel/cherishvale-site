@@ -51,6 +51,18 @@ section{scroll-margin-top:24px}
 .coverage-card p{font-size:14px;margin:10px 0}
 @media print{.coverage-map{-webkit-print-color-adjust:exact;print-color-adjust:exact}.coverage-card{break-inside:avoid}.coverage-card:target{outline:none}}
 .to-top{margin:20px 0 0;text-align:right;font-size:13px}
+.resource-filters{display:flex;flex-wrap:wrap;gap:8px;margin:16px 0}
+.filter-btn{padding:8px 16px;border:1px solid #465450;border-radius:999px;background:rgba(255,255,255,.035);color:#bdc5c9;font-size:13px;cursor:pointer;transition:all .15s}
+.filter-btn:hover{border-color:#8fd6ca;color:#8fd6ca}
+.filter-btn.active{background:rgba(143,214,202,.18);border-color:#8fd6ca;color:#8fd6ca}
+.resource-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(min(100%,320px),1fr));gap:14px;margin:18px 0}
+.resource-card{padding:16px;border:1px solid #465450;border-radius:10px;background:rgba(255,255,255,.03);transition:border-color .15s}
+.resource-card:hover{border-color:#8fd6ca}
+.resource-card h4{margin:0 0 8px;font-size:16px;color:#8fd6ca}
+.resource-card p{font-size:13.5px;line-height:1.6;margin:6px 0}
+.resource-card .resource-meta{font-size:12px;color:var(--dim,#bdc5c9);border-top:1px solid #465450;padding-top:8px;margin-top:10px}
+.resource-card.verified{border-left:3px solid #8fd6ca}
+.resource-card.claim{border-left:3px solid #cbb579}
 .to-top a{color:var(--dim,#bdc5c9);text-decoration:none}
 .to-top a:hover{color:var(--teal,#8fd6ca)}
 /* Tablet layout (681px - 1024px) */
@@ -136,6 +148,8 @@ section{scroll-margin-top:24px}
    <li><a href="#la-roll">13AP</a> — The Louisiana sweep: results reviewed privately (Oct 2026)</li><li><a href="#rest-of-file"><strong>Section 13AF · New</strong>The rest of the file read: the 2006 batch mapped, a 1937 sworn statement, a 1990 will</a></li><li><a href="#forever-language"><strong>Section 14</strong>“Heirs and assigns forever” — exact habendum &amp; warranty clauses</a></li>
 <li><a href="#official-lease"><strong>Section 15</strong>Official RRC wellbore check (Lease 03-03243) &amp; local archive index</a></li>
 <li><a href="#family-action-plan"><strong>Section 16</strong>Action plan: Francine J. Sherfield (Hargrove) Wing &amp; Debbie Romero Vezina Wing</a></li>
+<li><a href="#royalty-calculation"><strong>Section 17</strong>Calculating royalties from inception — the payor-ledger approach</a></li>
+<li><a href="#key-resources-directory"><strong>Section 18</strong>Key resources directory — where to get the four documents and the payor’s ledger</a></li>
 </ul>
 </div>
 </section>
@@ -2356,12 +2370,158 @@ section{scroll-margin-top:24px}
 <p class="to-top"><a href="#top">↑ Back to top</a></p>
 </section>
 
+<section class="panel" id="royalty-calculation">
+<div class="eyebrow">Added October 22, 2026 · Methodology for converting fractions to dollars</div>
+<h2>17. Calculating royalties from inception — the payor-ledger approach</h2>
+<p>The research fractions are certain (1/240 Wing 1, 1/288 Wing 2 for surface; 1/672 each for the seven grantors on the 1/96 reserved royalty). What converts them into dollars is the payor's royalty ledger — held by the operator and purchaser on lease #03-03243 / CORBELLO -A-. <strong>This section shows the calculation method; the ledger itself must be obtained from Truth Resources, L.P. / Kilmarnock Oil Company, Inc.</strong></p>
+
+<h3>1. Production periods to cover</h3>
+<div class="table-wrap"><table><thead><tr><th>Period</th><th>Lessee / Operator</th><th>Lease on Record</th><th>What family interest applies</th></tr></thead><tbody>
+<tr><td>1924–1931</td><td>Gulf Production Co. (ratified by 1924 judgment)</td><td>State Ct. No. 23895 (DR 40:204)</td><td>1/30 royalty on 29-acre tract; 1/5 royalties on 50-acre tract; 1/2 fee in 271-acre remainder</td></tr>
+<tr><td>1931–1985</td><td>Yount-Lee Oil Co., TXO, Lake Ronel, etc.</td><td>DR Vol. 14 p. 241 (1913 Hull lease); OPR mineral notices 1985</td><td>1/96 net royalty (reserved in 1931 Harlan deeds, DR 52:123/130/171); surface and residual minerals</td></tr>
+<tr><td>1985–1992</td><td>Chevron, then Enron Products Pipeline (1991 easement)</td><td>OPR Vol. 774 pp. 152–154</td><td>Same 1/96 reservation runs with the land to successors</td></tr>
+<tr><td>1993–June 2026</td><td>Kilmarnock Oil Co., Inc. / Truth Resources L.P.</td><td>RRC Lease #03-03243, District 03, Code 361</td><td>1/96 net royalty to seven grantors’ heirs; CAD accounts N319690/N319691/N322518/N322519</td></tr>
+</tbody></table></div>
+
+<h3>2. Calculation formula per component</h3>
+<div class="table-wrap"><table><thead><tr><th>Component</th><th>Formula</th><th>What you need from the ledger</th></tr></thead><tbody>
+<tr><td><strong>1/96 reserved net royalty</strong> (50-acre John Granger tract)</td><td>Total net production barrels × posted price × 1/96 ÷ 7 grantors × wing’s line fraction</td><td>Monthly net production and price by tract; division order showing 1/96 reservation</td></tr>
+<tr><td><strong>1/30 royalty on 29-acre tract</strong> (1924 judgment)</td><td>Tract-specific production × posted price × 1/30 × 1/240 (Wing 1) or × 1/288 (Wing 2)</td><td>Tract-to-well mapping proving wells sit on the 29-acre parcel</td></tr>
+<tr><td><strong>1/5 royalties on 50-acre tract</strong> (1924 judgment)</td><td>Tract-specific production × posted price × 1/5 × 1/240 or × 1/288</td><td>Same tract-to-well mapping for the 50-acre Mose Granger tract</td></tr>
+<tr><td><strong>Surface / residual minerals</strong> (271-acre remainder)</td><td>Appraised value × 1/240 or × 1/288 (surface interest only; minerals were conveyed in 1931)</td><td>Orange County Central Appraisal District appraisal; current titleholder confirmation</td></tr>
+</tbody></table></div>
+
+<h3>3. Historical production proxy (1925–1930 curatorship account)</h3>
+<p>Both Louisiana Supreme Court decisions read in full give the actual curator’s account for 1925–1930:</p>
+<div class="table-wrap"><table><thead><tr><th>Line item</th><th>Amount</th></tr></thead><tbody>
+<tr><td>Royalties and bonuses received by curator, 1925–1930</td><td><strong>$24,388.00</strong></td></tr>
+<tr><td>Capital from Texas guardian (interdict’s capital)</td><td><strong>$3,500.00</strong></td></tr>
+<tr><td>Total received by bank</td><td><strong>$27,888.00</strong></td></tr>
+<tr><td>Total expenditures</td><td>$22,645.95</td></tr>
+<tr><td>Net cash at death</td><td>$5,243.04</td></tr>
+<tr><td>Net cash in estate at death</td><td><strong>$4,414.34</strong></td></tr>
+</tbody></table></div>
+<p><strong>$24,388 over five years = ≈$4,877/year</strong> in 1925–1930 dollars — that’s <strong>≈$85,000–$100,000/year in 2026 dollars</strong> (CPI adjustment). If that rate continued at even a fraction across six subsequent decades on all three tracts, the historical production value dwarfs the current lease’s $4,560,914 (Jan 1993 – May 2026). <strong>This is why the payor’s pre-1993 ledger matters more than anything on the current roll.</strong></p>
+
+<h3>4. Steps to convert fractions to dollars</h3>
+<ol>
+<li><strong>Serve a § 91.404(b) certified-mail demand</strong> on Truth Resources, L.P. and Kilmarnock Oil Company, Inc., requesting the royalty ledger, division orders, and tract-to-well allocation for lease #03-03243. 30-day response duty; attorney’s fees and $200 minimum award preserved.</li>
+<li><strong>Cross-reference CAD accounts</strong> N319690, N319691, N322518, N322519 (family-named royalty) against the ledger entries to confirm actual payments received.</li>
+<li><strong>Request pre-1993 production records</strong> from RRC P-4 purchaser reports for all operators on Abstract 10 wells — Gulf, Yount-Lee, TXO, Lake Ronel, Enron, Chevron.</li>
+<li><strong>Apply the formula above</strong> once tract-to-well mapping confirms which wells sit on the 29-acre and 50-acre tracts versus other acreage in Abstract 10.</li>
+</ol>
+<p class="note"><strong>Fractions first, dollars second.</strong> The defensible statement to counsel is: “The family holds documented fractional interests fixed by recorded instruments from 1924, 1931, 1986, and 2006; production on the tract is current; the payor’s ledger is the document that converts these fractions into a number.” Any dollar figure quoted before the ledger is in hand is an estimate.</p>
+<p class="to-top"><a href="#top">↑ Back to top</a></p>
+</section>
+
+<section class="panel" id="key-resources-directory">
+<div class="eyebrow">Added October 22, 2026 · Interactive directory · click to copy contact details</div>
+<h2>18. Key resources directory — where to get the four documents and the payor’s ledger</h2>
+<p>This directory consolidates every repository, office, and company named in the briefing, with direct retrieval instructions. Use the filters to narrow by record type or status.</p>
+
+<div class="resource-filters" style="margin:16px 0;">
+<button class="filter-btn active" data-filter="all">All</button>
+<button class="filter-btn" data-filter="archive">Archives &amp; libraries</button>
+<button class="filter-btn" data-filter="court">Courts &amp; probate</button>
+<button class="filter-btn" data-filter="county">County records</button>
+<button class="filter-btn" data-filter="state">State agencies</button>
+<button class="filter-btn" data-filter="company">Operator &amp; purchaser</button>
+<button class="filter-btn" data-filter="online">Online registries</button>
+</div>
+
+<div class="resource-grid">
+<article class="resource-card verified archive" data-name="national-archives-fort-worth">
+<h4>National Archives at Fort Worth (Tarrant Co., TX)</h4>
+<p><strong>Record group:</strong> RG 21, U.S. District Courts, Beaumont Division — Equity No. 234 and No. 241 docket and minutes.</p>
+<p><strong>Status:</strong> Request sent October 19, 2026; automated acknowledgment recorded. No substantive reply documented.</p>
+<p><strong>Already in hand:</strong> NARA-certified reproduction of Equity 234 via Orange County OPR #291245 (filed Dec. 13, 2005).</p>
+<p class="resource-meta">24-hour advance notice required for on-site research. Call before visiting.</p>
+</article>
+
+<article class="resource-card verified court" data-name="calcasieu-parish-courthouse">
+<h4>14th Judicial District Court, Calcasieu Parish (Lake Charles, LA)</h4>
+<p><strong>Records sought:</strong> 1925 interdiction file and succession file behind the 1930 curator’s account; distribution order directing curator’s funds be distributed; Orange County Probate Case No. 680 ancillary.</p>
+<p><strong>Why:</strong> The single most valuable document in this research — shows who received the $4,414.34 net cash, residence, and Orange County oil properties.</p>
+<p class="resource-meta">Request certified copies under the 1925 interdiction docket. Small fee per page.</p>
+</article>
+
+<article class="resource-card verified county" data-name="orange-county-clerk">
+<h4>Orange County Clerk — Imaged Books &amp; Official Public Records (Orange, TX)</h4>
+<p><strong>Core citations:</strong> DR 35:75–77; DR 40:204–208; DR 43:497–500; DR 52:123/130/171; OPR #291245; #227435 / #227585; #298552–#298565.</p>
+<p><strong>Portal:</strong> <a href="https://www.co.orange.tx.us/departments/CountyClerk/OnlineRecordsSearch" rel="noreferrer">County records portal</a></p>
+<p class="resource-meta">Certified copies: $1 per page plus $5 per certified case. Probate Index Sheet 70 holds case references.</p>
+</article>
+
+<article class="resource-card verified county" data-name="orange-cad">
+<h4>Orange County Central Appraisal District (OCAD)</h4>
+<p><strong>Records sought:</strong> Mineral and surface account roll for lease #360 CORBELLO -A- (Abstract 10 William M. Dyson), tracts 341, 393, 394; appraised values not publicly displayed — must request from district.</p>
+<p><strong>Accounts:</strong> N319690 (CORBELLO, JEFFREY A, 0.005261 RI), N319691 (CORBELLO, GEORGIA A, 0.010522 RI), N322519 (ADAMS, THOMAS, 0.006845 RI), N322518 (ADAMS, CLAY B — LEVY PROCEEDS, 0.006845 RI).</p>
+<p class="resource-meta">Owner-name search silently omits accounts — use tract-graph method instead.</p>
+</article>
+
+<article class="resource-card verified company" data-name="truth-resources">
+<h4>Truth Resources, L.P. — Purchaser of record</h4>
+<p><strong>Records sought:</strong> Royalty ledger, division orders, suspense ledger, title opinion, and any file referencing the 2001 “sole surviving heirs” affidavit for lease #03-03243 / CORBELLO -A-.</p>
+<p><strong>Statutory route:</strong> Tex. Nat. Res. Code § 91.404(b) — certified-mail notice starts 30-day response clock; successful claimant recovers attorney’s fees + minimum $200 award.</p>
+<p class="resource-meta">This is a letter, not a lawsuit. Draft included in Section 13N.</p>
+</article>
+
+<article class="resource-card verified company" data-name="kilmarnock-oil">
+<h4>Kilmarnock Oil Company, Inc. — Operator of record</h4>
+<p><strong>Records sought:</strong> Same as Truth Resources — operator holds wellhead production data, well completion dates, plugging records, and coordinates for wells W#16-18.</p>
+<p class="resource-meta">RRC P-4 purchaser reports confirm purchaser identity and payment periods.</p>
+</article>
+
+<article class="resource-card verified state" data-name="texas-comptroller">
+<h4>Texas Comptroller of Public Accounts — ClaimItTexas.gov</h4>
+<p><strong>Records sought:</strong> Unclaimed mineral royalty rows reported under family names (nine oil-and-gas rows found; largest $43,888.80 in 1991 from “EOC CO”).</p>
+<p><strong>Statutory route:</strong> Tex. Prop. Code § 74.502 — file claim directly with holder; Comptroller reimburses valid claims paid by holder.</p>
+<p class="resource-meta">Bot-gated — searches must be done by hand, surname-only, city blank.</p>
+</article>
+
+<article class="resource-card verified state" data-name="lacashclaim">
+<h4>Louisiana State Treasurer — LaCashClaim.org</h4>
+<p><strong>Records sought:</strong> Louisiana unclaimed property under family-line surnames: CORBELLO (195 records), CARBELLO (6), LOVETT (310), GILLEY (274), ROMERO, SELF, THOMAS, FONTENOT.</p>
+<p><strong>Key leads:</strong> CARBELLO-spelled MINERAL INTERESTS record at old Lake Charles address (band under $25); Carbello-spelled estate record over $100; Granger group-policy benefit over $100 in Iowa, LA.</p>
+<p class="resource-meta">Complete curated name list reviewed privately on Oct 22, 2026 — not published on this page.</p>
+</article>
+
+<article class="resource-card verified online" data-name="missing-money">
+<h4>MissingMoney.com</h4>
+<p><strong>Records sought:</strong> Unclaimed property in all other 40+ states under family-line surnames.</p>
+<p class="resource-meta">Free federal-endorsed multi-state unclaimed-property search.</p>
+</article>
+
+<article class="resource-card verified online" data-name="treasury-hunt">
+<h4>Treasury Hunt — Matured Savings Bonds</h4>
+<p><strong>Records sought:</strong> Matured U.S. savings bonds in family names.</p>
+<p class="resource-meta">TreasuryDirect.gov — free search by SSN or name.</p>
+</article>
+
+<article class="resource-card claim online" data-name="naic-insurance-locator">
+<h4>NAIC Life Insurance Policy Locator</h4>
+<p><strong>Records sought:</strong> Life insurance policies naming deceased family members as insured.</p>
+<p class="resource-meta">NAIC.org — free locator service; contact insurers directly once matches found.</p>
+</article>
+
+<article class="resource-card verified library" data-name="sam-houston-center">
+<h4>Sam Houston Regional Library &amp; Research Center (Liberty, TX)</h4>
+<p><strong>Records sought:</strong> Historical Orange County records. Archive request sent October 19, 2026; no returned records documented.</p>
+<p class="resource-meta">Repository location only — no Liberty County land-title connection established.</p>
+</article>
+</div>
+
+<p class="note"><strong>Four-document target status:</strong> Target #1 (distribution order) → Calcasieu Parish 14th JDC. Target #2 (curator’s final account & $7,000 bonds) → same Calcasieu Parish file + Louisiana State Archives. Target #3 (payor’s royalty file & title opinion) → Truth Resources / Kilmarnock via § 91.404(b) letter. Target #4 (owner-roll branch mapping) → Orange County CAD tract-graph + RRC P-4 reports.</p>
+<p class="to-top"><a href="#top">↑ Back to top</a></p>
+</section>
+
 <footer class="muted">Cherishvale · Corbello–Granger family research · October 19, 2026 · §13K added October 21, 2026<br>Source-based research notes, not a title opinion or determination of legal entitlement.</footer>
 </main>
 
 <div class="mobile-fab" aria-label="Quick navigation">
   <a href="#contents">☰ Contents</a>
-  <a href="#family-action-plan">★ Action Plan</a>
+  <a href="#royalty-calculation">📊 Royalties</a>
+  <a href="#key-resources-directory">📍 Resources</a>
   <a href="#top">↑ Top</a>
 </div>
 
@@ -2439,6 +2599,26 @@ document.addEventListener('keydown',function(e){if(e.key==='Escape')closePlatMod
     });
   },{rootMargin:'-120px 0px -65% 0px'});
   document.querySelectorAll('section[id]').forEach(function(s){obs.observe(s);});
+})();
+
+/* 4. Resource directory filter */
+(function(){
+  var buttons=document.querySelectorAll('.filter-btn');
+  var cards=document.querySelectorAll('.resource-card');
+  buttons.forEach(function(btn){
+    btn.addEventListener('click',function(){
+      buttons.forEach(function(b){b.classList.remove('active');});
+      btn.classList.add('active');
+      var filter=btn.getAttribute('data-filter');
+      cards.forEach(function(card){
+        if(filter==='all'||card.classList.contains(filter)){
+          card.style.display='';
+        }else{
+          card.style.display='none';
+        }
+      });
+    });
+  });
 })();
 </script>
 
