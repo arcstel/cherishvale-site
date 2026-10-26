@@ -1,0 +1,12 @@
+AuthType Basic
+AuthName "Corbello-Granger Research Restricted"
+AuthUserFile /home/xyzam/cherishvale-site/.htpasswd
+Require valid-user
+
+# Protect the research page specifically
+<Files "corbello-granger-research.html">
+    AuthType Basic
+    AuthName "Corbello-Granger Research Restricted"
+    AuthUserFile /home/xyzam/cherishvale-site/.htpasswd
+    Require valid-user
+</Files>
